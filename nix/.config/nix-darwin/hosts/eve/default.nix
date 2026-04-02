@@ -20,7 +20,7 @@
     # Network & Media
     ffmpeg mpv yt-dlp fastfetch chafa glow mitmproxy iperf3
     # AI & Tools
-    himalaya wakatime-cli tealdeer vfkit google-cloud-sdk qwen-code
+    himalaya wakatime-cli tealdeer vfkit google-cloud-sdk qwen-code gitleaks
   ];
 
   homebrew = {

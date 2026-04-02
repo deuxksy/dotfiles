@@ -1,0 +1,8 @@
+title = "dotfiles secrets config"
+
+[allowlist]
+  description = "sops-encrypted .key files and WakaTime config"
+  paths = [
+    '''(.*/)?\.key$''',
+    '''base/\.wakatime\.cfg$''',
+  ]
