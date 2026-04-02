@@ -4,43 +4,9 @@
 title = "Gitleaks Config"
 
 [extend]
-
-# 기본 allowlist (false positives 헀 ..gitleaks.toml, .gitleaksignore 등 . .env)
-[[rules]]
-  description = "Private Key (JWT, social token, password)"
-  id = "private-key"
-  regex = '''(?i)private[_\-_]?key[=\s]*|password|[\s]*=[\s'"]'''
-  tags = ["key", "secret", "token"]
-
-[[rules]]
-  description = "GitHub Token"
-  id = "github-token"
-  regex = '''ghp_[0-9a-zA-Z0-9]{36,}|gho_[0-9a-zA-Z0-9]{36,}|ghu_[0-9a-zA-Z0-9]{36}|ghs_[0-9a-zA-Z0-9]{36}'''
-  tags = ["github", "ghp_", "gho", "ghs", "ghu"]
-
-[[rules]]
-  description = "Slack Token"
-  id = "slack-token"
-  regex = '''xox[boap][0-9]{10,}/[xox(?:a-p]{10,})-[0-9]{24}|'''
-  tags = ["slack", "xoxb", "xoxa-"]
-
-[[rules]]
-  description = "AWS Access Key"
-  id = "aws-access-key"
-  regex = '''AKIA[0-9A-Z]{16}(?:AKIA[0-9A-Z]{16}){5}|AKIA[0-9A-Z]{16})'''
-  tags = ["AKIA", "AKIAST", "aws"]
-
-[[rules]]
-  description = "Generic API Key"
-  id = "generic-api-key"
-  regex = '''(?i<![a-fA-F]{40,})?[A-Za-z0-9_]{32,}(?:[A-Za-z0-9_]{8}-[A-Za-z0-9_]{3,)*$'''
-  tags = ["api", "key", "secret", "token"]
+useDefault = true
 
 [allowlist]
-  description = "Global allow list"
   paths = [
-    '''\.gitleaks\.toml''',
-    '''\.gitleaksignore''',
-    '''\.env''',
-    '''.env.*'',
+    '''wakatime\.cfg''',
   ]
