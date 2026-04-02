@@ -115,7 +115,7 @@ export LANG=en_US.UTF-8
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 . ~/.path
 . ~/.alias
-. ~/.key
+eval "$(sops -d ~/.key)"
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
@@ -127,16 +127,9 @@ eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 # OpenClaw Completion
 source "/Users/crong/.openclaw/completions/openclaw.zsh"
-
-fastfetch
-
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/crong/.lmstudio/bin"
 # End of LM Studio CLI section
-
-
-# Load environment variables
-source ~/.key
 
 # Unset CLOUDFLARE_API_KEY to avoid conflict with API token authentication
 unset CLOUDFLARE_API_KEY
