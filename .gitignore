@@ -15,18 +15,18 @@ Network Trash Folder
 Temporary Items
 
 # --- Zero-Trust Security (Must be ignored) ---
-.local_secrets
+# .local_secrets
 *.bak
-*.pem
-# *.key  # sops 암호화로 추적 가능
-*.crt
-*.netrc
+# *.pem
+# *.key
+# *.crt
+# *.netrc
 # SSH private keys (절대 Git에 올리지 말 것)
-.ssh/id_rsa
-.ssh/id_ed25519
-.ssh/id_ecdsa
-.ssh/id_dsa
-.ssh/*.pub
+# .ssh/id_rsa
+# .ssh/id_ed25519
+# .ssh/id_ecdsa
+# .ssh/id_dsa
+# .ssh/*.pub
 
 # --- Build Artifacts (Language Specific) ---
 # Java/General Build
@@ -54,6 +54,7 @@ __pycache__/
 !*/.Brewfile
 !*/.tool-versions
 
-mcporter.json
+# OpenClaw MCP config (API keys in headers)
+**/mcporter.json
 !settings.local.json
-.claude.json
+# .claude.json

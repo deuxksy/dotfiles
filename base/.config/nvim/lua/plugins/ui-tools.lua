@@ -63,6 +63,9 @@ return {
         },
     },
 
+    -- wakatime: 코딩 시간 추적
+    { 'wakatime/vim-wakatime', lazy = false },
+
     -- trouble.nvim: 진단 목록
     {
         "folke/trouble.nvim",

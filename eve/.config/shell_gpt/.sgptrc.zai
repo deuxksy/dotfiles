@@ -1,5 +1,4 @@
 OPENAI_API_BASE=https://api.z.ai/api/coding/paas/v4
-OPENAI_API_KEY=REDACTED_ZAI_KEY
 DEFAULT_MODEL=glm-5
 CHAT_CACHE_PATH=/var/folders/nk/h5hjh1jd6ydcg4wgsc5nf69m0000gn/T/chat_cache
 CACHE_PATH=/var/folders/nk/h5hjh1jd6ydcg4wgsc5nf69m0000gn/T/cache

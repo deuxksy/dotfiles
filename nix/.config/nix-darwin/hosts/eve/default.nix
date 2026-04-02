@@ -14,7 +14,7 @@
   environment.systemPackages = with pkgs; [
     # Core Utilities
     git neovim tmux ripgrep fd fzf jq yq htop atuin bat bottom btop yazi macmon grpcurl direnv mas wget curl gnupg rclone curlie mosh television lynis
-    wezterm
+    wezterm sops age
     # Development
     mise opentofu mkdocs pipx awscli2 kubectl
     # Network & Media

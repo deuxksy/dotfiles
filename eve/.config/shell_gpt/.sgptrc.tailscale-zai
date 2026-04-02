@@ -1,7 +1,6 @@
-OPENAI_API_KEY=sk-dummy
 API_BASE_URL=http://ai/v1
 OPENAI_API_BASE=http://ai/v1
-DEFAULT_MODEL=glm-4.5-air
+DEFAULT_MODEL=glm-5-turbo
 CHAT_CACHE_PATH=/var/folders/nk/h5hjh1jd6ydcg4wgsc5nf69m0000gn/T/chat_cache
 CACHE_PATH=/var/folders/nk/h5hjh1jd6ydcg4wgsc5nf69m0000gn/T/cache
 CHAT_CACHE_LENGTH=100

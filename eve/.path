@@ -3,6 +3,7 @@ export EDITOR='nvim'
 export HISTSIZE=50000
 export HISTFILESIZE=50000
 export PNPM_HOME="${HOME}/Library/pnpm"
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 
 typeset -U path PATH  # 중복 경로 자동 제거
 

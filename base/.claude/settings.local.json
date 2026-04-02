@@ -47,7 +47,6 @@
       "mcp__context7__*",
       "mcp__globalping__*",
       "mcp__playwright__*",
-      "mcp__plugin_context7_context7__*",
       "mcp__plugin_oh-my-claudecode_t__*",
       "mcp__web_reader__*",
       "mcp__zai-github__*",
@@ -55,12 +54,7 @@
       "mcp__zai-webreader__*",
       "mcp__zai-websearch__*"
     ],
-    "deny": [
-      "Bash(rm -rf /)",
-      "Bash(rm -rf ~)"
-    ],
-    "ask": [
-      "Bash(rm *)"
-    ]
+    "deny": ["Bash(rm -rf /)", "Bash(rm -rf ~)"],
+    "ask": ["Bash(rm *)"]
   }
 }

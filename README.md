@@ -46,7 +46,7 @@ stow -t ~ base eve     # 공통 과 eve 설정 같이 적용
 ## 📋 Stow 패키지 매핑
 
 | 환경            | 적용 패키지                |
-| -------------- | ----------------------- |
+| :------------- | :---------------------- |
 | Mac Mini M4    | `base` + `eve`          |
 | AOOSTAR WTR R1 | `base` + `walle`        |
 | Steam Deck     | `base` + `girl`         |
