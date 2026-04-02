@@ -58,3 +58,4 @@ __pycache__/
 **/mcporter.json
 !settings.local.json
 # .claude.json
+eve/.claude.json
