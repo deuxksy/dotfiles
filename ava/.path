@@ -1,0 +1,10 @@
+PATH="${PATH}:${HOME}/.local/bin"
+fpath=(~/.zsh/completions $fpath)
+fpath=(~/.zfunc $fpath)
+
+export PATH
+export fpath
+export TIME_STYLE='long-iso'
+export EDITOR='nvim'
+export HISTSIZE=50000
+export HISTFILESIZE=50000

@@ -1,0 +1,59 @@
+# ==============================================================================
+# .geminiignore - Optimized for Simple Stow Architect
+# ==============================================================================
+
+# 1. General OS & Junk Files (Always ignore)
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+Network Trash Folder
+Temporary Items
+.apdisk
+Thumbs.db
+desktop.ini
+*.bak
+
+# 2. IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 3. Build & Dependency Artifacts (No need to index heavy binaries)
+.gradle/
+node_modules/
+vendor/
+bin/
+obj/
+.asdf/  # asdf 설치 경로 자체는 인덱싱 불필요
+
+# 4. Logs and temporary files
+*.log
+tmp/
+temp/
+
+# 5. Zero-Trust Security (Critical)
+.ssh/
+.netrc
+*.key
+*.pem
+*.p12
+*.crt
+.env
+.env.*
+.local_secrets    # 이 설계의 핵심 보안 파일
+
+# 6. AI Context - Keep the "Brain" files
+# 설계 문서들은 AI가 읽어야 하므로 Ignore 목록에서 제거합니다.
+# 만약 너무 많다면 아래처럼 예외 처리를 활용하세요.
+.gemini/
+
+# [수정됨] 아래 파일들은 AI가 아키텍처를 이해하는 데 필수적이므로 
+# Ignore 목록에서 제외(삭제)하거나 아래처럼 느낌표(!)로 강제 허용합니다.
+!ContextFile.md
+!implementation_plan.md
+!task.md
+!README.md
+!GEMINI.md

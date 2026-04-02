@@ -1,0 +1,5 @@
+[tools]
+atuin = "latest"
+neovim = "latest"
+#lua = "5.4"
+uv = "latest"

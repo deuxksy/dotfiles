@@ -1,0 +1,8 @@
+[tools]
+go = "1.25"
+lua = "5.4"
+node = "latest"
+python = "3.12"
+rust = "stable"
+neovim = "latest"
+awscli = { version = "latest", symlink_bins = "true" }

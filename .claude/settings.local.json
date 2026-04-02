@@ -1,0 +1,47 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "Task(*)",
+      "WebSearch(*)",
+      "WebFetch(*)",
+      "mcp__cloudflare-graphql__accounts_list",
+      "mcp__cloudflare-dns-analytics__accounts_list",
+      "mcp__cloudflare-graphql__zones_list",
+      "mcp__cloudflare-dns-analytics__zones_list",
+      "mcp__cloudflare-graphql__graphql_query",
+      "mcp__cloudflare-dns-analytics__show_zone_dns_settings",
+      "mcp__cloudflare-graphql__graphql_schema_search",
+      "mcp__cloudflare-graphql__graphql_schema_overview",
+      "mcp__cloudflare-docs__search_cloudflare_documentation",
+      "mcp__cloudflare-workers-bindings__workers_list",
+      "mcp__cloudflare-observability__workers_list",
+      "mcp__cloudflare-graphql__graphql_type_details",
+      "mcp__cloudflare-graphql__graphql_complete_schema",
+      "mcp__cloudflare-containers__container_ping",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__query-docs",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_close",
+      "mcp__zai-websearch__web_search_prime",
+      "mcp__zai-webreader__webReader",
+      "mcp__zai-github__search_doc",
+      "mcp__zai-github__get_repo_structure",
+      "mcp__zai-gituhb__read_file",
+      "mcp__plugin_oh-my-claudecode_t__notepad_read"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)"
+    ],
+    "ask": [
+      "Bash(rm *)"
+    ]
+  }
+}

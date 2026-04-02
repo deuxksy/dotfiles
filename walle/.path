@@ -1,0 +1,20 @@
+export TIME_STYLE='long-iso'
+export EDITOR='nvim'
+export HISTSIZE=50000
+export HISTFILESIZE=50000
+export OLLAMA_VULKAN=1
+export GOG_KEYRING_PASSWORD="openclaw"
+export PNPM_HOME="/home/crong/.local/share/pnpm"
+
+PATH="${PATH}:/home/linuxbrew/.linuxbrew/bin"
+
+PATH="${HOME}/.opencode/bin:${PATH}"
+PATH="${PNPM_HOME}:${PATH}"
+PATH="${HOME}/.local/bin:${PATH}"
+
+fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
+fpath=(~/.zsh/completions $fpath)
+fpath=(~/.zfunc $fpath)
+
+export PATH
+export fpath

@@ -1,0 +1,19 @@
+export TIME_STYLE='long-iso'
+export EDITOR='nvim'
+export HISTSIZE=50000
+export HISTFILESIZE=50000
+export PNPM_HOME="${HOME}/Library/pnpm"
+
+typeset -U path PATH  # 중복 경로 자동 제거
+
+PATH="/opt/homebrew/bin:${PATH}"
+PATH="/run/current-system/sw/bin:${PATH}"
+PATH="${HOME}/.nix-profile/bin:/nix/var/nix/profiles/default/bin:${PATH}"
+PATH="${PNPM_HOME}:${PATH}"
+PATH="${HOME}/.local/bin:${PATH}"
+
+fpath=(~/.zsh/completions $fpath)
+fpath=(~/.zfunc $fpath)
+
+export PATH
+export fpath

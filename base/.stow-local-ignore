@@ -1,0 +1,7 @@
+# Stow 제외 항목
+README\.md$
+DEPENDENCIES\.md$
+\.nix$
+\.bak$
+\.orig$
+\.\d{6}$                           # 날짜 접미사 백업 (treesitter.lua.260320)

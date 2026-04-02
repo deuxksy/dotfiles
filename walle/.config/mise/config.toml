@@ -1,0 +1,8 @@
+[tools]
+curlie = "latest"
+go = "1.25"
+lua = "5.4"
+node = "24"
+ollama = "latest"
+python = "3.12"
+rust = "stable"
