@@ -18,7 +18,7 @@ Temporary Items
 .local_secrets
 *.bak
 *.pem
-*.key
+# *.key  # sops 암호화로 추적 가능
 *.crt
 *.netrc
 # SSH private keys (절대 Git에 올리지 말 것)
@@ -54,7 +54,6 @@ __pycache__/
 !*/.Brewfile
 !*/.tool-versions
 
-.key
 mcporter.json
 !settings.local.json
 .claude.json
