@@ -4,11 +4,12 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 ## Hosts
 
-| Host            | OS          | Packages           |
-| :-------------- | :---------- | :----------------- |
-| Mac Mini M4     | macOS       | `base` + `eve`     |
-| AOOSTAR WTR R1  | Fedora      | `base` + `walle`   |
-| Steam Deck      | SteamOS     | `base` + `girl`    |
+| Host            | OS              | Packages           |
+| :-------------- | :-------------- | :----------------- |
+| Mac Mini M4     | macOS           | `base` + `eve`     |
+| Surface Pro 6   | Ubuntu (WSL)    | `base` + `ava`     |
+| AOOSTAR WTR R1  | Fedora          | `base` + `walle`   |
+| Steam Deck      | SteamOS         | `base` + `girl`    |
 
 ## Install
 

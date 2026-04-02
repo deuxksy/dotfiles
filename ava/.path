@@ -1,4 +1,6 @@
 PATH="${PATH}:${HOME}/.local/bin"
+PATH="${HOME}/.local/share/pnpm:${PATH}"
+
 fpath=(~/.zsh/completions $fpath)
 fpath=(~/.zfunc $fpath)
 
