@@ -119,7 +119,7 @@ export LANG=en_US.UTF-8
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 . ~/.path
 . ~/.alias
-. ~/.key
+eval "$(sops -d ~/.key)"
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
@@ -130,5 +130,3 @@ eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 eval "$(mise activate zsh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-fastfetch
