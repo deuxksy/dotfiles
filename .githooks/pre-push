@@ -1,5 +1,6 @@
 #!/bin/sh
 # gitleaks pre-push hook
 cd "$(git rev-parse --show-toplevel)"
-gitleaks protect --staging --config .gitleaks.toml -v
+export PATH="/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+gitleaks protect --staged --config .gitleaks.toml -v
 exit $?
