@@ -26,13 +26,13 @@ Neovim 플러그인이 사용하는 외부 도구들
 | black | Python 포맷팅 | python3-black | black | python-black | python3Packages.black |
 | rustfmt | Rust 포맷팅 | rustfmt | rustfmt | rustfmt | rustfmt |
 | gofmt | Go 포맷팅 | golang | go | go | go |
-| terraform_fmt | Terraform 포맷팅 | terraform | terraform | terraform | terraform |
+| opentofu_fmt | Terraform 포맷팅 | opentofu | opentofu | opentofu | opentofu |
 | shfmt | Shell script 포맷팅 | shfmt | shfmt | shfmt | shfmt |
 
 > **참고:** gofmt는 Go 툴체인에 포함된 바이너리
 
 ### LSP (Mason - 자동 설치)
-lua_ls, ts_ls, pylsp, rust_analyzer, gopls, nil_ls, dockerls, yamlls, terraformls
+lua_ls, ts_ls, pylsp, rust_analyzer, gopls, nil_ls, dockerls, yamlls, opentofuls
 
 > **참고:** Mason 플러그인이 `:Mason` 명령으로 자동 설치합니다.
 
@@ -48,7 +48,7 @@ lua_ls, ts_ls, pylsp, rust_analyzer, gopls, nil_ls, dockerls, yamlls, terraforml
 # Linter
 sudo dnf install -y eslint python3-flake8 hadolint yamllint shellcheck
 # Formatter
-sudo dnf install -y stylua prettier python3-black rustfmt golang terraform shfmt
+sudo dnf install -y stylua prettier python3-black rustfmt golang opentofu shfmt
 # 기타
 sudo dnf install -y git
 
@@ -61,7 +61,7 @@ pnpm install -g eslint_d
 # Linter
 brew install eslint flake8 hadolint yamllint shellcheck
 # Formatter
-brew install stylua prettier black rustfmt go terraform shfmt
+brew install stylua prettier black rustfmt go opentofu shfmt
 # 기타
 brew install git
 
@@ -74,7 +74,7 @@ pnpm install -g eslint_d
 # Linter
 sudo pacman -S --noconfirm eslint python-flake8 hadolint yamllint shellcheck
 # Formatter
-sudo pacman -S --noconfirm stylua prettier python-black rustfmt go terraform shfmt
+sudo pacman -S --noconfirm stylua prettier python-black rustfmt go opentofu shfmt
 # 기타
 sudo pacman -S --noconfirm git
 
@@ -89,7 +89,7 @@ nix-shell ~/git/env/base/.config/nvim/nvim-tools.nix
 
 # 또는 직접 패키지 지정 (git 포함)
 nix-shell -p eslint flake8 hadolint yamllint shellcheck \
-             stylua prettier black rustfmt go terraform shfmt git
+             stylua prettier black rustfmt go opentofu shfmt git
 ```
 
 ## 검증
@@ -103,7 +103,7 @@ nix-shell -p eslint flake8 hadolint yamllint shellcheck \
 
 # 명령행에서 바이너리 확인
 which eslint_d flake8 hadolint yamllint shellcheck
-which stylua prettier black rustfmt gofmt terraform shfmt
+which stylua prettier black rustfmt gofmt opentofu shfmt
 which git
 
 # eslint_d는 npm global로 설치되므로 별도 확인
