@@ -25,29 +25,45 @@ return {
         dependencies = { "williamboman/mason.nvim" },
         config = function()
             local lsp_handlers = require("config.lsp_handlers")
+            local health = require("core.health")
+
+            -- 자동 설치할 LSP 서버
+            local servers = {
+                -- Lua
+                "lua_ls",
+                -- JavaScript/TypeScript
+                "ts_ls",
+                -- Python
+                "pylsp",
+                -- Rust
+                "rust_analyzer",
+                -- Go
+                "gopls",
+                -- Nix (Linux/macOS만)
+                "nil_ls",
+                -- Java
+                "jdtls",
+                -- Kotlin (Android)
+                "kotlin_language_server",
+                -- Gradle (Android build)
+                "gradle_ls",
+                -- Docker
+                "dockerls",
+                -- YAML
+                "yamlls",
+                -- Terraform
+                "terraformls",
+            }
+
+            -- Windows에서 nil_ls 제외 (Nix 미지원)
+            if health.is_windows then
+                servers = vim.tbl_filter(function(s)
+                    return s ~= "nil_ls"
+                end, servers)
+            end
 
             require("mason-lspconfig").setup({
-                -- 자동 설치할 LSP 서버
-                ensure_installed = {
-                    -- Lua
-                    "lua_ls",
-                    -- JavaScript/TypeScript
-                    "ts_ls",
-                    -- Python
-                    "pylsp",
-                    -- Rust
-                    "rust_analyzer",
-                    -- Go
-                    "gopls",
-                    -- Nix
-                    "nil_ls",
-                    -- Docker
-                    "dockerls",
-                    -- YAML
-                    "yamlls",
-                    -- Terraform
-                    "terraformls",
-                },
+                ensure_installed = servers,
                 handlers = {
                     -- 기본 핸들러
                     function(server_name)

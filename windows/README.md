@@ -3,16 +3,19 @@
 ## 사전 요구사항
 
 ### 필수 도구
+
 - [mise](https://github.com/jdx/mise) - 런타임 버전 관리
 - [Neovim](https://neovim.io/) - 텍스트 에디터
 - [Git](https://git-scm.com/) - 버전 관리
 
 ### mise로 Node.js 설치
+
 ```powershell
 mise use node@lts
 ```
 
 ### pnpm 활성화 (corepack 사용)
+
 ```powershell
 corepack enable
 corepack prepare pnpm@latest --activate
@@ -20,6 +23,7 @@ pnpm setup
 ```
 
 ### mcp-hub 설치
+
 ```powershell
 pnpm install -g mcp-hub@latest
 ```
@@ -35,6 +39,7 @@ $apiKey = "YOUR_API_KEY_HERE"
 [System.Environment]::SetEnvironmentVariable("ZAI_API_KEY", $apiKey, "User")
 [System.Environment]::SetEnvironmentVariable("BRAVE_API_KEY", $apiKey, "User")
 [System.Environment]::SetEnvironmentVariable("CONTEXT7_API_KEY", $apiKey, "User")
+[System.Environment]::SetEnvironmentVariable("WAKATIME_API_KEY", "YOUR_WAKATIME_KEY", "User")
 ```
 
 > 환경변수 등록 후 **터미널을 재시작**해야 적용됩니다.
@@ -42,6 +47,7 @@ $apiKey = "YOUR_API_KEY_HERE"
 ## 설치 (install.ps1)
 
 ### 관리자 권한으로 실행
+
 ```powershell
 powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\git\dotfiles\windows\install.ps1"
 ```
@@ -49,9 +55,10 @@ powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\git\dotfiles\windows\
 ### 스크립트가 수행하는 작업
 
 | 대상 경로 | 원본 (base) | 방식 | 권한 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `%LOCALAPPDATA%\nvim` | `base\.config\nvim` | Junction | 일반 |
-| `%USERPROFILE%\.claude` | `base\.claude` | Junction | 일반 |
+| `%USERPROFILE%\.claude\CLAUDE.md` | `base\.claude\CLAUDE.md` | SymbolicLink | 관리자 |
+| `%USERPROFILE%\.claude\settings.local.json` | `base\.claude\settings.local.json` | SymbolicLink | 관리자 |
 | `%USERPROFILE%\.gemini` | `base\.gemini` | Junction | 일반 |
 | `%USERPROFILE%\.gitconfig` | `base\.gitconfig` | SymbolicLink | 관리자 |
 | `%USERPROFILE%\.wakatime.cfg` | `base\.wakatime.cfg` | SymbolicLink | 관리자 |

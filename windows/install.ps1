@@ -9,8 +9,11 @@ $base = "$dotfiles\base"
 # Neovim
 New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target "$base\.config\nvim" -Force
 
-# .claude
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.claude" -Target "$base\.claude" -Force
+# .claude (runtime data는 로컬에 두고 설정 파일만 링크)
+$claudeDir = "$env:USERPROFILE\.claude"
+if (-not (Test-Path $claudeDir)) { New-Item -ItemType Directory -Path $claudeDir -Force }
+New-Item -ItemType SymbolicLink -Path "$claudeDir\CLAUDE.md" -Target "$base\.claude\CLAUDE.md" -Force
+New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "$base\.claude\settings.local.json" -Force
 
 # .gemini
 New-Item -ItemType Junction -Path "$env:USERPROFILE\.gemini" -Target "$base\.gemini" -Force
