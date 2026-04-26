@@ -54,7 +54,40 @@
       "mcp__zai-webreader__*",
       "mcp__zai-websearch__*"
     ],
-    "deny": ["Bash(rm -rf /)", "Bash(rm -rf ~)"],
-    "ask": ["Bash(rm *)"]
+    "deny": [
+      "Bash(rm *)",
+      "Bash(rm -rf *)",
+      "Bash(kill *)",
+      "Bash(format *)",
+      "Bash(del *)",
+      "Bash(taskkill *)",
+      "Bash(rd *)",
+      "Bash(rmdir *)",
+      "Bash(shutdown *)",
+      "Bash(reg *)",
+      "Bash(regedit *)",
+      "Bash(diskpart *)",
+      "Bash(sfc *)",
+      "Bash(chkdsk *)",
+      "Bash(bcdedit *)",
+      "Bash(sc *)",
+      "Bash(netsh *)",
+      "Bash(net stop *)",
+      "Bash(net start *)",
+      "Bash(net user *)",
+      "Bash(dism *)",
+      "Bash(systemreset *)",
+      "Bash(cipher *)",
+      "Bash(wbadmin *)",
+      "Bash(sysprep *)",
+      "Bash(gpupdate *)",
+      "Bash(powercfg *)",
+      "Bash(wmic *)",
+      "Bash(powershell Remove-*)",
+      "Bash(powershell Stop-*)",
+      "Bash(powershell Restart-*)",
+      "Bash(powershell Set-Service *)",
+      "Bash(powershell Disable-*)"
+    ]
   }
 }

@@ -114,12 +114,12 @@ source $ZSH/oh-my-zsh.sh
 
 . ~/.path
 . ~/.alias
-eval "$(sops -d ~/.key)"
+. ~/.key
 
 autoload -Uz compinit && compinit
 autoload -Uz bashcompinit && bashcompinit
 
 eval "$(mise activate zsh)"
 eval "$(atuin init zsh)"
-
-fastfetch
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+#eval "$(sops -d ~/.key)"

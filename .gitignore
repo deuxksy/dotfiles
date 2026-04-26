@@ -59,3 +59,25 @@ __pycache__/
 !settings.local.json
 # .claude.json
 eve/.claude.json
+
+# --- Claude Code 내부 파일 (credentials, 세션 등) ---
+.claude/.credentials.json
+.claude/.mcp.json
+.claude/.omc-config.json
+.claude/.omc-version.json
+.claude/CLAUDE.md.backup.*
+.claude/CLAUDE.*[0-9]*
+.claude/backups/
+.claude/cache/
+.claude/file-history/
+.claude/history.jsonl
+.claude/hud/
+.claude/ide/
+.claude/plugins/
+.claude/projects/
+.claude/sessions/
+.claude/settings.json
+.claude/shell-snapshots/
+.claude/skills/
+.claude/tasks/
+.claude/.claude/

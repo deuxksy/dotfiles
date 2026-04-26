@@ -17,6 +17,7 @@ return {
                 -- dockerfile formatting은 별도 도구 없음 (hadolint는 Liner)
                 yaml = { "prettier" },
                 terraform = { "terraform_fmt" },
+                terraform = { "opentofu_fmt" },
                 sh = { "shfmt" },
             },
             log_level = vim.log.levels.WARN,

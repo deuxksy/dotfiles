@@ -55,3 +55,7 @@ colorMoved = default
 	insteadOf = https://github.com/
 [url "https://github.com/"]
 	insteadOf = git@github.com/
+[credential "https://repository.kr"]
+	provider = generic
+[credential]
+	helper = manager

@@ -4,6 +4,7 @@ PATH="${HOME}/.local/share/pnpm:${PATH}"
 fpath=(~/.zsh/completions $fpath)
 fpath=(~/.zfunc $fpath)
 
+export PNPM_HOME="${HOME}/.local/share/pnpm"
 export PATH
 export fpath
 export TIME_STYLE='long-iso'
