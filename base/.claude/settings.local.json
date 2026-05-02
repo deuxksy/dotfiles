@@ -52,7 +52,8 @@
       "mcp__zai-github__*",
       "mcp__zai-vision__*",
       "mcp__zai-webreader__*",
-      "mcp__zai-websearch__*"
+      "mcp__zai-websearch__*",
+      "mcp__filesystem__directory_tree"
     ],
     "deny": [
       "Bash(rm *)",
