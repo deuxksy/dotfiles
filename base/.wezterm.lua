@@ -2,6 +2,13 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 -- ============================================================================
+-- Shell
+-- ============================================================================
+if wezterm.target_triple:find('windows') then
+  config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-NoLogo' }
+end
+
+-- ============================================================================
 -- Font
 -- ============================================================================
 config.font = wezterm.font('Hack Nerd Font', { weight = 'Regular' })
