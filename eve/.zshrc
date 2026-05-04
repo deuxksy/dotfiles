@@ -120,13 +120,13 @@ eval "$(sops -d ~/.key)"
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 autoload -Uz bashcompinit && bashcompinit
+# OpenClaw Completion
+source "/Users/crong/.openclaw/completions/openclaw.zsh"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
-# OpenClaw Completion
-source "/Users/crong/.openclaw/completions/openclaw.zsh"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/crong/.lmstudio/bin"
 # End of LM Studio CLI section

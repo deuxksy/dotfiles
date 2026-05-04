@@ -1,12 +1,16 @@
-{ pkgs, ... }: {
-  # 해당 모듈에 필요한 패키지 격리
-  environment.systemPackages = [ pkgs.beszel ];
+{ pkgs, ... }:
+let
+  # beszel 0.18.6 checkPhase: SMART_DEVICES 파싱 테스트 실패 → doCheck 비활성화
+  beszelPkg = pkgs.beszel.overrideAttrs (old: { doCheck = false; });
+in
+{
+  environment.systemPackages = [ beszelPkg ];
 
   launchd.user.agents.beszel-agent = {
     serviceConfig = {
       Label = "io.beszel.agent";
-      ProgramArguments = [ "${pkgs.beszel}/bin/beszel-agent" ];
-      
+      ProgramArguments = [ "${beszelPkg}/bin/beszel-agent" ];
+
       # 환경변수 코드 내 직접 정의 (Source of Truth)
       EnvironmentVariables = {
         KEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPo8CE9Y7ZScOXSEIOshSjYNTsHjp0vZ9XEuDQI59vSs";

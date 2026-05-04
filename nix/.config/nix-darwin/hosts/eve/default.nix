@@ -16,7 +16,7 @@
     git neovim tmux ripgrep fd fzf jq yq htop atuin bat bottom btop yazi macmon grpcurl direnv mas wget curl gnupg rclone curlie mosh television lynis
     wezterm sops age
     # Development
-    mise opentofu mkdocs pipx awscli2 kubectl
+    mise opentofu mkdocs pipx awscli2 kubectl aria2 qemu vagrant
     # Network & Media
     ffmpeg mpv yt-dlp fastfetch chafa glow mitmproxy iperf3
     # AI & Tools
