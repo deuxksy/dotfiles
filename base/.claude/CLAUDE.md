@@ -1,5 +1,5 @@
 <!-- OMC:START -->
-<!-- OMC:VERSION:4.13.1 -->
+<!-- OMC:VERSION:4.13.5 -->
 
 # oh-my-claudecode - Intelligent Multi-Agent Orchestration
 
@@ -64,9 +64,18 @@ Say "setup omc" or run `/oh-my-claudecode:omc-setup`.
 
 <!-- OMC:END -->
 
+<!-- User customizations -->
 # User Rules Index
 
-> 개발 3원칙 KISS, YAGNI, DRY 준수. 상세 규칙은 `~/.claude/rules/` 참조.
+> KISS, YAGNI, DRY + Karpathy AI 개발 4원칙 준수. 상세 규칙은 `~/.claude/rules/` 참조.
+>
+> 1. **KISS** — Keep It Simple, Stupid. 복잡하게 하지 말고 간단하게
+> 2. **YAGNI** — You Aren't Gonna Need It. 지금 필요 없는 건 만들지 마
+> 3. **DRY** — Don't Repeat Yourself. 같은 코드를 반복하지 마
+> 4. **Think Before Coding** — 가정 명시, 모호하면 물어보기
+> 5. **Simplicity First** — 요청한 것만, 과도한 추상화 금지
+> 6. **Surgical Changes** — 필요한 것만 건드림, 기존 스타일 유지
+> 7. **Goal-Driven Execution** — 검증 가능한 목표로 변환, TDD 루프
 
 | # | 파일 | 내용 |
 | :--- | :--- | :--- |
@@ -78,5 +87,5 @@ Say "setup omc" or run `/oh-my-claudecode:omc-setup`.
 | 05 | [operations-safety](rules/05-operations-safety.md) | 운영, 안전, 파일 경로 |
 | 06 | [git](rules/06-git.md) | Git, Conventional Commits, SemVer |
 | 07 | [package-manager](rules/07-package-manager.md) | mise, pnpm, uv |
-| 08 | [work-log](rules/08-work-log.md) | Work-Log 관리, Notion 연동 |
-| 09 | [problem-solving](rules/09-problem-solving.md) | 문제 해결 프로세스 8단계 |
+| 08 | [problem-solving](rules/08-problem-solving.md) | 문제 해결 프로세스 9단계 |
+| 09 | [work-log](rules/09-work-log.md) | Work-Log 관리, Notion 연동 |
