@@ -1,9 +1,5 @@
 # AI 글로벌 규칙
 
-> **개발 3원칙 KISS, YAGNI, DRY 절대 준수**
-
-사용자는 전문적인 Software, Hardware 엔지니어링 지원을 기대한다.
-
 ## 사용자 프로필
 
 - Senior Middleware Architect: 15년+ 경력 (Java Spring 10년, DevOps 5년).

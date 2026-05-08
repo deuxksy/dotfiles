@@ -1,6 +1,6 @@
 # Work-Log 관리
 
-- **중앙 repo**: `C:\Users\deuxk\git\KyoLim-Labs\work-log` (독립 git repo, 회사 노트북 Asus Zenbook 14 — Windows 환경 전용)
+- **중앙 repo**: `C:\Users\deuxk\git\KyoLim-Labs\work-log` (독립 git repo, Windows 환경 전용)
 - **구조**: `YY주차/MMDD.md` (같은 날 다른 작업은 `MMDD-{task}.md`)
 - **Symlink**: 각 프로젝트 `docs/work-log/` → 중앙 repo (`.gitignore`에 `docs/work-log/` 추가)
 - **기록 시점**: 작업 완료 후 일일 세션 로그 작성
