@@ -60,6 +60,7 @@ __pycache__/
 # .claude.json
 eve/.claude.json
 
+base/.wakatime.cfg
 base/.gemini/
 base/.claude/*
 !base/.claude/rules/
