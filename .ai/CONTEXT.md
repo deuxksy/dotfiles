@@ -9,9 +9,10 @@
 ## 1. 대상 환경 (Target Infrastructure)
 
 - **Mac Mini M4**: MacOS 26 (Apple Silicon)
+- **AyaNEO AM-02**: NixOS 25 (Linux Kernel 7)
 - **AOOSTAR WTR R1**: Fedora 43 (RHEL 계열)
 - **Steam Deck**: SteamOS 3.0 (Arch 계열)
-- **Surface Pro 6**: Ubuntu 24 LTS (Debian 계열)
+- **Surface Pro 6**: Windows 10 with WSL2(Ubuntu 26 LTS)
 
 ## 2. 핵심 설계 원칙: 라이브러리 4단계
 
