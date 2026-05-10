@@ -6,11 +6,17 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 | Host | OS | Stow Packages |
 | :--- | :--- | :--- |
-| Mac Mini M4 | MacOS | `base` + `eve` |
-| AyaNEO AM-02 | NixOS | `base` + `mo` |
-| Surface Pro 6 | Windows (WSL) | `base` + `ava` |
-| AOOSTAR WTR R1 | Fedora | `base` + `walle` |
-| Steam Deck | SteamOS | `base` + `girl` |
+| Mac mini (M4, 16GB, 256GB) | MacOS 26 | `base` + `eve` |
+| AyaNEO AM02 (Ryzen 7840HS, 32GB, 1TB) | NixOS | `base` + `mo` |
+| Surface Pro 6 (8GB, 128GB) | Windows 10 Home (WSL) | `base` + `ava` |
+| AOOSTAR WTR R1 (Intel N100, 8GB, 2TB) | Fedora (NAS) | `base` + `walle` |
+| Steam Deck (256GB) | SteamOS | `base` + `girl` |
+| Asus Zenbook 14 UX3405C | Windows 11 | 회사 노트북 |
+
+### Other Devices
+
+- Mac Studio (M1 Max, 64GB, 512GB) — 수리중
+- iPad Pro 12.9 (M1, 1TB) — 이동형 업무, 원격접속, 미디어 소비
 
 ## Commands
 
