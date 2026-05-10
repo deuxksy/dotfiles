@@ -3,6 +3,9 @@
 - [Markdown Spec](https://github.github.com/gfm/)을 참조해서 문서를 작성한다.
   - Table 생성시 항상 좌측 정렬하고 ` :--- ` 3개만 사용한다.
   - `Fenced Code Block` 의 Info String 에 특별히 정의 하지 않는 경우 `text` 로 사용 한다.
+  - **목차(TOC)**: 제목(`#`)과 첫 섹션(`##`) 사이에 배치. 문서 길이에 따라 방식 선택:
+    - ~150줄: 제목 밑 리스트 (`- [섹션명](#섹션명)`)
+    - 150줄+: `## 목차` 섹션으로 분리
 - [Mermaid](https://mermaid.ai/open-source/intro/)을 적극 활용한다.
   - 설명이 길어질 경우 Mermaid 다이어그램(graph, sequence, class, state, ER 등)을 우선 작성한다.
   - 텍스트 나열보다 시각적 표현으로 이해도를 높인다.
