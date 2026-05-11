@@ -24,6 +24,7 @@ eve/                              # Stow 패키지 (신규)
 ├── .zshrc                        # linuxbrew 제거, macOS 26 대응
 ├── .config/mise/config.toml      # walle과 동일
 └── .ssh/config                   # walle과 동일
+├── .key                          # sops 암호화 (walle에서 복사)
 
 base/                             # 공통 stow (기존, 변경 없음)
 Brewfile                          # 프로젝트 루트에 배치
