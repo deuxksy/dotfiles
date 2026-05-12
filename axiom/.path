@@ -1,0 +1,17 @@
+export TIME_STYLE='long-iso'
+export EDITOR='nvim'
+export HISTSIZE=50000
+export HISTFILESIZE=50000
+export PNPM_HOME="$HOME/.local/share/pnpm"
+
+PATH="/opt/homebrew/bin:${PATH}"
+PATH="${HOME}/.opencode/bin:${PATH}"
+PATH="${PNPM_HOME}:${PATH}"
+PATH="${HOME}/.local/bin:${PATH}"
+
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+fpath=(~/.zsh/completions $fpath)
+fpath=(~/.zfunc $fpath)
+
+export PATH
+export fpath
