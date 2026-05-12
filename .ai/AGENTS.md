@@ -37,6 +37,7 @@ sudo darwin-rebuild switch --flake ~/.config/nix-darwin
 ## Structure
 
 - `base/` — 공통 설정 (git, nvim, tmux, wezterm, .claude/rules)
+- `axiom/` — MacOS (mise, zsh)
 - `eve/` — MacOS (mise, zsh)
 - `mo/` — NixOS (mise, zsh)
 - `walle/` — Fedora (mise, zsh)
