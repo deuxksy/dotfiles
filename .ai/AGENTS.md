@@ -29,8 +29,8 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 # 패키지 배포 (호스트에 맞게 선택)
 stow -t ~ base eve
 
-# Brewfile 설치 (호스트 패키지 폴더에서)
-cd ~/git/dotfiles/axiom && brew bundle
+# Brewfile 설치 (stow 배포 후 홈에서 실행)
+cd ~ && brew bundle
 
 # 기존 파일을 stow 패키지로 가져오기
 stow --adopt -t ~ base
