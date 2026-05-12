@@ -4,3 +4,4 @@
 - 파일 경로: 절대 경로보다는 프로젝트 루트 기준의 상대 경로를 사용한다
 - Proxmox API: Read(GET)은 자유롭게 실행. Create(POST), Update(PUT), Delete(DELETE)는 사용자 승인 후 실행
 - K8S(kubectl): get, describe, logs 등 읽기 전용은 자유롭게 실행. create, delete, edit, patch, apply, drain, cordon, uncordon 등 변경 작업은 사용자 승인 후 실행
+- Notion: search, fetch, get 등 읽기 전용은 자유롭게 실행. 페이지 생성/수정/삭제, 댓글 작성 등 쓰기 작업은 사용자의 명시적 요청 또는 승인이 있을 때만 실행
