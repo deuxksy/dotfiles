@@ -25,7 +25,7 @@ brew "stow"
 brew "mise"
 brew "kubectl"
 brew "opentofu"
-brew "awscli2"
+brew "awscli@2"
 brew "pipx"
 brew "aria2"
 
