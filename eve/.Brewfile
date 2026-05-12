@@ -19,6 +19,7 @@ brew "curlie"
 brew "glow"
 brew "tealdeer"
 brew "fastfetch"
+brew "git-delta"
 brew "stow"
 
 # Development
