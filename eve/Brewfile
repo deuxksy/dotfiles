@@ -38,4 +38,4 @@ brew "zsh-syntax-highlighting"
 
 # Fonts
 cask "font-hack-nerd-font"
-cask "font-firacode-nerd-font"
+cask "font-fira-code-nerd-font"
