@@ -18,11 +18,19 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 - iPad Pro 12.9 (M1, 1TB) — 이동형 업무, 원격접속, 미디어 소비
 
+### Host Roles
+
+- **axiom (Mac Studio)**: Local LLM 서버 (LM Studio, MLX) + 개발
+- **eve (Mac mini)**: iOS/AOS 개발 전용
+
 ## Commands
 
 ```bash
 # 패키지 배포 (호스트에 맞게 선택)
 stow -t ~ base eve
+
+# Brewfile 설치 (호스트 패키지 폴더에서)
+cd ~/git/dotfiles/axiom && brew bundle
 
 # 기존 파일을 stow 패키지로 가져오기
 stow --adopt -t ~ base
@@ -52,3 +60,6 @@ sudo darwin-rebuild switch --flake ~/.config/nix-darwin
 - `.githooks/`에 커스텀 Git hooks, `.gitleaks.toml`로 시크릿 스캔
 - `base/.claude/rules/`에 10개 규칙 파일 (00~09)
 - `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
+- Brewfile은 각 호스트 패키지 폴더에 위치 (`axiom/Brewfile`, `eve/Brewfile`)
+- `stow` 충돌 시 기존 파일을 백업 후 제거, 또는 `--adopt` 사용
+- `base/.claude/.omc/hud-config.json` — OMC HUD 설정 (stow로 연결)
