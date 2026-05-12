@@ -36,4 +36,5 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 
 # Fonts
-cask "font-jetbrains-mono-nerd-font"
+cask "font-hack-nerd-font"
+cask "font-firacode-nerd-font"
