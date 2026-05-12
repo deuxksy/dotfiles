@@ -32,7 +32,7 @@ cd ~/git/dotfiles && stow -t ~ base eve
 
 ## 7. Brewfile 패키지 설치
 ```bash
-brew bundle
+cd ~ && brew bundle
 ```
 
 ## 8. mise로 런타임 설치
