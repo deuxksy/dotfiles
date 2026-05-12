@@ -6,6 +6,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 | Host            | OS              | Packages           |
 | :-------------- | :-------------- | :----------------- |
+| Mac Studio      | macOS           | `base` + `axiom`   |
 | Mac Mini M4     | macOS           | `base` + `eve`     |
 | Surface Pro 6   | Ubuntu (WSL)    | `base` + `ava`     |
 | AOOSTAR WTR R1  | Fedora          | `base` + `walle`   |
