@@ -1,0 +1,39 @@
+# Core CLI
+brew "git"
+brew "neovim"
+brew "tmux"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "jq"
+brew "yq"
+brew "bat"
+brew "eza"
+brew "zoxide"
+brew "atuin"
+brew "direnv"
+brew "gnupg"
+brew "sops"
+brew "age"
+brew "curlie"
+brew "glow"
+brew "tealdeer"
+brew "fastfetch"
+brew "stow"
+
+# Development
+brew "mise"
+brew "kubectl"
+brew "opentofu"
+brew "awscli2"
+brew "pipx"
+brew "aria2"
+
+# Shell
+brew "zsh"
+brew "zsh-completions"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+
+# Fonts
+cask "font-jetbrains-mono-nerd-font"
