@@ -58,4 +58,4 @@ colorMoved = default
 [credential "https://repository.kr"]
 	provider = generic
 [credential]
-	helper = store
+	helper = osxkeychain

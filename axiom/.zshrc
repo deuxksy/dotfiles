@@ -120,10 +120,7 @@ eval "$(sops -d ~/.key)"
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
 autoload -Uz bashcompinit && bashcompinit
-# OpenClaw Completion
-source "/Users/crong/.openclaw/completions/openclaw.zsh"
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
@@ -134,6 +131,15 @@ export PATH="$PATH:/Users/crong/.lmstudio/bin"
 # Unset CLOUDFLARE_API_KEY to avoid conflict with API token authentication
 unset CLOUDFLARE_API_KEY
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# pnpm
+export PNPM_HOME="/Users/crong/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
+
+# Android SDK
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools

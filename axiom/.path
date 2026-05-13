@@ -1,9 +1,14 @@
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
+
 export TIME_STYLE='long-iso'
 export EDITOR='nvim'
 export HISTSIZE=50000
 export HISTFILESIZE=50000
 export PNPM_HOME="$HOME/.local/share/pnpm"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
 
+PATH="$PATH:$ANDROID_HOME/emulator"
+PATH="$PATH:$ANDROID_HOME/platform-tools"
 PATH="/opt/homebrew/bin:${PATH}"
 PATH="${HOME}/.opencode/bin:${PATH}"
 PATH="${PNPM_HOME}:${PATH}"

@@ -61,7 +61,11 @@
       "mcp__zai-websearch__*",
       "mcp__zread__*",
       "Bash(rm -f /c/software/project/ecoai-app-sample/docs/work-log/.git)",
-      "Bash(cp -r /tmp/work-log-git-bak /c/software/project/ecoai-app-sample/docs/work-log/.git)"
+      "Bash(cp -r /tmp/work-log-git-bak /c/software/project/ecoai-app-sample/docs/work-log/.git)",
+      "Bash(mkdir -p /Users/crong/git/dotfiles/base/.claude/.omc)",
+      "Bash(cp /Users/crong/.claude/.omc/hud-config.json /Users/crong/git/dotfiles/base/.claude/.omc/hud-config.json)",
+      "Bash(rm /Users/crong/.claude/.omc/hud-config.json)",
+      "Bash(stow -t ~ base)"
     ],
     "deny": [
       "Bash(bcdedit *)",
@@ -72,5 +76,7 @@
     ]
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": ["globalping"]
+  "enabledMcpjsonServers": [
+    "globalping"
+  ]
 }

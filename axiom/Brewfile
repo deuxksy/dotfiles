@@ -34,8 +34,8 @@ brew "rclone"
 brew "mosh"
 brew "television"
 brew "lynis"
-
-# Development
+brew "mole"
+brew "duck"
 brew "mise"
 brew "kubectl"
 brew "opentofu"
@@ -45,28 +45,27 @@ brew "aria2"
 brew "mkdocs"
 brew "qemu"
 brew "gitleaks"
-
-# Network & Media
 brew "ffmpeg"
 brew "mpv"
 brew "yt-dlp"
 brew "chafa"
-cask "mitmproxy"
 brew "iperf3"
-
-# AI & Tools
+brew "gemini-cli"
+# AI
 brew "himalaya"
 brew "wakatime-cli"
-
-# Beszel Agent (custom tap)
-tap "henrygd/beszel"
-brew "henrygd/beszel/beszel-agent"
+brew "kubectl-ai"
+brew "k8sgpt"
+brew "k9s"
 
 # Shell
 brew "zsh"
 brew "zsh-completions"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
+
+# Development
+brew "watchman"
 
 # Neovim - Linters & Formatters
 brew "eslint_d"
@@ -79,12 +78,9 @@ brew "prettierd"
 brew "black"
 brew "shfmt"
 
-# CLI Tools
-brew "mole"
-brew "duck"
-brew "kubectl-ai"
-brew "k8sgpt"
-brew "k9s"
+# Beszel Agent (custom tap)
+tap "henrygd/beszel"
+brew "henrygd/beszel/beszel-agent"
 
 # Fonts
 cask "font-hack-nerd-font"
@@ -98,10 +94,14 @@ cask "hammerspoon"
 cask "maccy"
 cask "warp"
 cask "orbstack"
-cask "vagrant"
 cask "gcloud-cli"
+cask "mitmproxy"
 cask "visual-studio-code"
 cask "bazecor"
+cask "obsidian"
+cask "typora"
+cask "android-studio"
+cask "gemini"
 
 # LM Studio (for axiom LLM work)
 cask "lm-studio"

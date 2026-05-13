@@ -1,7 +1,7 @@
 [tools]
 age = "latest"
 go = "1.25"
-java = "21"
+java = "17"
 lua = "5.4"
 node = "24"
 python = "3.12"

@@ -12,3 +12,4 @@ alias grep='grep --color=auto'
 alias vi='nvim'
 alias vim='nvim'
 alias gw="glow"
+alias typora="open -a typora"
