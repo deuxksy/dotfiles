@@ -3,6 +3,7 @@ export EDITOR='nvim'
 export HISTSIZE=50000
 export SAVEHIST=50000
 export PNPM_HOME="$HOME/.local/share/pnpm"
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 
 PATH="/opt/homebrew/bin:${PATH}"
 PATH="${HOME}/.opencode/bin:${PATH}"
