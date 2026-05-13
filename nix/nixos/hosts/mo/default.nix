@@ -31,6 +31,14 @@
     shell = pkgs.zsh;
   };
 
+  # Sudo
+  security.sudo.extraRules = [
+    {
+      users = [ "crong" ];
+      commands = [{ command = "ALL"; options = [ "NOPASSWD" ]; }];
+    }
+  ];
+
   # Shell
   programs.zsh.enable = true;
 
@@ -58,8 +66,8 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    noto-fonts-color-emoji
+    nerd-fonts.jetbrains-mono
   ];
 
   # Snapper (Btrfs 자동 스냅샷)

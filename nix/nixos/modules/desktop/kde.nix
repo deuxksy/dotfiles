@@ -13,7 +13,7 @@
     fcitx5.addons = with pkgs; [
       fcitx5-hangul
       fcitx5-gtk
-      fcitx5-configtool
+      qt6Packages.fcitx5-configtool
     ];
   };
 
