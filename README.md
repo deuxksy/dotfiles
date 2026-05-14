@@ -22,6 +22,8 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 - **axiom**: Local LLM 서버 (LM Studio, MLX) + 개발
 - **eve**: iOS/AOS 개발 전용
 - **mo**: NixOS 개발 워크스테이션
+- **walle**: 미디어 서버 (NAS)
+- **girl**: 휴대용 서버
 - **steward**: 상주 네트워크 서버 / VPN 라우터
 - **arv**: 휴대용 Wi-Fi 6 라우터
 
