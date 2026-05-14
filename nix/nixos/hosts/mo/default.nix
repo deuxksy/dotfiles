@@ -20,13 +20,11 @@
   networking.hostName = "mo";
   networking.networkmanager.enable = true;
 
-  # Keyboard: 오른쪽 Alt → Hangul 키 매핑 (KDE Wayland)
+  # Keyboard
   services.xserver.xkb = {
-    layout = "us";
-    options = "korean:ralt_hangul";
+    layout = "kr";
   };
   console.useXkbConfig = true;
-  environment.sessionVariables.XKB_DEFAULT_OPTIONS = "korean:ralt_hangul";
 
   # Timezone & Locale
   time.timeZone = "Asia/Seoul";
@@ -62,19 +60,49 @@
   nix.settings.trusted-users = [ "crong" ];
   nixpkgs.config.allowUnfree = true;
 
-  # System Packages
+  # nix-ld (바이너리 호환성)
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc
+    zlib
+    fuse3
+    icu
+    nss
+    openssl
+    curl
+    expat
+  ];
+
+  # CUPS (프린팅)
+  services.printing.enable = true;
+
+  # Firefox
+  programs.firefox.enable = true;
+
   environment.systemPackages = with pkgs; [
-    # Core
-    git neovim tmux ripgrep fd fzf jq yq htop bat bottom btop yazi
-    atuin direnv wget curl gnupg rclone curlie mosh fastfetch chafa glow delta
-    # Development
-    mise opentofu kubectl awscli2 pipx aria2 tailscale google-chrome claude-code
-    # Network & Media
-    ffmpeg mpv yt-dlp mitmproxy iperf3 lynis
-    # AI & Tools
-    tealdeer wakatime-cli gitleaks
-    # NixOS
-    sops age home-manager
+    age aria2 atuin awscli2
+    bat bottom btop
+    chafa curl
+    delta direnv dust duf
+    eza
+    fd ffmpeg fzf
+    gcc git gitleaks glow gnupg go google-chrome gping gnumake
+    hexyl home-manager htop hyperfine
+    iperf3
+    jq
+    kdePackages.kate kubectl
+    lazygit lua5_4 lynis
+    fastfetch mise mitmproxy mosh mpv
+    neovim nodejs_24
+    ollama openssl opentofu
+    pipx pkg-config procs python3
+    rclone ripgrep rustc cargo
+    sops
+    tealdeer tailscale tmux tokei
+    wget
+    xh
+    yazi yt-dlp yq
+    zlib zoxide
   ];
 
   # Font
@@ -120,5 +148,5 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "crong";
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

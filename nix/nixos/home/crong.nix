@@ -12,18 +12,20 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
-      ll = "ls -alF";
-      la = "ls -A";
-      l = "ls -CF";
-      gs = "git status";
-      gc = "git commit";
-      gd = "git diff";
-      glog = "git log --oneline --graph --decorate";
+      vi = "nvim";
+      vim = "nvim";
+      gw = "glow";
+      grep = "grep --color=auto";
+      ls = "eza --icons=always";
+      ll = "eza -alhG --header --icons=always --group-directories-first --octal-permissions --git";
+      la = "eza -alhG --header --icons=always --group-directories-first --octal-permissions --total-size";
+      lt = "eza -T --icons=always --level=2";
       rebuild = "sudo nixos-rebuild switch --flake /home/crong/git/dotfiles/nix/nixos#mo";
     };
     initContent = ''
       eval "$(mise activate zsh)"
       eval "$(atuin init zsh)"
+      eval "$(zoxide init zsh)"
     '';
   };
 
@@ -113,15 +115,8 @@
       User root
   '';
 
-  # Mise 글로벌 설정
+  # Mise 글로벌 설정 (NixOS에서는 모든 도구를 Nix로 관리)
   home.file.".config/mise/config.toml".text = ''
     [tools]
-    curlie = "latest"
-    go = "1.25"
-    lua = "5.4"
-    node = "24"
-    ollama = "latest"
-    python = "3.12"
-    rust = "stable"
   '';
 }
