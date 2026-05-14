@@ -1,0 +1,5 @@
+# Stow 제외 항목
+README\.md$
+\.bak$
+\.orig$
+\.\d{6}$
