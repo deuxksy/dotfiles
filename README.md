@@ -11,7 +11,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | mo | AyaNEO AM02 (Ryzen 7840HS, 32GB) | NixOS | `base` + `mo` |
 | walle | AOOSTAR WTR R1 (Intel N100, 8GB) | Fedora | `base` + `walle` |
 | girl | Steam Deck (256GB) | SteamOS | `base` + `girl` |
-| ava | Surface Pro 6 (8GB) | Windows 10 (WSL) | `base` + `ava` |
+| ava | Surface Pro 6 (8GB) | Windows 10 (WSL) | `base` + pwsh |
 
 ### Other Devices
 
@@ -62,7 +62,7 @@ stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 - `mo/` — NixOS (zsh, `.gitconfig.local`)
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
-- `ava/` — Windows WSL (현재 미사용)
+- `ava/` — Windows WSL (pwsh 설정)
 - `nix/` — nix-darwin + NixOS 설정
 - `.ai/` — AI 에이전트 공유 설정 (AGENTS.md)
 
