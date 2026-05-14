@@ -38,8 +38,11 @@ stow --adopt -t ~ base
 # secrets 복호화
 eval "$(sops -d ~/.key)"
 
-# Nix
+# Nix (macOS)
 sudo darwin-rebuild switch --flake ~/.config/nix-darwin
+
+# NixOS (mo)
+sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 ```
 
 ## Structure
@@ -47,7 +50,7 @@ sudo darwin-rebuild switch --flake ~/.config/nix-darwin
 - `base/` — 공통 설정 (git, nvim, tmux, wezterm, .claude/rules)
 - `axiom/` — MacOS (mise, zsh)
 - `eve/` — MacOS (mise, zsh)
-- `mo/` — NixOS (mise, zsh)
+- `mo/` — NixOS (zsh, tools managed by Nix)
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
 - `nix/` — nix-darwin 설정
@@ -63,3 +66,9 @@ sudo darwin-rebuild switch --flake ~/.config/nix-darwin
 - Brewfile은 각 호스트 패키지 폴더에 위치 (`axiom/Brewfile`, `eve/Brewfile`)
 - `stow` 충돌 시 기존 파일을 백업 후 제거, 또는 `--adopt` 사용
 - `base/.claude/.omc/hud-config.json` — OMC HUD 설정 (stow로 연결)
+- NixOS(mo): `npm install -g`, `corepack enable` 불가 (read-only nix store). pnpm 글로벌 사용
+- NixOS(mo): `nodePackages.*` 최신 nixpkgs에서 제거됨 — 최상위 패키지(`pnpm` 등) 사용
+- NixOS(mo): mise 제거됨 — 모든 도구는 `environment.systemPackages`로 관리
+- NixOS(mo): Claude Code는 pnpm으로 설치 (`~/.local/share/pnpm`), Nix이 아닌 pnpm으로 버전 관리
+- NixOS(mo): fcitx5 KDE Wayland 설정은 GUI 필요 (KDE 시스템 설정 → 가상 키보드 → Fcitx 5)
+- `.gitconfig` credential helper는 각 호스트 `.gitconfig.local`에서 관리 (base는 `[include]` 사용)
