@@ -100,7 +100,7 @@
       AddKeysToAgent yes
       Port 22
 
-    Host studio eve mo
+    Host axiom eve mo
       HostName %h.bun-bull.ts.net
       User crong
 

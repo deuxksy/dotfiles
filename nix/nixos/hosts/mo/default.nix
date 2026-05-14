@@ -20,9 +20,24 @@
   networking.hostName = "mo";
   networking.networkmanager.enable = true;
 
+  # Keyboard: 오른쪽 Alt → Hangul 키 매핑 (KDE Wayland)
+  services.xserver.xkb = {
+    layout = "us";
+    options = "korean:ralt_hangul";
+  };
+  console.useXkbConfig = true;
+  environment.sessionVariables.XKB_DEFAULT_OPTIONS = "korean:ralt_hangul";
+
   # Timezone & Locale
-  time.timeZone = "Asia/Ho_Chi_Minh";
-  i18n.defaultLocale = "en_US.UTF-8";
+  time.timeZone = "Asia/Seoul";
+  #i18n.defaultLocale = "en_US.UTF-8";
+  i18n = {
+    defaultLocale = "ko_KR.UTF-8";
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "ko_KR.UTF-8/UTF-8"
+    ];
+  };
 
   # User
   users.users.crong = {
@@ -51,9 +66,9 @@
   environment.systemPackages = with pkgs; [
     # Core
     git neovim tmux ripgrep fd fzf jq yq htop bat bottom btop yazi
-    atuin direnv wget curl gnupg rclone curlie mosh fastfetch chafa glow
+    atuin direnv wget curl gnupg rclone curlie mosh fastfetch chafa glow delta
     # Development
-    mise opentofu kubectl awscli2 pipx aria2
+    mise opentofu kubectl awscli2 pipx aria2 tailscale google-chrome claude-code
     # Network & Media
     ffmpeg mpv yt-dlp mitmproxy iperf3 lynis
     # AI & Tools
@@ -92,6 +107,13 @@
         TIMELINE_LIMIT_MONTHLY = 0;
       };
     };
+  };
+
+  # SSH
+  services.openssh = {
+    enable = true;
+    settings.PasswordAuthentication = false;
+    settings.KbdInteractiveAuthentication = false;
   };
 
   # Auto-login (개발 워크스테이션)
