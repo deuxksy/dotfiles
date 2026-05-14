@@ -4,7 +4,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 ## Hosts
 
-| Host | CPU | Memory | Disk | OS | Config |
+| Host | Model | CPU | Memory | Disk | OS | Config |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | axiom (Mac Studio) | M1 Max | 64GB | 512GB | macOS | stow: `base` + `axiom` |
 | eve (Mac mini) | M4 | 16GB | 256GB | macOS | stow: `base` + `eve` |
