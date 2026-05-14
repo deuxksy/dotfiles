@@ -97,7 +97,7 @@
     ollama openssl opentofu
     pipx pkg-config procs python3
     rclone ripgrep rustc cargo
-    sops
+    sops stow
     tealdeer tailscale tmux tokei
     wget
     xh
