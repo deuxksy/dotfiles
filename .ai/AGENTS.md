@@ -29,7 +29,9 @@ sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 - `mo/` — NixOS (zsh, tools managed by Nix)
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
-- `nix/` — NixOS flake 설정
+- `ava/` — Windows 10 (pwsh)
+- `kyolim/` — Windows 11 회사 노트북 (pwsh)
+- `nix/` — NixOS flake 설정 (`nix/nixos/`만 사용, 향후 `nix/darwin/`, `nix/ubuntu/` 추가 가능)
 - `.ai/` — AI 에이전트 공유 설정 (AGENTS.md, AI.ignore)
 
 ## Gotchas
@@ -48,3 +50,8 @@ sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 - NixOS(mo): Claude Code는 pnpm으로 설치 (`~/.local/share/pnpm`), Nix이 아닌 pnpm으로 버전 관리
 - NixOS(mo): fcitx5 KDE Wayland 설정은 GUI 필요 (KDE 시스템 설정 → 가상 키보드 → Fcitx 5)
 - `.gitconfig` credential helper는 각 호스트 `.gitconfig.local`에서 관리 (base는 `[include]` 사용)
+- 네트워크: steward (192.168.222.0/24) + arv (192.168.221.0/24) Tailscale로 연결
+- kyolim: 회사 노트북, stow 미사용, pwsh만 사용
+- ava: Windows 10, WSL 미사용, pwsh만 사용
+- arv/steward: GL.iNet OpenWrt 라우터, dotfiles 미배포
+- 전 호스트 git `core.ignoreCase = false`, credential helper `store` 통일
