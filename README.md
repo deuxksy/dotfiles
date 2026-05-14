@@ -84,7 +84,7 @@ stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 - `girl/` — SteamOS (mise, zsh)
 - `ava/` — Windows 10 (pwsh)
 - `kyolim/` — Windows 11 (pwsh)
-- `nix/` — nix-darwin + NixOS flake 설정
+- `nix/` — NixOS flake 설정
 - `.ai/` — AI 에이전트 공유 설정 (AGENTS.md)
 
 ## Secrets
