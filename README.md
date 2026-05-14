@@ -11,7 +11,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | mo | AyaNEO AM02 (Ryzen 7840HS, 32GB) | NixOS | stow: `base` + `mo` / flake |
 | walle | AOOSTAR WTR R1 (Intel N100, 8GB) | Fedora | stow: `base` + `walle` |
 | girl | Steam Deck (256GB) | SteamOS | stow: `base` + `girl` |
-| ava | Surface Pro 6 (8GB) | Windows 10 (WSL) | stow: `base` / pwsh |
+| ava | Surface Pro 6 (8GB) | Windows 10 | pwsh |
 | kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
 | iPad Pro 12.9 (M1, 1TB) | — | iPadOS | 미디어 소비, 원격접속 |
 

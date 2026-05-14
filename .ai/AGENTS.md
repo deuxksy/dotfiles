@@ -9,7 +9,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | Mac Studio (M1 Max, 64GB, 512GB) | MacOS 26 | `base` + `axiom` |
 | Mac mini (M4, 16GB, 256GB) | MacOS 26 | `base` + `eve` |
 | AyaNEO AM02 (Ryzen 7840HS, 32GB, 1TB) | NixOS | `base` + `mo` |
-| Surface Pro 6 (8GB, 128GB) | Windows 10 Home (WSL) | `base` + pwsh |
+| Surface Pro 6 (8GB, 128GB) | Windows 10 | pwsh |
 | AOOSTAR WTR R1 (Intel N100, 8GB, 2TB) | Fedora (NAS) | `base` + `walle` |
 | Steam Deck (256GB) | SteamOS | `base` + `girl` |
 | Asus Zenbook 14 UX3405C | Windows 11 | pwsh (`kyolim`) |
