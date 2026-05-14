@@ -4,22 +4,35 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 ## Hosts
 
-| Host | Model | CPU | Memory | Disk | OS | Config |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| axiom | Mac Studio | M1 Max | 64GB | 512GB | macOS | stow: `base` + `axiom` |
-| eve | Mac mini | M4 | 16GB | 256GB | macOS | stow: `base` + `eve` |
-| mo | AyaNEO AM02 | Ryzen 7840HS | 32GB | 1TB | NixOS | stow: `base` + `mo` / flake |
-| walle | AOOSTAR WTR R1 | Intel N100 | 8GB | 2TB | Fedora | stow: `base` + `walle` |
-| girl | Steam Deck (Jupiter) | AMD Custom APU 0405 | 16GB | 256GB NVMe + 512GB eMMC | SteamOS | stow: `base` + `girl` |
-| ava | Surface Pro 6 | — | 8GB | 128GB | Windows 10 | pwsh |
-| kyolim | Asus Zenbook 14 UX3405C | — | — | — | Windows 11 | pwsh |
-| pad | iPad Pro 12.9 | M1 | 16GB | 1TB | iPadOS | 미디어 소비, 원격접속 |
+| Host | Model | OS | Config |
+| :--- | :--- | :--- | :--- |
+| axiom | Mac Studio | macOS | stow: `base` + `axiom` |
+| eve | Mac mini | macOS | stow: `base` + `eve` |
+| mo | AyaNEO AM02 | NixOS | stow: `base` + `mo` / flake |
+| walle | AOOSTAR WTR R1 | Fedora | stow: `base` + `walle` |
+| girl | Steam Deck | SteamOS | stow: `base` + `girl` |
+| ava | Surface Pro 6 | Windows 10 | pwsh |
+| kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
+| pad | iPad Pro 12.9 | iPadOS | 미디어 소비, 원격접속 |
 
 ### Host Roles
 
 - **axiom**: Local LLM 서버 (LM Studio, MLX) + 개발
 - **eve**: iOS/AOS 개발 전용
 - **mo**: NixOS 개발 워크스테이션
+
+## Hardware
+
+| Host | CPU | GPU | NPU | Memory | Disk |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| axiom | Apple M1 Max (10-core) | M1 Max (24-core) | 16-core | 64GB | 512GB |
+| eve | Apple M4 (10-core) | M4 (10-core) | 16-core | 16GB | 256GB |
+| mo | AMD Ryzen 7840HS (8C/16T) | Radeon 780M | Ryzen AI | 32GB | 1TB |
+| walle | Intel N100 (4C/4T) | Intel UHD (24EU) | — | 8GB | 2TB |
+| girl | AMD Custom APU 0405 | AMD Custom GPU | — | 16GB | 256GB NVMe + 512GB eMMC |
+| ava | Intel Core i5-8250U (4C/8T) | Intel UHD 620 | — | 8GB | 128GB |
+| kyolim | Intel Core Ultra 5 228V | Intel Arc 130V | Intel AI Boost (6 NPU TOPS) | 32GB | 512GB |
+| pad | Apple M1 (8-core) | M1 (8-core) | 16-core | 16GB | 1TB |
 
 ## Install
 
