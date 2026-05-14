@@ -54,8 +54,6 @@ cd ~ && brew bundle
 sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 # 또는 alias: rebuild
 
-# macOS (nix-darwin)
-sudo darwin-rebuild switch --flake ~/.config/nix-darwin
 ```
 
 ## Stow Adopt

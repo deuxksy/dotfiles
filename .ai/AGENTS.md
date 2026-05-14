@@ -39,9 +39,6 @@ stow --adopt -t ~ base
 # secrets 복호화
 eval "$(sops -d ~/.key)"
 
-# Nix (macOS)
-sudo darwin-rebuild switch --flake ~/.config/nix-darwin
-
 # NixOS (mo)
 sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 ```
