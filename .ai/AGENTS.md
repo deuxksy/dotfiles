@@ -1,28 +1,6 @@
 # AI Project Rules
 
-Cross-platform dotfiles managed by GNU Stow with sops encryption.
-
-## Hosts
-
-| Host | Model | CPU | Memory | Disk | OS | Config |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| axiom (Mac Studio) | M1 Max | 64GB | 512GB | macOS | stow: `base` + `axiom` |
-| eve (Mac mini) | M4 | 16GB | 256GB | macOS | stow: `base` + `eve` |
-| mo (AyaNEO AM02) | Ryzen 7840HS | 32GB | 1TB | NixOS | stow: `base` + `mo` / flake |
-| walle (AOOSTAR WTR R1) | Intel N100 | 8GB | 2TB | Fedora | stow: `base` + `walle` |
-| girl (Steam Deck) | AMD Custom APU 0405 | 16GB | 256GB NVMe + 512GB eMMC | SteamOS | stow: `base` + `girl` |
-| ava (Surface Pro 6) | — | 8GB | 128GB | Windows 10 | pwsh |
-| kyolim (Zenbook 14) | — | — | — | Windows 11 | pwsh |
-| pad (iPad Pro 12.9) | M1 | 16GB | 1TB | iPadOS | 미디어 소비, 원격접속 |
-
-### Other Devices
-
-- iPad Pro 12.9 (M1, 1TB) — 이동형 업무, 원격접속, 미디어 소비
-
-### Host Roles
-
-- **axiom (Mac Studio)**: Local LLM 서버 (LM Studio, MLX) + 개발
-- **eve (Mac mini)**: iOS/AOS 개발 전용
+Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware/Install → [README.md](README.md)
 
 ## Commands
 
@@ -51,7 +29,7 @@ sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 - `mo/` — NixOS (zsh, tools managed by Nix)
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
-- `nix/` — nix-darwin 설정
+- `nix/` — NixOS flake 설정
 - `.ai/` — AI 에이전트 공유 설정 (AGENTS.md, AI.ignore)
 
 ## Gotchas
