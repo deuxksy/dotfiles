@@ -23,9 +23,10 @@
       rebuild = "sudo nixos-rebuild switch --flake /home/crong/git/dotfiles/nix/nixos#mo";
     };
     initContent = ''
-      eval "$(mise activate zsh)"
       eval "$(atuin init zsh)"
       eval "$(zoxide init zsh)"
+      export PNPM_HOME="$HOME/.local/share/pnpm"
+      export PATH="$PNPM_HOME:$PATH"
     '';
   };
 
@@ -113,10 +114,5 @@
     Host arv steward
       HostName %h.bun-bull.ts.net
       User root
-  '';
-
-  # Mise 글로벌 설정 (NixOS에서는 모든 도구를 Nix로 관리)
-  home.file.".config/mise/config.toml".text = ''
-    [tools]
   '';
 }

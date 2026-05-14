@@ -92,8 +92,8 @@
     jq
     kdePackages.kate kubectl
     lazygit lua5_4 lynis
-    fastfetch mise mitmproxy mosh mpv
-    neovim nodejs_24
+    fastfetch mitmproxy mosh mpv
+    neovim nodejs_24 pnpm
     ollama openssl opentofu
     pipx pkg-config procs python3
     rclone ripgrep rustc cargo
