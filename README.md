@@ -27,7 +27,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Mac Studio | Apple M1 Max (10-core) | M1 Max (24-core) | 16-core | 64GB | 512GB |
 | Mac mini | Apple M4 (10-core) | M4 (10-core) | 16-core | 16GB | 256GB |
-| AyaNEO AM02 | AMD Ryzen 7840HS (8C/16T) | Radeon 780M | Ryzen AI | 32GB | 1TB |
+| AyaNEO AM02 | AMD Ryzen 7840HS (8C/16T) | Radeon 780M | None | 32GB | 1TB |
 | AOOSTAR WTR R1 | Intel N100 (4C/4T) | Intel UHD (24EU) | None | 8GB | 2TB |
 | Steam Deck | AMD Custom APU 0405 | AMD Custom GPU | None | 16GB | 256GB NVMe + 512GB eMMC |
 | Surface Pro 6 | Intel Core i5-8250U (4C/8T) | Intel UHD 620 | None | 8GB | 128GB |
