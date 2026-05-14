@@ -38,7 +38,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 1. **Layer 1 (System PM)**: brew (macOS), Nix (NixOS), dnf (Fedora), pacman (SteamOS)
 2. **Layer 2 (SDK)**: mise (macOS, Fedora, SteamOS), Nix packages (NixOS)
-3. **Layer 3 (Runner)**: npx, uvx — on-demand 실행
+3. **Layer 3 (Package Manager)**: pnpm (Node), uv (Python), npx, uvx — on-demand 실행
 4. **Layer 4 (Binary)**: `~/.local/bin`
 
 ## Install
