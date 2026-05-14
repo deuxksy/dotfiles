@@ -13,7 +13,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | girl | Steam Deck (Jupiter) | AMD Custom APU 0405 | 16GB | 256GB NVMe + 512GB eMMC | SteamOS | stow: `base` + `girl` |
 | ava | Surface Pro 6 | — | 8GB | 128GB | Windows 10 | pwsh |
 | kyolim | Asus Zenbook 14 UX3405C | — | — | — | Windows 11 | pwsh |
-| iPad Pro 12.9 | — | M1 | 16GB | 1TB | iPadOS | 미디어 소비, 원격접속 |
+| pad | iPad Pro 12.9 | M1 | 16GB | 1TB | iPadOS | 미디어 소비, 원격접속 |
 
 ### Host Roles
 
