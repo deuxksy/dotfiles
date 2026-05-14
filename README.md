@@ -14,8 +14,8 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | ava | Surface Pro 6 | Windows 10 | pwsh |
 | kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
 | pad | iPad Pro 12.9 | iPadOS | 미디어 소비, 원격접속 |
-| arv | — | OpenWrt | 라우터 |
-| steward | — | OpenWrt | 라우터 |
+| arv | GL.iNet GL-MT3000 (Beryl AX) | OpenWrt | 라우터 |
+| steward | GL.iNet GL-MT2500 (Brume 2) | OpenWrt | 라우터 |
 
 ### Host Roles
 
@@ -35,8 +35,8 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | Surface Pro 6 | Intel Core i5-8250U (4C/8T) | Intel UHD 620 | NONE | 8GB | 128GB |
 | Asus Zenbook 14 UX3405C | Intel Core Ultra 7 255H (16-core) | Intel Arc 140T | Intel AI Boost (13 NPU TOPS) | 32GB | 512GB |
 | iPad Pro 12.9 | Apple M1 (8-core) | M1 (8-core) | 16-core | 16GB | 1TB |
-| arv (라우터) | MediaTek MT7981 (Cortex-A53) | NONE | NONE | 480MB | 160MB (NAND) |
-| steward (라우터) | MediaTek MT7981 (Cortex-A53) | NONE | NONE | 1GB | 7.2GB (eMMC) |
+| GL.iNet GL-MT3000 (Beryl AX) | MediaTek MT7981B (Cortex-A53) | Wi-Fi 6 | NONE | 512MB | 128MB NAND |
+| GL.iNet GL-MT2500 (Brume 2) | MediaTek MT7981B (Cortex-A53) | NONE | NONE | 1GB | 8GB eMMC |
 
 ## Application Manager (Library 4-Layer)
 
