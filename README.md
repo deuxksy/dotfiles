@@ -23,16 +23,16 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 ## Hardware
 
-| Host | CPU | GPU | NPU | Memory | Disk |
+| Model | CPU | GPU | NPU | Memory | Disk |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| axiom | Apple M1 Max (10-core) | M1 Max (24-core) | 16-core | 64GB | 512GB |
-| eve | Apple M4 (10-core) | M4 (10-core) | 16-core | 16GB | 256GB |
-| mo | AMD Ryzen 7840HS (8C/16T) | Radeon 780M | Ryzen AI | 32GB | 1TB |
-| walle | Intel N100 (4C/4T) | Intel UHD (24EU) | — | 8GB | 2TB |
-| girl | AMD Custom APU 0405 | AMD Custom GPU | — | 16GB | 256GB NVMe + 512GB eMMC |
-| ava | Intel Core i5-8250U (4C/8T) | Intel UHD 620 | — | 8GB | 128GB |
-| kyolim | Intel Core Ultra 5 228V | Intel Arc 130V | Intel AI Boost (6 NPU TOPS) | 32GB | 512GB |
-| pad | Apple M1 (8-core) | M1 (8-core) | 16-core | 16GB | 1TB |
+| Mac Studio | Apple M1 Max (10-core) | M1 Max (24-core) | 16-core | 64GB | 512GB |
+| Mac mini | Apple M4 (10-core) | M4 (10-core) | 16-core | 16GB | 256GB |
+| AyaNEO AM02 | AMD Ryzen 7840HS (8C/16T) | Radeon 780M | Ryzen AI | 32GB | 1TB |
+| AOOSTAR WTR R1 | Intel N100 (4C/4T) | Intel UHD (24EU) | — | 8GB | 2TB |
+| Steam Deck | AMD Custom APU 0405 | AMD Custom GPU | — | 16GB | 256GB NVMe + 512GB eMMC |
+| Surface Pro 6 | Intel Core i5-8250U (4C/8T) | Intel UHD 620 | — | 8GB | 128GB |
+| Asus Zenbook 14 UX3405C | Intel Core Ultra 5 228V | Intel Arc 130V | Intel AI Boost (6 NPU TOPS) | 32GB | 512GB |
+| iPad Pro 12.9 | Apple M1 (8-core) | M1 (8-core) | 16-core | 16GB | 1TB |
 
 ## Install
 
