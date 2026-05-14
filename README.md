@@ -12,11 +12,11 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | walle | AOOSTAR WTR R1 (Intel N100, 8GB) | Fedora | `base` + `walle` |
 | girl | Steam Deck (256GB) | SteamOS | `base` + `girl` |
 | ava | Surface Pro 6 (8GB) | Windows 10 (WSL) | `base` + pwsh |
+| kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
 
 ### Other Devices
 
 - iPad Pro 12.9 (M1, 1TB)
-- Asus Zenbook 14 UX3405C — 회사 노트북
 
 ### Host Roles
 
