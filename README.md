@@ -33,6 +33,9 @@ cd ~/git/dotfiles
 # macOS / Fedora / SteamOS / WSL
 stow -t ~ base eve  # 호스트에 맞게 선택
 
+# NixOS (mo)
+stow -t ~ base mo
+
 # macOS (Brewfile)
 cd ~ && brew bundle
 
