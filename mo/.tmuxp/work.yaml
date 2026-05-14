@@ -1,0 +1,11 @@
+session_name: multi-work
+start_directory: "~"
+windows:
+  - window_name: default
+    layout: main-vertical
+    panes:
+      - shell_command: fastfetch
+  - window_name: claude
+    layout: main-vertical
+    panes:
+      - shell_command: claude

@@ -98,8 +98,8 @@
     pipx pkg-config procs python3
     rclone ripgrep rustc cargo
     sops stow
-    tealdeer tailscale tmux tokei
-    wget
+    tealdeer tailscale tmux tmuxp tokei
+    uv wget
     xh
     yazi yt-dlp yq
     zlib zoxide
