@@ -4,14 +4,14 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 ## Hosts
 
-| Host | Hardware | OS | Stow Packages |
+| Host | Hardware | OS | Config |
 | :--- | :--- | :--- | :--- |
-| axiom | Mac Studio (M1 Max, 64GB) | macOS | `base` + `axiom` |
-| eve | Mac mini (M4, 16GB) | macOS | `base` + `eve` |
-| mo | AyaNEO AM02 (Ryzen 7840HS, 32GB) | NixOS | `base` + `mo` |
-| walle | AOOSTAR WTR R1 (Intel N100, 8GB) | Fedora | `base` + `walle` |
-| girl | Steam Deck (256GB) | SteamOS | `base` + `girl` |
-| ava | Surface Pro 6 (8GB) | Windows 10 (WSL) | `base` + pwsh |
+| axiom | Mac Studio (M1 Max, 64GB) | macOS | stow: `base` + `axiom` |
+| eve | Mac mini (M4, 16GB) | macOS | stow: `base` + `eve` |
+| mo | AyaNEO AM02 (Ryzen 7840HS, 32GB) | NixOS | stow: `base` + `mo` / flake |
+| walle | AOOSTAR WTR R1 (Intel N100, 8GB) | Fedora | stow: `base` + `walle` |
+| girl | Steam Deck (256GB) | SteamOS | stow: `base` + `girl` |
+| ava | Surface Pro 6 (8GB) | Windows 10 (WSL) | stow: `base` / pwsh |
 | kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
 
 ### Other Devices
@@ -30,17 +30,22 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 git clone git@github.com:deuxksy/dotfiles.git ~/git/dotfiles
 cd ~/git/dotfiles
 
-# macOS / Fedora / SteamOS / WSL
-stow -t ~ base eve  # 호스트에 맞게 선택
-
-# NixOS (mo)
-stow -t ~ base mo
+# Stow 배포 (호스트에 맞게 선택)
+stow -t ~ base axiom    # macOS
+stow -t ~ base eve      # macOS
+stow -t ~ base mo       # NixOS
+stow -t ~ base walle    # Fedora
+stow -t ~ base girl     # SteamOS
 
 # macOS (Brewfile)
 cd ~ && brew bundle
 
-# NixOS (mo)
+# NixOS (mo) — stow 배포 후 flake rebuild
 sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
+# 또는 alias: rebuild
+
+# macOS (nix-darwin)
+sudo darwin-rebuild switch --flake ~/.config/nix-darwin
 ```
 
 ## Stow Adopt
@@ -59,11 +64,12 @@ stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 - `base/` — 공통 설정 (git, nvim, tmux, wezterm, .claude/rules)
 - `axiom/` — macOS (mise, zsh, Brewfile)
 - `eve/` — macOS (mise, zsh, Brewfile)
-- `mo/` — NixOS (zsh, `.gitconfig.local`)
+- `mo/` — NixOS (`.gitconfig.local`, tools managed by Nix)
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
-- `ava/` — Windows WSL (pwsh 설정)
-- `nix/` — nix-darwin + NixOS 설정
+- `ava/` — Windows WSL (pwsh)
+- `kyolim/` — Windows 11 (pwsh)
+- `nix/` — nix-darwin + NixOS flake 설정
 - `.ai/` — AI 에이전트 공유 설정 (AGENTS.md)
 
 ## Secrets
@@ -75,17 +81,21 @@ stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 eval "$(sops -d ~/.key)"
 ```
 
-## NixOS (mo)
+## Git Credential
 
-```bash
-# 시스템 rebuild
-sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
-# 또는 alias 사용
-rebuild
-```
+`.gitconfig`는 `base/`에 공통 설정, credential helper는 각 호스트 `.gitconfig.local`에서 관리.
 
-## macOS (nix-darwin)
+| 호스트 | Helper | 비고 |
+| :--- | :--- | :--- |
+| macOS (axiom, eve) | `store` | `~/.git-credentials` |
+| Linux (mo, walle, girl) | `store` | `~/.git-credentials` |
 
-```bash
-sudo darwin-rebuild switch --flake ~/.config/nix-darwin
-```
+> 전 호스트 `core.ignoreCase = false` 통일. 최초 1회 인증 후 자동 저장.
+
+## NixOS (mo) Gotchas
+
+- mise 제거됨 — 모든 도구는 `environment.systemPackages`로 관리
+- `npm install -g`, `corepack enable` 불가 (read-only nix store). pnpm 글로벌 사용
+- `nodePackages.*` 최신 nixpkgs에서 제거됨 — 최상위 패키지(`pnpm` 등) 사용
+- Claude Code는 pnpm으로 설치 (`~/.local/share/pnpm`)
+- fcitx5 KDE Wayland 설정은 GUI 필요 (KDE 시스템 설정 → 가상 키보드 → Fcitx 5)
