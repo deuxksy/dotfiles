@@ -8,7 +8,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | :--- | :--- | :--- | :--- |
 | axiom | Mac Studio (M1 Max, 64GB) | macOS | `base` + `axiom` |
 | eve | Mac mini (M4, 16GB) | macOS | `base` + `eve` |
-| mo | AyaNEO AM02 (Ryzen 7840HS, 32GB) | NixOS | `base` + `nix/nixos` flake |
+| mo | AyaNEO AM02 (Ryzen 7840HS, 32GB) | NixOS | `base` + `mo` |
 | walle | AOOSTAR WTR R1 (Intel N100, 8GB) | Fedora | `base` + `walle` |
 | girl | Steam Deck (256GB) | SteamOS | `base` + `girl` |
 | ava | Surface Pro 6 (8GB) | Windows 10 (WSL) | `base` + `ava` |
@@ -56,10 +56,10 @@ stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 - `base/` — 공통 설정 (git, nvim, tmux, wezterm, .claude/rules)
 - `axiom/` — macOS (mise, zsh, Brewfile)
 - `eve/` — macOS (mise, zsh, Brewfile)
-- `mo/` — NixOS flake (`nix/nixos/`)
+- `mo/` — NixOS (zsh, `.gitconfig.local`)
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
-- `ava/` — Windows WSL (mise, zsh)
+- `ava/` — Windows WSL (현재 미사용)
 - `nix/` — nix-darwin + NixOS 설정
 - `.ai/` — AI 에이전트 공유 설정 (AGENTS.md)
 
