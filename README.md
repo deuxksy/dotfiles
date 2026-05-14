@@ -34,7 +34,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | Asus Zenbook 14 UX3405C | Intel Core Ultra 5 228V | Intel Arc 130V | Intel AI Boost (6 NPU TOPS) | 32GB | 512GB |
 | iPad Pro 12.9 | Apple M1 (8-core) | M1 (8-core) | 16-core | 16GB | 1TB |
 
-## Package Management (Library 4-Layer)
+## Application Manager (Library 4-Layer)
 
 1. **Layer 1 (System PM)**: brew (macOS), Nix (NixOS), dnf (Fedora), pacman (SteamOS)
 2. **Layer 2 (SDK)**: mise (macOS, Fedora, SteamOS), Nix packages (NixOS)
