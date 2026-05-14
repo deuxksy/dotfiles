@@ -4,16 +4,16 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 ## Hosts
 
-| Host | Hardware | OS | Config |
-| :--- | :--- | :--- | :--- |
-| axiom | Mac Studio (M1 Max, 64GB) | macOS | stow: `base` + `axiom` |
-| eve | Mac mini (M4, 16GB) | macOS | stow: `base` + `eve` |
-| mo | AyaNEO AM02 (Ryzen 7840HS, 32GB) | NixOS | stow: `base` + `mo` / flake |
-| walle | AOOSTAR WTR R1 (Intel N100, 8GB) | Fedora | stow: `base` + `walle` |
-| girl | Steam Deck (256GB) | SteamOS | stow: `base` + `girl` |
-| ava | Surface Pro 6 (8GB) | Windows 10 | pwsh |
-| kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
-| iPad Pro 12.9 (M1, 1TB) | — | iPadOS | 미디어 소비, 원격접속 |
+| Host | Hardware | CPU | Memory | Disk | OS | Config |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| axiom | Mac Studio | M1 Max | 64GB | 512GB | macOS | stow: `base` + `axiom` |
+| eve | Mac mini | M4 | 16GB | 256GB | macOS | stow: `base` + `eve` |
+| mo | AyaNEO AM02 | Ryzen 7840HS | 32GB | 1TB | NixOS | stow: `base` + `mo` / flake |
+| walle | AOOSTAR WTR R1 | Intel N100 | 8GB | 2TB | Fedora | stow: `base` + `walle` |
+| girl | Steam Deck | — | — | 256GB | SteamOS | stow: `base` + `girl` |
+| ava | Surface Pro 6 | — | 8GB | 128GB | Windows 10 | pwsh |
+| kyolim | Asus Zenbook 14 UX3405C | — | — | — | Windows 11 | pwsh |
+| iPad Pro 12.9 | — | M1 | — | 1TB | iPadOS | 미디어 소비, 원격접속 |
 
 ### Host Roles
 
@@ -64,7 +64,7 @@ stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 - `mo/` — NixOS (`.gitconfig.local`, tools managed by Nix)
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
-- `ava/` — Windows WSL (pwsh)
+- `ava/` — Windows 10 (pwsh)
 - `kyolim/` — Windows 11 (pwsh)
 - `nix/` — nix-darwin + NixOS flake 설정
 - `.ai/` — AI 에이전트 공유 설정 (AGENTS.md)
