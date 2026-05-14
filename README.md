@@ -42,6 +42,44 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | GL.iNet GL-MT3000 (Beryl AX) | MediaTek MT7981B (Cortex-A53) | Wi-Fi 6 | NONE | 512MB | 128MB NAND |
 | GL.iNet GL-MT2500 (Brume 2) | MediaTek MT7981B (Cortex-A53) | NONE | NONE | 1GB | 8GB eMMC |
 
+## Network
+
+```mermaid
+graph TD
+    INET[Internet]
+
+    subgraph LOCATION_A[steward 네트워크 - 192.168.222.0/24]
+        STEWARD[steward - GL.iNet Brume 2]
+        AXIOM[axiom - Mac Studio]
+        MO[mo - AyaNEO AM02]
+    end
+
+    subgraph LOCATION_B[arv 네트워크 - 192.168.221.0/24]
+        ARV[arv - GL.iNet Beryl AX]
+        EVE[eve - Mac mini]
+        WALLE[walle - AOOSTAR WTR R1]
+        GIRL[girl - Steam Deck]
+        AVA[ava - Surface Pro 6]
+        PAD[iPad Pro]
+        TV[LG webOS TV]
+    end
+
+    INET --- STEWARD
+    INET --- ARV
+
+    STEWARD --- AXIOM
+    STEWARD --- MO
+
+    ARV --- EVE
+    ARV --- WALLE
+    ARV --- GIRL
+    ARV --- AVA
+    ARV --- PAD
+    ARV --- TV
+
+    STEWARD -.->|Tailscale| ARV
+```
+
 ## Application Manager (Library 4-Layer)
 
 1. **Layer 1 (System PM)**: brew (macOS), Nix (NixOS), dnf (Fedora), pacman (SteamOS)
