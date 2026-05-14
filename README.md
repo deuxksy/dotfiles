@@ -31,7 +31,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | AOOSTAR WTR R1 | Intel N100 (4C/4T) | Intel UHD (24EU) | NONE | 8GB | 2TB |
 | Steam Deck | AMD Custom APU 0405 | AMD Custom GPU | NONE | 16GB | 256GB NVMe + 512GB eMMC |
 | Surface Pro 6 | Intel Core i5-8250U (4C/8T) | Intel UHD 620 | NONE | 8GB | 128GB |
-| Asus Zenbook 14 UX3405C | Intel Core Ultra 5 228V | Intel Arc 130V | Intel AI Boost (6 NPU TOPS) | 32GB | 512GB |
+| Asus Zenbook 14 UX3405C | Intel Core Ultra 7 255H (16-core) | Intel Arc 140T | Intel AI Boost (13 NPU TOPS) | 32GB | 512GB |
 | iPad Pro 12.9 | Apple M1 (8-core) | M1 (8-core) | 16-core | 16GB | 1TB |
 
 ## Application Manager (Library 4-Layer)
