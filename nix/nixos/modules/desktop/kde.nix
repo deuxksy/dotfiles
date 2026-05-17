@@ -14,7 +14,11 @@
     pulse.enable = true;
   };
 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "both";
+    extraUpFlags = [ "--advertise-exit-node" ];
+  };
 
   networking.firewall.enable = false;
 }

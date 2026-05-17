@@ -1,0 +1,13 @@
+# eza as ls replacement
+if command -v eza &> /dev/null; then
+    alias ls='eza --icons=always'
+    alias ll='eza -alhF --header --icons=always --group-directories-first --octal-permissions --git'
+    alias la='eza -alhF --header --icons=always --group-directories-first --octal-permissions --total-size'
+    alias lt='eza -T --icons=always --level=2'
+fi
+
+alias grep='grep --color=auto'
+alias vi='nvim'
+alias vim='nvim'
+alias gw='glow'
+alias rebuild='sudo nixos-rebuild switch --flake /home/crong/git/dotfiles/nix/nixos#mo'
