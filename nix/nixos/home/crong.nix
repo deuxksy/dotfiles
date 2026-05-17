@@ -11,22 +11,12 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    shellAliases = {
-      vi = "nvim";
-      vim = "nvim";
-      gw = "glow";
-      grep = "grep --color=auto";
-      ls = "eza --icons=always";
-      ll = "eza -alhG --header --icons=always --group-directories-first --octal-permissions --git";
-      la = "eza -alhG --header --icons=always --group-directories-first --octal-permissions --total-size";
-      lt = "eza -T --icons=always --level=2";
-      rebuild = "sudo nixos-rebuild switch --flake /home/crong/git/dotfiles/nix/nixos#mo";
-    };
     initContent = ''
+      . ~/.path
+      . ~/.alias
+      eval "$(sops -d ~/.key)"
       eval "$(atuin init zsh)"
       eval "$(zoxide init zsh)"
-      export PNPM_HOME="$HOME/.local/share/pnpm"
-      export PATH="$PNPM_HOME:$PATH"
     '';
   };
 

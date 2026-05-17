@@ -93,8 +93,8 @@ opt.emoji = false           -- 이모지 깨짐 방지
 -- 클립보드: tmux OSC 52 + 시스템 클립보드 연동
 opt.clipboard = "unnamedplus"
 
--- 마우스: tmux passthrough 허용
-opt.mouse = "a"
+-- 마우스: 비활성화 (터미널 네이티브 복사 사용)
+opt.mouse = ""
 
 -- Modeline 비활성화 (CVE-2019-12735 파일 내 설정 주입 방어)
 opt.modeline = false
