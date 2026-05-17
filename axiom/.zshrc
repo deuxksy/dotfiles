@@ -124,22 +124,5 @@ autoload -Uz bashcompinit && bashcompinit
 eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/crong/.lmstudio/bin"
-# End of LM Studio CLI section
-
 # Unset CLOUDFLARE_API_KEY to avoid conflict with API token authentication
 unset CLOUDFLARE_API_KEY
-
-# pnpm
-export PNPM_HOME="/Users/crong/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME/bin:"*) ;;
-  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
-esac
-# pnpm end
-
-# Android SDK
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/platform-tools

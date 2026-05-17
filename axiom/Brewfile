@@ -1,5 +1,6 @@
 # Core CLI
 brew "git"
+brew "gh"
 brew "neovim"
 brew "tmux"
 brew "tmuxp"
@@ -81,6 +82,11 @@ brew "shfmt"
 # Beszel Agent (custom tap)
 tap "henrygd/beszel"
 brew "henrygd/beszel/beszel-agent"
+
+tap "k8sgpt-ai/k8sgpt"
+brew "k8sgpt-ai/k8sgpt/k8sgpt"
+tap "robusta-dev/homebrew-holmesgpt"
+brew "robusta-dev/homebrew-holmesgpt/holmesgpt"
 
 # Fonts
 cask "font-hack-nerd-font"

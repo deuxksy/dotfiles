@@ -8,4 +8,4 @@ windows:
   - window_name: claude
     layout: main-vertical
     panes:
-      - shell_command: claude
+      - shell_command: claude --version

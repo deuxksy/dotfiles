@@ -65,7 +65,9 @@
       "Bash(mkdir -p /Users/crong/git/dotfiles/base/.claude/.omc)",
       "Bash(cp /Users/crong/.claude/.omc/hud-config.json /Users/crong/git/dotfiles/base/.claude/.omc/hud-config.json)",
       "Bash(rm /Users/crong/.claude/.omc/hud-config.json)",
-      "Bash(stow -t ~ base)"
+      "Bash(stow -t ~ base)",
+      "mcp__github__get_file_contents",
+      "mcp__exa__web_search_exa"
     ],
     "deny": [
       "Bash(bcdedit *)",
