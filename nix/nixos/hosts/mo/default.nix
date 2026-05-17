@@ -54,6 +54,8 @@
 
   # Shell
   programs.zsh.enable = true;
+  programs.nano.defaultEditor = false;
+  environment.variables.EDITOR = "nvim";
 
   # Nix
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
