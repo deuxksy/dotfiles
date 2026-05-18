@@ -12,7 +12,7 @@ PATH="$PATH:$ANDROID_HOME/emulator"
 PATH="$PATH:$ANDROID_HOME/platform-tools"
 PATH="/opt/homebrew/bin:${PATH}"
 PATH="${HOME}/.opencode/bin:${PATH}"
-PATH="${PNPM_HOME}:${PATH}"
+PATH="${PNPM_HOME}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 PATH="$PATH:${HOME}/.lmstudio/bin"
 
