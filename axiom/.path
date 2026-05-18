@@ -8,6 +8,11 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export DISABLE_AUTO_TITLE='true'
 
+# HolmesGPT
+export MODEL_LIST_FILE_LOCATION="$HOME/.holmes/model_list.yaml"
+export OVERRIDE_MAX_CONTENT_SIZE=204800
+export OVERRIDE_MAX_OUTPUT_TOKEN=65536
+
 PATH="$PATH:$ANDROID_HOME/emulator"
 PATH="$PATH:$ANDROID_HOME/platform-tools"
 PATH="/opt/homebrew/bin:${PATH}"

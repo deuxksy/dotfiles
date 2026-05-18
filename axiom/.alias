@@ -14,3 +14,6 @@ alias vi='nvim'
 alias vim='nvim'
 alias gw="glow"
 alias typora="open -a typora"
+
+# HolmesGPT
+alias holmes='holmes --system-prompt-additional "한국어로 응답. IT 용어는 영어. 간결·건조한 어조. 긴 설명은 TL;DR 먼저. 환경: K8s steward(192.168.222.0/24)+arv(192.168.221.0/24), Tailscale, Aperture AI gateway(http://ai). kubectl/helm/docker 사용 가능."'
