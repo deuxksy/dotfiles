@@ -16,6 +16,10 @@
   hardware.enableAllFirmware = true;
   hardware.graphics.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Networking
   networking.hostName = "mo";
   networking.networkmanager.enable = true;
@@ -54,7 +58,6 @@
 
   # Shell
   programs.zsh.enable = true;
-  programs.nano.defaultEditor = false;
   environment.variables.EDITOR = "nvim";
 
   # Nix
@@ -64,6 +67,7 @@
 
   # nix-ld (바이너리 호환성)
   programs.nix-ld.enable = true;
+  environment.sessionVariables.LD_LIBRARY_PATH = "/run/current-system/sw/share/nix-ld/lib";
   programs.nix-ld.libraries = with pkgs; [
     stdenv.cc.cc
     zlib
@@ -92,14 +96,14 @@
     hexyl home-manager htop hyperfine
     iperf3
     jq
-    kdePackages.kate kubectl
+    kdePackages.kate k8sgpt kubectl
     lazygit lua5_4 lynis
     fastfetch mitmproxy mosh mpv
     neovim nodejs_24 pnpm
     ollama openssl opentofu
     pipx pkg-config procs python3
     rclone ripgrep rustc cargo
-    shell-gpt sops stow
+    shell-gpt solaar sops stow
     tealdeer tailscale tmux tmuxp tokei
     uv wget
     xh
