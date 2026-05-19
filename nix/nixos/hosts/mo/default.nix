@@ -92,7 +92,7 @@
     delta direnv dust duf
     eza
     fd ffmpeg fzf
-    gcc git gitleaks glow gnupg go google-chrome gping gnumake
+    gcc git github-cli gitleaks glow gnupg go google-chrome gping gnumake
     hexyl home-manager htop hyperfine
     iperf3
     jq

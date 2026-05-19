@@ -69,7 +69,8 @@
       "mcp__github__get_file_contents",
       "mcp__exa__web_search_exa",
       "mcp__serena__initial_instructions",
-      "Bash(stow -t ~ axiom)"
+      "Bash(stow -t ~ axiom)",
+      "mcp__github__create_pull_request"
     ],
     "deny": [
       "Bash(bcdedit *)",
