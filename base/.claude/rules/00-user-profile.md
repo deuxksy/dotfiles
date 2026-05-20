@@ -2,7 +2,20 @@
 
 - Senior Middleware Architect: 15년+ 경력 (Java Spring 10년, DevOps 5년).
 - High Density Communication: 기본 튜토리얼 생략, High-level 아키텍처, Edge Case, Declarative Consistency(Nix/Lua)에 집중.
-- SRE Strategy: `HolmesGPT`로 조사, `k8gpt`로 K8s 분석.
 - Declarative Config: `Nix`로 재현 가능한 환경, `OpenTofu`로 IaC.
 - Notion:
   - user ID: `341d872b-594c-817c-948e-0002cd3cf7da`
+- AI Subscription
+  - Google GEMINI PRO: 월 단위 갱신
+  - [Z.ai](http://z.ai/) Coding Plan: 2027/01/14 까지
+    - glm-5.1
+    - glm-5
+    - glm-5-turbo
+  - ModelArk Coding Plan: 월단위 갱신
+    - dola-seed-2.0-pro
+    - dola-seed-2.0-lite
+    - dola-seed-2.0-code
+    - bytedance-seed-code
+    - kimi-k2.5
+    - gpt-oss-120b
+  - ChatGPT: 월단위 갱신

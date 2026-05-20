@@ -1,0 +1,29 @@
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
+
+export TIME_STYLE='long-iso'
+export EDITOR='nvim'
+export HISTSIZE=50000
+export HISTFILESIZE=50000
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export DISABLE_AUTO_TITLE='true'
+
+# HolmesGPT
+export MODEL_LIST_FILE_LOCATION="$HOME/.holmes/model_list.yaml"
+export OVERRIDE_MAX_CONTENT_SIZE=204800
+export OVERRIDE_MAX_OUTPUT_TOKEN=65536
+
+PATH="$PATH:$ANDROID_HOME/emulator"
+PATH="$PATH:$ANDROID_HOME/platform-tools"
+PATH="/opt/homebrew/bin:${PATH}"
+PATH="${HOME}/.opencode/bin:${PATH}"
+PATH="${PNPM_HOME}/bin:${PATH}"
+PATH="${HOME}/.local/bin:${PATH}"
+PATH="$PATH:${HOME}/.lmstudio/bin"
+
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+fpath=(~/.zsh/completions $fpath)
+fpath=(~/.zfunc $fpath)
+
+export PATH
+export fpath

@@ -48,6 +48,7 @@
       "mcp__globalping__*",
       "mcp__playwright__*",
       "mcp__plugin_oh-my-claudecode_t__*",
+      "mcp__serena__*",
       "mcp__web_reader__*",
       "mcp__zai-github__*",
       "mcp__zai-vision__*",
@@ -89,6 +90,50 @@
       "Bash(powershell Restart-*)",
       "Bash(powershell Set-Service *)",
       "Bash(powershell Disable-*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/crong/.local/bin/serena-hooks remind --client=claude-code"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__serena__*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/crong/.local/bin/serena-hooks auto-approve --client=claude-code"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/crong/.local/bin/serena-hooks activate --client=claude-code"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/Users/crong/.local/bin/serena-hooks cleanup --client=claude-code"
+          }
+        ]
+      }
     ]
   }
 }

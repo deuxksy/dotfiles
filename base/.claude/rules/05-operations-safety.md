@@ -11,3 +11,9 @@
 - Proxmox API: Read(GET)은 자유롭게 실행. Create(POST), Update(PUT), Delete(DELETE)는 사용자 승인 후 실행.
 - K8S(kubectl): get, describe, logs 등 읽기 전용은 자유롭게 실행. create, delete, edit, patch, apply, drain, cordon, uncordon 등 변경 작업은 사용자 승인 후 실행.
 - Notion: search, fetch, get 등 읽기 전용은 자유롭게 실행. 페이지 생성/수정/삭제, 댓글 작성 등 쓰기 작업은 사용자의 명시적 요청 또는 승인이 있을 때만 실행
+- SRE 도구:
+  - `k8sgpt`: K8s 리소스 분석 — MCP 서버 모드(`k8sgpt serve --mcp`)로 `~/.claude/settings.json`에 등록
+  - `holmes`: 인프라/로그 종합 조사 — MCP 미지원, Bash로 호출
+    - 환경변수: `OPENAI_API_KEY` + `OPENAI_API_BASE=http://ai/v1`
+    - 모델: `--model openai/<model>` (litellm provider prefix 필수)
+    - `~/.holmes/config.yaml` pydantic 검증 엄격 → 환경변수 권장

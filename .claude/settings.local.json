@@ -61,7 +61,16 @@
       "mcp__zai-websearch__*",
       "mcp__zread__*",
       "Bash(rm -f /c/software/project/ecoai-app-sample/docs/work-log/.git)",
-      "Bash(cp -r /tmp/work-log-git-bak /c/software/project/ecoai-app-sample/docs/work-log/.git)"
+      "Bash(cp -r /tmp/work-log-git-bak /c/software/project/ecoai-app-sample/docs/work-log/.git)",
+      "Bash(mkdir -p /Users/crong/git/dotfiles/base/.claude/.omc)",
+      "Bash(cp /Users/crong/.claude/.omc/hud-config.json /Users/crong/git/dotfiles/base/.claude/.omc/hud-config.json)",
+      "Bash(rm /Users/crong/.claude/.omc/hud-config.json)",
+      "Bash(stow -t ~ base)",
+      "mcp__github__get_file_contents",
+      "mcp__exa__web_search_exa",
+      "mcp__serena__initial_instructions",
+      "Bash(stow -t ~ axiom)",
+      "mcp__github__create_pull_request"
     ],
     "deny": [
       "Bash(bcdedit *)",
@@ -72,5 +81,7 @@
     ]
   },
   "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": ["globalping"]
+  "enabledMcpjsonServers": [
+    "globalping"
+  ]
 }

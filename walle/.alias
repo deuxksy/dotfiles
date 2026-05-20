@@ -1,8 +1,9 @@
-# Handle 'lsd' substitute for 'ls'
-if command -v lsd &> /dev/null; then
-    alias ls='lsd --color=auto'
-    alias ll='lsd -alhFgv --header --icon always --group-directories-first --permission octal'
-    alias la='lsd -alhFgv --header --icon always --group-directories-first --permission octal --total-size'
+# eza as ls replacement
+if command -v eza &> /dev/null; then
+    alias ls='eza --icons=always'
+    alias ll='eza -alhG --header --icons=always --group-directories-first --octal-permissions --git'
+    alias la='eza -alhG --header --icons=always --group-directories-first --octal-permissions --total-size'
+    alias lt='eza -T --icons=always --level=2'
 else
     alias ls='ls -G'
     alias ll='ls -alfh'

@@ -8,6 +8,7 @@ lg2 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C
 
 [core]
 pager = delta
+ignoreCase = false
 
 [interactive]
 diffFilter = delta --color-only
@@ -57,5 +58,6 @@ colorMoved = default
 	insteadOf = git@github.com/
 [credential "https://repository.kr"]
 	provider = generic
-[credential]
-	helper = store
+
+[include]
+	path = ~/.gitconfig.local

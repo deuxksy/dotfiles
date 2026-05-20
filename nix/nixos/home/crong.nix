@@ -11,19 +11,12 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    shellAliases = {
-      ll = "ls -alF";
-      la = "ls -A";
-      l = "ls -CF";
-      gs = "git status";
-      gc = "git commit";
-      gd = "git diff";
-      glog = "git log --oneline --graph --decorate";
-      rebuild = "sudo nixos-rebuild switch --flake /home/crong/git/dotfiles/nix/nixos#mo";
-    };
     initContent = ''
-      eval "$(mise activate zsh)"
+      . ~/.path
+      . ~/.alias
+      eval "$(sops -d ~/.key)"
       eval "$(atuin init zsh)"
+      eval "$(zoxide init zsh)"
     '';
   };
 
@@ -100,7 +93,7 @@
       AddKeysToAgent yes
       Port 22
 
-    Host studio eve mo
+    Host axiom eve mo
       HostName %h.bun-bull.ts.net
       User crong
 
@@ -111,17 +104,5 @@
     Host arv steward
       HostName %h.bun-bull.ts.net
       User root
-  '';
-
-  # Mise 글로벌 설정
-  home.file.".config/mise/config.toml".text = ''
-    [tools]
-    curlie = "latest"
-    go = "1.25"
-    lua = "5.4"
-    node = "24"
-    ollama = "latest"
-    python = "3.12"
-    rust = "stable"
   '';
 }

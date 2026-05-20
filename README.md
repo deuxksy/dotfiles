@@ -4,19 +4,109 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 
 ## Hosts
 
-| Host            | OS              | Packages           |
-| :-------------- | :-------------- | :----------------- |
-| Mac Mini M4     | macOS           | `base` + `eve`     |
-| Surface Pro 6   | Ubuntu (WSL)    | `base` + `ava`     |
-| AOOSTAR WTR R1  | Fedora          | `base` + `walle`   |
-| Steam Deck      | SteamOS         | `base` + `girl`    |
+| Host | Model | OS | Config |
+| :--- | :--- | :--- | :--- |
+| axiom | Mac Studio | macOS | stow: `base` + `axiom` |
+| eve | Mac mini | macOS | stow: `base` + `eve` |
+| mo | AyaNEO AM02 | NixOS | stow: `base` + `mo` / flake |
+| walle | AOOSTAR WTR R1 | Fedora | stow: `base` + `walle` |
+| girl | Steam Deck | SteamOS | stow: `base` + `girl` |
+| ava | Surface Pro 6 | Windows 10 | pwsh |
+| kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
+| pad | iPad Pro 12.9 | iPadOS | 미디어 소비, 원격접속 |
+| arv | GL.iNet GL-MT3000 (Beryl AX) | OpenWrt | 라우터 |
+| steward | GL.iNet GL-MT2500 (Brume 2) | OpenWrt | 라우터 |
+
+### Host Roles
+
+- **axiom**: Local LLM 서버 (LM Studio, MLX) + 개발
+- **eve**: iOS/AOS 개발 전용
+- **mo**: Linux 개발 워크스테이션 (NixOS)
+- **walle**: 미디어 서버 (NAS)
+- **girl**: 휴대용 서버
+- **steward**: 상주 네트워크 서버 / VPN 라우터
+- **arv**: 휴대용 Wi-Fi 6 라우터
+
+## Hardware
+
+| Model | CPU | GPU | NPU | Memory | Disk |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Mac Studio | Apple M1 Max (10-core) | M1 Max (32-core) | 16-core | 64GB | 512GB |
+| Mac mini | Apple M4 (10-core) | M4 (10-core) | 16-core | 16GB | 256GB |
+| AyaNEO AM02 | AMD Ryzen 7840HS (8C/16T) | Radeon 780M | NONE | 32GB | 1TB |
+| AOOSTAR WTR R1 | Intel N100 (4C/4T) | Intel UHD (24EU) | NONE | 8GB | 2TB |
+| Steam Deck | AMD Custom APU 0405 | AMD Custom GPU | NONE | 16GB | 256GB NVMe + 512GB eMMC |
+| Surface Pro 6 | Intel Core i5-8250U (4C/8T) | Intel UHD 620 | NONE | 8GB | 128GB |
+| Asus Zenbook 14 UX3405C | Intel Core Ultra 7 255H (16-core) | Intel Arc 140T | Intel AI Boost (13 NPU TOPS) | 32GB | 512GB |
+| iPad Pro 12.9 | Apple M1 (8-core) | M1 (8-core) | 16-core | 16GB | 1TB |
+| GL.iNet GL-MT3000 (Beryl AX) | MediaTek MT7981B (Cortex-A53) | Wi-Fi 6 | NONE | 512MB | 128MB NAND |
+| GL.iNet GL-MT2500 (Brume 2) | MediaTek MT7981B (Cortex-A53) | NONE | NONE | 1GB | 8GB eMMC |
+
+## Network
+
+```mermaid
+graph TD
+    INET[Internet]
+
+    subgraph LOCATION_A[steward 네트워크 - 192.168.222.0/24]
+        STEWARD[steward - GL.iNet Brume 2]
+        AXIOM[axiom - Mac Studio]
+        MO[mo - AyaNEO AM02]
+    end
+
+    subgraph LOCATION_B[arv 네트워크 - 192.168.221.0/24]
+        ARV[arv - GL.iNet Beryl AX]
+        EVE[eve - Mac mini]
+        WALLE[walle - AOOSTAR WTR R1]
+        GIRL[girl - Steam Deck]
+        AVA[ava - Surface Pro 6]
+        PAD[iPad Pro]
+        TV[LG webOS TV]
+    end
+
+    INET --- STEWARD
+    INET --- ARV
+
+    STEWARD --- AXIOM
+    STEWARD --- MO
+
+    ARV --- EVE
+    ARV --- WALLE
+    ARV --- GIRL
+    ARV --- AVA
+    ARV --- PAD
+    ARV --- TV
+
+    STEWARD -.->|Tailscale| ARV
+```
+
+## Application Manager (Library 4-Layer)
+
+1. **Layer 1 (System PM)**: brew (macOS), Nix (NixOS), dnf (Fedora), pacman (SteamOS)
+2. **Layer 2 (SDK)**: mise (macOS, Fedora, SteamOS), Nix packages (NixOS)
+3. **Layer 3 (Package Manager)**: pnpm (Node), uv (Python), npx, uvx — on-demand 실행
+4. **Layer 4 (Binary)**: `~/.local/bin`
 
 ## Install
 
 ```bash
 git clone git@github.com:deuxksy/dotfiles.git ~/git/dotfiles
 cd ~/git/dotfiles
-stow -t ~ base eve  # 호스트에 맞게 선택
+
+# Stow 배포 (호스트에 맞게 선택)
+stow -t ~ base axiom    # macOS
+stow -t ~ base eve      # macOS
+stow -t ~ base mo       # NixOS
+stow -t ~ base walle    # Fedora
+stow -t ~ base girl     # SteamOS
+
+# macOS (Brewfile)
+cd ~ && brew bundle
+
+# NixOS (mo) — stow 배포 후 flake rebuild
+sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
+# 또는 alias: rebuild
+
 ```
 
 ## Stow Adopt
@@ -24,34 +114,49 @@ stow -t ~ base eve  # 호스트에 맞게 선택
 기존 dotfiles를 stow 패키지로 가져올 때 사용.
 
 ```bash
-# 예: 기존 ~/.config/nvim을 base 패키지로 가져오기
 cd ~/git/dotfiles
-mkdir -p base/.config
-stow --adopt -t ~ base
+stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 ```
 
 > `--adopt`은 `$HOME`에 있는 파일을 stow 디렉토리로 이동시키고 심볼릭 링크로 대체한다.
 
 ## Structure
 
-- **base** — 공통 설정 (git, nvim, tmux, wezterm)
-- **eve** — macOS (mise, shell_gpt, zsh)
-- **walle** — Fedora (mise, zsh)
-- **girl** — Steam Deck (mise, zsh)
-- **nix** — nix-darwin 설정
-- **docs** — 설계 문서
+- `base/` — 공통 설정 (git, nvim, tmux, wezterm, .claude/rules)
+- `axiom/` — macOS (mise, zsh, Brewfile)
+- `eve/` — macOS (mise, zsh, Brewfile)
+- `mo/` — NixOS (`.gitconfig.local`, tools managed by Nix)
+- `walle/` — Fedora (mise, zsh)
+- `girl/` — SteamOS (mise, zsh)
+- `ava/` — Windows 10 (pwsh)
+- `kyolim/` — Windows 11 (pwsh)
+- `nix/` — NixOS flake 설정
+- `.ai/` — AI 에이전트 공유 설정 (AGENTS.md)
 
 ## Secrets
 
 [sops](https://github.com/getsops/sops) + [age](https://github.com/FiloSottile/age) 로 암호화.
 
 ```bash
-# ~/.key 복호화 (zshrc에서 자동 실행)
+# secrets 복호화 (zshrc에서 자동 실행)
 eval "$(sops -d ~/.key)"
 ```
 
-## Nix
+## Git Credential
 
-```bash
-sudo darwin-rebuild switch --flake ~/.config/nix-darwin#eve
-```
+`.gitconfig`는 `base/`에 공통 설정, credential helper는 각 호스트 `.gitconfig.local`에서 관리.
+
+| 호스트 | Helper | 비고 |
+| :--- | :--- | :--- |
+| macOS (axiom, eve) | `store` | `~/.git-credentials` |
+| Linux (mo, walle, girl) | `store` | `~/.git-credentials` |
+
+> 전 호스트 `core.ignoreCase = false` 통일. 최초 1회 인증 후 자동 저장.
+
+## NixOS (mo) Gotchas
+
+- mise 제거됨 — 모든 도구는 `environment.systemPackages`로 관리
+- `npm install -g`, `corepack enable` 불가 (read-only nix store). pnpm 글로벌 사용
+- `nodePackages.*` 최신 nixpkgs에서 제거됨 — 최상위 패키지(`pnpm` 등) 사용
+- Claude Code는 pnpm으로 설치 (`~/.local/share/pnpm`)
+- fcitx5 KDE Wayland 설정은 GUI 필요 (KDE 시스템 설정 → 가상 키보드 → Fcitx 5)

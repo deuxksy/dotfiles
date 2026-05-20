@@ -1,0 +1,102 @@
+# Core CLI
+brew "git"
+brew "gh"
+brew "neovim"
+brew "tmux"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "jq"
+brew "yq"
+brew "bat"
+brew "eza"
+brew "zoxide"
+brew "atuin"
+brew "direnv"
+brew "gnupg"
+brew "sops"
+brew "age"
+brew "curlie"
+brew "glow"
+brew "tealdeer"
+brew "fastfetch"
+brew "git-delta"
+brew "stow"
+brew "htop"
+brew "bottom"
+brew "btop"
+brew "yazi"
+brew "grpcurl"
+brew "mas"
+brew "wget"
+brew "curl"
+brew "rclone"
+brew "mosh"
+brew "television"
+brew "lynis"
+
+# Development
+brew "mise"
+brew "kubectl"
+brew "opentofu"
+brew "awscli@2"
+brew "pipx"
+brew "aria2"
+brew "mkdocs"
+brew "qemu"
+brew "gitleaks"
+
+# Network & Media
+brew "ffmpeg"
+brew "mpv"
+brew "yt-dlp"
+brew "chafa"
+cask "mitmproxy"
+brew "iperf3"
+
+# AI & Tools
+brew "himalaya"
+brew "wakatime-cli"
+
+# Beszel Agent (custom tap)
+tap "henrygd/beszel"
+brew "henrygd/beszel/beszel-agent"
+
+# Shell
+brew "zsh"
+brew "zsh-completions"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+
+# Neovim - Linters & Formatters
+brew "eslint_d"
+brew "flake8"
+brew "hadolint"
+brew "yamllint"
+brew "shellcheck"
+brew "stylua"
+brew "prettierd"
+brew "black"
+brew "shfmt"
+
+# CLI Tools
+brew "mole"
+brew "duck"
+brew "kubectl-ai"
+brew "k8sgpt"
+brew "k9s"
+
+# Fonts
+cask "font-hack-nerd-font"
+cask "font-fira-code-nerd-font"
+
+# GUI Applications
+cask "wezterm"
+cask "eul"
+cask "hammerspoon"
+cask "maccy"
+cask "warp"
+cask "orbstack"
+cask "gcloud-cli"
+cask "visual-studio-code"
+cask "bazecor"

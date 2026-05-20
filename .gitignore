@@ -66,3 +66,6 @@ base/.claude/*
 !base/.claude/rules/
 !base/.claude/rules/*.md
 !base/.claude/CLAUDE.md
+!base/.claude/.omc/
+base/.claude/.omc/*
+!base/.claude/.omc/hud-config.json
