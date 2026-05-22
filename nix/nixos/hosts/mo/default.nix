@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./hardware-configuration.nix
+    ./hermes.nix
     ../../modules/desktop/kde.nix
     ../../modules/virtualization.nix
   ];
