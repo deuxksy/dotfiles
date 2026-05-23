@@ -129,7 +129,7 @@ stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
 - `ava/` — Windows 10 (pwsh)
-- `kyolim/` — Windows 11 (pwsh)
+- `kyolim/` — Windows 11 회사 노트북 (pwsh, stow 미사용)
 - `nix/` — NixOS flake 설정
 - `.ai/` — AI 에이전트 공유 설정 (AGENTS.md)
 

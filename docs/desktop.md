@@ -8,7 +8,7 @@
 graph TB
     subgraph WezTerm["WezTerm (Terminal Emulator)"]
         direction TB
-        W1["Font: Hack Nerd Font 13pt"]
+        W1["Font: Hack Nerd Font 14pt"]
         W2["Theme: Catppuccin Mocha"]
         W3["TERM=xterm-256color"]
         W4["Blur: 0.92 opacity"]
@@ -19,7 +19,7 @@ graph TB
         direction TB
         T1["Prefix: Ctrl+A"]
         T2["default-terminal: tmux-256color"]
-        T3["terminal-features<br/>RGB / clipboard / focus"]
+        T3["terminal-features<br/>RGB / usstyle / clipboard<br/>focus / hyperlinks / title / overline"]
         T4["is_vim smart switching"]
         T5["mouse on / set-clipboard on"]
     end
@@ -237,6 +237,7 @@ graph TB
     subgraph Deps["Linux 필수 의존성"]
         D1["xclip (X11)"]
         D2["wl-clipboard (Wayland)"]
+        D3["OSC 52 (WezTerm 직접)"]
     end
 
     FED --> D1
@@ -245,8 +246,7 @@ graph TB
     DEB --> D2
     ARCH --> D1
     ARCH --> D2
-    NIX --> D1
-    NIX --> D2
+    NIX --> D3
 
     style Platforms fill:#1e1e2e,stroke:#89b4fa,color:#cdd6f4
     style WezTermOpts fill:#1e1e2e,stroke:#f38ba8,color:#cdd6f4
@@ -259,7 +259,7 @@ graph TB
 | Fedora       | O       | O    | O      | xclip / wl-clipboard  | comp  |
 | Debian       | O       | O    | O      | xclip / wl-clipboard  | comp  |
 | Arch         | O       | O    | O      | xclip / wl-clipboard  | comp  |
-| NixOS        | O       | O    | O      | nix config에 추가     | comp  |
+| NixOS        | O       | O    | O      | OSC 52 (WezTerm 직접) | comp  |
 | Windows WSL  | O       | O    | O      | WSL clipboard         | X     |
 
 > `comp` = compositor (picom, kwin, mutter 등) 필요
@@ -275,13 +275,13 @@ graph LR
     end
 
     W_TERM -->|"spawn"| T_TERM
-    T_TERM -->|"terminal-features<br/>RGB/clipboard/focus"| N_TERM
+    T_TERM -->|"terminal-features<br/>RGB/usstyle/clipboard/focus/hyperlinks/title/overline"| N_TERM
 
     style Chain fill:#1e1e2e,stroke:#cba6f7,color:#cdd6f4
 ```
 
 > `xterm-256color` 사용 이유: nix 환경에서 `wezterm` terminfo 미설치 시 에러 방지.
-> tmux `terminal-features`로 True Color / OSC 52 / Focus event 보완.
+> tmux `terminal-features`로 True Color / OSC 52 / Focus event / hyperlinks / title 보완.
 
 ## 파일 경로 요약
 
