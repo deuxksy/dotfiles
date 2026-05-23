@@ -110,3 +110,7 @@ cask "gemini"
 
 # LM Studio (for axiom LLM work)
 cask "lm-studio"
+
+# Mobile E2E Testing
+tap "mobile-dev-inc/tap"
+brew "mobile-dev-inc/tap/maestro"
