@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./hermes.nix
+    ./beszel.nix
     ../../modules/desktop/kde.nix
     ../../modules/virtualization.nix
   ];
@@ -24,6 +25,28 @@
   # Networking
   networking.hostName = "mo";
   networking.networkmanager.enable = true;
+  networking.hosts = {
+    "115.68.76.196" = [ "ecoai-cluster-01" ];
+    "115.68.76.197" = [ "ecoai-cluster-02" ];
+    "115.68.76.198" = [ "ecoai-cluster-03" ];
+    "115.68.76.199" = [ "ecoai-cluster-04" ];
+    "115.68.76.220" = [ "ecoai-cluster-05" ];
+    "115.68.76.221" = [ "ecoai-train-01" ];
+    "115.68.76.222" = [ "ecoai-train-02" ];
+    "172.20.100.8"  = [ "keco-haproxy-01" ];
+    "172.20.100.9"  = [ "keco-haproxy-02" ];
+    "172.20.100.10" = [ "keco-mgmt-01" ];
+    "172.20.100.11" = [ "keco-master-01" ];
+    "172.20.100.12" = [ "keco-master-02" ];
+    "172.20.100.13" = [ "keco-master-03" ];
+    "172.20.100.14" = [ "keco-worker-01" ];
+    "172.20.100.15" = [ "keco-worker-02" ];
+    "172.20.100.16" = [ "keco-worker-03" ];
+    "172.20.100.17" = [ "keco-worker-04" ];
+    "172.20.100.18" = [ "keco-worker-gpu-01" ];
+    "172.20.100.19" = [ "keco-train-01" ];
+    "172.20.100.20" = [ "keco-train-02" ];
+  };
 
   # Keyboard
   services.xserver.xkb = {
@@ -88,25 +111,27 @@
 
   environment.systemPackages = with pkgs; [
     age aria2 atuin awscli2
-    bat bottom btop
-    chafa curl
+    bat bind bottom btop
+    cargo chafa curl
     delta direnv dust duf
-    eza
-    fd ffmpeg fzf
+    espeak-ng eza
+    fastfetch fd ffmpeg fzf
     gcc git github-cli gitleaks glow gnupg go google-chrome gping gnumake
     hexyl home-manager htop hyperfine
     iperf3
     jq
-    kdePackages.kate k8sgpt kubectl
-    lazygit lua5_4 lynis
-    fastfetch mitmproxy mosh mpv
-    neovim nodejs_24 pnpm
+    k8sgpt kdePackages.kate kubectl kubelogin-oidc
+    lazygit libopus lua5_4 lynis
+    mariadb
+    mitmproxy mosh mpv
+    neovim nodejs_24
     ollama openssl opentofu
-    pipx pkg-config procs python3
-    rclone ripgrep rustc cargo
+    pipx pkg-config pnpm portaudio postgresql procs python3
+    rclone ripgrep rustc
     shell-gpt solaar sops stow
-    tealdeer tailscale tmux tmuxp tokei
-    uv wget
+    tailscale tealdeer telepresence2 tmux tmuxp tokei
+    uv
+    wget
     xh
     yazi yt-dlp yq
     zlib zoxide
