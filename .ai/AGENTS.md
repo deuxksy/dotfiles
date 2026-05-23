@@ -27,6 +27,8 @@ sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 - `axiom/` — MacOS (mise, zsh)
 - `eve/` — MacOS (mise, zsh)
 - `mo/` — NixOS (zsh, tools managed by Nix)
+- `mo/.hermes/` — hermes-agent CLI config (stow → `~/.hermes/`), gateway config는 NixOS module이 `/var/lib/hermes/.hermes/`에 생성
+- `~/.hermes/` — hermes-agent 데이터 (비공개 repo `deuxksy/ai-mo`로 백업, stow 파일은 `.gitignore` 제외)
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
 - `ava/` — Windows 10 (pwsh)
@@ -55,3 +57,7 @@ sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 - ava: Windows 10, WSL 미사용, pwsh만 사용
 - arv/steward: GL.iNet OpenWrt 라우터, dotfiles 미배포
 - 전 호스트 git `core.ignoreCase = false`, credential helper `store` 통일
+- hermes-agent: built-in `anthropic` provider는 `ANTHROPIC_BASE_URL` 무시 — `custom_providers` + `api_mode: anthropic_messages` 필수 (Tailscale Aperture 등 프록시 사용 시)
+- hermes-agent: model명의 점(.)을 하이픈(-)로 자동 변환 — 점 없는 모델명 사용 (예: `glm-5-turbo`)
+- hermes-agent: API key는 sops secret(`secrets/hermes.yaml`)에서만 관리, `hermes.nix` `environment`에 평문 금지
+- hermes-agent: CLI config(`~/.hermes/config.yaml`)와 gateway config(`/var/lib/hermes/.hermes/config.yaml`)는 독립적 — 둘 다 `custom_providers` 설정 필요
