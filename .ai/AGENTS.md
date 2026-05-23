@@ -19,6 +19,11 @@ eval "$(sops -d ~/.key)"
 
 # NixOS (mo)
 sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
+
+# hermes-agent (mo)
+sudo systemctl restart hermes-agent
+sudo journalctl -u hermes-agent --since "1 min ago" --no-pager
+hermes config show   # CLI 모드 설정 확인
 ```
 
 ## Structure
@@ -27,8 +32,6 @@ sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 - `axiom/` — MacOS (mise, zsh)
 - `eve/` — MacOS (mise, zsh)
 - `mo/` — NixOS (zsh, tools managed by Nix)
-- `mo/.hermes/` — hermes-agent CLI config (stow → `~/.hermes/`), gateway config는 NixOS module이 `/var/lib/hermes/.hermes/`에 생성
-- `~/.hermes/` — hermes-agent 데이터 (비공개 repo `deuxksy/ai-mo`로 백업, stow 파일은 `.gitignore` 제외)
 - `walle/` — Fedora (mise, zsh)
 - `girl/` — SteamOS (mise, zsh)
 - `ava/` — Windows 10 (pwsh)
@@ -40,6 +43,14 @@ sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 
 - `CLAUDE.md`, `GEMINI.md`, `.clinerules` 모두 `.ai/AGENTS.md`로 symlink → AI 설정은 이 파일에서만 수정
 - `.sops.yaml`로 age 키 관리, `.key` 파일은 sops 암호화됨
+
+## Key Files (mo/NixOS)
+
+- `nix/nixos/flake.nix` — flake inputs + module imports
+- `nix/nixos/hosts/mo/default.nix` — mo 호스트 설정
+- `nix/nixos/hosts/mo/hermes.nix` — hermes-agent NixOS 서비스 + sops secret
+- `nix/nixos/secrets/hermes.yaml` — sops 암호화 (ANTHROPIC_API_KEY, TELEGRAM_BOT_TOKEN)
+- `mo/.hermes/config.yaml` — hermes CLI config (stow 배포)
 - `.githooks/`에 커스텀 Git hooks, `.gitleaks.toml`로 시크릿 스캔
 - `base/.claude/rules/`에 10개 규칙 파일 (00~09)
 - `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
