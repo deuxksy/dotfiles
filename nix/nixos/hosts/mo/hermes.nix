@@ -14,7 +14,7 @@
       GATEWAY_ALLOW_ALL_USERS = "true";
     };
     environmentFiles = [ config.sops.secrets."hermes-env".path ];
-    extraDependencyGroups = [ "messaging" "anthropic" ];
+    extraDependencyGroups = [ "messaging" "anthropic" "voice" ];
     settings = {
       model = {
         default = "glm-5-turbo";
@@ -31,6 +31,26 @@
       terminal = {
         backend = "local";
         timeout = 180;
+      };
+      voice = {
+        record_key = "ctrl+b";
+        max_recording_seconds = 120;
+        auto_tts = false;
+        beep_enabled = true;
+        silence_threshold = 200;
+        silence_duration = 3.0;
+      };
+      stt = {
+        provider = "local";
+        local = {
+          model = "base";
+        };
+      };
+      tts = {
+        provider = "edge";
+        edge = {
+          voice = "en-US-AriaNeural";
+        };
       };
     };
   };
