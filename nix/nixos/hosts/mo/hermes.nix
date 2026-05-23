@@ -14,12 +14,20 @@
       GATEWAY_ALLOW_ALL_USERS = "true";
     };
     environmentFiles = [ config.sops.secrets."hermes-env".path ];
-    extraDependencyGroups = [ "messaging" ];
+    extraDependencyGroups = [ "messaging" "anthropic" ];
     settings = {
       model = {
-        default = "glm-5.1";
-        base_url = "http://ai/v1";
+        default = "glm-5-turbo";
+        provider = "custom:aperture";
       };
+      custom_providers = [
+        {
+          name = "aperture";
+          base_url = "http://ai";
+          key_env = "ANTHROPIC_API_KEY";
+          api_mode = "anthropic_messages";
+        }
+      ];
       terminal = {
         backend = "local";
         timeout = 180;
