@@ -2,10 +2,48 @@ model:
   default: glm-5-turbo
   provider: custom:aperture
 custom_providers:
-  - name: aperture
-    base_url: http://ai
-    key_env: ANTHROPIC_API_KEY
-    api_mode: anthropic_messages
+- name: aperture
+  base_url: http://ai
+  key_env: ANTHROPIC_API_KEY
+  api_mode: anthropic_messages
 terminal:
   backend: local
   timeout: 180
+  shell_init_files:
+    - ~/.bashrc
+voice:
+  record_key: "ctrl+b"
+  max_recording_seconds: 120
+  auto_tts: false
+  beep_enabled: true
+  silence_threshold: 200
+  silence_duration: 3.0
+stt:
+  provider: "local"
+  local:
+    model: "base"
+tts:
+  provider: "edge"
+  edge:
+    voice: "en-US-AriaNeural"
+mcp_servers:
+  serena:
+    command: "serena"
+    args: ["start-mcp-server", "--project-from-cwd", "--transport", "stdio"]
+    timeout: 120
+    connect_timeout: 60
+  k8sgpt:
+    command: "k8sgpt"
+    args: ["serve", "--mcp"]
+    timeout: 120
+    connect_timeout: 60
+  postgres:
+    command: "postgres-mcp"
+    args: ["--access-mode=unrestricted", "--transport=stdio"]
+    timeout: 120
+    connect_timeout: 60
+    env:
+      DATABASE_URI: ""
+onboarding:
+  seen:
+    busy_input_prompt: true

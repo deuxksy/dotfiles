@@ -6,6 +6,26 @@ if command -v eza &> /dev/null; then
     alias lt='eza -T --icons=always --level=2'
 fi
 
+# Kubernetes
+if command -v kubectl &> /dev/null; then
+    alias k='kubectl'
+    alias kg='kubectl get'
+    alias kd='kubectl describe'
+    alias kl='kubectl logs'
+    alias ke='kubectl get events --sort-by=.metadata.creationTimestamp'
+    alias kns='kubectl config set-context --current --namespace'
+    source <(kubectl completion zsh)
+    complete -o default -F __start_kubectl k
+fi
+
+# Telepresence
+if command -v telepresence &> /dev/null; then
+    alias tp='telepresence'
+    alias tpc='telepresence connect'
+    alias tpl='telepresence list -n ecoai-prod'
+    alias tpq='telepresence quit'
+fi
+
 alias grep='grep --color=auto'
 alias vi='nvim'
 alias vim='nvim'
