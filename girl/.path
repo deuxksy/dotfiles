@@ -1,23 +1,18 @@
+export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 export TIME_STYLE='long-iso'
 export EDITOR='nvim'
 export HISTSIZE=50000
 export HISTFILESIZE=50000
 export TS_SOCKET=/run/user/1000/tailscale/tailscaled.sock
 export PNPM_HOME="${HOME}/.local/share/pnpm"
+export DISABLE_AUTO_TITLE='true'
 
 PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"
-PATH="${PNPM_HOME}:${PATH}"
+PATH="${PNPM_HOME}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 PATH="${HOME}/bin:${PATH}"
 
-FPATH=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $FPATH)
-fpath=(/home/linuxbrew/.linuxbrew/share/zsh/site-functions $fpath)
-fpath=$(brew --prefix)/share/zsh-completions:$fpath
-fpath=(~/.zsh/completions $fpath)
-fpath=(~/.zfunc $fpath)
-
 export PATH
-export fpath
 
 # for lua SteamDeck 에서 mise 에 lua 를 설치하기 위한 설정
 export PATH="/home/linuxbrew/.linuxbrew/opt/glibc/bin:/home/linuxbrew/.linuxbrew/opt/glibc/sbin:$PATH"
