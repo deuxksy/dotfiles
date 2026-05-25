@@ -1,8 +1,8 @@
 # eza as ls replacement
 if command -v eza &> /dev/null; then
     alias ls='eza --icons=always'
-    alias ll='eza -alhG --header --icons=always --group-directories-first --octal-permissions --git'
-    alias la='eza -alhG --header --icons=always --group-directories-first --octal-permissions --total-size'
+    alias ll='eza -alhF --header --icons=always --group-directories-first --octal-permissions --git'
+    alias la='eza -alhF --header --icons=always --group-directories-first --octal-permissions --total-size'
     alias lt='eza -T --icons=always --level=2'
 else
     alias ls='ls -G'
