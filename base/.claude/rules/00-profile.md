@@ -19,15 +19,7 @@
     - bytedance-seed-code
     - kimi-k2.5
     - gpt-oss-120b
-  - Google GEMINI PRO: 월 단위 갱신
-    - gemini-3.1-pro-preview
-    - gemini-3-flash-preview
-    - gemini-3.1-flash-lite-preview
-    - gemini-2.5-pro
-    - gemini-2.5-flash
-    - gemini-2.5-flash-lite
-    - gemma-4-31b-it
-    - gemma-4-26b-a4b-it
+  - Google GEMINI PRO: 월 단위 갱신 (모델은 05-multi-agent 참조)
   - ChatGPT: 월단위 갱신 (모델은 05-multi-agent 참조)
 
 ## Language and Communication
