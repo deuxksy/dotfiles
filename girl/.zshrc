@@ -113,7 +113,7 @@ export LANG=en_US.UTF-8
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 . ~/.path
 . ~/.alias
-. ~/.key
+eval "$(sops -d ~/.key)"
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
@@ -125,5 +125,3 @@ eval "$(atuin init zsh)"
 eval "$(mise activate zsh)"
 # OpenClaw Completion
 source "/home/deck/.openclaw/completions/openclaw.zsh"
-
-fastfetch

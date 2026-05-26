@@ -7,7 +7,7 @@ export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 
 PATH="/opt/homebrew/bin:${PATH}"
 PATH="${HOME}/.opencode/bin:${PATH}"
-PATH="${PNPM_HOME}:${PATH}"
+PATH="${PNPM_HOME}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 
 fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
