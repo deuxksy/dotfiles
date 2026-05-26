@@ -80,7 +80,7 @@ enabled = true
 enabled = true
 
 [plugins."test-android-apps@openai-curated"]
-enabled = true
+enabled = false
 
 [plugins."zoom@openai-curated"]
 enabled = true
@@ -98,6 +98,12 @@ enabled = true
 trust_level = "trusted"
 
 [projects."/Users/crong/git/dotfiles"]
+trust_level = "trusted"
+
+[projects."/home/crong/git/dotfiles"]
+trust_level = "trusted"
+
+[projects."/home/crong"]
 trust_level = "trusted"
 
 [shell_environment_policy]
@@ -140,11 +146,23 @@ js_repl = false
 
 [hooks.state]
 
-[hooks.state."/Users/crong/.codex/hooks.json:pre_tool_use:0:0"]
-trusted_hash = "sha256:97ba9a796d334bbbe28b61c2827e3c641fe2a74e91d134e9d7b6f2b7334468cb"
+[hooks.state."/home/crong/.codex/hooks.json:post_compact:0:0"]
+trusted_hash = "sha256:f64a09a8aa1e2aaef664a7cbaaaaea5ffce214c7c2fb12155d0fdce5fcd29922"
 
-[hooks.state."/Users/crong/.codex/hooks.json:pre_tool_use:1:0"]
-trusted_hash = "sha256:10588fe6692f3bff460dedec905aac6efc128782bdcd5d7f65b42467facaa384"
+[hooks.state."/home/crong/.codex/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:f3eabed128e575a0f484c300106d3eb44b51b0e1bbee1c77cd0620ac9ed2c069"
 
-[hooks.state."/Users/crong/.codex/hooks.json:session_start:0:0"]
-trusted_hash = "sha256:8538bd245a93825c7c726b9dc62357bd6ccf591fa604cd7e270583c143b9ced6"
+[hooks.state."/home/crong/.codex/hooks.json:pre_compact:0:0"]
+trusted_hash = "sha256:bdac8014e5bf6163d34198345b242631d2e4ac6c9037316e21be8dc9a6b09b71"
+
+[hooks.state."/home/crong/.codex/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:b96ce591872530eef22970a763c0e93b729beaa75ea1a0620ca781bf99de6a02"
+
+[hooks.state."/home/crong/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:d35ec7b70f50c891abdf91423250d47619999eb301015344ff7498ce77195b47"
+
+[hooks.state."/home/crong/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:9120781b13080ecbbc0467df8e71519ec5d5a183b9ff68947d6e86eb50e4cda8"
+
+[hooks.state."/home/crong/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:76d8f20e42361002b24fc3395e2ab10fa26dedbd7de77d231b4c6c0cfca4c35f"
