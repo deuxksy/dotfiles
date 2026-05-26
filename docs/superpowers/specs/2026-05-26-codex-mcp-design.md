@@ -1,6 +1,6 @@
 # Codex MCP Server ↔ Claude Code 하이브리드 연결 설계
 
-> **Date**: 2026-05-26
+> **Date**: 2026-05-27 (merged from 05-26 + 05-27)
 > **Status**: Approved
 
 ## 배경
@@ -12,7 +12,8 @@
 ## 아키텍처
 
 ```text
-Claude Code
+Claude Code (glm-5.1)
+  ├── 기존 MCP 서버 (Context7, Notion, Figma, Serena...)
   ├── MCP stdio → codex mcp-server
   │     ├── codex(prompt, model?, cwd?, sandbox?, approval-policy?)
   │     └── codex-reply(threadId, prompt)
@@ -20,6 +21,36 @@ Claude Code
   ├── Bash → codex exec review [--uncommitted | --base BRANCH]
   └── Bash → codex cloud [exec | list | apply]
 ```
+
+## MCP 서버 설정
+
+`~/.claude/settings.json`의 `mcpServers`:
+
+```json
+"codex": {
+  "command": "codex",
+  "args": ["mcp-server"]
+}
+```
+
+### 노출 도구
+
+| 도구 | 설명 | 필수 파라미터 |
+| :--- | :--- | :--- |
+| `codex` | 새 Codex 세션 시작 | `prompt` |
+| `codex-reply` | 기존 세션 continuation | `prompt`, `threadId` |
+
+### codex 도구 파라미터
+
+| 파라미터 | 타입 | 설명 |
+| :--- | :--- | :--- |
+| `prompt` | string (필수) | 초기 프롬프트 |
+| `model` | string | 모델 오버라이드 |
+| `sandbox` | enum | `read-only`, `workspace-write`, `danger-full-access` |
+| `approval-policy` | enum | `untrusted`, `on-failure`, `on-request`, `never` |
+| `cwd` | string | 작업 디렉토리 |
+| `developer-instructions` | string | 커스텀 지시사항 |
+| `config` | object | config.toml 오버라이드 |
 
 ## 라우팅 규칙
 
@@ -34,19 +65,29 @@ Claude Code
 
 ## 사용 가능 모델
 
-| 모델 | 용도 |
-| :--- | :--- |
-| `gpt-5.5` | 기본, 복잡한 분석/설계 |
-| `gpt-5.4` | 표준 코딩 작업 |
-| `gpt-5.4-mini` | 빠른 검증, 가벼운 작업 |
-| `gpt-5.3-codex` | 코드 특화 작업 |
-| `gpt-5.2` | 경량 작업 |
+| 모델 | 특성 | Claude 호출 시 사용 |
+| :--- | :--- | :--- |
+| `gpt-5.5` | 최고 성능 | config.toml 기본값, 교차 검증/리뷰 |
+| `gpt-5.4` | 고성능 범용 | 고성능 작업 필요시 |
+| `gpt-5.4-mini` | 빠른/가성비 | 빠른 탐색/조회 |
+| `gpt-5.3-codex` | 코딩 특화 | 코드 작성/실행 |
+| `gpt-5.2` | 경량 | 가벼운 작업 |
 
-## 기본 파라미터
+## 사용 패턴별 정책
 
-- **모델**: 기본 `gpt-5.5`, 호출 시 상기 모델 중 선택 가능
-- **샌드박스**: `workspace-write`
-- **승인 정책**: `on-failure`
+| 목적 | 도구 | model | sandbox | approval-policy |
+| :--- | :--- | :--- | :--- | :--- |
+| 코드 작성/실행 | `codex` | gpt-5.3-codex | workspace-write | on-failure |
+| 교차 검증/리뷰 | `codex` | (기본 gpt-5.5) | read-only | - |
+| 코드 탐색 | `codex` | gpt-5.4-mini | read-only | - |
+| 대화 이어가기 | `codex-reply` | (세션 모델 유지) | (세션 설정 유지) | - |
+
+## 제약사항
+
+- `codex mcp-server`는 stdio 프로토콜 사용 — Claude Code 세션당 1개 프로세스
+- 각 `codex` 호출은 독립 세션 — `codex-reply`로만 대화 유지 가능
+- ChatGPT PRO 구독 모델만 사용 가능 (GPT-5.4 Pro 등은 제외)
+- NixOS(mo)에서는 PATH에 `/run/current-system/sw/bin/codex` 필요
 
 ## 변경 사항
 
