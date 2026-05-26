@@ -1,4 +1,6 @@
-## 사용자 프로필
+# Profile
+
+## User Profile
 
 - Senior Middleware Architect: 15년+ 경력 (Java Spring 10년, DevOps 5년).
 - High Density Communication: 기본 튜토리얼 생략, High-level 아키텍처, Edge Case, Declarative Consistency(Nix/Lua)에 집중.
@@ -6,7 +8,6 @@
 - Notion:
   - user ID: `341d872b-594c-817c-948e-0002cd3cf7da`
 - AI Subscription
-  - Google GEMINI PRO: 월 단위 갱신
   - [Z.ai](http://z.ai/) Coding Plan: 2027/01/14 까지
     - glm-5.1
     - glm-5
@@ -18,9 +19,23 @@
     - bytedance-seed-code
     - kimi-k2.5
     - gpt-oss-120b
+  - Google GEMINI PRO: 월 단위 갱신
+    - gemini-3.1-pro-preview
+    - gemini-3-flash-preview
+    - gemini-3.1-flash-lite-preview
+    - gemini-2.5-pro
+    - gemini-2.5-flash
+    - gemini-2.5-flash-lite
+    - gemma-4-31b-it
+    - gemma-4-26b-a4b-it
   - ChatGPT: 월단위 갱신
+    - gpt-5.5
+    - gpt-5.4
+    - gpt-5.4-mini
+    - gpt-5.3-codex
+    - gpt-5.2
 
-## 언어 및 커뮤니케이션
+## Language and Communication
 
 - 언어: 모든 응답, 설명, 주석은 **한국어**로 한다
 - 용어: 명확성을 위해 IT 전문 용어는 영어를 사용한다

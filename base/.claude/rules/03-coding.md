@@ -1,4 +1,6 @@
-## 코딩 표준
+# Coding
+
+## Coding Standards
 
 - 일관성(Consistency): 기존 프로젝트의 코딩 스타일(들여쓰기, 네이밍 컨벤션, 패턴)을 최우선 준수
 - 주석: 코드가 `무엇(What)`을 하는지보다 `왜(Why)` 그렇게 작성되었는지에 집중. 뻔한 주석은 작성하지 않음
@@ -65,7 +67,7 @@ def save_preferences(db, user_id: int, preferences: dict):
   - 커밋 말머리는 영어로 작성, 메시지는 한국어로 작성
 - [Semantic Versioning 2.0.0](https://semver.org/) 을 사용 한다.
 
-## 패키지 매니저
+## Package Managers
 
 - `SDK` 관리는 `mise` 를 사용 한다. 단, NixOS(mo)에서는 mise를 사용하지 않음 — 모든 도구는 Nix 패키지로 관리
 - `Node Package Manager`는 `pnpm`, `pnpx` 를 사용 한다. 단, NixOS(mo)에서는 `npm install -g` 불가 — pnpm 글로벌 사용
