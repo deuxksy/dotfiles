@@ -10,7 +10,34 @@
 
 ---
 
-### Task 1: 규칙 파일 stow 배포
+### Task 1: 권한 자동 승인 추가
+
+**Files:**
+- Modify: `~/.claude/settings.local.json` — `permissions.allow` 배열에 항목 추가
+
+- [ ] **Step 1: settings.local.json에 codex 권한 추가**
+
+`~/.claude/settings.local.json`의 `"permissions"` → `"allow"` 배열 끝에 추가:
+
+```json
+"mcp__codex__*"
+```
+
+- [ ] **Step 2: JSON 유효성 검증**
+
+```bash
+python3 -c "import json; json.load(open('$HOME/.claude/settings.local.json')); print('valid')"
+```
+
+Expected: `valid`
+
+- [ ] **Step 3: 권한 동작 확인**
+
+Claude Code 재시작 후 `codex` 도구 호출 시 권한 프롬프트 없이 자동 승인되는지 확인.
+
+---
+
+### Task 2: 규칙 파일 stow 배포
 
 **Files:**
 - Deployed: `~/.claude/rules/05-multi-agent.md` (from `base/.claude/rules/05-multi-agent.md`)
@@ -31,10 +58,10 @@ Expected: symlink → `/Users/crong/git/dotfiles/base/.claude/rules/05-multi-age
 
 ---
 
-### Task 2: Codex AGENTS.md에 Claude 위임 컨텍스트 추가
+### Task 3: Codex AGENTS.md에 Claude 위임 컨텍스트 추가
 
 **Files:**
-- Modify: `axiom/.codex/AGENTS.md:91-92` (파일 끝에 섹션 추가)
+- Modify: `axiom/.codex/AGENTS.md` (파일 끝에 섹션 추가)
 
 - [ ] **Step 1: Claude→Codex 위임 컨텍스트 섹션 추가**
 
@@ -64,7 +91,7 @@ Claude Code에서 MCP/Bash로 위임된 작업을 수행할 때 참고.
 
 ### Claude Code와의 협업 규칙
 
-- Claude에서 위임된 작업은 해당 프로젝트의 코딩 표준(rules/04-coding-standard.md) 준수
+- Claude에서 위임된 작업은 해당 프로젝트의 코딩 표준 준수
 - 결과는 간결하게 요약하여 반환 (불필요한 설명 생략)
 - 파일 수정 시 변경 사항을 명확히 표시
 ```
@@ -86,7 +113,7 @@ git commit -m "feat(codex): add Claude delegation context to AGENTS.md"
 
 ---
 
-### Task 3: MCP 경로 검증 — codex 도구 호출
+### Task 4: MCP 경로 검증 — 모델별 도구 호출
 
 **Files:** 없음 (기능 검증만)
 
@@ -98,29 +125,43 @@ printf '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion
 
 Expected: `codex`와 `codex-reply` 두 도구가 포함된 JSON 응답
 
-- [ ] **Step 2: Claude Code에서 MCP 도구 호출 테스트**
-
-Claude Code 세션에서 다음 호출 수행:
+- [ ] **Step 2: 기본 모델(gpt-5.5) 리뷰 테스트**
 
 ```
-mcp__codex__codex(prompt="echo hello world를 출력하는 Python 스크립트를 작성해줘", model="gpt-5.4-mini", sandbox="workspace-write", approval-policy="on-failure")
+mcp__codex__codex(prompt="Review this code: def add(a, b): return a + b", sandbox="read-only")
 ```
 
-Expected: `threadId`와 `content`가 포함된 응답
+Expected: config.toml 기본값 gpt-5.5로 응답, threadId와 content 포함
 
-- [ ] **Step 3: codex-reply로 후속 질문 테스트**
-
-Step 2에서 받은 `threadId`를 사용:
+- [ ] **Step 3: 코딩 특화 모델(gpt-5.3-codex) 테스트**
 
 ```
-mcp__codex__codex-reply(threadId="<step2의 threadId>", prompt="이 코드에 타입 힌트를 추가해줘")
+mcp__codex__codex(prompt="Write a Python function to reverse a linked list", model="gpt-5.3-codex", sandbox="workspace-write", approval-policy="on-failure")
 ```
 
-Expected: 동일 `threadId`로 후속 응답 반환
+Expected: gpt-5.3-codex 모델로 코드 응답
+
+- [ ] **Step 4: 경량 모델(gpt-5.4-mini) 탐색 테스트**
+
+```
+mcp__codex__codex(prompt="What does this project do?", model="gpt-5.4-mini", sandbox="read-only")
+```
+
+Expected: gpt-5.4-mini로 빠른 응답
+
+- [ ] **Step 5: codex-reply 대화 continuation 테스트**
+
+Step 2에서 반환된 threadId를 사용:
+
+```
+mcp__codex__codex-reply(threadId="<Step 2의 threadId>", prompt="Can you elaborate on edge cases?")
+```
+
+Expected: 같은 세션 컨텍스트에서 이어서 응답
 
 ---
 
-### Task 4: Bash 경로 검증 — codex exec review
+### Task 5: Bash 경로 검증 — codex exec review
 
 **Files:** 없음 (기능 검증만)
 
@@ -142,21 +183,11 @@ Expected: uncommitted 변경사항에 대한 리뷰 결과
 
 ---
 
-### Task 5: User Rules Index 업데이트
+### Task 6: 최종 상태 확인 및 커밋
 
-**Files:**
-- Modify: `base/.claude/rules/05-multi-agent.md` (이미 작성됨, 확인만)
-- Verify: `base/.claude/CLAUDE.md` 또는 프로젝트 CLAUDE.md의 Rules Index 테이블
+**Files:** 없음 (상태 확인만)
 
-- [ ] **Step 1: 프로젝트 CLAUDE.md Rules Index에 10번 항목 추가 여부 확인**
-
-```bash
-grep "05-multi-agent\|10.*다중" /Users/crong/git/dotfiles/CLAUDE.md /Users/crong/git/dotfiles/base/.claude/CLAUDE.md 2>/dev/null
-```
-
-Expected: 아직 미존재. stow 배포 시 `~/.claude/rules/05-multi-agent.md`가 자동으로 Claude Code에 로드됨 (CLAUDE.md 인덱스 수동 업데이트 불필요 — Claude Code가 `~/.claude/rules/` 디렉토리를 자동 스캔)
-
-- [ ] **Step 2: 최종 상태 확인**
+- [ ] **Step 1: 전체 상태 확인**
 
 ```bash
 echo "=== MCP 서버 등록 ==="
@@ -167,11 +198,14 @@ ls -la ~/.claude/rules/05-multi-agent.md
 
 echo "=== Codex AGENTS.md 위임 섹션 ==="
 grep -c "Claude.*Codex.*위임" /Users/crong/git/dotfiles/axiom/.codex/AGENTS.md
+
+echo "=== 권한 승인 ==="
+grep "mcp__codex" ~/.claude/settings.local.json
 ```
 
-Expected: MCP 서버 등록됨, 규칙 파일 symlink 존재, AGENTS.md에 위임 섹션 포함(1 이상)
+Expected: MCP 서버 등록됨, 규칙 파일 symlink 존재, AGENTS.md에 위임 섹션 포함(1 이상), 권한 승인 항목 존재
 
-- [ ] **Step 3: 최종 커밋 (검증 통과 시)**
+- [ ] **Step 2: 최종 커밋 (검증 통과 시)**
 
 ```bash
 git add -A && git status --short
