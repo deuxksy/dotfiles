@@ -1,7 +1,7 @@
 # Markdown and Mermaid
 
 - [Markdown Spec](https://github.github.com/gfm/)을 참조해서 문서를 작성한다.
-  - Table 생성시 항상 좌측 정렬하고 ` :--- ` 3개만 사용한다.
+  - Table 생성시 항상 좌측 정렬하고 ` :--- ` 3개만 사용 한다.
   - `Fenced Code Block` 의 Info String 에 특별히 정의 하지 않는 경우 `text` 로 사용 한다.
   - **목차(TOC)**: 제목(`#`)과 첫 섹션(`##`) 사이에 배치. 문서 길이에 따라 방식 선택:
     - ~150줄: 제목 밑 리스트 (`- [섹션명](#섹션명)`)
@@ -31,3 +31,21 @@
 - 프로젝트 구조, 기술 스택 등은 필요 최소한만 유지
 - **최신 정보는 항상 Notion에 있어야 한다**. 로컬 문서는 참조용 캐시
 - **문서 간 중복 금지**. 동일한 내용이 여러 파일에 있으면 안 된다. 한 곳을 Source of Truth로 정하고 나머지는 링크로 참조
+
+# Work-Log 관리
+
+- **중앙 repo**: `C:\Users\deuxk\git\KyoLim-Labs\work-log` (독립 git repo, Windows 환경 전용)
+- **구조**: `YY주차/MMDD.md` (같은 날 다른 작업은 `MMDD-{task}.md`)
+- **Symlink**: 각 프로젝트 `docs/work-log/` → 중앙 repo (`.gitignore`에 `docs/work-log/` 추가)
+- **기록 시점**: 작업 완료 후 일일 세션 로그 작성
+- **Notion 업데이트**: 개인 작업 기록(주차 페이지)에 일일 요약 반영
+- **팀 보고**: 사용자 요청 시(보통 금요일) 해당 주차 작업을 팀 주간 업무 보고에 작성
+- **상세 URL**: Claude Memory `reference_notion_work-log.md` 참조
+
+## Notion 갱신 원칙
+
+- **추가 원칙(Additive Update)**: 주차별 링크 등 기존 목록을 갱신할 때는 **추가(Append)만** 한다. 전체 덮어쓰기(Overwrite) 금지
+- **작업 순서**:
+  1. Notion에서 현재 하위 페이지 목록을 fetch
+  2. README.md의 기존 항목과 비교하여 누락된 항목만 식별
+  3. 누락된 항목만 `Edit`으로 추가

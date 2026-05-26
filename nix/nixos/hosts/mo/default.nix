@@ -119,7 +119,7 @@
   environment.systemPackages = with pkgs; [
     age aria2 atuin awscli2
     bat bind bottom btop
-    cargo chafa claude-code codex curl
+    cargo chafa claude-code codex curl gemini-cli
     delta direnv dust duf
     espeak-ng eza
     fastfetch fd ffmpeg fzf

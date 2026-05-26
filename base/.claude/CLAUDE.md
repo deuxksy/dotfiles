@@ -79,13 +79,8 @@ Say "setup omc" or run `/oh-my-claudecode:omc-setup`.
 
 | # | 파일 | 내용 |
 | :--- | :--- | :--- |
-| 00 | [user-profile](rules/00-user-profile.md) | 사용자 프로필, 글로벌 원칙 |
-| 01 | [language-communication](rules/01-language-communication.md) | 언어, 어조, 3-Options |
-| 02 | [verification-protocol](rules/02-verification-protocol.md) | Negative Premise, Ground Truth, 3-Strike |
-| 03 | [documentation](rules/03-documentation.md) | Markdown, Mermaid |
-| 04 | [coding-standard](rules/04-coding-standard.md) | 코딩 표준, 라이브러리, Context7 |
-| 05 | [operations-safety](rules/05-operations-safety.md) | 운영, 안전, 파일 경로 |
-| 06 | [git](rules/06-git.md) | Git, Conventional Commits, SemVer |
-| 07 | [package-manager](rules/07-package-manager.md) | mise, pnpm, uv |
-| 08 | [problem-solving](rules/08-problem-solving.md) | 문제 해결 프로세스 9단계 |
-| 09 | [work-log](rules/09-work-log.md) | Work-Log 관리, Notion 연동 |
+| 00 | [profile](rules/00-profile.md) | 사용자 프로필, 언어, 어조 |
+| 01 | [operations](rules/01-operations.md) | 운영 안전, 권한, 파일 경로 |
+| 02 | [verification](rules/02-verification.md) | 검증 프로토콜, 문제 해결 |
+| 03 | [coding](rules/03-coding.md) | 코딩 표준, Git, 패키지 매니저 |
+| 04 | [documentation](rules/04-documentation.md) | Markdown, Mermaid, Work-Log |
