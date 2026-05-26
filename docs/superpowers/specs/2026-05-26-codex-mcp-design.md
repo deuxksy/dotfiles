@@ -42,11 +42,39 @@ Claude Code
 | `gpt-5.3-codex` | 코드 특화 작업 |
 | `gpt-5.2` | 경량 작업 |
 
-## 기본 파라미터
+## 노출 도구 (MCP 경로)
+
+| 도구 | 설명 | 필수 파라미터 |
+| :--- | :--- | :--- |
+| `codex` | 새 Codex 세션 시작 | `prompt` |
+| `codex-reply` | 기존 세션 continuation | `prompt`, `threadId` |
+
+### codex 도구 파라미터
+
+| 파라미터 | 타입 | 설명 |
+| :--- | :--- | :--- |
+| `prompt` | string (필수) | 초기 프롬프트 |
+| `model` | string | 모델 오버라이드 (기본: gpt-5.5) |
+| `sandbox` | enum | `read-only`, `workspace-write`, `danger-full-access` |
+| `approval-policy` | enum | `untrusted`, `on-failure`, `on-request`, `never` |
+| `cwd` | string | 작업 디렉토리 |
+| `developer-instructions` | string | 커스텀 지시사항 |
+| `config` | object | config.toml 오버라이드 |
+
+### 기본 파라미터
 
 - **모델**: 기본 `gpt-5.5`, 호출 시 상기 모델 중 선택 가능
 - **샌드박스**: `workspace-write`
 - **승인 정책**: `on-failure`
+
+### 목적별 파라미터 조합
+
+| 목적 | model | sandbox | approval-policy |
+| :--- | :--- | :--- | :--- |
+| 코드 작성/실행 | gpt-5.3-codex | workspace-write | on-failure |
+| 교차 검증/리뷰 | (기본 gpt-5.5) | read-only | - |
+| 코드 탐색 | gpt-5.4-mini | read-only | - |
+| 대화 이어가기 | (세션 모델 유지) | (세션 설정 유지) | - |
 
 ## 변경 사항
 
