@@ -34,6 +34,22 @@ Codex PRO 구독(gpt-5.5)을 Claude Code의 서브 에이전트로 활용.
 2. **교차 비교**: 동일 프롬프트를 양쪽에 실행 → 결과 비교/분석
 3. **PR 리뷰**: `codex exec review --uncommitted`로 변경사항 자동 리뷰
 
+### Gemini CLI
+
+- Google Gemini CLI로 코드 생성, 분석, 검증
+- 모델: `gemini-3.1-pro-preview` (기본), 하기 모델 중 상황에 맞게 선택
+
+| 모델 | 용도 |
+| :--- | :--- |
+| `gemini-3.1-pro-preview` | 기본, 복잡한 분석/설계 |
+| `gemini-3-flash-preview` | 빠른 검증, 가벼운 작업 |
+| `gemini-3.1-flash-lite-preview` | 경량 작업 |
+| `gemini-2.5-pro` | 표준 작업 |
+| `gemini-2.5-flash` | 빠른 코딩 작업 |
+| `gemini-2.5-flash-lite` | 경량 코딩 |
+| `gemma-4-31b-it` | 오픈모델 작업 |
+| `gemma-4-26b-a4b-it` | 경량 오픈모델 |
+
 ### K8sGPT
 
 - MCP 서버(`k8sgpt serve --mcp --mcp-port 34089`)로 K8s 리소스 분석

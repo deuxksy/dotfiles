@@ -28,12 +28,7 @@
     - gemini-2.5-flash-lite
     - gemma-4-31b-it
     - gemma-4-26b-a4b-it
-  - ChatGPT: 월단위 갱신
-    - gpt-5.5
-    - gpt-5.4
-    - gpt-5.4-mini
-    - gpt-5.3-codex
-    - gpt-5.2
+  - ChatGPT: 월단위 갱신 (모델은 05-multi-agent 참조)
 
 ## Language and Communication
 
