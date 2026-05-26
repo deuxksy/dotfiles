@@ -44,8 +44,13 @@ hermes config show   # CLI 모드 설정 확인
 - `nix/nixos/hosts/mo/hermes.nix` — hermes-agent NixOS 서비스 + sops secret
 - `nix/nixos/secrets/hermes.yaml` — sops 암호화 (ANTHROPIC_API_KEY, TELEGRAM_BOT_TOKEN)
 - `mo/.hermes/config.yaml` — hermes CLI config (stow 배포)
-- `base/.claude/rules/`에 5개 규칙 파일 (00~04) — profile, operations, verification, coding, documentation
+- `base/.claude/rules/`에 6개 규칙 파일 (00~05) — profile, operations, verification, coding, documentation, multi-agent
 - `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
+
+## Key Files (axiom/macOS)
+
+- `axiom/Brewfile` — macOS 패키지 정의 (stow 배포 후 `brew bundle`로 설치)
+- `axiom/.codex/config.toml` — Codex CLI 설정
 
 ## Gotchas
 
@@ -56,6 +61,4 @@ hermes config show   # CLI 모드 설정 확인
 - Brewfile은 각 호스트 패키지 폴더에 위치 (`axiom/Brewfile`, `eve/Brewfile`)
 - `base/.claude/.omc/hud-config.json` — OMC HUD 설정 (stow로 연결)
 - hermes-agent: built-in `anthropic` provider는 `ANTHROPIC_BASE_URL` 무시 — `custom_providers` + `api_mode: anthropic_messages` 필수 (Tailscale Aperture 등 프록시 사용 시)
-- hermes-agent: model명의 점(.)을 하이픈(-)로 자동 변환 — 점 없는 모델명 사용 (예: `glm-5-turbo`)
-- hermes-agent: API key는 sops secret(`secrets/hermes.yaml`)에서만 관리, `hermes.nix` `environment`에 평문 금지
-- hermes-agent: CLI config(`~/.hermes/config.yaml`)와 gateway config(`/var/lib/hermes/.hermes/config.yaml`)는 독립적 — 둘 다 `custom_providers` 설정 필요
+- hermes-agent: model명 점→하이픈 변환, API key는 sops only, CLI/gateway config 독립 (상세는 mo/.hermes/ 참조)

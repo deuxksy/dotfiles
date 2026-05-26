@@ -84,3 +84,4 @@ Say "setup omc" or run `/oh-my-claudecode:omc-setup`.
 | 02 | [verification](rules/02-verification.md) | 검증 프로토콜, 문제 해결 |
 | 03 | [coding](rules/03-coding.md) | 코딩 표준, Git, 패키지 매니저 |
 | 04 | [documentation](rules/04-documentation.md) | Markdown, Mermaid, Work-Log |
+| 05 | [multi-agent](rules/05-multi-agent.md) | Codex, Gemini CLI, K8sGPT, Holmes, Serena |
