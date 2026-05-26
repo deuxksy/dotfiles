@@ -10,9 +10,19 @@ Codex PRO 구독(gpt-5.5)을 Claude Code의 서브 에이전트로 활용.
 - **Bash** (`codex exec`): 일회성 코드 생성, PR 리뷰(`codex exec review --uncommitted` 또는 `--base BRANCH`)
 - **Bash** (`codex cloud`): Cloud 태스크 제출/조회/적용
 
+### 사용 가능 모델
+
+| 모델 | 용도 |
+| :--- | :--- |
+| `gpt-5.5` | 기본, 복잡한 분석/설계 |
+| `gpt-5.4` | 표준 코딩 작업 |
+| `gpt-5.4-mini` | 빠른 검증, 가벼운 작업 |
+| `gpt-5.3-codex` | 코드 특화 작업 |
+| `gpt-5.2` | 경량 작업 |
+
 ### 기본 파라미터
 
-- 모델: `gpt-5.5` (필요시 호출에서 오버라이드)
+- 모델: `gpt-5.5` (상기 모델 중 상황에 맞게 선택)
 - 샌드박스: `workspace-write`
 - 승인 정책: `on-failure`
 
