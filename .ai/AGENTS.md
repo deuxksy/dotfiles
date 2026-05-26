@@ -2,6 +2,17 @@
 
 Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware/Install → [README.md](README.md)
 
+## Hosts
+
+| Host | OS | Role | 패키지 관리 |
+| :--- | :--- | :--- | :--- |
+| mo | NixOS | 개발 워크스테이션 | nix, flake |
+| axiom | macOS | 개발/일상 | Brewfile |
+| eve | macOS | 개발/일상 | Brewfile |
+| girl | SteamOS | 게임/개발 | mise |
+| walle | Proxmox (Debian) | Homelab 서버 (K8s, VM) | 스크립트 |
+| ava | Windows 10 (Surface Pro 6) | SSH 클라이언트 | - |
+
 ## Commands
 
 ```bash
@@ -33,7 +44,7 @@ hermes config show   # CLI 모드 설정 확인
 - `nix/nixos/hosts/mo/hermes.nix` — hermes-agent NixOS 서비스 + sops secret
 - `nix/nixos/secrets/hermes.yaml` — sops 암호화 (ANTHROPIC_API_KEY, TELEGRAM_BOT_TOKEN)
 - `mo/.hermes/config.yaml` — hermes CLI config (stow 배포)
-- `base/.claude/rules/`에 10개 규칙 파일 (00~09)
+- `base/.claude/rules/`에 5개 규칙 파일 (00~04) — profile, operations, verification, coding, documentation
 - `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
 
 ## Gotchas
