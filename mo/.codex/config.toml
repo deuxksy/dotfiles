@@ -1,3 +1,12 @@
+# oh-my-codex top-level settings (must be before any [table])
+notify = ["node", "/home/crong/.local/share/pnpm/store/v11/links/@/oh-my-codex/0.18.3/1e1e1ac7043bf76235fe49ace1a50b7c2d47df2652ad6c53cc9b29a2527e3e4a/node_modules/oh-my-codex/dist/scripts/notify-hook.js"]
+model_reasoning_effort = "medium"
+developer_instructions = "You have oh-my-codex installed. AGENTS.md is the orchestration brain and main control surface. Follow AGENTS.md for skill/keyword routing, $name workflow invocation, and role-specialized subagents. Use outcome-first, concise progress updates: state the target result, constraints, validation evidence, and stop condition before adding process detail. Native subagents live in .codex/agents and may handle independent parallel subtasks within one Codex session or team pane. Skills load from .codex/skills, not native-agent TOMLs. Treat installed prompts as narrower execution surfaces under AGENTS.md authority."
+# oh-my-codex seeded behavioral defaults (uninstall removes unchanged defaults)
+model_context_window = 250000
+model_auto_compact_token_limit = 200000
+# End oh-my-codex seeded behavioral defaults
+
 # Codex user configuration managed by dotfiles.
 # This is the closest Codex equivalent to Claude Code's
 # `.claude/settings.local.json`: tool behavior, sandboxing, MCP servers,
@@ -7,7 +16,6 @@ personality = "pragmatic"
 sandbox_mode = "workspace-write"
 approval_policy = "on-request"
 model = "gpt-5.5"
-model_reasoning_effort = "medium"
 
 [mcp_servers.serena]
 command = "serena"
@@ -110,25 +118,25 @@ trust_level = "trusted"
 inherit = "core"
 
 [tui]
-status_line = [
-    "model-with-reasoning",
-    "current-dir",
-    "project-name",
-    "git-branch",
-    "branch-changes",
-    "run-state",
-    "permissions",
-    "approval-mode",
-    "context-used",
-    "five-hour-limit",
-    "weekly-limit",
-    "context-window-size",
-    "used-tokens",
-    "fast-mode",
-    "raw-output",
-    "task-progress",
-]
 status_line_use_colors = true
+status_line = [
+"model-with-reasoning",
+"current-dir",
+"project-name",
+"git-branch",
+"branch-changes",
+"run-state",
+"permissions",
+"approval-mode",
+"context-used",
+"five-hour-limit",
+"weekly-limit",
+"context-window-size",
+"used-tokens",
+"fast-mode",
+"raw-output",
+"task-progress",
+]
 
 [tui.model_availability_nux]
 "gpt-5.5" = 4
@@ -144,65 +152,47 @@ keepRemoteControlAwakeWhilePluggedIn = true
 [features]
 js_repl = false
 
+multi_agent = true
+child_agents_md = true
+hooks = true
+goals = true
 [hooks.state]
 
 [hooks.state."/home/crong/.codex/hooks.json:post_compact:0:0"]
-trusted_hash = "sha256:f64a09a8aa1e2aaef664a7cbaaaaea5ffce214c7c2fb12155d0fdce5fcd29922"
+trusted_hash = "sha256:3b441ed8f615c67b62efbe46416d3bf477ff21bd12f7d47186f9bcee07f6b31e"
 
 [hooks.state."/home/crong/.codex/hooks.json:post_tool_use:0:0"]
-trusted_hash = "sha256:f3eabed128e575a0f484c300106d3eb44b51b0e1bbee1c77cd0620ac9ed2c069"
+trusted_hash = "sha256:3f76038a860e421bafb382dacd4227bbec91b6e8946fb78f35522ab709a6cd9c"
 
-<<<<<<<< HEAD:axiom/.codex/config.toml
 [hooks.state."/Users/crong/.codex/hooks.json:session_start:0:0"]
 trusted_hash = "sha256:8538bd245a93825c7c726b9dc62357bd6ccf591fa604cd7e270583c143b9ced6"
 
-# BEGIN OMC MANAGED MCP REGISTRY
-
-[mcp_servers.web-reader]
-url = "https://api.z.ai/api/mcp/web_reader/mcp"
-type = "http"
-
-[mcp_servers.web-reader.headers]
-Authorization = "Bearer 366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr"
-
-[mcp_servers.web-search-prime]
-url = "https://api.z.ai/api/mcp/web_search_prime/mcp"
-type = "http"
-
-[mcp_servers.web-search-prime.headers]
-Authorization = "Bearer 366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr"
-
-[mcp_servers.zai-mcp-server]
-command = "npx"
-args = ["-y", "@z_ai/mcp-server"]
-type = "stdio"
-env = { Z_AI_API_KEY = "366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr", Z_AI_MODE = "ZAI" }
-startup_timeout_sec = 15
-
-[mcp_servers.zread]
-url = "https://api.z.ai/api/mcp/zread/mcp"
-type = "http"
-
-[mcp_servers.zread.headers]
-Authorization = "Bearer 366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr"
-
-# END OMC MANAGED MCP REGISTRY
-|||||||| 1ce67bf:base/.codex/config.toml
-[hooks.state."/Users/crong/.codex/hooks.json:session_start:0:0"]
-trusted_hash = "sha256:8538bd245a93825c7c726b9dc62357bd6ccf591fa604cd7e270583c143b9ced6"
-========
 [hooks.state."/home/crong/.codex/hooks.json:pre_compact:0:0"]
-trusted_hash = "sha256:bdac8014e5bf6163d34198345b242631d2e4ac6c9037316e21be8dc9a6b09b71"
+trusted_hash = "sha256:9dae4e4b6b69c2567fa6ad54e051aeeea149590bd79edf9c49584091e292bdf8"
 
 [hooks.state."/home/crong/.codex/hooks.json:pre_tool_use:0:0"]
-trusted_hash = "sha256:b96ce591872530eef22970a763c0e93b729beaa75ea1a0620ca781bf99de6a02"
+trusted_hash = "sha256:23b7dc0ac7980eac85716f522f9ea3cd618d34227dc0a0eccf369ce68d60e171"
 
 [hooks.state."/home/crong/.codex/hooks.json:session_start:0:0"]
-trusted_hash = "sha256:d35ec7b70f50c891abdf91423250d47619999eb301015344ff7498ce77195b47"
+trusted_hash = "sha256:16df3b334a184f1eaf29d89620b3f29d2ac1ca60160fe55733d9533c869b63f8"
 
 [hooks.state."/home/crong/.codex/hooks.json:stop:0:0"]
-trusted_hash = "sha256:9120781b13080ecbbc0467df8e71519ec5d5a183b9ff68947d6e86eb50e4cda8"
+trusted_hash = "sha256:a0b46156f364c538da7ea9c4e898cb64ad94c8dac0cadb2409a654e0644e08f7"
 
 [hooks.state."/home/crong/.codex/hooks.json:user_prompt_submit:0:0"]
-trusted_hash = "sha256:76d8f20e42361002b24fc3395e2ab10fa26dedbd7de77d231b4c6c0cfca4c35f"
->>>>>>>> a46a8c7665f1352065ef3e583cdbe1b9ed383321:mo/.codex/config.toml
+trusted_hash = "sha256:6d7d09b3543306ac13f9bb49e19a29ef17659a2eebae2cc405db17583858cf9c"
+
+[shell_environment_policy.set]
+USE_OMX_EXPLORE_CMD = "1"
+
+[agents]
+max_threads = 6
+max_depth = 2
+
+# ============================================================
+# oh-my-codex (OMX) Configuration
+# Managed by omx setup - manual edits preserved on next setup
+# ============================================================
+
+# ============================================================
+# End oh-my-codex
