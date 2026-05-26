@@ -50,7 +50,8 @@ hermes config show   # CLI 모드 설정 확인
 ## Key Files (axiom/macOS)
 
 - `axiom/Brewfile` — macOS 패키지 정의 (stow 배포 후 `brew bundle`로 설치)
-- `base/.codex/config.toml` — Codex CLI 설정 (stow 배포)
+- `axiom/.codex/config.toml` — Codex CLI 호스트별 설정 (stow 배포)
+- `base/.codex/AGENTS.md` — Codex 공통 에이전트 설정 (전 호스트 공유)
 
 ## Gotchas
 

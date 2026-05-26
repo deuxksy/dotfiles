@@ -125,7 +125,7 @@ status_line = [
 status_line_use_colors = true
 
 [tui.model_availability_nux]
-"gpt-5.5" = 2
+"gpt-5.5" = 4
 
 [sandbox_workspace_write]
 network_access = true
@@ -148,3 +148,35 @@ trusted_hash = "sha256:10588fe6692f3bff460dedec905aac6efc128782bdcd5d7f65b42467f
 
 [hooks.state."/Users/crong/.codex/hooks.json:session_start:0:0"]
 trusted_hash = "sha256:8538bd245a93825c7c726b9dc62357bd6ccf591fa604cd7e270583c143b9ced6"
+
+# BEGIN OMC MANAGED MCP REGISTRY
+
+[mcp_servers.web-reader]
+url = "https://api.z.ai/api/mcp/web_reader/mcp"
+type = "http"
+
+[mcp_servers.web-reader.headers]
+Authorization = "Bearer 366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr"
+
+[mcp_servers.web-search-prime]
+url = "https://api.z.ai/api/mcp/web_search_prime/mcp"
+type = "http"
+
+[mcp_servers.web-search-prime.headers]
+Authorization = "Bearer 366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr"
+
+[mcp_servers.zai-mcp-server]
+command = "npx"
+args = ["-y", "@z_ai/mcp-server"]
+type = "stdio"
+env = { Z_AI_API_KEY = "366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr", Z_AI_MODE = "ZAI" }
+startup_timeout_sec = 15
+
+[mcp_servers.zread]
+url = "https://api.z.ai/api/mcp/zread/mcp"
+type = "http"
+
+[mcp_servers.zread.headers]
+Authorization = "Bearer 366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr"
+
+# END OMC MANAGED MCP REGISTRY
