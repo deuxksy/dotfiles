@@ -1,6 +1,7 @@
 # Core CLI
 brew "git"
 brew "gh"
+brew "lazygit"
 brew "neovim"
 brew "tmux"
 brew "tmuxp"
