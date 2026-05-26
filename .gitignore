@@ -58,6 +58,9 @@ result
 !*/.Brewfile
 !*/.tool-versions
 
+# --- Secrets (plain text .env, tracked as .env.sops) ---
+mo/.hermes/.env
+
 # OpenClaw MCP config (API keys in headers)
 **/mcporter.json
 !settings.local.json

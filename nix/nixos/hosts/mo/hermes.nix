@@ -1,5 +1,19 @@
 { config, ... }:
 {
+  users.users.hermes = {
+    isSystemUser = true;
+    group = "hermes";
+    extraGroups = [ "wheel" ];
+  };
+
+  # hermes 서비스 실행 시에만 users 그룹 권한 부여
+  systemd.services.hermes-agent.serviceConfig.SupplementaryGroups = [ "users" ];
+
+  # /home/crong 그룹(users)에 읽기/실행 권한 보장
+  systemd.tmpfiles.rules = [
+    "d /home/crong 0750 crong users -"
+  ];
+
   sops.age.keyFile = "/home/crong/.config/sops/age/keys.txt";
 
   sops.secrets."hermes-env" = {
@@ -31,6 +45,9 @@
       terminal = {
         backend = "local";
         timeout = 180;
+      };
+      gateway = {
+        cwd = "/home/crong/git/hermes";
       };
       voice = {
         record_key = "ctrl+b";

@@ -1,5 +1,6 @@
 export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt"
 export KUBECONFIG="$HOME/.kube/ecoai.config"
+export HERMES_HOME="$HOME/.hermes"
 
 export TIME_STYLE='long-iso'
 export EDITOR='nvim'
@@ -7,7 +8,7 @@ export HISTSIZE=50000
 export HISTFILESIZE=50000
 export PNPM_HOME="$HOME/.local/share/pnpm"
 
-PATH="${PNPM_HOME}:${PATH}"
+PATH="${PNPM_HOME}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
 
 export PATH

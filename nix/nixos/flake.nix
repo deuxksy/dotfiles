@@ -20,6 +20,13 @@
     nixosConfigurations."mo" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
+        {
+          nixpkgs.overlays = [
+            (final: prev: {
+              pipx = prev.pipx.overridePythonAttrs { doCheck = false; };
+            })
+          ];
+        }
         ./hosts/mo/default.nix
         sops-nix.nixosModules.sops
         hermes-agent.nixosModules.default

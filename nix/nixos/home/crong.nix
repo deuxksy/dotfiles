@@ -85,14 +85,40 @@
 
   # SSH config
   home.file.".ssh/config".text = ''
-    Host *
-      LogLevel error
-      StrictHostKeyChecking no
-      ServerAliveInterval 120
-      ForwardAgent yes
-      AddKeysToAgent yes
-      Port 22
+    # --- EcoAI Jump Host ---
+    Host ecoai-jumphost
+      HostName ecoai-cluster-01
+      User kls
+      Port 20010
 
+    # --- Proxmox Nodes (Direct) ---
+    Host ecoai-cluster-01 ecoai-cluster-02 ecoai-cluster-03 ecoai-cluster-04 ecoai-cluster-05
+      User kls
+
+    Host ecoai-train-01 ecoai-train-02
+      User kls
+
+    # --- Infrastructure VMs (via Jump Host) ---
+    Host keco-mgmt-01 keco-haproxy-01 keco-haproxy-02
+      User kls
+      ProxyJump ecoai-jumphost
+
+    # --- K8s Masters (via Jump Host) ---
+    Host keco-master-01 keco-master-02 keco-master-03
+      User kls
+      ProxyJump ecoai-jumphost
+
+    # --- K8s Workers (via Jump Host) ---
+    Host keco-worker-01 keco-worker-02 keco-worker-03 keco-worker-04 keco-worker-gpu-01
+      User kls
+      ProxyJump ecoai-jumphost
+
+    # --- K8s Train (via Jump Host) ---
+    Host keco-train-01 keco-train-02
+      User kls
+      ProxyJump ecoai-jumphost
+
+    # --- Personal Hosts (Tailscale) ---
     Host axiom eve mo
       HostName %h.bun-bull.ts.net
       User crong
@@ -104,5 +130,15 @@
     Host arv steward
       HostName %h.bun-bull.ts.net
       User root
+
+    # --- Global Defaults ---
+    Host *
+      LogLevel error
+      StrictHostKeyChecking accept-new
+      ServerAliveInterval 120
+      ForwardAgent yes
+      AddKeysToAgent yes
+      IdentitiesOnly yes
+      IdentityFile ~/.ssh/id_ed25519
   '';
 }

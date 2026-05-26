@@ -57,3 +57,16 @@ def save_preferences(db, user_id: int, preferences: dict):
 # ❌ "로깅 추가해줘" 요청에 → 따옴표 ''→"" 변경, type hints 추가, docstring 추가, boolean 로직 변경
 # ✅ 기존 따옴표/스타일 그대로 유지하고 로깅만 추가
 ```
+
+# Git
+
+- 보안 점검: `git commit` 전 파일들에 보안 취약 확인
+- 커밋 메시지: [Conventional Commits](https://www.conventionalcommits.org) 따른다
+  - 커밋 말머리는 영어로 작성, 메시지는 한국어로 작성
+- [Semantic Versioning 2.0.0](https://semver.org/) 을 사용 한다.
+
+# 패키지 매니저
+
+- `SDK` 관리는 `mise` 를 사용 한다. 단, NixOS(mo)에서는 mise를 사용하지 않음 — 모든 도구는 Nix 패키지로 관리
+- `Node Package Manager`는 `pnpm`, `pnpx` 를 사용 한다. 단, NixOS(mo)에서는 `npm install -g` 불가 — pnpm 글로벌 사용
+- `Python Package Manager`는 `uv` 를 사용 한다.
