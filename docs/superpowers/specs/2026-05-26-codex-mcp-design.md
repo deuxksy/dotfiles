@@ -45,7 +45,7 @@ Claude Code (glm-5.1)
 | 파라미터 | 타입 | 설명 |
 | :--- | :--- | :--- |
 | `prompt` | string (필수) | 초기 프롬프트 |
-| `model` | string | 모델 오버라이드 |
+| `model` | string | 모델 오버라이드 (기본: gpt-5.5) |
 | `sandbox` | enum | `read-only`, `workspace-write`, `danger-full-access` |
 | `approval-policy` | enum | `untrusted`, `on-failure`, `on-request`, `never` |
 | `cwd` | string | 작업 디렉토리 |
