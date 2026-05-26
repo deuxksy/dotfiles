@@ -65,9 +65,10 @@ Say "setup omc" or run `/oh-my-Codex:omc-setup`.
 <!-- OMC:END -->
 
 <!-- User customizations -->
-# User Rules Index
 
-> KISS, YAGNI, DRY + Karpathy AI 개발 4원칙 준수. 상세 규칙은 `~/.Codex/rules/` 참조.
+# Core Principles
+
+> KISS, YAGNI, DRY + Karpathy AI 개발 4원칙 준수.
 >
 > 1. **KISS** — Keep It Simple, Stupid. 복잡하게 하지 말고 간단하게
 > 2. **YAGNI** — You Aren't Gonna Need It. 지금 필요 없는 건 만들지 마
@@ -77,20 +78,37 @@ Say "setup omc" or run `/oh-my-Codex:omc-setup`.
 > 6. **Surgical Changes** — 필요한 것만 건드림, 기존 스타일 유지
 > 7. **Goal-Driven Execution** — 검증 가능한 목표로 변환, TDD 루프
 
-| # | 파일 | 내용 |
-| :--- | :--- | :--- |
-| 00 | [user-profile](rules/00-user-profile.md) | 사용자 프로필, 글로벌 원칙 |
-| 01 | [language-communication](rules/01-language-communication.md) | 언어, 어조, 3-Options |
-| 02 | [verification-protocol](rules/02-verification-protocol.md) | Negative Premise, Ground Truth, 3-Strike |
-| 03 | [documentation](rules/03-documentation.md) | Markdown, Mermaid |
-| 04 | [coding-standard](rules/04-coding-standard.md) | 코딩 표준, 라이브러리, Context7 |
-| 05 | [operations-safety](rules/05-operations-safety.md) | 운영, 안전, 파일 경로 |
-| 06 | [git](rules/06-git.md) | Git, Conventional Commits, SemVer |
-| 07 | [package-manager](rules/07-package-manager.md) | mise, pnpm, uv |
-| 08 | [problem-solving](rules/08-problem-solving.md) | 문제 해결 프로세스 9단계 |
-| 09 | [work-log](rules/09-work-log.md) | Work-Log 관리, Notion 연동 |
+# Language and Communication
 
-## Claude → Codex 위임
+- 언어: 모든 응답, 설명, 주석은 **한국어**로 한다
+- 용어: IT 전문 용어는 영어 사용 (예: "의존성 주입(Dependency Injection)")
+- 어조: 간결(Concise), 전문적(Professional), 드라이(Dry). 미사여구 생략
+- 요약: 긴 설명 시 핵심을 먼저 TL;DR로 상단 배치
+- 3-Options: 모든 요청에 최소 3가지 아이디어를 번호와 함께 제시
+
+# Coding Standards
+
+- 일관성: 기존 프로젝트 코딩 스타일 최우선 준수
+- 주석: `무엇(What)`이 아닌 `왜(Why)`에 집중
+- Simplicity First: 요청받은 것만 구현, Speculative 기능/추상화 금지
+- Surgical Changes: 건드려야 할 것만 건드림, 인접 코드 "개선" 금지
+- 기존 스타일(들여쓰기, 따옴표, 네이밍)을 그대로 유지
+- Library/API 문서 필요 시 Context7 MCP 우선 사용
+
+# Git
+
+- 커밋 메시지: Conventional Commits, 말머리 영어, 본문 한국어
+- Semantic Versioning 2.0.0 사용
+
+# Package Managers
+
+- System Package Manager: `apt`, `dnf`, `brew`, `nix` 우선
+- SDK: `mise` (NixOS에서는 nix)
+- Node: `pnpm`, `pnpx`
+- Python: `uv`, `uvx`
+- 그 외: `~/.local/bin`에 수동 설치
+
+# Claude → Codex Delegation
 
 Claude Code에서 MCP/Bash로 위임된 작업을 수행할 때 참고.
 
