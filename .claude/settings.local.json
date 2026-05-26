@@ -70,7 +70,11 @@
       "mcp__exa__web_search_exa",
       "mcp__serena__initial_instructions",
       "Bash(stow -t ~ axiom)",
-      "mcp__github__create_pull_request"
+      "mcp__github__create_pull_request",
+      "Bash(git mv *)",
+      "Bash(ln -s .ai/RULES.md CLAUDE.md)",
+      "Bash(ln -s .ai/RULES.md GEMINI.md)",
+      "Bash(mv ~/.codex/config.toml ~/.codex/config.toml.bak)"
     ],
     "deny": [
       "Bash(bcdedit *)",

@@ -50,11 +50,11 @@ hermes config show   # CLI 모드 설정 확인
 ## Key Files (axiom/macOS)
 
 - `axiom/Brewfile` — macOS 패키지 정의 (stow 배포 후 `brew bundle`로 설치)
-- `axiom/.codex/config.toml` — Codex CLI 설정
+- `base/.codex/config.toml` — Codex CLI 설정 (stow 배포)
 
 ## Gotchas
 
-- `CLAUDE.md`, `GEMINI.md`, `.clinerules` 모두 `.ai/AGENTS.md`로 symlink → AI 설정은 이 파일에서만 수정
+- `CLAUDE.md`, `GEMINI.md` 모두 `.ai/RULES.md`로 symlink → AI 설정은 이 파일에서만 수정
 - `.sops.yaml`로 age 키 관리, `.key` 파일은 sops 암호화됨
 - `.githooks/`에 커스텀 Git hooks, `.gitleaks.toml`로 시크릿 스캔
 - `stow` 충돌 시 기존 파일을 백업 후 제거, 또는 `--adopt` 사용
