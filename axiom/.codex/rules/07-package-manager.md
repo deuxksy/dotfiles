@@ -1,1 +1,0 @@
-../../../base/.claude/rules/07-package-manager.md

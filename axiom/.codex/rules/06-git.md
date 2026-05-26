@@ -1,1 +1,0 @@
-../../../base/.claude/rules/06-git.md

@@ -1,1 +1,0 @@
-../../../base/.claude/rules/02-verification-protocol.md

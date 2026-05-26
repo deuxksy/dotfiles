@@ -1,1 +1,0 @@
-../../../base/.claude/rules/00-user-profile.md

@@ -1,1 +1,0 @@
-../../../base/.claude/rules/05-operations-safety.md

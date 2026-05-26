@@ -1,1 +1,0 @@
-../../../base/.claude/rules/09-work-log.md

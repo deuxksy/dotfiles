@@ -1,1 +1,0 @@
-../../../base/.claude/rules/03-documentation.md

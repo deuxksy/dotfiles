@@ -1,1 +1,0 @@
-../../../base/.claude/rules/08-problem-solving.md
