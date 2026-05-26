@@ -51,7 +51,7 @@ Claude Code
 ## 변경 사항
 
 1. `~/.claude/settings.json` — `mcpServers.codex` 이미 등록됨 (변경 없음)
-2. `base/.claude/rules/10-multi-agent.md` (신규) — 다중 에이전트 위임 규칙
+2. `base/.claude/rules/05-multi-agent.md` (신규) — 다중 에이전트 위임 규칙
 3. `axiom/.codex/AGENTS.md` — Claude→Codex 위임 컨텍스트 보완
 
 ## 검증 기준

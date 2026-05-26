@@ -13,7 +13,7 @@
 ### Task 1: 규칙 파일 stow 배포
 
 **Files:**
-- Deployed: `~/.claude/rules/10-multi-agent.md` (from `base/.claude/rules/10-multi-agent.md`)
+- Deployed: `~/.claude/rules/05-multi-agent.md` (from `base/.claude/rules/05-multi-agent.md`)
 
 - [ ] **Step 1: stow로 base 패키지 재배포**
 
@@ -24,10 +24,10 @@ cd /Users/crong/git/dotfiles && stow -t ~ base
 - [ ] **Step 2: 배포 확인**
 
 ```bash
-ls -la ~/.claude/rules/10-multi-agent.md
+ls -la ~/.claude/rules/05-multi-agent.md
 ```
 
-Expected: symlink → `/Users/crong/git/dotfiles/base/.claude/rules/10-multi-agent.md`
+Expected: symlink → `/Users/crong/git/dotfiles/base/.claude/rules/05-multi-agent.md`
 
 ---
 
@@ -145,16 +145,16 @@ Expected: uncommitted 변경사항에 대한 리뷰 결과
 ### Task 5: User Rules Index 업데이트
 
 **Files:**
-- Modify: `base/.claude/rules/10-multi-agent.md` (이미 작성됨, 확인만)
+- Modify: `base/.claude/rules/05-multi-agent.md` (이미 작성됨, 확인만)
 - Verify: `base/.claude/CLAUDE.md` 또는 프로젝트 CLAUDE.md의 Rules Index 테이블
 
 - [ ] **Step 1: 프로젝트 CLAUDE.md Rules Index에 10번 항목 추가 여부 확인**
 
 ```bash
-grep "10-multi-agent\|10.*다중" /Users/crong/git/dotfiles/CLAUDE.md /Users/crong/git/dotfiles/base/.claude/CLAUDE.md 2>/dev/null
+grep "05-multi-agent\|10.*다중" /Users/crong/git/dotfiles/CLAUDE.md /Users/crong/git/dotfiles/base/.claude/CLAUDE.md 2>/dev/null
 ```
 
-Expected: 아직 미존재. stow 배포 시 `~/.claude/rules/10-multi-agent.md`가 자동으로 Claude Code에 로드됨 (CLAUDE.md 인덱스 수동 업데이트 불필요 — Claude Code가 `~/.claude/rules/` 디렉토리를 자동 스캔)
+Expected: 아직 미존재. stow 배포 시 `~/.claude/rules/05-multi-agent.md`가 자동으로 Claude Code에 로드됨 (CLAUDE.md 인덱스 수동 업데이트 불필요 — Claude Code가 `~/.claude/rules/` 디렉토리를 자동 스캔)
 
 - [ ] **Step 2: 최종 상태 확인**
 
@@ -163,7 +163,7 @@ echo "=== MCP 서버 등록 ==="
 python3 -c "import json; d=json.load(open('$HOME/.claude/settings.json')); print(json.dumps(d.get('mcpServers',{}).get('codex',{}), indent=2))"
 
 echo "=== 규칙 파일 배포 ==="
-ls -la ~/.claude/rules/10-multi-agent.md
+ls -la ~/.claude/rules/05-multi-agent.md
 
 echo "=== Codex AGENTS.md 위임 섹션 ==="
 grep -c "Claude.*Codex.*위임" /Users/crong/git/dotfiles/axiom/.codex/AGENTS.md
