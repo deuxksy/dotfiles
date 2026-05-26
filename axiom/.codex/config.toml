@@ -1,0 +1,136 @@
+# Codex user configuration managed by dotfiles.
+# This is the closest Codex equivalent to Claude Code's
+# `.claude/settings.local.json`: tool behavior, sandboxing, MCP servers,
+# plugins, and trusted projects live here.
+
+personality = "pragmatic"
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+
+[mcp_servers.serena]
+command = "serena"
+args = [
+    "start-mcp-server",
+    "--context=codex",
+    "--project-from-cwd",
+]
+
+[mcp_servers.node_repl]
+command = "/Applications/Codex.app/Contents/Resources/node_repl"
+args = []
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+BROWSER_USE_MARKETPLACE_NAME = "openai-bundled"
+CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
+CODEX_HOME = "/Users/crong/.codex"
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = ""
+NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/node"
+NODE_REPL_TRUSTED_CODE_PATHS = "/Users/crong/.codex"
+NODE_REPL_UNTRUSTED_ENV_ALLOWLIST = "BROWSER_USE_MARKETPLACE_NAME"
+SKY_CUA_SERVICE_PATH = "/Users/crong/.codex/.tmp/bundled-marketplaces/openai-bundled/plugins/computer-use/Codex Computer Use.app"
+
+[plugins."browser@openai-bundled"]
+enabled = true
+
+[plugins."chrome@openai-bundled"]
+enabled = true
+
+[plugins."computer-use@openai-bundled"]
+enabled = true
+
+[plugins."build-web-apps@openai-curated"]
+enabled = true
+
+[plugins."codex-security@openai-curated"]
+enabled = true
+
+[plugins."expo@openai-curated"]
+enabled = true
+
+[plugins."figma@openai-curated"]
+enabled = true
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[plugins."gmail@openai-curated"]
+enabled = true
+
+[plugins."google-calendar@openai-curated"]
+enabled = true
+
+[plugins."google-drive@openai-curated"]
+enabled = true
+
+[plugins."hugging-face@openai-curated"]
+enabled = true
+
+[plugins."network-solutions@openai-curated"]
+enabled = true
+
+[plugins."notion@openai-curated"]
+enabled = true
+
+[plugins."superpowers@openai-curated"]
+enabled = true
+
+[plugins."test-android-apps@openai-curated"]
+enabled = true
+
+[plugins."zoom@openai-curated"]
+enabled = true
+
+[plugins."documents@openai-primary-runtime"]
+enabled = true
+
+[plugins."presentations@openai-primary-runtime"]
+enabled = true
+
+[plugins."spreadsheets@openai-primary-runtime"]
+enabled = true
+
+[projects."/Users/crong"]
+trust_level = "trusted"
+
+[projects."/Users/crong/git/dotfiles"]
+trust_level = "trusted"
+
+[shell_environment_policy]
+inherit = "core"
+
+[tui]
+status_line = [
+    "model-with-reasoning",
+    "current-dir",
+    "project-name",
+    "git-branch",
+    "branch-changes",
+    "run-state",
+    "permissions",
+    "approval-mode",
+    "context-used",
+    "five-hour-limit",
+    "weekly-limit",
+    "context-window-size",
+    "used-tokens",
+    "fast-mode",
+    "raw-output",
+    "task-progress",
+]
+status_line_use_colors = true
+
+[sandbox_workspace_write]
+network_access = true
+
+[desktop]
+composerEnterBehavior = "cmdIfMultiline"
+preventSleepWhileRunning = true
+keepRemoteControlAwakeWhilePluggedIn = true
+
+[features]
+js_repl = false

@@ -1,0 +1,1 @@
+../../../base/.claude/rules/01-language-communication.md

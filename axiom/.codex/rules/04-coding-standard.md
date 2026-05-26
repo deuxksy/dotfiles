@@ -1,0 +1,1 @@
+../../../base/.claude/rules/04-coding-standard.md
