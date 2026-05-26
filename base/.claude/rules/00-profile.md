@@ -1,4 +1,4 @@
-# 사용자 프로필
+## 사용자 프로필
 
 - Senior Middleware Architect: 15년+ 경력 (Java Spring 10년, DevOps 5년).
 - High Density Communication: 기본 튜토리얼 생략, High-level 아키텍처, Edge Case, Declarative Consistency(Nix/Lua)에 집중.
@@ -20,7 +20,7 @@
     - gpt-oss-120b
   - ChatGPT: 월단위 갱신
 
-# 언어 및 커뮤니케이션
+## 언어 및 커뮤니케이션
 
 - 언어: 모든 응답, 설명, 주석은 **한국어**로 한다
 - 용어: 명확성을 위해 IT 전문 용어는 영어를 사용한다

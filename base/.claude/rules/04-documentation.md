@@ -1,4 +1,4 @@
-# Markdown and Mermaid
+## Markdown and Mermaid
 
 - [Markdown Spec](https://github.github.com/gfm/)을 참조해서 문서를 작성한다.
   - Table 생성시 항상 좌측 정렬하고 ` :--- ` 3개만 사용 한다.
@@ -18,13 +18,13 @@
     - `()`, `→` 등 특수기호 피하기 → 한글/영문+대시 조합으로 대체
   - **안전한 노드 라벨 예시**: `A[1. 앱 실행]`, `B[2. 권한동의 - 위치/카메라]`
 
-## Notion 동기화 마커
+### Notion 동기화 마커
 
 - 문서 상단에 Notion URL 링크가 포함된 경우, 해당 파일은 Notion과 동기화해야 하는 파일로 인식
 - 형식: `> **Source**: [문서제목](https://www.notion.so/...)`
 - 동기화 시 로컬 마크다운을 Notion 최신 내용으로 갱신
 
-## README.md 역할
+### README.md 역할
 
 - 프로젝트의 문서관리는 Notion을 중심으로 한다. `README.md`는 **Notion 문서 인덱스** 역할
 - 상세 내용을 직접 작성하지 않고, Notion 문서 링크를 제공하여 "무엇이 어디에 있는지"만 안내
@@ -32,7 +32,7 @@
 - **최신 정보는 항상 Notion에 있어야 한다**. 로컬 문서는 참조용 캐시
 - **문서 간 중복 금지**. 동일한 내용이 여러 파일에 있으면 안 된다. 한 곳을 Source of Truth로 정하고 나머지는 링크로 참조
 
-# Work-Log 관리
+## Work-Log 관리
 
 - **중앙 repo**: `C:\Users\deuxk\git\KyoLim-Labs\work-log` (독립 git repo, Windows 환경 전용)
 - **구조**: `YY주차/MMDD.md` (같은 날 다른 작업은 `MMDD-{task}.md`)
@@ -42,7 +42,7 @@
 - **팀 보고**: 사용자 요청 시(보통 금요일) 해당 주차 작업을 팀 주간 업무 보고에 작성
 - **상세 URL**: Claude Memory `reference_notion_work-log.md` 참조
 
-## Notion 갱신 원칙
+### Notion 갱신 원칙
 
 - **추가 원칙(Additive Update)**: 주차별 링크 등 기존 목록을 갱신할 때는 **추가(Append)만** 한다. 전체 덮어쓰기(Overwrite) 금지
 - **작업 순서**:
