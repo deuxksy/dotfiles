@@ -14,7 +14,7 @@
   - **변경 (승인 필수)**: INSERT, UPDATE, CREATE INDEX, ALTER, VACUUM — 실행 전 SQL과 영향 범위 보고 후 승인
   - **삭제 (금지)**: DROP, TRUNCATE, DELETE (WHERE 없음) — 절대 실행하지 않음
   - **구조 변경 (금지)**: DROP TABLE, DROP INDEX, DROP DATABASE — 절대 실행하지 않음
-  - 연결 정보: sops로 관리 (평문 금지)
+  - 연결 정보: 평문 금지, Secret Management 섹션 참조
   - 권한 변경: `chmod 777`, `chown`, `icacls`
 - Proxmox API: Read(GET)은 자유롭게 실행. Create(POST), Update(PUT), Delete(DELETE)는 사용자 승인 후 실행.
 - K8S(kubectl):
@@ -30,3 +30,16 @@
     - 환경변수: `OPENAI_API_KEY` + `OPENAI_API_BASE=http://ai/v1`
     - 모델: `--model openai/<model>` (litellm provider prefix 필수)
     - `~/.holmes/config.yaml` pydantic 검증 엄격 → 환경변수 권장
+
+## Secret Management
+
+- `sops` + `age`로 시크릿 암호화
+- `.sops.yaml`로 age 키 관리, `.key` 파일은 sops 암호화됨
+- 복호화: `eval "$(sops -d ~/.key)"`
+- API key, DB 연결 정보, 토큰 등 민감 정보는 항상 sops로 관리 (평문 금지)
+- `.gitleaks.toml`로 커밋 시 시크릿 스캔
+- 워크플로우:
+  1. `.env.sops`를 git에 추적 (암호화된 상태)
+  2. `.env`는 `.gitignore`에 등록
+  3. 복호화: `sops -d .env.sops > .env`
+  4. 암호화: `sops -e .env > .env.sops`
