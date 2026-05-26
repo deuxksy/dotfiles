@@ -69,6 +69,7 @@ eve/.claude.json
 
 base/.wakatime.cfg
 base/.gemini/
+!base/.gemini/GEMINI.md
 base/.claude/*
 !base/.claude/rules/
 !base/.claude/rules/*.md
