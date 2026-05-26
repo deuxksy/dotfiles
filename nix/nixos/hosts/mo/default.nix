@@ -25,6 +25,7 @@
   # Networking
   networking.hostName = "mo";
   networking.networkmanager.enable = true;
+  services.resolved.enable = true;
   networking.hosts = {
     "115.68.76.196" = [ "ecoai-cluster-01" ];
     "115.68.76.197" = [ "ecoai-cluster-02" ];
@@ -66,6 +67,12 @@
   };
 
   # User
+  users.users.hermes = {
+    isSystemUser = true;
+    group = "hermes";
+    extraGroups = [ "wheel" ];
+  };
+
   users.users.crong = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "docker" "video" "audio" "libvirt" ];
@@ -112,7 +119,7 @@
   environment.systemPackages = with pkgs; [
     age aria2 atuin awscli2
     bat bind bottom btop
-    cargo chafa curl
+    cargo chafa claude-code codex curl
     delta direnv dust duf
     espeak-ng eza
     fastfetch fd ffmpeg fzf

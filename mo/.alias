@@ -14,8 +14,7 @@ if command -v kubectl &> /dev/null; then
     alias kl='kubectl logs'
     alias ke='kubectl get events --sort-by=.metadata.creationTimestamp'
     alias kns='kubectl config set-context --current --namespace'
-    source <(kubectl completion zsh)
-    complete -o default -F __start_kubectl k
+    source <(kubectl completion zsh) 2>/dev/null
 fi
 
 # Telepresence
@@ -31,3 +30,4 @@ alias vi='nvim'
 alias vim='nvim'
 alias gw='glow'
 alias rebuild='sudo nixos-rebuild switch --flake /home/crong/git/dotfiles/nix/nixos#mo'
+alias rebuild-up='(cd /home/crong/git/dotfiles/nix/nixos && nix flake update) && sudo nixos-rebuild switch --flake /home/crong/git/dotfiles/nix/nixos#mo'
