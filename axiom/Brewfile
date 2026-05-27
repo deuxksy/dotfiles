@@ -68,6 +68,7 @@ brew "zsh-syntax-highlighting"
 
 # Development
 brew "watchman"
+brew "ruby"
 
 # Neovim - Linters & Formatters
 brew "eslint_d"

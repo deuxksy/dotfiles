@@ -16,6 +16,7 @@ export OVERRIDE_MAX_OUTPUT_TOKEN=65536
 PATH="$PATH:$ANDROID_HOME/emulator"
 PATH="$PATH:$ANDROID_HOME/platform-tools"
 PATH="/opt/homebrew/bin:${PATH}"
+PATH="/opt/homebrew/opt/ruby/bin:/opt/homebrew/lib/ruby/gems/4.0.0/bin:${PATH}"
 PATH="${HOME}/.opencode/bin:${PATH}"
 PATH="${PNPM_HOME}/bin:${PATH}"
 PATH="${HOME}/.local/bin:${PATH}"
