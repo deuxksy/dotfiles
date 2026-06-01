@@ -34,6 +34,7 @@ brew "rclone"
 brew "mosh"
 brew "television"
 brew "lynis"
+brew "lazygit"
 
 # Development
 brew "mise"
