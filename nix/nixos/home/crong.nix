@@ -138,7 +138,7 @@
       ServerAliveInterval 120
       ForwardAgent yes
       AddKeysToAgent yes
-      IdentitiesOnly yes
+      IdentitiesOnly no
       IdentityFile ~/.ssh/id_ed25519
   '';
 }

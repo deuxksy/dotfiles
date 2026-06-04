@@ -117,7 +117,7 @@
   programs.firefox.enable = true;
 
   environment.systemPackages = with pkgs; [
-    age aria2 atuin awscli2
+    age ansible aria2 atuin awscli2
     bat bind bottom btop
     cargo chafa claude-code codex curl gemini-cli
     delta direnv dust duf
