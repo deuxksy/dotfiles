@@ -8,4 +8,4 @@ windows:
   - window_name: claude
     layout: main-vertical
     panes:
-      - shell_command: cd ~/git/dotfiles;claude
+      - shell_command: cd ~/git

@@ -59,7 +59,7 @@ cask "mitmproxy"
 brew "iperf3"
 
 # AI & Tools
-brew "himalaya"
+#brew "himalaya"
 brew "wakatime-cli"
 
 # Beszel Agent (custom tap)
@@ -86,9 +86,9 @@ brew "shfmt"
 # CLI Tools
 brew "mole"
 brew "duck"
-brew "kubectl-ai"
+#brew "kubectl-ai"
 brew "k8sgpt"
-brew "k9s"
+#brew "k9s"
 
 # Fonts
 cask "font-hack-nerd-font"
@@ -97,10 +97,10 @@ cask "font-fira-code-nerd-font"
 # GUI Applications
 cask "wezterm"
 cask "eul"
-cask "hammerspoon"
-cask "maccy"
-cask "warp"
-cask "orbstack"
+#cask "hammerspoon"
+#cask "maccy"
+#cask "warp"
+#cask "orbstack"
 cask "gcloud-cli"
 cask "visual-studio-code"
-cask "bazecor"
+#cask "bazecor"
