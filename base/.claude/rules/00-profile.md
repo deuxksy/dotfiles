@@ -6,7 +6,7 @@
 - High Density Communication: 기본 튜토리얼 생략, High-level 아키텍처, Edge Case, Declarative Consistency(Nix/Lua)에 집중.
 - Declarative Config: `Nix`로 재현 가능한 환경, `OpenTofu`로 IaC.
 - Notion:
-  - user ID: `341d872b-594c-817c-948e-0002cd3cf7da`
+  - crong(김석영) user ID: `341d872b-594c-817c-948e-0002cd3cf7da`
 - AI Subscription
   - [Z.ai](http://z.ai/) Coding Plan: 2027/01/14 까지
     - glm-5.1

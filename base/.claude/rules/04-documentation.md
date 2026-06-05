@@ -29,6 +29,14 @@
 - 형식: `> **Source**: [문서제목](https://www.notion.so/...)`
 - 동기화 시 로컬 마크다운을 Notion 최신 내용으로 갱신
 
+### 작업(에픽/스토리) 페이지 작성
+
+- callout 블록(`<span color="red">...</span>`)은 템플릿 안내문구이므로 **수정하지 않고 그대로 유지**
+- 실제 내용은 callout **아래 빈 영역**에 작성 (callout 내부에 넣지 않음)
+- `replace_content` 사용 시 callout을 포함한 전체 구조 유지
+- 작성 분량: 목표 1~2줄, 설명 5줄 이하
+- **산출물 섹션은 작성하지 않음** — 사용자가 직접 관리
+
 ## README.md
 
 - 프로젝트의 문서관리는 Notion을 중심으로 한다. `README.md`는 **Notion 문서 인덱스** 역할
