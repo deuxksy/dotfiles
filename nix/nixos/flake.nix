@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixos.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,10 +14,11 @@
     };
     hermes-agent = {
       url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixos";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, hermes-agent }: {
+  outputs = { self, nixpkgs, nixos, home-manager, sops-nix, hermes-agent }: {
     nixosConfigurations."mo" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
