@@ -58,7 +58,6 @@
       "mcp__codex__*"
     ],
     "deny": [
-      "Bash(rm *)",
       "Bash(rm -rf *)",
       "Bash(kill *)",
       "Bash(format *)",
