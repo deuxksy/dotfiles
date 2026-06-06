@@ -1,0 +1,74 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://ai",
+    "API_TIMEOUT_MS": "3000000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5-turbo",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.1",
+    "ENABLE_TOOL_SEARCH": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "oh-my-claudecode@omc": true,
+    "figma@claude-plugins-official": true,
+    "notion@claude-plugins-official": true,
+    "serena@claude-plugins-official": true,
+    "remember@claude-plugins-official": true,
+    "glm-plan-usage@zai-coding-plugins": true,
+    "glm-plan-bug@zai-coding-plugins": true,
+    "korean-law@korean-law-marketplace": true,
+    "deuxksy@zzizily": true
+  },
+  "extraKnownMarketplaces": {
+    "omc": {
+      "source": {
+        "source": "github",
+        "repo": "Yeachan-Heo/oh-my-claudecode"
+      },
+      "autoUpdate": true
+    },
+    "zai-coding-plugins": {
+      "source": {
+        "source": "directory",
+        "path": "/home/crong/.local/share/pnpm/store/v11/links/@z_ai/coding-helper/0.0.7/37f84e798f18ce6dd3fffc80d631f82e9e74899334e0a1607dbb1aa78bae3594/node_modules/@z_ai/coding-helper/zai-coding-plugins"
+      },
+      "autoUpdate": true
+    },
+    "korean-law-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "chrisryugj/korean-law-mcp"
+      },
+      "autoUpdate": true
+    },
+    "zzizily": {
+      "source": {
+        "source": "github",
+        "repo": "deuxksy/ai-agent-skill"
+      },
+      "autoUpdate": true
+    }
+  },
+  "effortLevel": "xhigh",
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark"
+}
