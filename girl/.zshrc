@@ -123,5 +123,3 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 eval "$(mise activate zsh)"
-# OpenClaw Completion
-source "/home/deck/.openclaw/completions/openclaw.zsh"
