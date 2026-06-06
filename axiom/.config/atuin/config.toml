@@ -29,10 +29,10 @@
 # timezone = "local"
 
 ## enable or disable automatic sync
-auto_sync = true
+# auto_sync = true
 
 ## enable or disable automatic update checks
-update_check = true
+# update_check = true
 
 ## address of the sync server
 # sync_address = "https://api.atuin.sh"
@@ -187,8 +187,8 @@ enter_accept = true
 ## "{blink,steady}-{block,underline,bar}".
 # keymap_cursor = { emacs = "blink-block", vim_insert = "blink-block", vim_normal = "steady-block" }
 
-network_connect_timeout = 3
-network_timeout = 5
+# network_connect_timeout = 5
+# network_timeout = 5
 
 ## Timeout (in seconds) for acquiring a local database connection (sqlite)
 # local_timeout = 5
@@ -265,7 +265,7 @@ records = true
 
 [daemon]
 ## Enables using the daemon to sync.
-enabled = false
+# enabled = false
 
 ## Automatically start and manage the daemon when needed.
 ## Not compatible with `systemd_socket = true`.
