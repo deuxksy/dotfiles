@@ -17,13 +17,20 @@
     "security-guidance@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
-    "deuxksy@zzizily": true
+    "deuxksy@zzizily": true,
+    "oh-my-claudecode@omc": true
   },
   "extraKnownMarketplaces": {
     "zzizily": {
       "source": {
         "source": "github",
         "repo": "deuxksy/ai-agent-skill"
+      }
+    },
+    "omc": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
       }
     }
   },
