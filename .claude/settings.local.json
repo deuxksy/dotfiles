@@ -2,6 +2,7 @@
   "permissions": {
     "allow": [
       "Agent(*)",
+      "AskUserQuestion(*)",
       "Bash(*)",
       "CronCreate(*)",
       "CronDelete(*)",
@@ -14,8 +15,10 @@
       "Glob(*)",
       "Grep(*)",
       "LSP(*)",
+      "ListMcpResourcesTool(*)",
       "NotebookEdit(*)",
       "Read(*)",
+      "ReadMcpResourceTool(*)",
       "Skill(*)",
       "TaskCreate(*)",
       "TaskGet(*)",
@@ -45,58 +48,93 @@
       "mcp__globalping__*",
       "mcp__playwright__*",
       "mcp__plugin_oh-my-claudecode_t__*",
-      "mcp__plugin_cloudflare_cloudflare-api__*",
-      "mcp__plugin_cloudflare_cloudflare-bindings__*",
-      "mcp__plugin_cloudflare_cloudflare-builds__*",
-      "mcp__plugin_cloudflare_cloudflare-docs__*",
-      "mcp__plugin_cloudflare_cloudflare-observability__*",
-      "mcp__plugin_context7_context7__*",
-      "mcp__plugin_figma_figma__*",
-      "mcp__plugin_github_github__*",
-      "mcp__plugin_microsoft-docs_microsoft-learn__*",
-      "mcp__plugin_Notion_notion__*",
-      "mcp__plugin_playwright_playwright__*",
-      "mcp__web-search-prime__*",
-      "mcp__web-reader__*",
+      "mcp__serena__*",
       "mcp__web_reader__*",
       "mcp__zai-github__*",
       "mcp__zai-vision__*",
       "mcp__zai-webreader__*",
       "mcp__zai-websearch__*",
-      "mcp__zread__*",
-      "Bash(rm -f /c/software/project/ecoai-app-sample/docs/work-log/.git)",
-      "Bash(cp -r /tmp/work-log-git-bak /c/software/project/ecoai-app-sample/docs/work-log/.git)",
-      "Bash(mkdir -p /Users/crong/git/dotfiles/base/.claude/.omc)",
-      "Bash(cp /Users/crong/.claude/.omc/hud-config.json /Users/crong/git/dotfiles/base/.claude/.omc/hud-config.json)",
-      "Bash(rm /Users/crong/.claude/.omc/hud-config.json)",
-      "Bash(stow -t ~ base)",
-      "mcp__github__get_file_contents",
-      "mcp__exa__web_search_exa",
-      "mcp__serena__initial_instructions",
-      "Bash(stow -t ~ axiom)",
-      "mcp__github__create_pull_request",
-      "Bash(git mv *)",
-      "Bash(ln -s .ai/RULES.md CLAUDE.md)",
-      "Bash(ln -s .ai/RULES.md GEMINI.md)",
-      "Bash(mv ~/.codex/config.toml ~/.codex/config.toml.bak)",
-      "Bash(git pull *)",
-      "mcp__codex__codex",
-      "Bash(git submodule *)",
-      "Bash(git rm *)",
-      "Bash(git add *)",
-      "Bash(git commit *)",
-      "Bash(git push *)"
+      "mcp__filesystem__directory_tree",
+      "mcp__codex__*"
     ],
     "deny": [
-      "Bash(bcdedit *)",
-      "Bash(diskpart *)",
+      "Bash(rm *)",
+      "Bash(rm -rf *)",
+      "Bash(kill *)",
       "Bash(format *)",
+      "Bash(del *)",
+      "Bash(taskkill *)",
+      "Bash(rd *)",
+      "Bash(rmdir *)",
       "Bash(shutdown *)",
-      "Bash(wbadmin *)"
+      "Bash(reg *)",
+      "Bash(regedit *)",
+      "Bash(diskpart *)",
+      "Bash(sfc *)",
+      "Bash(chkdsk *)",
+      "Bash(bcdedit *)",
+      "Bash(sc *)",
+      "Bash(netsh *)",
+      "Bash(net stop *)",
+      "Bash(net start *)",
+      "Bash(net user *)",
+      "Bash(dism *)",
+      "Bash(systemreset *)",
+      "Bash(cipher *)",
+      "Bash(wbadmin *)",
+      "Bash(sysprep *)",
+      "Bash(gpupdate *)",
+      "Bash(powercfg *)",
+      "Bash(wmic *)",
+      "Bash(powershell Remove-*)",
+      "Bash(powershell Stop-*)",
+      "Bash(powershell Restart-*)",
+      "Bash(powershell Set-Service *)",
+      "Bash(powershell Disable-*)"
     ]
   },
-  "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "globalping"
-  ]
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "serena-hooks remind --client=claude-code"
+          }
+        ]
+      },
+      {
+        "matcher": "mcp__serena__*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "serena-hooks auto-approve --client=claude-code"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "serena-hooks activate --client=claude-code"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "serena-hooks cleanup --client=claude-code"
+          }
+        ]
+      }
+    ]
+  }
 }
