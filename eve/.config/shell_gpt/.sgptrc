@@ -1,5 +1,5 @@
 OPENAI_API_BASE=http://ai/v1
-DEFAULT_MODEL=glm-5-turbo
+DEFAULT_MODEL=dola-seed-2.0-pro
 CHAT_CACHE_PATH=/Users/crong/.config/shell_gpt/chat_cache
 CACHE_PATH=/Users/crong/.config/shell_gpt/cache
 CHAT_CACHE_LENGTH=100
