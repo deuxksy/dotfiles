@@ -1,7 +1,8 @@
 # oh-my-codex top-level settings (must be before any [table])
-notify = ["node", "/home/crong/.local/share/pnpm/store/v11/links/@/oh-my-codex/0.18.3/1e1e1ac7043bf76235fe49ace1a50b7c2d47df2652ad6c53cc9b29a2527e3e4a/node_modules/oh-my-codex/dist/scripts/notify-hook.js"]
+notify = ["node", "/home/crong/.local/share/pnpm/store/v11/links/@/oh-my-codex/0.18.9/3989d9b42350bdb08ba1cbff440214f6e588d5921baa39a614c78b53c178e865/node_modules/oh-my-codex/dist/scripts/notify-hook.js"]
 model_reasoning_effort = "medium"
-developer_instructions = "You have oh-my-codex installed. AGENTS.md is the orchestration brain and main control surface. Follow AGENTS.md for skill/keyword routing, $name workflow invocation, and role-specialized subagents. Use outcome-first, concise progress updates: state the target result, constraints, validation evidence, and stop condition before adding process detail. Native subagents live in .codex/agents and may handle independent parallel subtasks within one Codex session or team pane. Skills load from .codex/skills, not native-agent TOMLs. Treat installed prompts as narrower execution surfaces under AGENTS.md authority."
+developer_instructions = "You have oh-my-codex installed. AGENTS.md is the orchestration brain and main control surface. Follow AGENTS.md for skill/keyword routing, $name workflow invocation, and role-specialized subagents; when spawning native subagents, set `agent_type` to an installed role and never omit it for OMX work. Use outcome-first, concise progress updates: state the target result, constraints, validation evidence, and stop condition before adding process detail. Native subagents live in .codex/agents and may handle independent parallel subtasks within one Codex session or team pane. Skills load from .codex/skills, not native-agent TOMLs. Treat installed prompts as narrower execution surfaces under AGENTS.md authority."
+
 # oh-my-codex seeded behavioral defaults (uninstall removes unchanged defaults)
 model_context_window = 250000
 model_auto_compact_token_limit = 200000
@@ -112,6 +113,12 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [projects."/home/crong"]
+trust_level = "trusted"
+
+[projects."/home/crong/git"]
+trust_level = "trusted"
+
+[projects."/home/crong/git/twenty-four-seven-three-sixty-five"]
 trust_level = "trusted"
 
 [shell_environment_policy]

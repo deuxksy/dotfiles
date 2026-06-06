@@ -31,7 +31,7 @@
     extraDependencyGroups = [ "messaging" "anthropic" "voice" ];
     settings = {
       model = {
-        default = "glm-5-turbo";
+        default = "ark-code-latest";
         provider = "custom:aperture";
       };
       custom_providers = [
@@ -68,6 +68,13 @@
         edge = {
           voice = "en-US-AriaNeural";
         };
+      };
+      discord = {
+        require_mention = true;
+        auto_thread = true;
+        reactions = true;
+        history_backfill = true;
+        history_backfill_limit = 50;
       };
     };
   };

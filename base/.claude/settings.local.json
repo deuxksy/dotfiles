@@ -100,7 +100,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/crong/.local/bin/serena-hooks remind --client=claude-code"
+            "command": "/home/crong/.local/bin/serena-hooks remind --client=claude-code"
           }
         ]
       },
@@ -109,7 +109,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/crong/.local/bin/serena-hooks auto-approve --client=claude-code"
+            "command": "/home/crong/.local/bin/serena-hooks auto-approve --client=claude-code"
           }
         ]
       }
@@ -120,7 +120,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/crong/.local/bin/serena-hooks activate --client=claude-code"
+            "command": "/home/crong/.local/bin/serena-hooks activate --client=claude-code"
           }
         ]
       }
@@ -131,7 +131,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/Users/crong/.local/bin/serena-hooks cleanup --client=claude-code"
+            "command": "/home/crong/.local/bin/serena-hooks cleanup --client=claude-code"
           }
         ]
       }
