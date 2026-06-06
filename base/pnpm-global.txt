@@ -1,5 +1,0 @@
-# pnpm global packages
-@openai/codex
-mcp-hub
-oh-my-claude-sisyphus
-oh-my-codex

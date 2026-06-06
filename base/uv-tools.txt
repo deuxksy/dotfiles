@@ -1,6 +1,0 @@
-# uv tools
-holmesgpt
-litellm
-proxmox-mcp-plus
-serena-agent
-shell-gpt
