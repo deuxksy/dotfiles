@@ -79,7 +79,10 @@
       "Bash(ln -s .ai/RULES.md CLAUDE.md)",
       "Bash(ln -s .ai/RULES.md GEMINI.md)",
       "Bash(mv ~/.codex/config.toml ~/.codex/config.toml.bak)",
-      "Bash(git pull *)"
+      "Bash(git pull *)",
+      "mcp__codex__codex",
+      "Bash(git submodule *)",
+      "Bash(git rm *)"
     ],
     "deny": [
       "Bash(bcdedit *)",

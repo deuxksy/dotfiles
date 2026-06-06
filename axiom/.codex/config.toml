@@ -119,6 +119,9 @@ trust_level = "trusted"
 [projects."/Users/crong/git/ecoai-app-collectors"]
 trust_level = "trusted"
 
+[projects."/Users/crong/git"]
+trust_level = "trusted"
+
 [shell_environment_policy]
 inherit = "core"
 
