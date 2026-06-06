@@ -1,0 +1,81 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://ai",
+    "API_TIMEOUT_MS": "3000000",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5-turbo",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.1",
+    "ENABLE_TOOL_SEARCH": "1",
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "oh-my-claudecode@omc": true,
+    "frontend-design@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "serena@claude-plugins-official": true,
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "greptile@claude-plugins-official": true,
+    "hookify@claude-plugins-official": true,
+    "remember@claude-plugins-official": true,
+    "microsoft-docs@claude-plugins-official": true,
+    "mcp-server-dev@claude-plugins-official": true,
+    "cloudflare@claude-plugins-official": true,
+    "session-report@claude-plugins-official": true,
+    "exa@claude-plugins-official": true,
+    "notion@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "korean-law@korean-law-marketplace": true,
+    "glm-plan-usage@zai-coding-plugins": true,
+    "glm-plan-bug@zai-coding-plugins": true,
+    "deuxksy@zzizily": true
+  },
+  "extraKnownMarketplaces": {
+    "omc": {
+      "source": {
+        "source": "github",
+        "repo": "Yeachan-Heo/oh-my-claudecode"
+      }
+    },
+    "zzizily": {
+      "source": {
+        "source": "github",
+        "repo": "deuxksy/ai-agent-skill"
+      }
+    },
+    "korean-law-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "chrisryugj/korean-law-mcp"
+      }
+    },
+    "zai-coding-plugins": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/crong/.npm/_npx/2f024689b4d0d3b0/node_modules/@z_ai/coding-helper/zai-coding-plugins"
+      }
+    }
+  },
+  "plugins": {
+    "korean-law": {
+      "api_key": "96609B6C-B0B2-4C28-B0AF-5EDAEE69A641"
+    }
+  }
+}
