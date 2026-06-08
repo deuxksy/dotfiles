@@ -4,8 +4,8 @@
     "API_TIMEOUT_MS": "3000000",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5-turbo",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-4.7",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-4.7",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.1",
     "ENABLE_TOOL_SEARCH": "1"
   },
@@ -45,7 +45,7 @@
       "Bash(reboot *)"
     ]
   },
-  "model": "opus",
+  "model": "sonnet",
   "statusLine": {
     "type": "command",
     "command": "sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud-cache.sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
@@ -59,7 +59,14 @@
     "commit-commands@claude-plugins-official": true,
     "claude-code-setup@claude-plugins-official": true,
     "deuxksy@zzizily": true,
-    "oh-my-claudecode@omc": true
+    "oh-my-claudecode@omc": true,
+    "superpowers@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "remember@claude-plugins-official": true,
+    "exa@claude-plugins-official": true,
+    "figma@claude-plugins-official": true,
+    "notion@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "zzizily": {

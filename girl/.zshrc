@@ -123,3 +123,11 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 eval "$(mise activate zsh)"
+
+# pnpm
+export PNPM_HOME="/home/deck/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
