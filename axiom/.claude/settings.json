@@ -20,7 +20,16 @@
       "WebFetch(*)",
       "WebSearch(*)",
       "Agent(*)",
-      "Skill(*)"
+      "Skill(*)",
+      "mcp__gmail__create_draft",
+      "mcp__gmail__get_thread",
+      "mcp__gmail__label_message",
+      "mcp__gmail__label_thread",
+      "mcp__gmail__list_drafts",
+      "mcp__gmail__list_labels",
+      "mcp__gmail__search_threads",
+      "mcp__gmail__unlabel_message",
+      "mcp__gmail__unlabel_thread"
     ],
     "deny": [
       "Bash(format *)",
@@ -45,7 +54,7 @@
       "Bash(reboot *)"
     ]
   },
-  "model": "opus",
+  "model": "ark-code-latest",
   "statusLine": {
     "type": "command",
     "command": "sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud-cache.sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
