@@ -52,6 +52,7 @@ graph TD
         STEWARD[steward - GL.iNet Brume 2]
         AXIOM[axiom - Mac Studio]
         MO[mo - AyaNEO AM02]
+        KYOLIM[kyolim - Asus Zenbook 14]
     end
 
     subgraph LOCATION_B[arv 네트워크 - 192.168.221.0/24]
@@ -64,11 +65,21 @@ graph TD
         TV[LG webOS TV]
     end
 
+    subgraph TS[Tailscale Mesh - 100.64.0.0/10]
+        BRLA[brla - Oracle Cloud ARM]
+        AI[ai - Tailscale AI]
+        HERITAGE[heritage]
+        LLLM[lllm]
+        LT[lt]
+    end
+
     INET --- STEWARD
     INET --- ARV
+    INET --- BRLA
 
     STEWARD --- AXIOM
     STEWARD --- MO
+    STEWARD --- KYOLIM
 
     ARV --- EVE
     ARV --- WALLE
@@ -79,6 +90,28 @@ graph TD
 
     STEWARD -.->|Tailscale| ARV
 ```
+
+### Tailscale Peers
+
+| Host | Tailscale IP | OS | Status | Exit Node | 비고 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| mo | 100.68.96.6 | linux | online | O | NixOS 개발 워크스테이션 |
+| ai | 100.118.111.59 | linux | online | - | Tailscale AI |
+| brla | 100.75.220.80 | linux | online | - | Oracle Cloud ARM (Hermes) |
+| axiom | 100.79.223.84 | macOS | online | - | Local LLM + 개발 |
+| kyolim | 100.125.101.42 | windows | online | - | 회사 Zenbook |
+| arv | 100.114.118.28 | linux | online | - | 휴대용 라우터 |
+| girl | 100.88.106.46 | linux | online | - | Steam Deck |
+| ipad | 100.110.172.36 | iOS | online | - | iPad Pro 12.9 |
+| steward | 100.65.14.67 | linux | online | - | 상주 VPN 라우터 |
+| walle | 100.90.68.38 | linux | idle | O | 미디어 서버 (NAS) |
+| lt | 100.68.195.75 | linux | idle | O | - |
+| heritage | 100.96.115.19 | linux | online | - | - |
+| lllm | 100.107.171.105 | linux | online | - | - |
+| tailscale-operator | 100.120.115.102 | linux | online | - | - |
+| ava | 100.111.235.71 | windows | offline | - | Surface Pro 6 |
+| iPhone | 100.81.167.92 | iOS | offline | - | - |
+| ZZiZiLY-Z | 100.79.219.51 | android | offline | - | Flip |
 
 ## Application Manager (Library 4-Layer)
 
