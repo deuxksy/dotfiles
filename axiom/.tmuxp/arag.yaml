@@ -1,0 +1,8 @@
+session_name: a-arg
+start_directory: ~/git/kyolim/a-rag
+windows:
+  - window_name: a-ara studio
+    layout: even-horizontal
+    panes:
+      - shell_command: codex
+      - shell_command: claude
