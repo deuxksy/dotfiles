@@ -70,5 +70,6 @@
   },
   "effortLevel": "xhigh",
   "skipWorkflowUsageWarning": true,
-  "theme": "dark"
+  "theme": "dark",
+  "model": "glm-5.2"
 }

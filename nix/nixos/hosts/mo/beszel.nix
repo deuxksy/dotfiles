@@ -5,9 +5,9 @@
     openFirewall = true;
     environment = {
       LISTEN = "45876";
-      KEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDvz1k/7RiSoe0As2jq1wAsz53+cy7RVolK8qKynyj2/";
-      TOKEN = "369e62be-58f6-4fcb-9765-a047e4ee73f4";
-      HUB_URL = "https://heritage.bun-bull.ts.net/beszel";
+      KEY = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINLIlBwpSt8OB/ODdZXVXF1PrEULcyDMwN6uqZna/2Kv";
+      TOKEN = "2e86c946-8b9e-41cc-a60a-782f8a5f77e4";
+      HUB_URL = "https://brla.bun-bull.ts.net:8090";
     };
   };
 }

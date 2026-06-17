@@ -1,5 +1,6 @@
 model:
-  default: ark-code-latest
+  default: glm-5-turbo
+  context_length: 128000
   provider: custom:aperture
 providers: {}
 fallback_providers: []
