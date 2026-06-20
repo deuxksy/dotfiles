@@ -31,7 +31,7 @@
     extraDependencyGroups = [ "messaging" "anthropic" "voice" ];
     settings = {
       model = {
-        default = "ark-code-latest";
+        default = "glm-5-turbo";
         provider = "custom:aperture";
       };
       custom_providers = [
