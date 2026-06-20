@@ -155,16 +155,116 @@ stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 
 ## Structure
 
-- `base/` — 공통 설정 (git, nvim, tmux, wezterm, .claude/rules)
-- `axiom/` — macOS (mise, zsh, Brewfile)
-- `eve/` — macOS (mise, zsh, Brewfile)
-- `mo/` — NixOS (`.gitconfig.local`, tools managed by Nix)
-- `walle/` — Fedora (mise, zsh)
-- `girl/` — SteamOS (mise, zsh)
-- `ava/` — Windows 10 (pwsh)
-- `kyolim/` — Windows 11 회사 노트북 (pwsh, stow 미사용)
-- `nix/` — NixOS flake 설정
-- `.ai/` — AI 에이전트 공유 설정 (AGENTS.md)
+GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조합으로 배포. 상세 설계는 [docs/plans/2026-03-03-stow-structure-design.md](docs/plans/2026-03-03-stow-structure-design.md).
+
+### 디렉토리
+
+| 디렉토리 | 호스트 | 설명 |
+| :--- | :--- | :--- |
+| `base/` | 전체 | 공통 설정 (git, nvim, tmux, wezterm, AI rules) |
+| `axiom/` | macOS | Mac Studio — Local LLM (LM Studio, MLX) + 개발 |
+| `eve/` | macOS | Mac mini — iOS/AOS 개발 |
+| `mo/` | NixOS | AyaNEO AM02 — Linux 개발 워크스테이션 |
+| `walle/` | Fedora | AOOSTAR WTR R1 — 미디어 서버 (NAS) |
+| `girl/` | SteamOS | Steam Deck — 게임/개발 |
+| `ava/` | Windows 10 | Surface Pro 6 (pwsh) |
+| `kyolim/` | Windows 11 | 회사 노트북 (stow 미사용) |
+| `nix/` | NixOS | flake 설정 (mo 전용) |
+| `windows/` | Windows | PowerShell 설치 스크립트 |
+| `docs/` | - | 설계/구현 문서 (superpowers specs & plans) |
+| `.ai/` `.githooks/` `.github/` | - | AI 공유 규칙, Git hooks, Dependabot |
+
+### 공통 파일 (stow 호스트)
+
+각 호스트 패키지에 공통 포함. `base/`는 공통 도구 설정, 호스트 패키지는 환경별 오버라이드.
+
+| 파일 | 설명 |
+| :--- | :--- |
+| `.zshrc` | Zsh 진입점 |
+| `.alias` | 셸 alias |
+| `.function` | 셸 함수 |
+| `.path` | PATH 환경변수 |
+| `.key` | sops 복호화용 age 키 (암호화됨) |
+| `.gitconfig.local` | 호스트별 Git 설정 (credential helper) |
+| `.ssh/config` | SSH 클라이언트 설정 |
+| `.stow-local-ignore` | Stow 배포 제외 패턴 |
+| `.claude/settings.json` | Claude Code 권한/MCP 설정 |
+| `.config/atuin/config.toml` | Atuin 셸 히스토리 |
+| `.config/mise/config.toml` | mise 런타임 (Node, Bun 등) |
+| `.config/shell_gpt/` | shell-gpt(sgpt) 설정 — provider별 `.sgptrc.*` 변형 (langfuse, zai, tailscale-zai) |
+| `Brewfile` / `Brewfile-sudo` | Homebrew 패키지 (macOS/SteamOS) |
+| `.tmuxp/*.yaml` | tmux 세션 프리셋 (work, ecoai) |
+| `scripts/install_nvtools.sh` | nvtools(NVIDIA) 설치 스크립트 |
+
+### base/ — 공통 설정
+
+| 경로 | 설명 |
+| :--- | :--- |
+| `.gitconfig` | 공통 Git 설정 |
+| `.tmux.conf` | Tmux 설정 |
+| `.wezterm.lua` | WezTerm 터미널 설정 |
+| `.claude/rules/00-05` | AI 규칙 (profile, operations, verification, coding, documentation, multi-agent) |
+| `.claude/CLAUDE.md` | Claude Code 공통 지시문 (stow 배포용) |
+| `.claude/.omc/hud-config.json` | OMC HUD 설정 |
+| `.codex/AGENTS.md` `rules/` | Codex 에이전트 설정 |
+| `.gemini/GEMINI.md` | Gemini CLI 설정 |
+| `.config/nvim/` | Neovim 설정 (lazy.nvim) — 하단 참조 |
+
+#### Neovim (`base/.config/nvim/`)
+
+lazy.nvim 기반 모듈형 구조. 상세는 [base/.config/nvim/README.md](base/.config/nvim/README.md).
+
+| 경로 | 설명 |
+| :--- | :--- |
+| `init.lua` | 진입점 |
+| `lua/core/` | options, keymaps, autocmds, health |
+| `lua/config/lsp_handlers.lua` | LSP 핸들러 |
+| `lua/plugins/lsp.lua` | LSP 서버 |
+| `lua/plugins/completion.lua` | 자동완성 |
+| `lua/plugins/explorer.lua` | 파일 탐색기 |
+| `lua/plugins/formatting.lua` | 포매터 (conform) |
+| `lua/plugins/linting.lua` | 린터 (nvim-lint) |
+| `lua/plugins/treesitter.lua` | Treesitter 파서 |
+| `lua/plugins/git.lua` | Git 연동 (gitsigns 등) |
+| `lua/plugins/mcp.lua` | MCP 통합 |
+| `lua/plugins/terminal.lua` | 터미널 |
+| `lua/plugins/theme.lua` | 테마 |
+| `lua/plugins/tmux.lua` | Tmux 연동 |
+| `lua/plugins/ui*.lua` | UI (ui, ui-extras, ui-tools) |
+| `lua/plugins/suda.lua` | sudo 쓰기 |
+| `nvim-tools.nix` | NixOS용 외부 의존성 |
+
+### 호스트 특화 파일
+
+- **axiom/, eve/** (macOS) — `.holmes/` (config, model_list), `.config/shell_gpt/roles/*.json` (sgpt 커스텀 역할), `.tmuxp/ecoai.yaml` (EcoAI 세션)
+- **mo/** (NixOS) — `.hermes/config.yaml` (Hermes agent 게이트웨이), `.hermes/.env.sops` (sops 암호화), `.holmes/`, `.codex/memories/`
+- **girl/** (SteamOS) — `.wakatime.cfg` (WakaTime 코딩 추적)
+- **walle/** (Fedora) — Atuin 설정이 타 호스트와 상이 (272L vs 371L)
+- **ava/** (Windows) — `.config/mise/config.toml`, `.zshrc` (WSL/Git Bash 환경)
+
+### nix/ — NixOS flake
+
+| 경로 | 설명 |
+| :--- | :--- |
+| `nixos/flake.nix` | Flake 입력 + 모듈 import |
+| `nixos/hosts/mo/default.nix` | mo 호스트 설정 |
+| `nixos/hosts/mo/hardware-configuration.nix` | 하드웨어 |
+| `nixos/hosts/mo/hermes.nix` | Hermes agent NixOS 서비스 + sops |
+| `nixos/hosts/mo/beszel.nix` | Beszel 모니터링 에이전트 |
+| `nixos/home/crong.nix` | Home Manager |
+| `nixos/modules/desktop/kde.nix` | KDE 데스크톱 |
+| `nixos/modules/virtualization.nix` | 가상화 |
+| `nixos/secrets/hermes.yaml` | Hermes 시크릿 (sops) |
+| `nixos/docs/fcitx5-wayland-kde.md` | fcitx5 입력기 가이드 |
+
+### docs/ — 설계/구현 문서
+
+| 경로 | 설명 |
+| :--- | :--- |
+| `desktop.md` | 데스크톱 환경 설정 |
+| `plans/` | 구현 계획 (stow 구조, sops 암호화) |
+| `superpowers/specs/` | 설계 명세 (nvim MCP, beszel, hermes, codex MCP, macOS setup) |
+| `superpowers/plans/` | 구현 계획 (NixOS mo, axiom/eve macOS setup, nvim 의존성) |
 
 ## Secrets
 

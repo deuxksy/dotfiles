@@ -10,9 +10,11 @@ brew "glow"
 brew "mise"
 brew "ripgrep"
 brew "sops"
+brew "age"
 brew "stow"
 brew "tealdeer"
 brew "yq"
+brew "glow"
 
 # System
 brew "curl"
@@ -83,8 +85,6 @@ brew "fontforge"
 
 # Custom tools
 brew "e2tools"
-brew "httpie"
-brew "lsd"
 brew "onedrive-cli"
 
 # Beszel Agent
