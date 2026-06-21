@@ -84,16 +84,16 @@ brew "black"
 brew "shfmt"
 brew "krew"
 
-
 # Beszel Agent (custom tap)
 tap "henrygd/beszel"
 brew "henrygd/beszel/beszel-agent"
 
 tap "k8sgpt-ai/k8sgpt"
 brew "k8sgpt-ai/k8sgpt/k8sgpt"
-tap "robusta-dev/homebrew-holmesgpt"
-brew "robusta-dev/homebrew-holmesgpt/holmesgpt"
 
+# Mobile E2E Testing
+tap "mobile-dev-inc/tap"
+brew "mobile-dev-inc/tap/maestro"
 # Fonts
 cask "font-hack-nerd-font"
 cask "font-fira-code-nerd-font"
@@ -116,7 +116,3 @@ cask "gemini"
 
 # LM Studio (for axiom LLM work)
 cask "lm-studio"
-
-# Mobile E2E Testing
-tap "mobile-dev-inc/tap"
-brew "mobile-dev-inc/tap/maestro"
