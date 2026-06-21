@@ -126,6 +126,9 @@
     Host girl
       HostName %h.bun-bull.ts.net
       User deck
+      ServerAliveInterval 30
+      ServerAliveCountMax 3
+      TCPKeepAlive yes
 
     Host arv steward
       HostName %h.bun-bull.ts.net
