@@ -82,6 +82,8 @@ brew "stylua"
 brew "prettierd"
 brew "black"
 brew "shfmt"
+brew "krew"
+
 
 # Beszel Agent (custom tap)
 tap "henrygd/beszel"

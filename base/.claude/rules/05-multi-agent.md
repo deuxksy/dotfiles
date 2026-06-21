@@ -78,20 +78,18 @@ brainstorming → spec/plan → [문서 검증] → 구현 → [실행 검증] �
 | :--- | :--- | :--- | :--- |
 | **Gemini** | `gemini-3.1-pro-preview` | Bash | MCP 미지원, 폴백: `gemini-2.5-flash` |
 | **Codex** | `gpt-5.5` + `model_reasoning_effort = "xhigh"` | MCP | `~/.codex/config.toml` 설정 |
-| **shell-gpt** | `kimi-k2.5` | Bash (`sgpt --model kimi-k2.5`) | 독립 검증 에이전트 |
+| **shell-gpt** | `kimi-k2.5` | Bash (`sgpt --model kimi-k2.5`) | **비활성** (ModelArk 종료, `00-profile.md` AI Subscription 참조) |
 
-### 3-Way 교차 검증 (기본)
+### 교차 검증 (현재 2-Way 운영)
 
-사용자가 검증을 요청하면 항상 3-Way 방식으로 수행. Gemini, Codex, sgpt가 독립적으로 동일 작업을 수행하고, Claude는 작업에 참여하지 않고 원본과 3개 결과를 객관적으로 비교·취합하여 최종본을 생성 (자기 편향 방지).
+사용자가 검증을 요청하면 교차 검증 방식으로 수행. sgpt(ModelArk) 비활성으로 현재 **Gemini + Codex 2-Way** 운영. 각 에이전트가 독립적으로 동일 작업을 수행하고, Claude는 작업에 참여하지 않고 원본과 결과를 객관적으로 비교·취합하여 최종본을 생성 (자기 편향 방지). sgpt 복구 시 3-Way로 확장 (`00-profile.md` ModelArk 항목 참조).
 
 ```mermaid
 graph TD
     A[1. 입력] --> B[2.1 Gemini 작업]
     A --> C[2.2 Codex 작업]
-    A --> D[2.3 sgpt 작업]
     B --> E[3. Claude 비교 및 취합]
     C --> E
-    D --> E
     E --> F[최종 산출물]
 ```
 
@@ -99,13 +97,12 @@ graph TD
 | :--- | :--- | :--- | :--- |
 | 2.1 | **Gemini** | 독립 작업 수행 | Bash (`gemini -p ...`) |
 | 2.2 | **Codex** | 독립 작업 수행 | MCP (`mcp__codex__codex`) |
-| 2.3 | **sgpt** | 독립 작업 수행 | Bash (`sgpt --model <model>`) |
-| 3 | **Claude** | 원본과 3개 결과 비교, 최적 선택, 충돌 해결, 최종본 생성 | 직접 수행 (작업 불참) |
+| 3 | **Claude** | 원본과 결과 비교, 최적 선택, 충돌 해결, 최종본 생성 | 직접 수행 (작업 불참) |
 
 **원칙:**
-- 3개 에이전트는 서로의 결과를 보지 않고 독립적으로 작업
+- 각 에이전트는 서로의 결과를 보지 않고 독립적으로 작업
 - Claude는 작업에 참여하지 않고 객관적 판사 역할만 수행 (자기 편향 방지)
-- Claude는 원본과 3개 결과를 모두 대조하여 최적 결과 선택
+- Claude는 원본과 결과를 모두 대조하여 최적 결과 선택
 - 충돌 시 충돌 해결 규칙(상기 테이블) 적용, 최종 결정은 개발자
 - 작업 유형에 따라 비교 기준을 상황에 맞게 조정:
   - **번역**: 오역, 누락, 자연스러움, 전문 용어 기준으로 비교
@@ -113,24 +110,11 @@ graph TD
   - **문서 작성**: 논리 정합성, 완전성, 간결성 기준으로 비교
   - **기타**: 작업 성격에 맞는 검증 기준을 Claude가 판단하여 적용
 
-### shell-gpt (sgpt) 검증
+### shell-gpt (sgpt) — 비활성 (ModelArk 구독 종료 2026-06)
 
-- `sgpt`는 3-Way의 세 번째 독립 검증 에이전트, Bash로만 호출 (MCP 미지원)
-- 작업 유형에 따라 최적 모델을 자동 선택
-
-#### 모델 선택 전략
-
-| 검증 유형 | 모델 | 이유 |
-| :--- | :--- | :--- |
-| 번역/문서 | `kimi-k2.5` | 한국어 이해도 높음, 긴 컨텍스트 |
-| 코드 정확성 | `deepseek-v4-pro` | 코드 추론 강점, 복잡한 로직 분석 |
-| 코드 빠른 검증 | `deepseek-v4-flash` | 속도 우선, 일반적인 코드 리뷰 |
-| 아키텍처/설계 | `dolaseed-2.0-pro` | 복잡한 분석, 대규모 컨텍스트 |
-| 코드 특화 | `bytedance-seed-code` | 코드 생성/검증 특화 |
-| 코드 스타일 | `dolaseed-2.0-code` | 코드 품질, 패턴 분석 |
-| 경량 빠른 체크 | `dolaseed-2.0-lite` | 속도 우선, 간단한 검증 |
-
-호출: `sgpt --model <model> "프롬프트"`
+> **상태: 사용 불가**. sgpt(ModelArk Coding Plan) 구독 종료 → 교차 검증 경로의 sgpt 제외, **Codex(MCP) + Gemini(Bash) 2-way**로 운영. Gemini capacity 실패 시 Codex 단일 폴백.
+>
+> 복구 시: `00-profile.md` AI Subscription(ModelArk) 기준으로 본 섹션 + 상기 교차 검증 다이어그램을 3-Way로 재활성화. 모델 선택 전략(kimi-k2.5/deepseek-v4-pro/dolaseed 계열 등 7종)은 이 커밋 이전 `git show` 참조.
 
 ## Codex (MCP + Bash Hybrid)
 

@@ -21,8 +21,11 @@ Route code to `executor` (use `model=opus` for complex work). Uncertain SDK usag
 
 <model_routing>
 `haiku` (quick lookups), `sonnet` (standard), `opus` (architecture, deep analysis).
-Direct writes OK for: `~/.claude/**`, `.omc/**`, `.claude/**`, `CLAUDE.md`, `AGENTS.md`.
 </model_routing>
+
+<permissions>
+Direct writes OK for (no delegation needed): `~/.claude/**`, `.omc/**`, `.claude/**`, `CLAUDE.md`, `AGENTS.md`.
+</permissions>
 
 <skills>
 Invoke via `/oh-my-claudecode:<name>`. Trigger patterns auto-detect keywords.
@@ -33,8 +36,8 @@ Detailed agent catalog, tools, team pipeline, commit protocol, and full skills r
 </skills>
 
 <verification>
-Verify before claiming completion. Size appropriately: small→haiku, standard→sonnet, large/security→opus.
-If verification fails, keep iterating.
+Verify before claiming completion. Size appropriately: small→haiku, standard→sonnet, large/security→opus. If verification fails, keep iterating.
+Detail protocol (Negative Premise, Ground Truth, 3-Strike): `~/.claude/rules/02-verification.md`.
 </verification>
 
 <execution_protocols>
