@@ -9,7 +9,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | axiom | Mac Studio | macOS | stow: `base` + `axiom` |
 | eve | Mac mini | macOS | stow: `base` + `eve` |
 | mo | AyaNEO AM02 | NixOS | stow: `base` + `mo` / flake |
-| walle | AOOSTAR WTR R1 | Fedora | stow: `base` + `walle` |
+| walle | AOOSTAR WTR R1 | Proxmox (Debian) | stow: `base` + `walle` |
 | girl | Steam Deck | SteamOS | stow: `base` + `girl` |
 | ava | Surface Pro 6 | Windows 10 | pwsh |
 | kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
@@ -22,7 +22,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 - **axiom**: Local LLM 서버 (LM Studio, MLX) + 개발
 - **eve**: iOS/AOS 개발 전용
 - **mo**: Linux 개발 워크스테이션 (NixOS)
-- **walle**: 미디어 서버 (NAS)
+- **walle**: Homelab 서버 (K8s, VM)
 - **girl**: 휴대용 서버
 - **steward**: 상주 네트워크 서버 / VPN 라우터
 - **arv**: 휴대용 Wi-Fi 6 라우터
@@ -104,7 +104,7 @@ graph TD
 | girl | 100.88.106.46 | linux | online | - | Steam Deck |
 | ipad | 100.110.172.36 | iOS | online | - | iPad Pro 12.9 |
 | steward | 100.65.14.67 | linux | online | - | 상주 VPN 라우터 |
-| walle | 100.90.68.38 | linux | idle | O | 미디어 서버 (NAS) |
+| walle | 100.90.68.38 | linux | idle | O | Homelab 서버 (K8s, VM) |
 | lt | 100.68.195.75 | linux | idle | O | - |
 | heritage | 100.96.115.19 | linux | online | - | - |
 | lllm | 100.107.171.105 | linux | online | - | - |
@@ -115,8 +115,8 @@ graph TD
 
 ## Application Manager (Library 4-Layer)
 
-1. **Layer 1 (System PM)**: brew (macOS), Nix (NixOS), dnf (Fedora), pacman (SteamOS)
-2. **Layer 2 (SDK)**: mise (macOS, Fedora, SteamOS), Nix packages (NixOS)
+1. **Layer 1 (System PM)**: brew (macOS), Nix (NixOS), apt (Debian), pacman (SteamOS)
+2. **Layer 2 (SDK)**: mise (macOS, SteamOS), Nix packages (NixOS)
 3. **Layer 3 (Package Manager)**: pnpm (Node), uv (Python), npx, uvx — on-demand 실행
 4. **Layer 4 (Binary)**: `~/.local/bin`
 
@@ -130,7 +130,7 @@ cd ~/git/dotfiles
 stow -t ~ base axiom    # macOS
 stow -t ~ base eve      # macOS
 stow -t ~ base mo       # NixOS
-stow -t ~ base walle    # Fedora
+stow -t ~ base walle    # Proxmox (Debian)
 stow -t ~ base girl     # SteamOS
 
 # macOS (Brewfile)
@@ -165,7 +165,7 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 | `axiom/` | macOS | Mac Studio — Local LLM (LM Studio, MLX) + 개발 |
 | `eve/` | macOS | Mac mini — iOS/AOS 개발 |
 | `mo/` | NixOS | AyaNEO AM02 — Linux 개발 워크스테이션 |
-| `walle/` | Fedora | AOOSTAR WTR R1 — 미디어 서버 (NAS) |
+| `walle/` | Proxmox (Debian) | AOOSTAR WTR R1 — Homelab 서버 (K8s, VM) |
 | `girl/` | SteamOS | Steam Deck — 게임/개발 |
 | `ava/` | Windows 10 | Surface Pro 6 (pwsh) |
 | `kyolim/` | Windows 11 | 회사 노트북 (stow 미사용) |
@@ -239,7 +239,7 @@ lazy.nvim 기반 모듈형 구조. 상세는 [base/.config/nvim/README.md](base/
 - **axiom/, eve/** (macOS) — `.holmes/` (config, model_list), `.config/shell_gpt/roles/*.json` (sgpt 커스텀 역할), `.tmuxp/ecoai.yaml` (EcoAI 세션)
 - **mo/** (NixOS) — `.hermes/config.yaml` (Hermes agent 게이트웨이), `.hermes/.env.sops` (sops 암호화), `.holmes/`, `.codex/memories/`
 - **girl/** (SteamOS) — `.wakatime.cfg` (WakaTime 코딩 추적)
-- **walle/** (Fedora) — Atuin 설정이 타 호스트와 상이 (272L vs 371L)
+- **walle/** (Proxmox) — Atuin 설정이 타 호스트와 상이 (272L vs 371L)
 - **ava/** (Windows) — `.config/mise/config.toml`, `.zshrc` (WSL/Git Bash 환경)
 
 ### nix/ — NixOS flake
