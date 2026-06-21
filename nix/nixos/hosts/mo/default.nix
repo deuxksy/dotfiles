@@ -136,7 +136,7 @@
     pipx pkg-config pnpm portaudio postgresql procs python3
     rclone ripgrep rustc
     shell-gpt solaar sops stow
-    tailscale tealdeer telepresence2 tmux tmuxp tokei
+    tailscale tcpdump tealdeer telepresence2 tmux tmuxp tokei
     uv
     wget
     xh

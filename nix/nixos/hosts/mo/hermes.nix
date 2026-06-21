@@ -32,6 +32,7 @@
     settings = {
       model = {
         default = "glm-5-turbo";
+        context_length = 200000;
         provider = "custom:aperture";
       };
       custom_providers = [
