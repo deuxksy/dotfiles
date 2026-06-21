@@ -12,13 +12,7 @@
     - glm-5.1
     - glm-5
     - glm-5-turbo
-  - ModelArk Coding Plan: 월단위 갱신
-    - dola-seed-2.0-pro
-    - dola-seed-2.0-lite
-    - dola-seed-2.0-code
-    - bytedance-seed-code
-    - kimi-k2.5
-    - gpt-oss-120b
+  - ModelArk Coding Plan: **구독 종료(2026-06)** — sgpt(kimi-k2.5 등) 사용 불가. 모델: dola-seed-2.0-pro/lite/code, bytedance-seed-code, kimi-k2.5, gpt-oss-120b (복구 시)
   - Google GEMINI PRO: 월 단위 갱신 (모델은 05-multi-agent 참조)
   - ChatGPT: 월단위 갱신 (모델은 05-multi-agent 참조)
 
