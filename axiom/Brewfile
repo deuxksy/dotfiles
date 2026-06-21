@@ -113,6 +113,8 @@ cask "obsidian"
 cask "typora"
 cask "android-studio"
 cask "gemini"
+# Google Antigravity CLI (agy, replaces curl install)
+cask "antigravity-cli"
 
 # LM Studio (for axiom LLM work)
 cask "lm-studio"
