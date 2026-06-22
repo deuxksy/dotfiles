@@ -150,13 +150,15 @@
       "source": {
         "source": "github",
         "repo": "deuxksy/ai-agent-skill"
-      }
+      },
+      "autoUpdate": true
     },
     "omc": {
       "source": {
         "source": "git",
         "url": "https://github.com/Yeachan-Heo/oh-my-claudecode.git"
-      }
+      },
+      "autoUpdate": true
     },
     "understand-anything": {
       "source": {

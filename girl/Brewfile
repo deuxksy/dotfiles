@@ -51,7 +51,6 @@ brew "tmuxp"
 
 # Containers / K8s
 brew "k8sgpt"
-brew "minikube"
 brew "podman-compose"
 
 # Cloud / IaC
