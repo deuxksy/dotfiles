@@ -1,3 +1,3 @@
-model: "openai/glm-5.1"
-api_key: "ts"
+model: "openai/glm-5.2"
+api_key: "sk-dummy"
 api_base: "http://ai/v1"

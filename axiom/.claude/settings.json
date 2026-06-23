@@ -1,13 +1,14 @@
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "http://ai",
+    "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic",
     "API_TIMEOUT_MS": "3000000",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1,
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5-turbo",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5.1",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.2",
-    "ENABLE_TOOL_SEARCH": "1"
+    "ENABLE_TOOL_SEARCH": "1",
+    "ANTHROPIC_AUTH_TOKEN": "366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr"
   },
   "permissions": {
     "allow": [
@@ -54,7 +55,7 @@
       "Bash(reboot *)"
     ]
   },
-  "model": "glm-5.2",
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud-cache.sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
@@ -70,7 +71,6 @@
     "playwright@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "ralph-loop@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
     "figma@claude-plugins-official": true,
@@ -79,22 +79,18 @@
     "chrome-devtools-mcp@claude-plugins-official": true,
     "plugin-dev@claude-plugins-official": true,
     "hookify@claude-plugins-official": true,
-    "huggingface-skills@claude-plugins-official": true,
     "remember@claude-plugins-official": true,
-    "microsoft-docs@claude-plugins-official": true,
-    "postman@claude-plugins-official": true,
     "mcp-server-dev@claude-plugins-official": true,
-    "cloudflare@claude-plugins-official": true,
-    "expo@claude-plugins-official": true,
     "session-report@claude-plugins-official": true,
     "exa@claude-plugins-official": true,
-    "greptile@claude-plugins-official": true,
     "notion@claude-plugins-official": true,
     "glm-plan-usage@zai-coding-plugins": true,
     "glm-plan-bug@zai-coding-plugins": true,
     "korean-law@korean-law-marketplace": true,
     "oh-my-claudecode@omc": true,
-    "deuxksy@zzizily": true
+    "deuxksy@zzizily": true,
+    "understand-anything@understand-anything": true,
+    "claude-code-wakatime@wakatime": true
   },
   "extraKnownMarketplaces": {
     "omc": {
@@ -119,6 +115,12 @@
       "source": {
         "source": "github",
         "repo": "deuxksy/ai-agent-skill"
+      }
+    },
+    "understand-anything": {
+      "source": {
+        "source": "github",
+        "repo": "Egonex-AI/Understand-Anything"
       }
     }
   }

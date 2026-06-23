@@ -1,21 +1,16 @@
 # Z.AI
-glm-4.7:
-  model: openai/glm-4.7
-  api_key: "ts"
-  api_base: "http://ai/v1"
-
-glm-5:
-  model: openai/glm-5
-  api_key: "ts"
-  api_base: "http://ai/v1"
-
-glm-5-turbo:
-  model: openai/glm-5-turbo
+glm-5.2:
+  model: openai/glm-5.2
   api_key: "ts"
   api_base: "http://ai/v1"
 
 glm-5.1:
   model: openai/glm-5.1
+  api_key: "ts"
+  api_base: "http://ai/v1"
+
+glm-5-turbo:
+  model: openai/glm-5-turbo
   api_key: "ts"
   api_base: "http://ai/v1"
 
