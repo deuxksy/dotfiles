@@ -78,6 +78,7 @@ brew "python-setuptools"
 brew "python-tk@3.12"
 brew "python-matplotlib"
 brew "shellcheck"
+brew "mole"
 
 # Fonts / Media
 brew "fontforge"
