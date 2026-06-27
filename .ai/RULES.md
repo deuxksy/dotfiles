@@ -10,7 +10,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 | axiom | macOS | 개발/일상 | Brewfile |
 | eve | macOS | 개발/일상 | Brewfile |
 | girl | SteamOS | 게임/개발 | mise |
-| walle | Proxmox (Debian) | Homelab 서버 (K8s, VM) | 스크립트 |
+| walle | Proxmox (Debian) | Homelab 서버 (K8s, VM) | stow: `base` + `walle` + `walle-sudo` (root) |
 | ava | Windows 10 (Surface Pro 6) | SSH 클라이언트 | - |
 
 ## Commands
@@ -30,6 +30,11 @@ eval "$(sops -d ~/.key)"
 
 # NixOS (mo)
 sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
+
+# walle (Proxmox) — 홈 + root 영역 배포
+stow -t ~ base walle              # 홈
+sudo apt install -y stow          # Proxmox 최소 설치엔 stow 없음
+sudo stow -t / walle-sudo         # /etc/ssh/sshd_config.d/* (root)
 
 # hermes-agent (mo)
 sudo systemctl restart hermes-agent
@@ -62,6 +67,8 @@ hermes config show   # CLI 모드 설정 확인
 - `.sops.yaml`로 age 키 관리, `.key` 파일은 sops 암호화됨
 - `.githooks/`에 커스텀 Git hooks, `.gitleaks.toml`로 시크릿 스캔
 - `stow` 충돌 시 기존 파일을 백업 후 제거, 또는 `--adopt` 사용
+- walle `walle-sudo`: sudoers(`/etc/sudoers.d/`)는 stow symlink 불가 (visudo owner root 검사 ↔ repo 파일 crong 소유) → 수동 관리 + `.stow-local-ignore`. sshd drop-in은 stow OK
+- walle: Proxmox 최소 설치에 stow 미포함 → `apt install stow` 선행
 - Brewfile은 각 호스트 패키지 폴더에 위치 (`axiom/Brewfile`, `eve/Brewfile`)
 - `base/.claude/.omc/hud-config.json` — OMC HUD 설정 (stow로 연결)
 - hermes-agent: built-in `anthropic` provider는 `ANTHROPIC_BASE_URL` 무시 — `custom_providers` + `api_mode: anthropic_messages` 필수 (Tailscale Aperture 등 프록시 사용 시)
