@@ -140,6 +140,13 @@ cd ~ && brew bundle
 sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
 # 또는 alias: rebuild
 
+# walle (Proxmox) — root 영역(sshd drop-in) 배포
+# Proxmox 최소 설치엔 stow 없음 → 사전 설치
+sudo apt install -y stow
+sudo stow -t / walle-sudo       # /etc/ssh/sshd_config.d/* 배포
+# 주의: sudoers(/etc/sudoers.d/)는 stow symlink 불가(visudo owner root 검사)
+#       → 수동 관리. walle-sudo/.stow-local-ignore 참조
+
 ```
 
 ## Stow Adopt

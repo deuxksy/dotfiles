@@ -1,0 +1,3 @@
+# sudoers는 stow symlink 불가 (visudo가 target owner root 검사, repo 파일은 crong 소유)
+# /etc/sudoers.d/crong (0440) 은 walle 수동 관리
+etc/sudoers\.d/user
