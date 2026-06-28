@@ -135,5 +135,8 @@
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "discord@claude-plugins-official": false
   }
 }
