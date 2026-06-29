@@ -8,13 +8,11 @@
 - Notion:
   - crong(김석영) user ID: `341d872b-594c-817c-948e-0002cd3cf7da`
 - AI Subscription
-  - [Z.ai](http://z.ai/) Coding Plan: 2027/01/14 까지
-    - glm-5.1
-    - glm-5
-    - glm-5-turbo
-  - ModelArk Coding Plan: **구독 종료(2026-06)** — sgpt(kimi-k2.5 등) 사용 불가. 모델: dola-seed-2.0-pro/lite/code, bytedance-seed-code, kimi-k2.5, gpt-oss-120b (복구 시)
-  - Google GEMINI PRO: 월 단위 갱신 (모델은 05-multi-agent 참조)
-  - ChatGPT: 월단위 갱신 (모델은 05-multi-agent 참조)
+  - [Z.ai](http://z.ai/) Coding Plan: 2027/01/14 까지 (모델은 05-multi-agent 참조)
+  - byteplus ModelArk: **사용 재개 (2026-06)** (모델은 05-multi-agent 참조)
+  - Xiaomi MiMo (token plan): 사용 중 (모델은 05-multi-agent 참조)
+  - Google GEMINI PRO: 월 단위 갱신 — Google 생태계(Gmail/Drive) AI 활용 (모델은 05-multi-agent 참조)
+  - ChatGPT: 월단위 갱신 — 회사 구독, 업무용 (모델은 05-multi-agent 참조)
 
 ## Language and Communication
 

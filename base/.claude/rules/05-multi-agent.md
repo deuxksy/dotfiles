@@ -78,11 +78,11 @@ brainstorming → spec/plan → [문서 검증] → 구현 → [실행 검증] �
 | :--- | :--- | :--- | :--- |
 | **Antigravity** | `Gemini 3.1 Pro (High)` | Bash (`agy -p`) | MCP 미지원, 폴백: `Gemini 3.5 Flash (Medium)` |
 | **Codex** | `gpt-5.5` + `model_reasoning_effort = "xhigh"` | MCP | `~/.codex/config.toml` 설정 |
-| **shell-gpt** | `kimi-k2.5` | Bash (`sgpt --model kimi-k2.5`) | **비활성** (ModelArk 종료, `00-profile.md` AI Subscription 참조) |
+| **shell-gpt** | `kimi-k2.5` | Bash (`sgpt --model kimi-k2.5`) | **비활성** (사용자 비활성 선택, `00-profile.md` AI Subscription 참조) |
 
 ### 교차 검증 (현재 2-Way 운영)
 
-사용자가 검증을 요청하면 교차 검증 방식으로 수행. sgpt(ModelArk) 비활성으로 현재 **Antigravity + Codex 2-Way** 운영. 각 에이전트가 독립적으로 동일 작업을 수행하고, Claude는 작업에 참여하지 않고 원본과 결과를 객관적으로 비교·취합하여 최종본을 생성 (자기 편향 방지). sgpt 복구 시 3-Way로 확장 (`00-profile.md` ModelArk 항목 참조).
+사용자가 검증을 요청하면 교차 검증 방식으로 수행. sgpt 비활성(사용자 선택, byteplus ModelArk는 사용 가능)으로 현재 **Antigravity + Codex 2-Way** 운영. 각 에이전트가 독립적으로 동일 작업을 수행하고, Claude는 작업에 참여하지 않고 원본과 결과를 객관적으로 비교·취합하여 최종본을 생성 (자기 편향 방지). sgpt 활성화 시 3-Way로 확장 (`00-profile.md` byteplus ModelArk 항목 참조).
 
 ```mermaid
 graph TD
@@ -110,11 +110,25 @@ graph TD
   - **문서 작성**: 논리 정합성, 완전성, 간결성 기준으로 비교
   - **기타**: 작업 성격에 맞는 검증 기준을 Claude가 판단하여 적용
 
-### shell-gpt (sgpt) — 비활성 (ModelArk 구독 종료 2026-06)
+### shell-gpt (sgpt) — 비활성 (사용자 비활성 선택)
 
-> **상태: 사용 불가**. sgpt(ModelArk Coding Plan) 구독 종료 → 교차 검증 경로의 sgpt 제외, **Codex(MCP) + Antigravity(Bash) 2-way**로 운영. Antigravity capacity 실패 시 Codex 단일 폴백.
+> **상태: 비활성**. byteplus ModelArk는 사용 가능하나 사용자가 sgpt 경로를 우선 비활성화 → 교차 검증은 **Codex(MCP) + Antigravity(Bash) 2-Way**로 운영. Antigravity capacity 실패 시 Codex 단일 폴백.
 >
-> 복구 시: `00-profile.md` AI Subscription(ModelArk) 기준으로 본 섹션 + 상기 교차 검증 다이어그램을 3-Way로 재활성화. 모델 선택 전략(kimi-k2.5/deepseek-v4-pro/dolaseed 계열 등 7종)은 이 커밋 이전 `git show` 참조.
+> 활성화 시: `00-profile.md` AI Subscription + 하기 Provider Models 표 기준으로 본 섹션 + 상기 교차 검증 다이어그램을 3-Way로 재활성화 (이 커밋 이전 `git show`로 기존 모델 선택 전략 참조).
+
+### Provider Models
+
+외부 구독 provider의 사용 가능한 모델 (구독 상태는 `00-profile.md` AI Subscription 참조). Antigravity/Codex 모델은 각 에이전트 섹션 참조.
+
+| Provider | 모델 | 용도 |
+| :--- | :--- | :--- |
+| Z.ai | glm-5.1, glm-5, glm-5-turbo | Claude Code |
+| byteplus ModelArk | dola-seed-2.0-code | hermes (mo) |
+| byteplus ModelArk | kimi-k2.5 | sgpt 검증 (현재 비활성) |
+| byteplus ModelArk | dola-seed-2.0-pro/lite, bytedance-seed-code, deepseek-v4-pro/flash, glm-5.1, glm-4.7 | — |
+| Xiaomi MiMo | mimo-v2.5-pro, mimo-v2.5 (v2-pro·v2-omni → v2.5 자동 라우팅) | hermes (mo) 백업 |
+| Xiaomi MiMo | mimo-v2.5-tts, mimo-v2.5-tts-voiceclone, mimo-v2.5-tts-voicedesign, mimo-v2-tts | TTS |
+| Xiaomi MiMo | mimo-v2.5-asr | 음성 인식 (ASR) |
 
 ## Codex (MCP + Bash Hybrid)
 
