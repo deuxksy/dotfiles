@@ -7,7 +7,7 @@ Claude Code 산출물의 검증을 단계와 중요도에 따라 역할 분배.
 ### 워크플로우
 
 ```
-brainstorming → spec/plan → [문서 검증] → 구현 → [실행 검증] → merge
+brainstorming → spec → [문서 검증] → plan → 구현 → [실행 검증] → merge
 ```
 
 ### 3단계 검증 티어
@@ -82,7 +82,7 @@ brainstorming → spec/plan → [문서 검증] → 구현 → [실행 검증] �
 
 ### 교차 검증 (현재 2-Way 운영)
 
-사용자가 검증을 요청하면 교차 검증 방식으로 수행. sgpt 비활성(사용자 선택, byteplus ModelArk는 사용 가능)으로 현재 **Antigravity + Codex 2-Way** 운영. 각 에이전트가 독립적으로 동일 작업을 수행하고, Claude는 작업에 참여하지 않고 원본과 결과를 객관적으로 비교·취합하여 최종본을 생성 (자기 편향 방지). sgpt 활성화 시 3-Way로 확장 (`00-profile.md` byteplus ModelArk 항목 참조).
+사용자가 검증을 요청하면 교차 검증 방식으로 수행. sgpt는 byteplus Coding Plan 미지원 도구라 비활성 → 현재 **Antigravity + Codex 2-Way** 운영. 각 에이전트가 독립적으로 동일 작업을 수행하고, Claude는 작업에 참여하지 않고 원본과 결과를 객관적으로 비교·취합하여 최종본을 생성 (자기 편향 방지).
 
 ```mermaid
 graph TD
@@ -112,9 +112,7 @@ graph TD
 
 ### shell-gpt (sgpt) — 비활성 (사용자 비활성 선택)
 
-> **상태: 비활성**. byteplus ModelArk는 사용 가능하나 사용자가 sgpt 경로를 우선 비활성화 → 교차 검증은 **Codex(MCP) + Antigravity(Bash) 2-Way**로 운영. Antigravity capacity 실패 시 Codex 단일 폴백.
->
-> 활성화 시: `00-profile.md` AI Subscription + 하기 Provider Models 표 기준으로 본 섹션 + 상기 교차 검증 다이어그램을 3-Way로 재활성화 (이 커밋 이전 `git show`로 기존 모델 선택 전략 참조).
+> **상태: 비활성**. byteplus ModelArk Coding Plan은 AI 코딩 도구 전용(지원 도구: Claude Code/Codex CLI/Hermes Agent 등)이라 sgpt(미지원 도구)에서 호출 불가 → 교차 검증은 **Codex(MCP) + Antigravity(Bash) 2-Way**로 운영. Antigravity capacity 실패 시 Codex 단일 폴백.
 
 ### Provider Models
 
@@ -122,13 +120,15 @@ graph TD
 
 | Provider | 모델 | 용도 |
 | :--- | :--- | :--- |
-| Z.ai | glm-5.1, glm-5, glm-5-turbo | Claude Code |
-| byteplus ModelArk | dola-seed-2.0-code | hermes (mo) |
-| byteplus ModelArk | kimi-k2.5 | sgpt 검증 (현재 비활성) |
-| byteplus ModelArk | dola-seed-2.0-pro/lite, bytedance-seed-code, deepseek-v4-pro/flash, glm-5.1, glm-4.7 | — |
-| Xiaomi MiMo | mimo-v2.5-pro, mimo-v2.5 (v2-pro·v2-omni → v2.5 자동 라우팅) | hermes (mo) 백업 |
-| Xiaomi MiMo | mimo-v2.5-tts, mimo-v2.5-tts-voiceclone, mimo-v2.5-tts-voicedesign, mimo-v2-tts | TTS |
+| Z.ai | glm-5.2, glm-5, glm-5-turbo | Claude Code (회사) |
+| BytePlus ModelArk (coding plan) | dola-seed-2.0-pro/lite/code, bytedance-seed-code, kimi-k2.5, glm-5.1, glm-4.7, deepseek-v4-pro/flash | Claude Code (집) |
+| Xiaomi MiMo | mimo-v2.5-pro, mimo-v2.5 (v2-pro·v2-omni → v2.5 자동 라우팅) | Hermes (mimo-v2.5) |
+| Xiaomi MiMo | mimo-v2.5-tts, mimo-v2.5-tts-voiceclone, mimo-v2.5-tts-voicedesign | TTS (한정 무료) |
 | Xiaomi MiMo | mimo-v2.5-asr | 음성 인식 (ASR) |
+
+> **byteplus ModelArk (coding plan lite)**: AI 코딩 도구 전용 (API 호출 불가, 위반 시 계정 정지). Base URL `https://ark.ap-southeast.bytepluses.com/api/coding/v3`(OpenAI) / `/api/coding`(Anthropic). 지원 도구: Claude Code/Codex CLI/Hermes Agent/OpenCode/Cline/Cursor. Lite quota: 5h≈1,900/주≈12,000/월≈24,000 requests. `sgpt`는 미지원 도구라 kimi-k2.5 호출 불가 → 비활성 유지.
+
+> **Xiaomi MiMo (token plan lite) 접속 정보**: Base URL `https://token-plan-sgp.xiaomimimo.com/v1`(OpenAI 호환) / `/anthropic`(Anthropic 호환) — ClaudeCode/Codex 직접 연결 지원, 4.1B Credits, 비피크(PDT 9-17) 20% 할인
 
 ## Codex (MCP + Bash Hybrid)
 

@@ -7,12 +7,12 @@
 - Declarative Config: `Nix`로 재현 가능한 환경, `OpenTofu`로 IaC.
 - Notion:
   - crong(김석영) user ID: `341d872b-594c-817c-948e-0002cd3cf7da`
-- AI Subscription
-  - [Z.ai](http://z.ai/) Coding Plan: 2027/01/14 까지 (모델은 05-multi-agent 참조)
-  - byteplus ModelArk: **사용 재개 (2026-06)** (모델은 05-multi-agent 참조)
-  - Xiaomi MiMo (token plan): 사용 중 (모델은 05-multi-agent 참조)
-  - Google GEMINI PRO: 월 단위 갱신 — Google 생태계(Gmail/Drive) AI 활용 (모델은 05-multi-agent 참조)
-  - ChatGPT: 월단위 갱신 — 회사 구독, 업무용 (모델은 05-multi-agent 참조)
+- AI Subscription (모델은 05-multi-agent 참조)
+  - [Z.ai](http://z.ai/) Coding Plan: 2027/01/14 까지 
+  - ChatGPT: 월단위 갱신 — 회사 구독, 업무용
+  - Google GEMINI PRO: 월 단위 갱신 — Google 생태계(Gmail/Drive) AI 활용
+  - BytePlus ModelArk (coding plan lite): 2026/07/30 까지
+  - Xiaomi MiMo (token plan lite): 월 단위 자동 갱신 — 2026/07/29 까지 
 
 ## Language and Communication
 

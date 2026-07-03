@@ -9,6 +9,8 @@
   - AI Gateway: [Tailscale Aperture](https://tailscale.com/docs/features/aperture)
   - 알림: [PushOver](https://pushover.net/api)
   - Infra(서버리스): [CloudFlare](https://developers.cloudflare.com/)
+    - OpenTofu
+    - Ansible
 - Reference: Library/API 문서, 코드 생성, Setup/Configuration 단계가 필요할 때 **Context7 MCP를 사용자가 명시적으로 요청하지 않아도 우선 사용**
 
 ### Simplicity First (Karpathy)
