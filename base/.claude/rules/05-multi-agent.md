@@ -126,7 +126,7 @@ graph TD
 | Xiaomi MiMo | mimo-v2.5-tts, mimo-v2.5-tts-voiceclone, mimo-v2.5-tts-voicedesign | TTS (한정 무료) |
 | Xiaomi MiMo | mimo-v2.5-asr | 음성 인식 (ASR) |
 
-> **byteplus ModelArk (coding plan lite)**: AI 코딩 도구 전용 (API 호출 불가, 위반 시 계정 정지). Base URL `https://ark.ap-southeast.bytepluses.com/api/coding/v3`(OpenAI) / `/api/coding`(Anthropic). 지원 도구: Claude Code/Codex CLI/Hermes Agent/OpenCode/Cline/Cursor. Lite quota: 5h≈1,900/주≈12,000/월≈24,000 requests. `sgpt`는 미지원 도구라 kimi-k2.5 호출 불가 → 비활성 유지.
+> **Byteplus ModelArk (coding plan lite)**: AI 코딩 도구 전용 (API 호출 불가, 위반 시 계정 정지). Base URL `https://ark.ap-southeast.bytepluses.com/api/coding/v3`(OpenAI) / `/api/coding`(Anthropic). 지원 도구: Claude Code/Codex CLI/Hermes Agent/OpenCode/Cline/Cursor. Lite quota: 5h≈1,900/주≈12,000/월≈24,000 requests. `sgpt`는 미지원 도구라 kimi-k2.5 호출 불가 → 비활성 유지.
 
 > **Xiaomi MiMo (token plan lite) 접속 정보**: Base URL `https://token-plan-sgp.xiaomimimo.com/v1`(OpenAI 호환) / `/anthropic`(Anthropic 호환) — ClaudeCode/Codex 직접 연결 지원, 4.1B Credits, 비피크(PDT 9-17) 20% 할인
 
