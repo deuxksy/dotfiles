@@ -1,5 +1,20 @@
 # Documentation
 
+## Diátaxis
+
+기술 문서의 분류와 작성 관점은 [Diátaxis](https://diataxis.fr/) 프레임워크를 표준으로 한다. 작성 전 아래 4가지 타입 중 어디에 해당하는지 먼저 식별한다.
+
+| 타입 | 관점 | 용도 |
+| :--- | :--- | :--- |
+| Tutorial | 학습 | 초보자가 실습을 통해 입문 (예: 5분 만에 첫 API 만들기) |
+| How-to guide | 실무/목표 | 특정 목표·문제 해결 단계 (예: DB 마이그레이션하는 법) |
+| Reference | 정보 | API·설정·CLI 옵션을 엄격히 기술. 설명·논의 배제 |
+| Explanation | 이해 | 개념·배경·설계 결정 논의·조명 (예: 왜 X 아키텍처를 선택했는가) |
+
+- **구분 원칙**: Tutorial(가르침) ≠ How-to(해결), Reference(사전) ≠ Explanation(해설). 한 문서가 두 역할을 겸하면 문서를 분리한다.
+- **문서 분류 용어**(Tutorial, How-to guide, Reference, Explanation)의 정의도 Diátaxis 기준을 따른다.
+- **용어 위생**: "온보딩" 등 포괄적 라벨은 4타입 중 하나로 수렴해 명명한다 (예: 온보딩 문서 → Tutorial).
+
 ## Markdown
 
 - [Markdown Spec](https://github.github.com/gfm/)을 참조해서 문서를 작성한다.
@@ -44,12 +59,3 @@
 - 프로젝트 구조, 기술 스택 등은 필요 최소한만 유지
 - **최신 정보는 항상 Notion에 있어야 한다**. 로컬 문서는 참조용 캐시
 - **문서 간 중복 금지**. 동일한 내용이 여러 파일에 있으면 안 된다. 한 곳을 Source of Truth로 정하고 나머지는 링크로 참조
-
-## Work-Log
-
-- **중앙 repo**: `~/git/work-log` (독립 git repo)
-- **구조**: `YY주차/MMDD.md` (같은 날 다른 작업은 `MMDD-{task}.md`)
-- **기록 시점**: 작업 완료 후 일일 세션 로그 작성
-- **Notion 업데이트**: 개인 작업 기록(주차 페이지)에 일일 요약 반영
-- **팀 보고**: 사용자 요청 시(보통 금요일) 해당 주차 작업을 팀 주간 업무 보고에 작성
-- **상세 URL**: Claude Memory `reference_notion_work-log.md` 참조

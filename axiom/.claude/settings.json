@@ -2,13 +2,13 @@
   "env": {
     "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic",
     "API_TIMEOUT_MS": "3000000",
-    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": 1,
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5-turbo",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5.1",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.2",
     "ENABLE_TOOL_SEARCH": "1",
-    "ANTHROPIC_AUTH_TOKEN": "366cfde4fb6b4c7db5b0aa4d018774fc.7hy7ZFzfykmsecUr"
+    "ANTHROPIC_AUTH_TOKEN": "4c5cd8e75bc1423e915c977303fbcd68.eYI65fpJlItu200O"
   },
   "permissions": {
     "allow": [
@@ -73,7 +73,7 @@
     "claude-md-management@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "commit-commands@claude-plugins-official": true,
-    "figma@claude-plugins-official": true,
+    "figma@claude-plugins-official": false,
     "claude-code-setup@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true,
     "chrome-devtools-mcp@claude-plugins-official": true,
@@ -84,9 +84,7 @@
     "session-report@claude-plugins-official": true,
     "exa@claude-plugins-official": true,
     "notion@claude-plugins-official": true,
-    "glm-plan-usage@zai-coding-plugins": true,
-    "glm-plan-bug@zai-coding-plugins": true,
-    "korean-law@korean-law-marketplace": true,
+    "korean-law@korean-law-marketplace": false,
     "oh-my-claudecode@omc": true,
     "deuxksy@zzizily": true,
     "understand-anything@understand-anything": true,
@@ -123,5 +121,9 @@
         "repo": "Egonex-AI/Understand-Anything"
       }
     }
+  },
+  "logging": {
+    "path": "~/.claude/logs/",
+    "level": "info"
   }
 }
