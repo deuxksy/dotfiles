@@ -5,6 +5,7 @@
 - 일관성(Consistency): 기존 프로젝트의 코딩 스타일(들여쓰기, 네이밍 컨벤션, 패턴)을 최우선 준수
 - 주석: 코드가 `무엇(What)`을 하는지보다 `왜(Why)` 그렇게 작성되었는지에 집중. 뻔한 주석은 작성하지 않음
 - 안전성: 에러 핸들링(Error Handling)과 엣지 케이스(Edge Cases)를 항상 고려
+- Linux CLI 설정 위치: XDG basedir (`~/.config/<app>`, `~/.local/share/<app>`, `~/.cache/<app>`) 우선. 구형 도구(`~/.gitconfig`, `~/.bashrc`)는 XDG 미지원
 - 라이브러리:
   - AI Gateway: [Tailscale Aperture](https://tailscale.com/docs/features/aperture)
   - 알림: [PushOver](https://pushover.net/api)

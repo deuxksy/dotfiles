@@ -67,6 +67,7 @@ hermes config show   # CLI 모드 설정 확인
 - `.sops.yaml`로 age 키 관리, `.key` 파일은 sops 암호화됨
 - `.githooks/`에 커스텀 Git hooks, `.gitleaks.toml`로 시크릿 스캔
 - `stow` 충돌 시 기존 파일을 백업 후 제거, 또는 `--adopt` 사용
+- 구형 도구(`~/.gitconfig`, `~/.bashrc`)는 XDG 미지원 → `stow --adopt` 시 충돌 포인트. 신규 CLI는 `~/.config/<app>/` 우선 (basedir 0.8)
 - walle `walle-sudo`: sudoers(`/etc/sudoers.d/`)는 stow symlink 불가 (visudo owner root 검사 ↔ repo 파일 crong 소유) → 수동 관리 + `.stow-local-ignore`. sshd drop-in은 stow OK
 - walle: Proxmox 최소 설치에 stow 미포함 → `apt install stow` 선행
 - Brewfile은 각 호스트 패키지 폴더에 위치 (`axiom/Brewfile`, `eve/Brewfile`)

@@ -1,13 +1,15 @@
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "http://ai",
-    "API_TIMEOUT_MS": "3000000",
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "dola-seed-2.0-code",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "bytedance-seed-code",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "dola-seed-2.0-pro",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5-turbo",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.2",
     "ENABLE_TOOL_SEARCH": "1",
-    "ANTHROPIC_AUTH_TOKEN": "ef3cf75b100d42d099b593713d930d7c.GpQLrzoc3Bq2EyPm",
+    "ANTHROPIC_AUTH_TOKEN": "6abd6588bf894927bb9e0acdc2e92705.dbpgCvQZKs72rby4",
+    "Z_AI_API_KEY": "6abd6588bf894927bb9e0acdc2e92705.dbpgCvQZKs72rby4",
+    "Z_AI_MODE": "ZAI",
+    "ANTHROPIC_BASE_URL": "https://api.z.ai/api/anthropic",
+    "API_TIMEOUT_MS": "3000000",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
   },
   "permissions": {
@@ -119,14 +121,12 @@
     ],
     "defaultMode": "acceptEdits"
   },
-  "model": "bytedance-seed-code",
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud-cache.sh ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
   },
   "enabledPlugins": {
-    "glm-plan-usage@zai-coding-plugins": true,
-    "glm-plan-bug@zai-coding-plugins": true,
     "code-review@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
@@ -144,7 +144,9 @@
     "frontend-design@claude-plugins-official": true,
     "playwright@claude-plugins-official": true,
     "serena@claude-plugins-official": true,
-    "understand-anything@understand-anything": true
+    "glm-plan-usage@zai-coding-plugins": true,
+    "glm-plan-bug@zai-coding-plugins": true,
+    "pyright-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "zzizily": {
@@ -161,10 +163,10 @@
       },
       "autoUpdate": true
     },
-    "understand-anything": {
+    "zai-coding-plugins": {
       "source": {
-        "source": "github",
-        "repo": "Egonex-AI/Understand-Anything"
+        "source": "directory",
+        "path": "/home/deck/.npm/_npx/2f024689b4d0d3b0/node_modules/@z_ai/coding-helper/zai-coding-plugins"
       },
       "autoUpdate": true
     }
