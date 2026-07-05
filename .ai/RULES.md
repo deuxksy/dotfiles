@@ -18,12 +18,15 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 ```bash
 # 패키지 배포 (호스트에 맞게 선택)
 stow -t ~ base eve
+stow -t ~ base girl  # SteamOS
+stow -t ~ base mo    # NixOS
 
 # Brewfile 설치 (stow 배포 후 홈에서 실행)
 cd ~ && brew bundle
 
 # 기존 파일을 stow 패키지로 가져오기
 stow --adopt -t ~ base
+stow --no-folding -t ~ base  # Git symlink 깨짐 방지
 
 # secrets 복호화
 eval "$(sops -d ~/.key)"
@@ -40,6 +43,9 @@ sudo stow -t / walle-sudo         # /etc/ssh/sshd_config.d/* (root)
 sudo systemctl restart hermes-agent
 sudo journalctl -u hermes-agent --since "1 min ago" --no-pager
 hermes config show   # CLI 모드 설정 확인
+
+# Git hooks 설치
+git config core.hooksPath .githooks
 ```
 
 ## Key Files (mo/NixOS)
@@ -66,6 +72,7 @@ hermes config show   # CLI 모드 설정 확인
 - `CLAUDE.md`, `GEMINI.md` 모두 `.ai/RULES.md`로 symlink → AI 설정은 이 파일에서만 수정
 - `.sops.yaml`로 age 키 관리, `.key` 파일은 sops 암호화됨
 - `.githooks/`에 커스텀 Git hooks, `.gitleaks.toml`로 시크릿 스캔
+- `stow --no-folding` 필수: Git은 symlink 디렉토리 내 파일 변경을 추적하지 않음
 - `stow` 충돌 시 기존 파일을 백업 후 제거, 또는 `--adopt` 사용
 - 구형 도구(`~/.gitconfig`, `~/.bashrc`)는 XDG 미지원 → `stow --adopt` 시 충돌 포인트. 신규 CLI는 `~/.config/<app>/` 우선 (basedir 0.8)
 - walle `walle-sudo`: sudoers(`/etc/sudoers.d/`)는 stow symlink 불가 (visudo owner root 검사 ↔ repo 파일 crong 소유) → 수동 관리 + `.stow-local-ignore`. sshd drop-in은 stow OK

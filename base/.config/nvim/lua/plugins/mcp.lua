@@ -7,7 +7,7 @@ return {
     config = function()
       -- 환경변수 검증 (실패 시 초기화 중단)
       local required_env_vars = {
-        ZAI_API_KEY = "Z.AI API Key",
+        Z_AI_API_KEY = "Z.AI API Key",
         CONTEXT7_API_KEY = "Context7 API Key",
         BRAVE_API_KEY = "Brave API Key",
         ANTHROPIC_API_KEY = "Anthropic API Key (CodeCompanion용)"
@@ -32,7 +32,7 @@ return {
               command = "pnpx",
               args = { "@z_ai/mcp-server" },
               env = {
-                ZAI_API_KEY = vim.env.ZAI_API_KEY,
+                Z_AI_API_KEY = vim.env.Z_AI_API_KEY,
                 Z_AI_MODE = "ZAI"
               }
             },
@@ -42,7 +42,7 @@ return {
               type = "http",
               url = "https://api.z.ai/api/mcp/search/mcp",
               headers = {
-                Authorization = "Bearer " .. vim.env.ZAI_API_KEY
+                Authorization = "Bearer " .. vim.env.Z_AI_API_KEY
               }
             },
 
@@ -51,7 +51,7 @@ return {
               type = "http",
               url = "https://api.z.ai/api/mcp/web_reader/mcp",
               headers = {
-                Authorization = "Bearer " .. vim.env.ZAI_API_KEY
+                Authorization = "Bearer " .. vim.env.Z_AI_API_KEY
               }
             },
 
@@ -60,7 +60,7 @@ return {
               type = "http",
               url = "https://api.z.ai/api/mcp/zread/mcp",
               headers = {
-                Authorization = "Bearer " .. vim.env.ZAI_API_KEY
+                Authorization = "Bearer " .. vim.env.Z_AI_API_KEY
               }
             },
 

@@ -36,7 +36,7 @@ Neovim 플러그인(MCP Hub, CodeCompanion 등)에서 사용하는 API Key를 �
 # User scope 환경변수 등록
 $apiKey = "YOUR_API_KEY_HERE"
 [System.Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", $apiKey, "User")
-[System.Environment]::SetEnvironmentVariable("ZAI_API_KEY", $apiKey, "User")
+[System.Environment]::SetEnvironmentVariable("Z_AI_API_KEY", $apiKey, "User")
 [System.Environment]::SetEnvironmentVariable("BRAVE_API_KEY", $apiKey, "User")
 [System.Environment]::SetEnvironmentVariable("CONTEXT7_API_KEY", $apiKey, "User")
 [System.Environment]::SetEnvironmentVariable("WAKATIME_API_KEY", "YOUR_WAKATIME_KEY", "User")
