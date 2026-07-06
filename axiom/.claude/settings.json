@@ -8,7 +8,7 @@
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "glm-5",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.2",
     "ENABLE_TOOL_SEARCH": "1",
-    "ANTHROPIC_AUTH_TOKEN": "4c5cd8e75bc1423e915c977303fbcd68.eYI65fpJlItu200O"
+    "ANTHROPIC_AUTH_TOKEN": "812f1fbcb15943a3b7a9015c3badd61a.h26Mu1BpmydTOv9Q"
   },
   "permissions": {
     "allow": [
@@ -121,6 +121,7 @@
       }
     }
   },
+  "theme": "dark",
   "logging": {
     "path": "~/.claude/logs/",
     "level": "info"
