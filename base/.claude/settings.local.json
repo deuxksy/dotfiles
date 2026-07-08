@@ -55,7 +55,11 @@
       "mcp__zai-webreader__*",
       "mcp__zai-websearch__*",
       "mcp__filesystem__directory_tree",
-      "mcp__codex__*"
+      "mcp__codex__*",
+      "Read(//opt/homebrew/bin/**)",
+      "Bash(brew install *)",
+      "Bash(brew info *)",
+      "Read(//opt/homebrew/Caskroom/claude-code/2.1.197/**)"
     ],
     "deny": [
       "Bash(rm -rf *)",

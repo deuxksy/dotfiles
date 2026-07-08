@@ -113,6 +113,8 @@ cask "typora"
 cask "android-studio"
 cask "freelens"
 cask "antigravity-cli"
+cask "codex"
+cask "claude-code"
 
 # LM Studio (for axiom LLM work)
 cask "lm-studio"
