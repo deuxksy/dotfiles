@@ -1,118 +1,18 @@
 # Multi-Agent
 
-## Verification Workflow
+## 검증 (zzizily verify로 이관)
 
-Claude Code 산출물의 검증을 단계와 중요도에 따라 역할 분배.
+검증 실행 로직(3단계 티어, Codex+Antigravity 2-Way, 라우팅, B/R/A/T 포맷, 충돌 해결)은
+zzizily plugin의 `verify` 컴포넌트(skill + subagent)로 이관됨.
 
-### 워크플로우
+**자동 트리거**: 사용자 명시적 입력에서 '검증'/'verify'/'리뷰해줘' + 검증 대상(spec/plan/diff)
+감지 시 `/zzizily:verify` 자동 호출.
+**제외**(무한 루프 방지): 이미 verify 실행 중 / 리포트 출력 중 / opt-out 플래그 세션에서는 트리거 안 함.
 
-```
-brainstorming → spec → [문서 검증] → plan → 구현 → [실행 검증] → merge
-```
-
-### 3단계 검증 티어
-
-| 티어 | 조건 | 검증 에이전트 | 종료 조건 |
-| :--- | :--- | :--- | :--- |
-| **경량** | 문서만 변경, 설정 수정, 의존성 minor 업그레이드 | **Codex** 단일 | blocker 0개 |
-| **표준** | 일반 기능 개발, 버그 수정, 리팩토링 | **Antigravity**(spec) / **Codex**(code) | blocker 0개, non-blocker 확인 |
-| **고위험** | 하기 승격 조건 참조 | **Codex + Antigravity 병렬** | 양쪽 blocker 0개, 충돌 해결 완료 |
-
-### 기본 라우팅 (전담이 아닌 기본 우선순위)
-
-| 단계 | 기본 에이전트 | 보조 에이전트 |
-| :--- | :--- | :--- |
-| Spec/Plan/아키텍처 | **Antigravity** (설계 관점, 대량 컨텍스트) | Codex (repo 영향도/실현 가능성) |
-| 코드/PR | **Codex** (sandbox 실행, MCP 통합) | Antigravity (복잡한 로직 교차 검증) |
-| 인프라/런타임 | **K8sGPT** (K8s) / **Holmes** (로그) | - |
-| 코드 심볼 탐색 | **Serena** | - |
-
-### 고위험 승격 조건 (해당 시 병렬 검증)
-
-- 인증/권한/비밀값/네트워크 경계 변경
-- 데이터 모델/마이그레이션 변경
-- 배포 파이프라인/infra 변경
-- public API/CLI 호환성 변경
-- 대규모 삭제/리팩토링 (100줄+)
-- 롤백이 어려운 변경
-
-### 특수 경로
-
-- **Hotfix/Incident**: 경량 티어로 즉시 검증, 사후 표준 검증
-- **의존성 major 업그레이드**: 표준 티어 + breaking change 확인
-- **문서만 변경**: Codex 단일 (링크/포맷/정합성)
-
-### 검증 출력 포맷
-
-병렬 검증 시 에이전트에게 다음 포맷으로 출력 요청:
-
-```
-- [Blocker] 즉시 수정 필요
-- [Risk] 인지 필요, 수정 권장
-- [Assumption] 검증된 가정
-- [Test] 제안 테스트 케이스
-```
-
-### 충돌 해결 규칙
-
-| 분야 | 우선 에이전트 | 최종 결정 |
-| :--- | :--- | :--- |
-| 보안/권한 | Codex | 개발자 |
-| 아키텍처/설계 | Antigravity | 개발자 |
-| 코드 정확성 | Codex | 개발자 |
-| 기타 충돌 | Claude가 취합 후 판단 | 개발자 |
-
-### 검증 원칙
-
-- 모든 산출물에 항상 둘 다 검증하지 않음 (검증 피로 방지)
-- 티어에 맞는 에이전트로 시작, 승격 조건 충족시 병렬로 승격
-- 병렬 검증 시 Claude가 피드백을 취합하여 일괄 반영
-- **최종 결정권은 항상 개발자** (Human-in-the-loop)
-
-### 사용자 지정 검증 모델 (오버라이드)
-
-- 사용자가 검증을 요청하면 티어 기본 라우팅보다 우선하여 적용
-- 지정이 없으면 티어 기본 라우팅 따름
-
-| 에이전트 | 모델 | 호출 방식 | 비고 |
-| :--- | :--- | :--- | :--- |
-| **Antigravity** | `Gemini 3.1 Pro (High)` | Bash (`agy -p`) | MCP 미지원, 폴백: `Gemini 3.5 Flash (Medium)` |
-| **Codex** | `gpt-5.5` + `model_reasoning_effort = "xhigh"` | MCP | `~/.codex/config.toml` 설정 |
-| **shell-gpt** | `kimi-k2.5` | Bash (`sgpt --model kimi-k2.5`) | **비활성** (사용자 비활성 선택, `00-profile.md` AI Subscription 참조) |
-
-### 교차 검증 (현재 2-Way 운영)
-
-사용자가 검증을 요청하면 교차 검증 방식으로 수행. sgpt는 byteplus Coding Plan 미지원 도구라 비활성 → 현재 **Antigravity + Codex 2-Way** 운영. 각 에이전트가 독립적으로 동일 작업을 수행하고, Claude는 작업에 참여하지 않고 원본과 결과를 객관적으로 비교·취합하여 최종본을 생성 (자기 편향 방지).
-
-```mermaid
-graph TD
-    A[1. 입력] --> B[2.1 Antigravity 작업]
-    A --> C[2.2 Codex 작업]
-    B --> E[3. Claude 비교 및 취합]
-    C --> E
-    E --> F[최종 산출물]
-```
-
-| 단계 | 에이전트 | 역할 | 호출 방식 |
-| :--- | :--- | :--- | :--- |
-| 2.1 | **Antigravity** | 독립 작업 수행 | Bash (`agy -p ...`) |
-| 2.2 | **Codex** | 독립 작업 수행 | MCP (`mcp__codex__codex`) |
-| 3 | **Claude** | 원본과 결과 비교, 최적 선택, 충돌 해결, 최종본 생성 | 직접 수행 (작업 불참) |
-
-**원칙:**
-- 각 에이전트는 서로의 결과를 보지 않고 독립적으로 작업
-- Claude는 작업에 참여하지 않고 객관적 판사 역할만 수행 (자기 편향 방지)
-- Claude는 원본과 결과를 모두 대조하여 최적 결과 선택
-- 충돌 시 충돌 해결 규칙(상기 테이블) 적용, 최종 결정은 개발자
-- 작업 유형에 따라 비교 기준을 상황에 맞게 조정:
-  - **번역**: 오역, 누락, 자연스러움, 전문 용어 기준으로 비교
-  - **코드 생성**: 정확성, 효율성, 가독성, 스타일 일치 기준으로 비교
-  - **문서 작성**: 논리 정합성, 완전성, 간결성 기준으로 비교
-  - **기타**: 작업 성격에 맞는 검증 기준을 Claude가 판단하여 적용
-
-### shell-gpt (sgpt) — 비활성 (사용자 비활성 선택)
-
-> **상태: 비활성**. byteplus ModelArk Coding Plan은 AI 코딩 도구 전용(지원 도구: Claude Code/Codex CLI/Hermes Agent 등)이라 sgpt(미지원 도구)에서 호출 불가 → 교차 검증은 **Codex(MCP) + Antigravity(Bash) 2-Way**로 운영. Antigravity capacity 실패 시 Codex 단일 폴백.
+**인프라 설정**(아래 각 섹션 유지, Source of Truth): 검증 시 zzizily verify가 소비.
+- Codex: MCP 설정·파라미터 → 아래 `## Codex` 섹션
+- Antigravity: CLI 사용법·모델 → 아래 `## Antigravity CLI` 섹션
+- K8sGPT/Holmes/Serena: 도메인 에이전트 → 아래 각 섹션
 
 ### Provider Models
 
@@ -132,7 +32,7 @@ graph TD
 
 ## Codex (MCP + Bash Hybrid)
 
-Codex PRO 구독(gpt-5.5)을 Claude Code의 서브 에이전트로 활용.
+Codex PRO 구독(gpt-5.6-sol)을 Claude Code의 서브 에이전트로 활용.
 
 ### Routing
 
@@ -142,7 +42,7 @@ Codex PRO 구독(gpt-5.5)을 Claude Code의 서브 에이전트로 활용.
 
 ### Default Parameters
 
-- 모델: `gpt-5.5` (상기 모델 중 상황에 맞게 선택)
+- 모델: `gpt-5.6-sol` (상기 모델 중 상황에 맞게 선택)
 - 샌드박스: `workspace-write`
 - 승인 정책: `on-failure`
 
@@ -150,11 +50,8 @@ Codex PRO 구독(gpt-5.5)을 Claude Code의 서브 에이전트로 활용.
 
 | 모델 | 용도 |
 | :--- | :--- |
-| `gpt-5.5` | 기본, 복잡한 분석/설계 |
-| `gpt-5.4` | 표준 코딩 작업 |
-| `gpt-5.4-mini` | 빠른 검증, 가벼운 작업 |
-| `gpt-5.3-codex` | 코드 특화 작업 |
-| `gpt-5.2` | 경량 작업 |
+| `gpt-5.6-sol` | 기본, 복잡한 분석/설계 (플래그십) |
+| `gpt-5.5` | 레거시 |
 
 ### Use Cases
 
