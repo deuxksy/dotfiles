@@ -55,12 +55,15 @@ git config core.hooksPath .githooks
 - `nix/nixos/hosts/mo/hermes.nix` — hermes-agent NixOS 서비스 + sops secret
 - `nix/nixos/secrets/hermes.yaml` — sops 암호화 (ANTHROPIC_API_KEY, TELEGRAM_BOT_TOKEN)
 - `mo/.hermes/config.yaml` — hermes CLI config (stow 배포)
-- `base/.claude/rules/`에 6개 규칙 파일 (00~05) — profile, operations, verification, coding, documentation, multi-agent
-- `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
 
 ## Key Files (axiom/macOS)
 
 - `axiom/Brewfile` — macOS 패키지 정의 (stow 배포 후 `brew bundle`로 설치)
+
+## Key Files (base — 전 호스트 공통, stow 배포)
+
+- `base/.claude/rules/`에 6개 규칙 파일 (00~05) — profile, operations, verification, coding, documentation, multi-agent
+- `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
 
 ## Key Files (Codex — 전 호스트 공통, stow 배포)
 

@@ -48,9 +48,13 @@ Codex PRO 구독(gpt-5.6-sol)을 Claude Code의 서브 에이전트로 활용.
 
 ### Available Models
 
+GPT-5.6 세대는 번호(5.6)가 세대, 이름(Sol/Terra/Luna)이 영구 capability tier를 의미한다. Terra/Luna는 standard ChatGPT 대화에서 선택 불가, Codex/API에서만 사용 가능.
+
 | 모델 | 용도 |
 | :--- | :--- |
-| `gpt-5.6-sol` | 기본, 복잡한 분석/설계 (플래그십) |
+| `gpt-5.6-sol` | 기본, 복잡한 분석/설계 (플래그십, agentic) |
+| `gpt-5.6-terra` | 표준 작업, 비용 효율 (GPT-5.5 성능, 절반 비용) |
+| `gpt-5.6-luna` | 빠른 검증, 대용량 작업 (최저비용·최고속) |
 | `gpt-5.5` | 레거시 |
 
 ### Use Cases

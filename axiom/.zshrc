@@ -126,7 +126,3 @@ eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 # Unset CLOUDFLARE_API_KEY to avoid conflict with API token authentication
 unset CLOUDFLARE_API_KEY
-
-
-# Added by Antigravity CLI installer
-export PATH="/Users/crong/.local/bin:$PATH"
