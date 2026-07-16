@@ -63,6 +63,8 @@ mo/.hermes/.env
 
 # OpenClaw MCP config (API keys in headers)
 **/mcporter.json
+# Claude settings.json (env 블록에 토큰 주입 리스크 → 비추적, settings.local.json은 추적 유지)
+**/.claude/settings.json
 !settings.local.json
 # .claude.json
 eve/.claude.json
