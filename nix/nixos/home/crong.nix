@@ -145,4 +145,9 @@
       IdentityFile ~/.ssh/id_ed25519
       IdentityFile ~/.ssh/AI/id_ed25519
   '';
+
+  # Packages
+  home.packages = with pkgs; [
+    antigravity-cli
+  ];
 }

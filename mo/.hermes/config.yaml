@@ -1,5 +1,5 @@
 model:
-  default: glm-5-turbo
+  default: mimo-v2.5
   context_length: 200000
   provider: custom:aperture
 providers: {}
