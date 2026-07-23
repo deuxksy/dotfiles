@@ -1,6 +1,6 @@
-API_BASE_URL=http://ai/v1
-OPENAI_API_BASE=http://ai/v1
-DEFAULT_MODEL=kimi-k2.5
+API_BASE_URL=https://ark.ap-southeast.bytepluses.com/api/coding/v3
+OPENAI_API_BASE=https://ark.ap-southeast.bytepluses.com/api/coding/v3
+DEFAULT_MODEL=glm-5.2
 CHAT_CACHE_LENGTH=100
 CACHE_LENGTH=100
 REQUEST_TIMEOUT=120

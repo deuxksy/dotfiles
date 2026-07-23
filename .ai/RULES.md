@@ -64,6 +64,8 @@ git config core.hooksPath .githooks
 
 - `base/.claude/rules/`에 6개 규칙 파일 (00~05) — profile, operations, verification, coding, documentation, multi-agent
 - `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
+- `base/.gemini/rules/`에 6개 규칙 파일 (00~05) — Gemini 공통 규칙
+- `base/.gemini/antigravity-cli/settings.json` — Antigravity CLI 설정
 
 ## Key Files (Codex — 전 호스트 공통, stow 배포)
 

@@ -215,6 +215,8 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 | `.claude/.omc/hud-config.json` | OMC HUD 설정 |
 | `.codex/AGENTS.md` `rules/` | Codex 에이전트 설정 |
 | `.gemini/GEMINI.md` | Gemini CLI 설정 |
+| `.gemini/rules/00-05` | Gemini 공통 규칙 (profile, operations, verification, coding, documentation, multi-agent) |
+| `.gemini/antigravity-cli/settings.json` | Antigravity CLI 설정 |
 | `.config/nvim/` | Neovim 설정 (lazy.nvim) — 하단 참조 |
 
 #### Neovim (`base/.config/nvim/`)
