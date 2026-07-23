@@ -78,7 +78,6 @@ brew "python-setuptools"
 brew "python-tk@3.12"
 brew "python-matplotlib"
 brew "shellcheck"
-brew "mole"
 
 # Fonts / Media
 brew "fontforge"
@@ -90,3 +89,7 @@ brew "onedrive-cli"
 # Beszel Agent
 tap "henrygd/beszel"
 brew "henrygd/beszel/beszel-agent"
+
+cask "antigravity-cli"
+cask "codex"
+cask "claude-code"
