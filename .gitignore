@@ -70,8 +70,14 @@ mo/.hermes/.env
 eve/.claude.json
 
 base/.wakatime.cfg
-base/.gemini/
+base/.gemini/*
 !base/.gemini/GEMINI.md
+!base/.gemini/rules/
+base/.gemini/rules/*
+!base/.gemini/rules/*.md
+!base/.gemini/antigravity-cli/
+base/.gemini/antigravity-cli/*
+!base/.gemini/antigravity-cli/settings.json
 base/.claude/*
 !base/.claude/rules/
 !base/.claude/rules/*.md

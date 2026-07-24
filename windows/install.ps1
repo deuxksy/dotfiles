@@ -15,8 +15,25 @@ if (-not (Test-Path $claudeDir)) { New-Item -ItemType Directory -Path $claudeDir
 New-Item -ItemType SymbolicLink -Path "$claudeDir\CLAUDE.md" -Target "$base\.claude\CLAUDE.md" -Force
 New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "$base\.claude\settings.local.json" -Force
 
-# .gemini
-New-Item -ItemType Junction -Path "$env:USERPROFILE\.gemini" -Target "$base\.gemini" -Force
+# .gemini (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
+$geminiDir = "$env:USERPROFILE\.gemini"
+if (Test-Path $geminiDir) {
+    $geminiItem = Get-Item $geminiDir -Force
+    if ($geminiItem.Attributes -band [System.IO.FileAttributes]::ReparsePoint) {
+        throw "기존 .gemini Junction을 제거한 후 다시 실행하세요: $geminiDir"
+    }
+} else {
+    New-Item -ItemType Directory -Path $geminiDir -Force
+}
+
+New-Item -ItemType SymbolicLink -Path "$geminiDir\GEMINI.md" -Target "$base\.gemini\GEMINI.md" -Force
+New-Item -ItemType Junction -Path "$geminiDir\rules" -Target "$base\.gemini\rules" -Force
+
+$geminiAntigravityDir = "$geminiDir\antigravity-cli"
+if (-not (Test-Path $geminiAntigravityDir)) {
+    New-Item -ItemType Directory -Path $geminiAntigravityDir -Force
+}
+New-Item -ItemType SymbolicLink -Path "$geminiAntigravityDir\settings.json" -Target "$base\.gemini\antigravity-cli\settings.json" -Force
 
 # --- Files (Symlink - requires admin) ---
 

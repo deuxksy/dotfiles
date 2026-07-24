@@ -11,7 +11,11 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 | eve | macOS | 개발/일상 | Brewfile |
 | girl | SteamOS | 게임/개발 | mise |
 | walle | Proxmox (Debian) | Homelab 서버 (K8s, VM) | stow: `base` + `walle` + `walle-sudo` (root) |
-| ava | Windows 10 (Surface Pro 6) | SSH 클라이언트 | - |
+| ava | Windows 10 (Surface Pro 6) | SSH 클라이언트 | pwsh |
+| kyolim | Windows 11 (Zenbook 14) | 개발/일상 | pwsh |
+| arv | OpenWrt (GL-MT3000) | 라우터 | - |
+| steward | OpenWrt (GL-MT2500) | 라우터 | - |
+| pad | iPadOS (iPad Pro 12.9) | 미디어 소비/원격접속 | - |
 
 ## Commands
 
@@ -64,6 +68,8 @@ git config core.hooksPath .githooks
 
 - `base/.claude/rules/`에 6개 규칙 파일 (00~05) — profile, operations, verification, coding, documentation, multi-agent
 - `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
+- `base/.gemini/rules/`에 6개 규칙 파일 (00~05) — Gemini 공통 규칙
+- `base/.gemini/antigravity-cli/settings.json` — Antigravity CLI 설정
 
 ## Key Files (Codex — 전 호스트 공통, stow 배포)
 
@@ -84,3 +90,5 @@ git config core.hooksPath .githooks
 - `base/.claude/.omc/hud-config.json` — OMC HUD 설정 (stow로 연결)
 - hermes-agent: built-in `anthropic` provider는 `ANTHROPIC_BASE_URL` 무시 — `custom_providers` + `api_mode: anthropic_messages` 필수 (Tailscale Aperture 등 프록시 사용 시)
 - hermes-agent: model명 점→하이픈 변환, API key는 sops only, CLI/gateway config 독립 (상세는 mo/.hermes/ 참조)
+- Windows 호스트(ava, kyolim)는 pwsh 기반 배포 — stow 미사용, `windows/` 디렉토리의 스크립트로 관리
+- OpenWrt 라우터(arv, steward)는 `docs/`의 설정 스크립트로 관리 — stow 미사용
