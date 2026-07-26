@@ -116,15 +116,15 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "node /Users/crong/.claude/hud/omc-hud.mjs",
+    "command": "node ~/.claude/hud/omc-hud.mjs",
     "enabled": true
   },
   "trustedWorkspaces": [
-    "/Users/crong",
-    "/Users/crong/git/247365",
-    "/Users/crong/git/dotfiles",
-    "/Users/crong/git/kyolim/ecoai-app-collectors",
-    "/Users/crong/.claude/rules",
-    "/Users/crong/git/kyolim/OpsHub"
+    "${HOME}",
+    "${HOME}/git/247365",
+    "${HOME}/git/dotfiles",
+    "${HOME}/git/kyolim/ecoai-app-collectors",
+    "${HOME}/.claude/rules",
+    "${HOME}/git/kyolim/OpsHub"
   ]
 }
