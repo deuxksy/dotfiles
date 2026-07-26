@@ -149,5 +149,6 @@
   # Packages
   home.packages = with pkgs; [
     antigravity-cli
+    shell-gpt
   ];
 }
