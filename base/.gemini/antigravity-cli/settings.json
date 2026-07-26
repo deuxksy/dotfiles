@@ -104,7 +104,6 @@
       "command(docker rm)",
       "command(docker rmi)",
       "command(docker system prune)",
-      "command(git push)",
       "command(git reset)",
       "command(kill)",
       "command(kubectl apply)",
