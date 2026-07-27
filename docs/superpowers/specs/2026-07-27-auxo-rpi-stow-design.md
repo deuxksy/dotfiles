@@ -1,7 +1,7 @@
 # auxo Raspberry Pi 3B Stow 패키지 설계
 
 > **Date**: 2026-07-27  
-> **Status**: Approved  
+> **Status**: Completed  
 > **Target**: Raspberry Pi 3 Model B Rev 1.2 (auxo)
 
 ---
@@ -304,11 +304,11 @@ stow --adopt -t ~ base auxo
 
 ## 6. 검증 항목
 
-- [ ] `stow -t ~ base auxo` 실행시 충돌 없음
-- [ ] `zsh` 실행시 starship prompt 정상 출력
-- [ ] `nvim`, `git`, `tmux` 정상 동작
-- [ ] `.zsh_history`, `.cache` 등 홈에 깨끗하게 생성
-- [ ] SSH authorized_keys 유지 (삭제되지 않음)
+- [x] `stow -t ~ base auxo` 실행시 충돌 없음
+- [x] `zsh` 실행시 starship prompt 정상 출력
+- [x] `nvim`, `git`, `tmux` 정상 동작
+- [x] `.zsh_history`, `.cache` 등 홈에 깨끗하게 생성
+- [x] SSH authorized_keys 유지 (삭제되지 않음)
 
 ---
 
