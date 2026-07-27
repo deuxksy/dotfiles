@@ -1,0 +1,19 @@
+# 최소 aliases — 자주 쓰는 것만
+
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias l='ls -lah'
+alias ll='ls -lh'
+alias la='ls -A'
+
+# git
+alias g='git'
+alias gs='git status'
+alias gp='git push'
+alias gl='git log --oneline -10'
+
+# safety
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'

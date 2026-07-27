@@ -1,0 +1,22 @@
+# XDG basedir 우선
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# PATH 구성
+path=(
+  "$HOME/.local/bin"
+  /usr/local/sbin
+  /usr/local/bin
+  /usr/sbin
+  /usr/bin
+  /sbin
+  /bin
+  $path
+)
+
+# mise (나중에 설치할 경우를 위해)
+if [ -f "$HOME/.local/share/mise/shims" ]; then
+  path=("$HOME/.local/share/mise/shims" $path)
+fi

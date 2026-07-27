@@ -11,6 +11,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 | mo | AyaNEO AM02 | NixOS | stow: `base` + `mo` / flake |
 | walle | AOOSTAR WTR R1 | Proxmox (Debian) | stow: `base` + `walle` |
 | girl | Steam Deck | SteamOS | stow: `base` + `girl` |
+| auxo | Raspberry Pi 3 Model B | Debian 13 (trixie) | stow: `base` + `auxo` |
 | ava | Surface Pro 6 | Windows 10 | pwsh |
 | kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
 | pad | iPad Pro 12.9 | iPadOS | 미디어 소비, 원격접속 |
@@ -24,6 +25,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption.
 - **mo**: Linux 개발 워크스테이션 (NixOS)
 - **walle**: Homelab 서버 (K8s, VM)
 - **girl**: 휴대용 서버
+- **auxo**: 휴대용 헤드리스 서버 (Raspberry Pi)
 - **steward**: 상주 네트워크 서버 / VPN 라우터
 - **arv**: 휴대용 Wi-Fi 6 라우터
 
@@ -132,6 +134,7 @@ stow -t ~ base eve      # macOS
 stow -t ~ base mo       # NixOS
 stow -t ~ base walle    # Proxmox (Debian)
 stow -t ~ base girl     # SteamOS
+stow -t ~ base auxo     # Raspberry Pi (Debian)
 
 # macOS (Brewfile)
 cd ~ && brew bundle
@@ -174,6 +177,7 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 | `mo/` | NixOS | AyaNEO AM02 — Linux 개발 워크스테이션 |
 | `walle/` | Proxmox (Debian) | AOOSTAR WTR R1 — Homelab 서버 (K8s, VM) |
 | `girl/` | SteamOS | Steam Deck — 게임/개발 |
+| `auxo/` | Debian 13 | Raspberry Pi — 헤드리스 서버 |
 | `ava/` | Windows 10 | Surface Pro 6 (pwsh) |
 | `kyolim/` | Windows 11 | 회사 노트북 (stow 미사용) |
 | `nix/` | NixOS | flake 설정 (mo 전용) |
