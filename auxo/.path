@@ -17,6 +17,6 @@ path=(
 )
 
 # mise (나중에 설치할 경우를 위해)
-if [ -f "$HOME/.local/share/mise/shims" ]; then
+if [ -d "$HOME/.local/share/mise/shims" ]; then
   path=("$HOME/.local/share/mise/shims" $path)
 fi
