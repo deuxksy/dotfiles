@@ -13,6 +13,9 @@ alias gs='git status'
 alias gp='git push'
 alias gl='git log --oneline -10'
 
+# auxo minimal nvim (mcp/telescope/codecompanion/lsp 제외)
+alias nvim='NVIM_APPNAME=nvim-minimal nvim'
+
 # safety
 alias rm='rm -i'
 alias cp='cp -i'
