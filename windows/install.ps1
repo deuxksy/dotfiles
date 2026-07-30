@@ -15,6 +15,14 @@ if (-not (Test-Path $claudeDir)) { New-Item -ItemType Directory -Path $claudeDir
 New-Item -ItemType SymbolicLink -Path "$claudeDir\CLAUDE.md" -Target "$base\.claude\CLAUDE.md" -Force
 New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "$base\.claude\settings.local.json" -Force
 
+# .codex (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
+$codexDir = "$env:USERPROFILE\.codex"
+if (-not (Test-Path $codexDir)) { New-Item -ItemType Directory -Path $codexDir -Force }
+New-Item -ItemType SymbolicLink -Path "$codexDir\AGENTS.md" -Target "$base\.codex\AGENTS.md" -Force
+$codexRulesDir = "$codexDir\rules"
+if (-not (Test-Path $codexRulesDir)) { New-Item -ItemType Directory -Path $codexRulesDir -Force }
+New-Item -ItemType SymbolicLink -Path "$codexRulesDir\default.rules" -Target "$base\.codex\rules\default.rules" -Force
+
 # .gemini (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
 $geminiDir = "$env:USERPROFILE\.gemini"
 if (Test-Path $geminiDir) {

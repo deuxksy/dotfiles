@@ -59,6 +59,8 @@ powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\git\dotfiles\windows\
 | `%LOCALAPPDATA%\nvim` | `base\.config\nvim` | Junction | 일반 |
 | `%USERPROFILE%\.claude\CLAUDE.md` | `base\.claude\CLAUDE.md` | SymbolicLink | 관리자 |
 | `%USERPROFILE%\.claude\settings.local.json` | `base\.claude\settings.local.json` | SymbolicLink | 관리자 |
+| `%USERPROFILE%\.codex\AGENTS.md` | `base\.codex\AGENTS.md` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.codex\rules\default.rules` | `base\.codex\rules\default.rules` | SymbolicLink | 관리자 또는 Developer Mode |
 | `%USERPROFILE%\.gemini\GEMINI.md` | `base\.gemini\GEMINI.md` | SymbolicLink | 관리자 또는 Developer Mode |
 | `%USERPROFILE%\.gemini\rules` | `base\.gemini\rules` | Junction | 일반 |
 | `%USERPROFILE%\.gemini\antigravity-cli\settings.json` | `base\.gemini\antigravity-cli\settings.json` | SymbolicLink | 관리자 또는 Developer Mode |
@@ -82,4 +84,4 @@ nvim
 - 디렉토리 Junction은 관리자 권한 없이 생성 가능합니다
 - 설정 파일 원본은 `base/` 폴더에 있으며, `windows/` 폴더에는 설치 스크립트만 있습니다
 - Windows에서 Developer Mode를 활성화하면 관리자 권한 없이도 심볼릭 링크 생성이 가능합니다
-- `.gemini`와 `.claude`의 runtime data는 Windows 로컬에 두고 추적 대상 설정만 연결합니다
+- `.claude`, `.codex`, `.gemini`의 runtime data는 Windows 로컬에 두고 추적 대상 설정만 연결합니다
