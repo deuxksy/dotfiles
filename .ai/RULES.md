@@ -10,6 +10,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 | axiom | macOS | 개발/일상 | Brewfile |
 | eve | macOS | 개발/일상 | Brewfile |
 | girl | SteamOS | 게임/개발 | mise |
+| auxo | Debian 13 (Raspberry Pi 3 Model B) | 휴대용 헤드리스 서버 | stow: `base` + `auxo` |
 | walle | Proxmox (Debian) | Homelab 서버 (K8s, VM) | stow: `base` + `walle` + `walle-sudo` (root) |
 | ava | Windows 10 (Surface Pro 6) | SSH 클라이언트 | pwsh |
 | kyolim | Windows 11 (Zenbook 14) | 개발/일상 | pwsh |
@@ -23,6 +24,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 # 패키지 배포 (호스트에 맞게 선택)
 stow -t ~ base eve
 stow -t ~ base girl  # SteamOS
+stow -t ~ base auxo  # Raspberry Pi (Debian)
 stow -t ~ base mo    # NixOS
 
 # Brewfile 설치 (stow 배포 후 홈에서 실행)
