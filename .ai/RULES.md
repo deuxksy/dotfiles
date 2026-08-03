@@ -78,9 +78,15 @@ git config core.hooksPath .githooks
 - `base/.codex/AGENTS.md` — Codex 에이전트 오케스트레이션 설정
 - `base/.codex/rules/` — Codex 규칙 파일
 
+## Key Files (Windows — kyolim, ava)
+
+- `windows/install.ps1` — Windows 배포 스크립트 (Junction/SymbolicLink, 관리자 권한)
+- `windows/.claude/settings.local.json` — Windows 공통 Claude 로컬 설정 (install.ps1이 글로벌 링크)
+- `windows/tests/` — install.ps1 회귀 테스트
+
 ## Gotchas
 
-- `CLAUDE.md`, `GEMINI.md` 모두 `.ai/RULES.md`로 symlink → AI 설정은 이 파일에서만 수정
+- `AGENTS.md`, `GEMINI.md`는 `.ai/RULES.md`로 symlink, `CLAUDE.md`는 `@.ai/RULES.md` import 파일 (Windows symlink 미지원 대응) → AI 설정은 이 파일에서만 수정
 - `.sops.yaml`로 age 키 관리, `.key` 파일은 sops 암호화됨
 - `.githooks/`에 커스텀 Git hooks, `.gitleaks.toml`로 시크릿 스캔
 - `stow --no-folding` 필수: Git은 symlink 디렉토리 내 파일 변경을 추적하지 않음
@@ -93,4 +99,5 @@ git config core.hooksPath .githooks
 - hermes-agent: built-in `anthropic` provider는 `ANTHROPIC_BASE_URL` 무시 — `custom_providers` + `api_mode: anthropic_messages` 필수 (Tailscale Aperture 등 프록시 사용 시)
 - hermes-agent: model명 점→하이픈 변환, API key는 sops only, CLI/gateway config 독립 (상세는 mo/.hermes/ 참조)
 - Windows 호스트(ava, kyolim)는 pwsh 기반 배포 — stow 미사용, `windows/` 디렉토리의 스크립트로 관리
+- Windows에서 .ps1 실행은 `pwsh` 사용 — powershell.exe(PS 5.1)은 UTF-8 no-BOM 한글 파일을 ANSI로 오독해 파싱 실패
 - OpenWrt 라우터(arv, steward)는 `docs/`의 설정 스크립트로 관리 — stow 미사용
