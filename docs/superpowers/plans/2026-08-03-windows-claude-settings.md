@@ -82,7 +82,7 @@ Write-Host "PASS: 글로벌 settings.local.json이 windows 패키지를 사용�
 - [ ] **Step 2: 테스트 실행하여 실패 확인**
 
 ```bash
-powershell.exe -ExecutionPolicy Bypass -File windows/tests/install-claude-links.Tests.ps1
+pwsh -ExecutionPolicy Bypass -File windows/tests/install-claude-links.Tests.ps1
 ```
 
 Expected: FAIL — `글로벌 settings.local.json이 base를 가리키면 안 됩니다` throw
@@ -109,7 +109,7 @@ New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "
 - [ ] **Step 2: 테스트 실행하여 통과 확인**
 
 ```bash
-powershell.exe -ExecutionPolicy Bypass -File windows/tests/install-claude-links.Tests.ps1
+pwsh -ExecutionPolicy Bypass -File windows/tests/install-claude-links.Tests.ps1
 ```
 
 Expected: `PASS: 글로벌 settings.local.json이 windows 패키지를 사용합니다`
@@ -117,7 +117,7 @@ Expected: `PASS: 글로벌 settings.local.json이 windows 패키지를 사용합
 - [ ] **Step 3: 기존 테스트 회귀 확인**
 
 ```bash
-powershell.exe -ExecutionPolicy Bypass -File windows/tests/install-gemini-links.Tests.ps1
+pwsh -ExecutionPolicy Bypass -File windows/tests/install-gemini-links.Tests.ps1
 ```
 
 Expected: `PASS: Gemini 설정이 부분 연결 구조를 사용합니다`
