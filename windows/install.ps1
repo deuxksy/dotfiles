@@ -13,7 +13,7 @@ New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target "$base\.confi
 $claudeDir = "$env:USERPROFILE\.claude"
 if (-not (Test-Path $claudeDir)) { New-Item -ItemType Directory -Path $claudeDir -Force }
 New-Item -ItemType SymbolicLink -Path "$claudeDir\CLAUDE.md" -Target "$base\.claude\CLAUDE.md" -Force
-New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "$base\.claude\settings.local.json" -Force
+New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "$dotfiles\windows\.claude\settings.local.json" -Force
 
 # .codex (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
 $codexDir = "$env:USERPROFILE\.codex"
