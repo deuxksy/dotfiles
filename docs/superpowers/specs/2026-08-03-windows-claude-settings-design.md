@@ -19,7 +19,7 @@ Windows에서는 stow를 사용할 수 없으므로 `windows/install.ps1`(관리
 - Windows 회사 노트북(hostname kyolim, 사용자 crong)의 Claude 로컬 설정을 OS 레이어로 분리: `windows/` = Windows 공통
 - deck 등 기존 호스트의 동작 변경 없음
 
-> repo 루트 `.claude/settings.local.json`의 malformed JSON(`/doctor` 이슈)은 이 설계에서 처리하지 않는다. 별도 처리 필요.
+> repo 루트 `.claude/settings.local.json`의 malformed JSON(`/doctor` 이슈)은 2026-08-03 git 추적 제거로 해소 (`d78a07c`). deck은 pull 후 symlink이 삭제되므로 필요 시 로컬 재생성.
 
 ## 레이어 구조
 
@@ -48,9 +48,10 @@ kyolim/   → 이 PC 전용 (현재 설정 파일 없음, 필요 시 추가)
 ## 검증
 
 1. `Get-Content $env:USERPROFILE\.claude\settings.local.json` → windows/ 파일 내용과 동일
-2. `git ls-files -s .claude/settings.local.json` → mode 120000 유지 (deck symlink 보존, git 변경 없음)
+2. `git ls-files .claude/settings.local.json` → 출력 없음 (미추적 확인, `d78a07c`에서 제거됨)
+3. Claude Code `/doctor` 실행 → settings.local.json 이슈 해소 확인
 
 ## 주의사항
 
-- repo 루트 `.claude/settings.local.json`은 git symlink(deck 전용) 그대로 유지. 이 PC에서는 텍스트로 보이며 `/doctor` 이슈가 지속됨 — 별도 처리
+- repo 루트 `.claude/settings.local.json`은 git 추적 제거됨 (`d78a07c`). deck은 pull 후 symlink 삭제 — 필요 시 deck에서 로컬 재생성
 - 이 PC 전용 설정이 필요해지면 `kyolim/.claude/settings.local.json`을 추가하고 install.ps1에 링크를 배치 (YAGNI — 현재는 생성하지 않음)
