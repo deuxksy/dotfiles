@@ -1,5 +1,6 @@
 OPENAI_API_BASE=http://ai/v1
-DEFAULT_MODEL=ark-code-latest
+OPENAI_API_KEY=-
+DEFAULT_MODEL=k3
 CHAT_CACHE_PATH=/Users/crong/.config/shell_gpt/chat_cache
 CACHE_PATH=/Users/crong/.config/shell_gpt/cache
 CHAT_CACHE_LENGTH=100

@@ -27,3 +27,6 @@ autoload -Uz bashcompinit && bashcompinit
 eval "$(zoxide init zsh)"
 eval "$(atuin init zsh)"
 eval "$(mise activate zsh)"
+
+# Added by Antigravity IDE
+export PATH="/Users/crong/.antigravity-ide/antigravity-ide/bin:$PATH"
