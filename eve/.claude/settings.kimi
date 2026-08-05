@@ -1,0 +1,79 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.kimi.com/coding/",
+    "ANTHROPIC_MODEL": "k3",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "k3",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "k3-256k",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi-for-coding",
+    "ANTHROPIC_DEFAULT_FABLE_MODEL": "k3",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "k3",
+    "CLAUDE_CODE_AUTO_COMPACT_WINDOW": "1048576",
+    "CLAUDE_CODE_EFFORT_LEVEL": "max"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "Agent(*)",
+      "Skill(*)",
+      "mcp__gmail__create_draft",
+      "mcp__gmail__get_thread",
+      "mcp__gmail__label_message",
+      "mcp__gmail__label_thread",
+      "mcp__gmail__list_drafts",
+      "mcp__gmail__list_labels",
+      "mcp__gmail__search_threads",
+      "mcp__gmail__unlabel_message",
+      "mcp__gmail__unlabel_thread"
+    ],
+    "deny": [
+      "Bash(format *)",
+      "Bash(diskpart *)",
+      "Bash(mkfs *)",
+      "Bash(dd *)",
+      "Bash(bcdedit *)",
+      "Bash(shutdown *)",
+      "Bash(wbadmin *)"
+    ],
+    "ask": [
+      "Bash(rm *)",
+      "Bash(rm -rf *)",
+      "Bash(rmdir *)",
+      "Bash(del *)",
+      "Bash(rd *)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean *)",
+      "Bash(kill -9 *)",
+      "Bash(taskkill *)",
+      "Bash(reboot *)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "node ${CLAUDE_CONFIG_DIR:-$HOME/.claude}/hud/omc-hud.mjs"
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "claude-code-wakatime@wakatime": true,
+    "deuxksy@zzizily": true,
+    "glm-plan-bug@zai-coding-plugins": true,
+    "glm-plan-usage@zai-coding-plugins": true,
+    "korean-law@korean-law-marketplace": true,
+    "notion@claude-plugins-official": true,
+    "oh-my-claudecode@omc": true,
+    "playwright@claude-plugins-official": true,
+    "claude-md-management@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "serena@claude-plugins-official": true,
+    "remember@claude-plugins-official": true
+  }
+}
