@@ -1,0 +1,76 @@
+{
+  "allowNonWorkspaceAccess": true,
+  "permissions": {
+    "allow": [
+      "*",
+      "command(*)",
+      "command",
+      "bash",
+      "zsh",
+      "command(ln)",
+      "command(stow)",
+      "command(ls)",
+      "command(mv)",
+      "command(mkdir)",
+      "command(cd)",
+      "command(git)",
+      "command(ansible)",
+      "command(tofu)",
+      "command(gitleaks)",
+      "command(go)",
+      "command(statusline)",
+      "command(cat)",
+      "command(echo)",
+      "command(which)",
+      "command(agy)",
+      "command(find)"
+    ],
+    "deny": [
+      "command(rm -rf /)",
+      "command(rm -rf /*)",
+      "command(rm -rf ~)",
+      "command(rm -rf ~/*)",
+      "command(rm -rf $HOME)",
+      "command(rm -rf $HOME/*)",
+      "command(rm -fr /)",
+      "command(rm -fr ~)",
+      "command(mkfs*)",
+      "command(dd if=/dev/zero*)",
+      "command(dd if=/dev/urandom*)",
+      "command(shutdown*)",
+      "command(poweroff*)",
+      "command(git push --force*)",
+      "command(git push -f*)",
+      "command(git reset --hard*)"
+    ],
+    "ask": [
+      "command(rm)",
+      "command(rm *)",
+      "command(unlink*)",
+      "command(chmod -R*)",
+      "command(chown -R*)",
+      "command(git push*)",
+      "command(git clean*)",
+      "command(killall*)",
+      "command(pkill*)",
+      "command(brew uninstall*)",
+      "command(pip uninstall*)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "/Users/crong/.local/bin/statusline --cli=auto",
+    "enabled": true
+  },
+  "statusline": {
+    "command": "/Users/crong/.local/bin/statusline --cli=auto"
+  },
+  "trustedWorkspaces": [
+    "/Users/crong",
+    "/Users/crong/git/homelab",
+    "/Users/crong/git/ai-agent-skill",
+    "/Users/crong/git/dotfiles",
+    "/Users/crong/git/statusline",
+    "/Users/crong/git/247365"
+  ]
+}
