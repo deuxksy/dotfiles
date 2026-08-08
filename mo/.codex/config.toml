@@ -1,0 +1,156 @@
+# oh-my-codex top-level settings (must be before any [table])
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+notify = ["node", "/home/crong/.local/share/pnpm/global/5/.pnpm/oh-my-codex@0.18.1/node_modules/oh-my-codex/dist/scripts/notify-hook.js"]
+model_reasoning_effort = "medium"
+developer_instructions = "You have oh-my-codex installed. AGENTS.md is the orchestration brain and main control surface. Follow AGENTS.md for skill/keyword routing, $name workflow invocation, and role-specialized subagents. Use outcome-first, concise progress updates: state the target result, constraints, validation evidence, and stop condition before adding process detail. Native subagents live in .codex/agents and may handle independent parallel subtasks within one Codex session or team pane. Skills load from .codex/skills, not native-agent TOMLs. Treat installed prompts as narrower execution surfaces under AGENTS.md authority."
+model = "gpt-5.6-sol"
+# oh-my-codex seeded behavioral defaults (uninstall removes unchanged defaults)
+model_context_window = 250000
+model_auto_compact_token_limit = 200000
+# End oh-my-codex seeded behavioral defaults
+
+[projects."/home/crong"]
+trust_level = "trusted"
+
+[projects."/home/crong/git/dotfiles"]
+trust_level = "trusted"
+
+[projects."/home/crong/git/Meridian-X"]
+trust_level = "trusted"
+
+[projects."/home/crong/git/ai-agent-skill"]
+trust_level = "trusted"
+
+[marketplaces.openai-bundled]
+last_updated = "2026-08-07T01:18:45Z"
+source_type = "local"
+source = "/home/crong/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[marketplaces.zzizily]
+last_updated = "2026-08-08T07:50:59Z"
+last_revision = "718c53ab10b9f360d485789e904fe1dcee4282b4"
+source_type = "git"
+source = "https://github.com/deuxksy/ai-agent-skill.git"
+
+[plugins."superpowers@openai-curated"]
+enabled = true
+
+[plugins."build-web-apps@openai-curated"]
+enabled = true
+
+[plugins."cloudflare@openai-curated"]
+enabled = false
+
+[plugins."codex-security@openai-curated"]
+enabled = true
+
+[plugins."figma@openai-curated"]
+enabled = true
+
+[plugins."gmail@openai-curated"]
+enabled = true
+
+[plugins."zoom@openai-curated"]
+enabled = true
+
+[plugins."test-android-apps@openai-curated"]
+enabled = false
+
+[plugins."notion@openai-curated"]
+enabled = true
+
+[plugins."google-drive@openai-curated"]
+enabled = true
+
+[plugins."sites@openai-bundled"]
+enabled = true
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[plugins."docs@zzizily"]
+enabled = true
+
+[plugins."rules@zzizily"]
+enabled = true
+
+[plugins."security-audit@zzizily"]
+enabled = true
+
+[plugins."infra-provisioning@zzizily"]
+enabled = true
+
+[plugins."trackers-automation@zzizily"]
+enabled = true
+
+[plugins."agent-dev-deploy@zzizily"]
+enabled = true
+
+[plugins."session-workflow@zzizily"]
+enabled = true
+
+[plugins."content-l10n@zzizily"]
+enabled = true
+
+[plugins."git@zzizily"]
+enabled = true
+[features]
+multi_agent = true
+child_agents_md = true
+hooks = true
+goals = true
+
+[shell_environment_policy.set]
+USE_OMX_EXPLORE_CMD = "1"
+
+[agents]
+max_threads = 6
+max_depth = 2
+
+[hooks.state]
+
+# ============================================================
+# oh-my-codex (OMX) Configuration
+# Managed by omx setup - manual edits preserved on next setup
+# ============================================================
+
+# OMX-owned Codex hook trust state
+# Trusts only setup-managed native hook wrappers.
+[hooks.state."/home/crong/.codex/hooks.json:post_compact:0:0"]
+trusted_hash = "sha256:74b4912959b1f1ad145c4bb865726ae24a86762fc4496645cd1496d7c4026e68"
+
+[hooks.state."/home/crong/.codex/hooks.json:post_tool_use:0:0"]
+trusted_hash = "sha256:5349f462b7caac39c5da15ccb29c6afdf953075420a2417d5df0e01ce652a756"
+
+[hooks.state."/home/crong/.codex/hooks.json:pre_compact:0:0"]
+trusted_hash = "sha256:ffa84b42c5074841d26ef0421df671bc50d2b555495f6d86624b741e6c5dbdb1"
+
+[hooks.state."/home/crong/.codex/hooks.json:pre_tool_use:0:0"]
+trusted_hash = "sha256:606f4b5baf3af6ebcab258bfd9ffa5cae343e04d5e3a96c11697f4ca7e8d13f0"
+
+[hooks.state."/home/crong/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:526381fb144fb76c3206295c3114e833ed128d47e88a976eaf3cad796eccacb4"
+
+[hooks.state."/home/crong/.codex/hooks.json:stop:0:0"]
+trusted_hash = "sha256:8853dde45d25e3d9b2fa7d5f2d8ce7fbfba27e276dbd2e873cfb41dc4268232b"
+
+[hooks.state."/home/crong/.codex/hooks.json:user_prompt_submit:0:0"]
+trusted_hash = "sha256:86ca12bd21fba4e4594dd0f1982f1b60e797c738d5706380fc3c1bdab729aa8f"
+# End OMX-owned Codex hook trust state
+
+# OMX TUI StatusLine (Codex CLI v0.101.0+)
+[tui]
+# omx:managed-status-line
+status_line = ["model-with-reasoning", "git-branch", "context-remaining", "total-input-tokens", "total-output-tokens", "five-hour-limit", "weekly-limit"]
+
+[tui.model_availability_nux]
+"gpt-5.5" = 4
+"gpt-5.6-sol" = 4
+
+[mcp_servers.openaiDeveloperDocs]
+url = "https://developers.openai.com/mcp"
+
+# ============================================================
+# End oh-my-codex
