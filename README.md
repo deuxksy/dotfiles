@@ -1,6 +1,15 @@
 # Dotfiles
 
-Cross-platform dotfiles managed by GNU Stow with sops encryption.
+macOS, NixOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 sops 암호화로 일관되게 관리하는 크로스플랫폼 dotfiles 프로젝트입니다. 단일 커맨드로 배포를 자동화하고, 개인 정보 및 시크릿을 안전하게 동기화하며, 전 호스트 공통 도구 및 AI 지침을 관리합니다.
+
+## Documentation (Diátaxis Index)
+
+상세 문서 및 세부 설계 안내는 [docs/README.md](docs/README.md) 서브 허브와 아래 디아탁시스 카테고리를 참조하세요.
+
+- **🟢 Tutorials**: [Install Guide](#install) | [Windows Setup Guide](windows/README.md)
+- **🟡 How-To**: [Stow Adopt Guide](#stow-adopt) | [sops Implementation Plan](docs/plans/2026-04-03-sops-key-encryption-implementation.md) | [NixOS Fcitx5 Guide](nix/nixos/docs/fcitx5-wayland-kde.md)
+- **🔵 Reference**: [Docs Sub-Hub](docs/README.md) | [Neovim Config Guide](base/.config/nvim/README.md)
+- **🟣 Explanation**: [Stow Structure Design](docs/plans/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/plans/2026-04-03-sops-key-encryption-design.md)
 
 ## Hosts
 
