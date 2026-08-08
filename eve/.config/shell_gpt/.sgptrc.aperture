@@ -1,6 +1,9 @@
-API_BASE_URL=http://ai
-OPENAI_API_BASE=http://ai
-DEFAULT_MODEL=glm-5-turbo
+API_BASE_URL=http://ai.bun-bull.ts.net/v1
+OPENAI_API_BASE=http://ai.bun-bull.ts.net/v1
+OPENAI_API_KEY=-
+DEFAULT_MODEL=k3
+CHAT_CACHE_PATH=/Users/crong/.config/shell_gpt/chat_cache
+CACHE_PATH=/Users/crong/.config/shell_gpt/cache
 CHAT_CACHE_LENGTH=100
 CACHE_LENGTH=100
 REQUEST_TIMEOUT=120
