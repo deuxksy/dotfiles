@@ -5,7 +5,7 @@ windows:
     layout: main-vertical
     panes:
       - shell_command: fastfetch
-  - window_name: claude
+  - window_name: agent
     layout: main-vertical
     panes:
       - shell_command: cd ~/git

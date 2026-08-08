@@ -2,21 +2,28 @@
   "allowNonWorkspaceAccess": true,
   "permissions": {
     "allow": [
+      "*",
       "command(*)",
+      "command",
+      "bash",
+      "zsh",
+      "command(ln)",
+      "command(stow)",
+      "command(ls)",
+      "command(mv)",
+      "command(mkdir)",
+      "command(cd)",
+      "command(git)",
+      "command(ansible)",
+      "command(tofu)",
+      "command(gitleaks)",
       "command(go)",
       "command(statusline)",
-      "command(mkdir)",
       "command(cat)",
       "command(echo)",
       "command(which)",
       "command(agy)",
-      "command(ansible)",
-      "command(gitleaks)",
-      "command(git)",
-      "command(find)",
-      "command(ls)",
-      "command(mv)",
-      "command(cd)"
+      "command(find)"
     ],
     "deny": [
       "command(rm -rf /)",
@@ -55,13 +62,15 @@
     "command": "/Users/crong/.local/bin/statusline --cli=auto",
     "enabled": true
   },
+  "statusline": {
+    "command": "/Users/crong/.local/bin/statusline --cli=auto"
+  },
   "trustedWorkspaces": [
     "/Users/crong",
     "/Users/crong/git/homelab",
     "/Users/crong/git/ai-agent-skill",
     "/Users/crong/git/dotfiles",
     "/Users/crong/git/statusline",
-    "/Users/crong/git/247365",
-    "/Users/crong/.config/shell_gpt"
+    "/Users/crong/git/247365"
   ]
 }
