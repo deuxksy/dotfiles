@@ -26,7 +26,10 @@
           nixpkgs.overlays = [
             (final: prev: {
               mitmproxy = prev.mitmproxy.overridePythonAttrs (old: {
-                pythonRelaxDeps = (old.pythonRelaxDeps or [ ]) ++ [ "msgpack" ];
+                pythonRelaxDeps =
+                  if (old.pythonRelaxDeps or false) == true
+                  then true
+                  else (old.pythonRelaxDeps or [ ]) ++ [ "msgpack" ];
               });
               pipx = prev.pipx.overridePythonAttrs { doCheck = false; };
             })
