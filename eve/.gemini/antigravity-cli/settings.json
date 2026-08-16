@@ -1,29 +1,36 @@
 {
   "allowNonWorkspaceAccess": true,
+  "model": "Gemini 3.7 Flash (Medium)",
   "permissions": {
     "allow": [
-      "*",
       "command(*)",
-      "command",
-      "bash",
-      "zsh",
-      "command(ln)",
-      "command(stow)",
-      "command(ls)",
-      "command(mv)",
-      "command(mkdir)",
-      "command(cd)",
-      "command(git)",
-      "command(ansible)",
-      "command(tofu)",
-      "command(gitleaks)",
       "command(go)",
       "command(statusline)",
+      "command(mkdir)",
       "command(cat)",
       "command(echo)",
       "command(which)",
       "command(agy)",
-      "command(find)"
+      "command(ansible)",
+      "command(gitleaks)",
+      "command(git)",
+      "command(find)",
+      "command(ls)",
+      "command(mv)",
+      "command(cd)",
+      "command(rm -f .env .env.example)",
+      "command(rm -rf .superpowers/sdd/2026-08-09-url-resolver)",
+      "command(rm -rf ~/.claude/plugins/cache/temp_git_* ~/.claude/plugins/cache/zzizily ~/.claude/plugins/plugin-catalog-cache.json)",
+      "command(rm -rf ~/.gemini/config/plugins/agents-md-management ~/.gemini/config/plugins/commit-commands ~/.gemini/config/plugins/readme-md-management)",
+      "command(rm -rf ~/.gemini/config/plugins/zzizily .claude-plugin .agents/plugins/marketplace.json)",
+      "command(rm -rf /Users/crong/git/Meridian-X/.superpowers/sdd/2026-08-10-jpn-actors-update)",
+      "command(rm -rf /Users/crong/git/Meridian-X/.superpowers/sdd/2026-08-10-add-4k688-clean-prefix)",
+      "command(rm -rf /Users/crong/git/Meridian-X/.superpowers/sdd/2026-08-10-strict-metadata-classification)",
+      "command(rm -f .git/index.lock)",
+      "command(rm -f AGENTS.md CLAUDE.md GEMINI.md .clinerules)",
+      "command(rm -f /tmp/release-notes-v2.0.1.md)",
+      "command(rm -rf /Users/crong/git/homelab/.superpowers/sdd/2026-08-17-heritage-sync-and-recovery)",
+      "command(rm -f eve/.DS_Store)"
     ],
     "deny": [
       "command(rm -rf /)",
@@ -62,15 +69,16 @@
     "command": "/Users/crong/.local/bin/statusline --cli=auto",
     "enabled": true
   },
-  "statusline": {
-    "command": "/Users/crong/.local/bin/statusline --cli=auto"
-  },
   "trustedWorkspaces": [
     "/Users/crong",
     "/Users/crong/git/homelab",
     "/Users/crong/git/ai-agent-skill",
     "/Users/crong/git/dotfiles",
     "/Users/crong/git/statusline",
-    "/Users/crong/git/247365"
+    "/Users/crong/git/247365",
+    "/Users/crong/.config/shell_gpt",
+    "/Users/crong/git/Meridian-X",
+    "/Users/crong/git/sylph",
+    "/Users/crong/git/heritage"
   ]
 }

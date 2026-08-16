@@ -30,3 +30,11 @@ eval "$(mise activate zsh)"
 
 # Added by Antigravity IDE
 export PATH="/Users/crong/.antigravity-ide/antigravity-ide/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/crong/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end
