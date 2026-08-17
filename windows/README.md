@@ -54,19 +54,22 @@ powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\git\dotfiles\windows\
 
 ### 스크립트가 수행하는 작업
 
-| 대상 경로 | 원본 (base) | 방식 | 권한 |
+| 대상 경로 | 원본 | 방식 | 권한 |
 | --- | --- | --- | --- |
 | `%LOCALAPPDATA%\nvim` | `base\.config\nvim` | Junction | 일반 |
-| `%USERPROFILE%\.claude\CLAUDE.md` | `base\.claude\CLAUDE.md` | SymbolicLink | 관리자 |
-| `%USERPROFILE%\.claude\settings.local.json` | `base\.claude\settings.local.json` | SymbolicLink | 관리자 |
+| `%USERPROFILE%\.claude\CLAUDE.md` | `base\.claude\CLAUDE.md` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.claude\rules` | `base\.claude\rules` | Junction | 일반 |
+| `%USERPROFILE%\.claude\settings.local.json` | `windows\.claude\settings.local.json` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.claude\settings.*` | `kyolim\.claude\settings.*` | SymbolicLink | 관리자 또는 Developer Mode |
 | `%USERPROFILE%\.codex\AGENTS.md` | `base\.codex\AGENTS.md` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.codex\rules\default.rules` | `base\.codex\rules\default.rules` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.codex\rules` | `base\.codex\rules` | Junction | 일반 |
+| `%USERPROFILE%\.codex\config.toml` | `kyolim\.codex\config.toml` | SymbolicLink | 관리자 또는 Developer Mode |
 | `%USERPROFILE%\.gemini\GEMINI.md` | `base\.gemini\GEMINI.md` | SymbolicLink | 관리자 또는 Developer Mode |
 | `%USERPROFILE%\.gemini\rules` | `base\.gemini\rules` | Junction | 일반 |
-| `%USERPROFILE%\.gemini\antigravity-cli\settings.json` | `base\.gemini\antigravity-cli\settings.json` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.gitconfig` | `base\.gitconfig` | SymbolicLink | 관리자 |
-| `%USERPROFILE%\.wakatime.cfg` | `base\.wakatime.cfg` | SymbolicLink | 관리자 |
-| `%USERPROFILE%\.wezterm.lua` | `base\.wezterm.lua` | SymbolicLink | 관리자 |
+| `%USERPROFILE%\.gemini\antigravity-cli\settings.json` | `kyolim\.gemini\antigravity-cli\settings.json` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.gitconfig` | `base\.gitconfig` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.wakatime.cfg` | `base\.wakatime.cfg` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.wezterm.lua` | `base\.wezterm.lua` | SymbolicLink | 관리자 또는 Developer Mode |
 
 ## Neovim 초기 실행
 

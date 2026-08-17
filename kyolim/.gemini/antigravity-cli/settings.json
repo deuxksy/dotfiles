@@ -1,0 +1,79 @@
+{
+  "allowNonWorkspaceAccess": true,
+  "autoUpdate": true,
+  "colorScheme": "dark",
+  "model": "Gemini 3.7 Flash (Medium)",
+  "permissions": {
+    "allow": [
+      "command(*)",
+      "command(git log -n 2 --oneline; git diff 4730d6b..3efd5de)"
+    ],
+    "deny": [
+      "command(format *)",
+      "command(diskpart *)",
+      "command(Clear-Disk *)",
+      "command(Initialize-Disk *)",
+      "command(bcdedit *)",
+      "command(reg delete HKLM*)",
+      "command(reg delete HKCU*)",
+      "command(shutdown *)",
+      "command(Stop-Computer *)",
+      "command(Restart-Computer *)",
+      "command(rmdir /s /q C:\\*)",
+      "command(Remove-Item -Recurse -Force C:\\*)",
+      "command(rm -rf /)",
+      "command(rm -rf /*)",
+      "command(dd *)"
+    ],
+    "ask": [
+      "command(Remove-Item *)",
+      "command(rmdir *)",
+      "command(rd *)",
+      "command(del *)",
+      "command(erase *)",
+      "command(rm *)",
+      "command(Stop-Process *)",
+      "command(taskkill *)",
+      "command(Stop-Service *)",
+      "command(Set-ExecutionPolicy *)",
+      "command(Start-Process * -Verb RunAs*)",
+      "command(runas *)",
+      "command(gsudo *)",
+      "command(sudo *)",
+      "command(git reset *)",
+      "command(git clean *)",
+      "command(git push * --force*)",
+      "command(git push * -f*)",
+      "command(git restore .)",
+      "command(docker rm *)",
+      "command(docker rmi *)",
+      "command(docker system prune *)",
+      "command(docker volume prune *)",
+      "command(docker compose down -v*)",
+      "command(kubectl delete *)",
+      "command(terraform destroy *)",
+      "command(tofu destroy *)",
+      "command(gcloud * delete *)",
+      "command(aws * delete *)",
+      "command(az * delete *)"
+    ]
+  },
+  "statusLine": {
+    "type": "",
+    "command": "",
+    "enabled": false
+  },
+  "trustedWorkspaces": [
+    "${HOME}",
+    "${HOME}/git/247365",
+    "${HOME}/git/dotfiles",
+    "${HOME}/git/kyolim/ecoai-app-collectors",
+    "${HOME}/.claude/rules",
+    "${HOME}/git/kyolim/OpsHub",
+    "C:\\Users\\deuxk\\git\\BF",
+    "C:\\software\\tool\\maven",
+    "C:\\Users\\deuxk\\git\\dotfiles",
+    "C:\\Users\\deuxk\\git",
+    "C:\\Users\\deuxk\\git\\ai-agent-skill"
+  ]
+}

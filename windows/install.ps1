@@ -3,25 +3,32 @@
 
 $dotfiles = "$env:USERPROFILE\git\dotfiles"
 $base = "$dotfiles\base"
+$windows = "$dotfiles\windows"
+$kyolim = "$dotfiles\kyolim"
 
 # --- Directories (Junction - no admin required) ---
 
 # Neovim
 New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target "$base\.config\nvim" -Force
 
-# .claude (runtime data는 로컬에 두고 설정 파일만 링크)
+# .claude (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
 $claudeDir = "$env:USERPROFILE\.claude"
 if (-not (Test-Path $claudeDir)) { New-Item -ItemType Directory -Path $claudeDir -Force }
 New-Item -ItemType SymbolicLink -Path "$claudeDir\CLAUDE.md" -Target "$base\.claude\CLAUDE.md" -Force
-New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "$dotfiles\windows\.claude\settings.local.json" -Force
+New-Item -ItemType Junction -Path "$claudeDir\rules" -Target "$base\.claude\rules" -Force
+New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "$windows\.claude\settings.local.json" -Force
+
+# Claude settings.* 프리셋 링크 (settings.json은 로컬 임시/런타임 파일로 유지)
+Get-ChildItem "$kyolim\.claude\settings.*" | Where-Object { $_.Name -ne "settings.local.json" -and $_.Name -ne "settings.json" } | ForEach-Object {
+    New-Item -ItemType SymbolicLink -Path "$claudeDir\$($_.Name)" -Target $_.FullName -Force
+}
 
 # .codex (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
 $codexDir = "$env:USERPROFILE\.codex"
 if (-not (Test-Path $codexDir)) { New-Item -ItemType Directory -Path $codexDir -Force }
 New-Item -ItemType SymbolicLink -Path "$codexDir\AGENTS.md" -Target "$base\.codex\AGENTS.md" -Force
-$codexRulesDir = "$codexDir\rules"
-if (-not (Test-Path $codexRulesDir)) { New-Item -ItemType Directory -Path $codexRulesDir -Force }
-New-Item -ItemType SymbolicLink -Path "$codexRulesDir\default.rules" -Target "$base\.codex\rules\default.rules" -Force
+New-Item -ItemType Junction -Path "$codexDir\rules" -Target "$base\.codex\rules" -Force
+New-Item -ItemType SymbolicLink -Path "$codexDir\config.toml" -Target "$kyolim\.codex\config.toml" -Force
 
 # .gemini (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
 $geminiDir = "$env:USERPROFILE\.gemini"
@@ -41,7 +48,7 @@ $geminiAntigravityDir = "$geminiDir\antigravity-cli"
 if (-not (Test-Path $geminiAntigravityDir)) {
     New-Item -ItemType Directory -Path $geminiAntigravityDir -Force
 }
-New-Item -ItemType SymbolicLink -Path "$geminiAntigravityDir\settings.json" -Target "$base\.gemini\antigravity-cli\settings.json" -Force
+New-Item -ItemType SymbolicLink -Path "$geminiAntigravityDir\settings.json" -Target "$kyolim\.gemini\antigravity-cli\settings.json" -Force
 
 # --- Files (Symlink - requires admin) ---
 

@@ -1,0 +1,136 @@
+model = "gpt-5.6-sol"
+sandbox_mode = "workspace-write"
+personality = "pragmatic"
+approvals_reviewer = "user"
+service_tier = "default"
+developer_instructions = "<omx version=\"1\">You have oh-my-codex installed through Codex plugin mode. AGENTS.md is the orchestration brain and main control surface. Follow AGENTS.md for skill/keyword routing and $name workflow invocation. When spawning native subagents, set `agent_type` to an installed role and never omit it for OMX work. Registered Codex plugin marketplace surfaces supply OMX workflows and plugin-scoped companion resources when the plugin is installed; native agent roles are installed as setup-owned Codex agent TOML files in plugin mode so agent_type routing works. User-installed skills may still live under ~/.codex/skills. Use outcome-first, concise progress updates: state the target result, constraints, validation evidence, and stop condition before adding process detail.</omx>"
+
+model_reasoning_effort = "medium"
+notify = [ "C:\\Users\\deuxk\\AppData\\Local\\OpenAI\\Codex\\runtimes\\cua_node\\23828fd353da361d\\bin\\node_modules\\@oai\\sky\\bin\\windows\\codex-computer-use.exe", "turn-ended" ]
+[marketplaces.openai-bundled]
+last_updated = "2026-07-29T01:59:19Z"
+source_type = "local"
+source = 'C:\Users\deuxk\.codex\.tmp\bundled-marketplaces\openai-bundled'
+
+[marketplaces.openai-primary-runtime]
+last_updated = "2026-07-31T02:16:47Z"
+source_type = "local"
+source = 'C:\Users\deuxk\.cache\codex-runtimes\codex-primary-runtime\plugins\openai-primary-runtime'
+
+[marketplaces.zzizily]
+last_updated = "2026-08-17T06:07:16Z"
+last_revision = "5a1bdb1b4507f005c32ca9b8f9aa29666a28ef7f"
+source_type = "git"
+source = "https://github.com/deuxksy/ai-agent-skill.git"
+
+[projects.'c:\users\deuxk\git\ai-agent-skill']
+trust_level = "trusted"
+
+[projects.'c:\users\deuxk\git\dotfiles']
+trust_level = "trusted"
+
+[projects.'c:\users\deuxk\git\statusline']
+trust_level = "trusted"
+
+[projects.'c:\users\deuxk\git\kyolim-labs\ecoai-gwageo']
+trust_level = "trusted"
+
+[projects.'c:\software\project\ecoai-gwageo']
+trust_level = "trusted"
+
+[projects.'c:\users\deuxk\documents\codex\2026-08-12\realtime-voice-chat']
+trust_level = "trusted"
+
+[projects.'c:\software\project\ecoai-web-admin']
+trust_level = "trusted"
+
+[projects.'c:\software\project\ragenta-docs']
+trust_level = "trusted"
+
+[projects.'c:\users\deuxk\documents\codex\2026-08-13\2']
+trust_level = "trusted"
+
+[projects.'c:\software\tool\apache-jmeter']
+trust_level = "trusted"
+
+[windows]
+sandbox = "unelevated"
+
+[plugins."agent-dev-deploy@zzizily"]
+enabled = true
+
+[plugins."content-l10n@zzizily"]
+enabled = true
+
+[plugins."docs@zzizily"]
+enabled = true
+
+[plugins."git@zzizily"]
+enabled = true
+
+[plugins."infra-provisioning@zzizily"]
+enabled = true
+
+[plugins."rules@zzizily"]
+enabled = true
+
+[plugins."security-audit@zzizily"]
+enabled = true
+
+[plugins."session-workflow@zzizily"]
+enabled = true
+
+[plugins."trackers-automation@zzizily"]
+enabled = true
+
+[desktop]
+followUpQueueMode = "queue"
+conversationDetailMode = "STEPS_PROSE"
+
+[features]
+js_repl = false
+
+[mcp_servers.chrome-devtools]
+command = "cmd"
+args = [
+    "/c",
+    "npx",
+    "-y",
+    "chrome-devtools-mcp@latest",
+    "--autoConnect",
+    "--no-usage-statistics",
+]
+env = {
+    SystemRoot = "C:\\Windows",
+    PROGRAMFILES = "C:\\Program Files"
+}
+startup_timeout_sec = 20
+tool_timeout_sec = 120
+enabled = true
+
+
+[mcp_servers.node_repl]
+args = []
+command = 'C:\Users\deuxk\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node_repl.exe'
+startup_timeout_sec = 120
+
+[mcp_servers.node_repl.env]
+NODE_REPL_NATIVE_PIPE_CONNECT_TIMEOUT_MS = "1000"
+NODE_REPL_NODE_MODULE_DIRS = 'C:\Users\deuxk\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node_modules'
+NODE_REPL_NODE_PATH = 'C:\Users\deuxk\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node.exe'
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\deuxk\.codex;C:\Users\deuxk\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node_modules'
+CODEX_HOME = 'C:\Users\deuxk\.codex'
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "8676faca28eddb6424d4b54116fe8305e2da6a0ca4e5271e8758fc3c55c3b8fc"
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
+NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
+BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
+BROWSER_USE_CODEX_APP_VERSION = "26.803.81509"
+SKY_CUA_NATIVE_PIPE = "1"
+SKY_CUA_NATIVE_PIPE_DIRECTORY = '\\.\pipe\codex-computer-use-243efb65-a0c9-49cb-b5ba-48f90cfb44bd'
+CODEX_CLI_PATH = 'C:\Users\deuxk\AppData\Local\OpenAI\Codex\bin\8e8bf206e63ac436\codex.exe'
+
+[shell_environment_policy.set]
+BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "8676faca28eddb6424d4b54116fe8305e2da6a0ca4e5271e8758fc3c55c3b8fc"
+NODE_REPL_TRUSTED_CODE_PATHS = 'C:\Users\deuxk\.codex;C:\Users\deuxk\AppData\Local\OpenAI\Codex\runtimes\cua_node\23828fd353da361d\bin\node_modules'
