@@ -56,20 +56,20 @@ powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\git\dotfiles\windows\
 
 | 대상 경로 | 원본 | 방식 | 권한 |
 | --- | --- | --- | --- |
-| `%LOCALAPPDATA%\nvim` | `base\.config\nvim` | Junction | 일반 |
-| `%USERPROFILE%\.claude\CLAUDE.md` | `base\.claude\CLAUDE.md` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.claude\rules` | `base\.claude\rules` | Junction | 일반 |
+| `%LOCALAPPDATA%\nvim` | `windows\.config\nvim` | Junction | 일반 |
+| `%USERPROFILE%\.claude\CLAUDE.md` | `windows\.claude\CLAUDE.md` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.claude\rules` | `windows\.claude\rules` | Junction | 일반 |
 | `%USERPROFILE%\.claude\settings.local.json` | `windows\.claude\settings.local.json` | SymbolicLink | 관리자 또는 Developer Mode |
 | `%USERPROFILE%\.claude\settings.*` | `kyolim\.claude\settings.*` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.codex\AGENTS.md` | `base\.codex\AGENTS.md` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.codex\rules` | `base\.codex\rules` | Junction | 일반 |
+| `%USERPROFILE%\.codex\AGENTS.md` | `windows\.codex\AGENTS.md` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.codex\rules` | `windows\.codex\rules` | Junction | 일반 |
 | `%USERPROFILE%\.codex\config.toml` | `kyolim\.codex\config.toml` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.gemini\GEMINI.md` | `base\.gemini\GEMINI.md` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.gemini\rules` | `base\.gemini\rules` | Junction | 일반 |
+| `%USERPROFILE%\.gemini\GEMINI.md` | `windows\.gemini\GEMINI.md` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.gemini\rules` | `windows\.gemini\rules` | Junction | 일반 |
 | `%USERPROFILE%\.gemini\antigravity-cli\settings.json` | `kyolim\.gemini\antigravity-cli\settings.json` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.gitconfig` | `base\.gitconfig` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.wakatime.cfg` | `base\.wakatime.cfg` | SymbolicLink | 관리자 또는 Developer Mode |
-| `%USERPROFILE%\.wezterm.lua` | `base\.wezterm.lua` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.gitconfig` | `windows\.gitconfig` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.wakatime.cfg` | `windows\.wakatime.cfg` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.wezterm.lua` | `windows\.wezterm.lua` | SymbolicLink | 관리자 또는 Developer Mode |
 
 ## Neovim 초기 실행
 
@@ -83,8 +83,7 @@ nvim
 
 ## 주의사항
 
-- 파일 심볼릭 링크(`SymbolicLink`)는 **관리자 권한**이 필요합니다
+- 파일 심볼릭 링크(`SymbolicLink`)는 **관리자 권한** 또는 **Developer Mode**가 필요합니다
 - 디렉토리 Junction은 관리자 권한 없이 생성 가능합니다
-- 설정 파일 원본은 `base/` 폴더에 있으며, `windows/` 폴더에는 설치 스크립트만 있습니다
-- Windows에서 Developer Mode를 활성화하면 관리자 권한 없이도 심볼릭 링크 생성이 가능합니다
+- Windows 설정 파일 원본은 `windows/` 레이어와 호스트 전용 `kyolim/` 레이어에 격리되어 관리됩니다 (non-Windows 전용 `base/`와 완전 분리)
 - `.claude`, `.codex`, `.gemini`의 runtime data는 Windows 로컬에 두고 추적 대상 설정만 연결합니다

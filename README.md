@@ -194,17 +194,17 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 
 | 디렉토리 | 호스트 | 설명 |
 | :--- | :--- | :--- |
-| `base/` | 전체 | 공통 설정 (git, nvim, tmux, wezterm, AI rules) |
+| `base/` | non-Windows 전체 | POSIX 공통 설정 (macOS, NixOS, SteamOS, Debian 등 - git, nvim, tmux, zsh, AI rules) |
 | `axiom/` | macOS | Mac Studio — Local LLM (LM Studio, MLX) + 개발 |
 | `eve/` | macOS | Mac mini — iOS/AOS 개발 |
 | `mo/` | NixOS | AyaNEO AM02 — Linux 개발 워크스테이션 |
 | `walle/` | Proxmox (Debian) | AOOSTAR WTR R1 — Homelab 서버 (K8s, VM) |
 | `girl/` | SteamOS | Steam Deck — 게임/개발 |
 | `auxo/` | Debian 13 | Raspberry Pi — 헤드리스 서버 |
+| `windows/` | Windows 전체 | Windows OS 공통 레이어 (규칙, nvim, wezterm, gitconfig, install.ps1) |
+| `kyolim/` | Windows 11 | kyolim 호스트 전용 (Claude 프리셋, Codex config, Gemini settings) |
 | `ava/` | Windows 10 | Surface Pro 6 (pwsh) |
-| `kyolim/` | Windows 11 | 회사 노트북 (stow 미사용) |
 | `nix/` | NixOS | flake 설정 (mo 전용) |
-| `windows/` | Windows | PowerShell 설치 스크립트 |
 | `docs/` | - | 설계/구현 문서 (superpowers specs & plans) |
 | `.ai/` `.githooks/` `.github/` | - | AI 공유 규칙, Git hooks, Dependabot |
 

@@ -2,20 +2,19 @@
 # Run as Administrator for file symlinks, or use Junction for directories
 
 $dotfiles = "$env:USERPROFILE\git\dotfiles"
-$base = "$dotfiles\base"
 $windows = "$dotfiles\windows"
 $kyolim = "$dotfiles\kyolim"
 
 # --- Directories (Junction - no admin required) ---
 
 # Neovim
-New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target "$base\.config\nvim" -Force
+New-Item -ItemType Junction -Path "$env:LOCALAPPDATA\nvim" -Target "$windows\.config\nvim" -Force
 
 # .claude (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
 $claudeDir = "$env:USERPROFILE\.claude"
 if (-not (Test-Path $claudeDir)) { New-Item -ItemType Directory -Path $claudeDir -Force }
-New-Item -ItemType SymbolicLink -Path "$claudeDir\CLAUDE.md" -Target "$base\.claude\CLAUDE.md" -Force
-New-Item -ItemType Junction -Path "$claudeDir\rules" -Target "$base\.claude\rules" -Force
+New-Item -ItemType SymbolicLink -Path "$claudeDir\CLAUDE.md" -Target "$windows\.claude\CLAUDE.md" -Force
+New-Item -ItemType Junction -Path "$claudeDir\rules" -Target "$windows\.claude\rules" -Force
 New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "$windows\.claude\settings.local.json" -Force
 
 # Claude settings.* 프리셋 링크 (settings.json은 로컬 임시/런타임 파일로 유지)
@@ -26,8 +25,8 @@ Get-ChildItem "$kyolim\.claude\settings.*" | Where-Object { $_.Name -ne "setting
 # .codex (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
 $codexDir = "$env:USERPROFILE\.codex"
 if (-not (Test-Path $codexDir)) { New-Item -ItemType Directory -Path $codexDir -Force }
-New-Item -ItemType SymbolicLink -Path "$codexDir\AGENTS.md" -Target "$base\.codex\AGENTS.md" -Force
-New-Item -ItemType Junction -Path "$codexDir\rules" -Target "$base\.codex\rules" -Force
+New-Item -ItemType SymbolicLink -Path "$codexDir\AGENTS.md" -Target "$windows\.codex\AGENTS.md" -Force
+New-Item -ItemType Junction -Path "$codexDir\rules" -Target "$windows\.codex\rules" -Force
 New-Item -ItemType SymbolicLink -Path "$codexDir\config.toml" -Target "$kyolim\.codex\config.toml" -Force
 
 # .gemini (runtime data는 로컬에 두고 설정 파일/폴더만 링크)
@@ -41,8 +40,8 @@ if (Test-Path $geminiDir) {
     New-Item -ItemType Directory -Path $geminiDir -Force
 }
 
-New-Item -ItemType SymbolicLink -Path "$geminiDir\GEMINI.md" -Target "$base\.gemini\GEMINI.md" -Force
-New-Item -ItemType Junction -Path "$geminiDir\rules" -Target "$base\.gemini\rules" -Force
+New-Item -ItemType SymbolicLink -Path "$geminiDir\GEMINI.md" -Target "$windows\.gemini\GEMINI.md" -Force
+New-Item -ItemType Junction -Path "$geminiDir\rules" -Target "$windows\.gemini\rules" -Force
 
 $geminiAntigravityDir = "$geminiDir\antigravity-cli"
 if (-not (Test-Path $geminiAntigravityDir)) {
@@ -53,12 +52,14 @@ New-Item -ItemType SymbolicLink -Path "$geminiAntigravityDir\settings.json" -Tar
 # --- Files (Symlink - requires admin) ---
 
 # .gitconfig
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.gitconfig" -Target "$base\.gitconfig" -Force
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.gitconfig" -Target "$windows\.gitconfig" -Force
 
-# .wakatime.cfg
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.wakatime.cfg" -Target "$base\.wakatime.cfg" -Force
+# .wakatime.cfg (시크릿 파일이므로 로컬에 존재할 때만 링크)
+if (Test-Path "$windows\.wakatime.cfg") {
+    New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.wakatime.cfg" -Target "$windows\.wakatime.cfg" -Force
+}
 
 # .wezterm.lua
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.wezterm.lua" -Target "$base\.wezterm.lua" -Force
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.wezterm.lua" -Target "$windows\.wezterm.lua" -Force
 
 Write-Host "Windows dotfiles installed successfully!" -ForegroundColor Green

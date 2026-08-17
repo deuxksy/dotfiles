@@ -69,7 +69,7 @@ mo/.hermes/.env
 # .claude.json
 eve/.claude.json
 
-base/.wakatime.cfg
+**/.wakatime.cfg
 base/.gemini/*
 !base/.gemini/GEMINI.md
 !base/.gemini/rules/
