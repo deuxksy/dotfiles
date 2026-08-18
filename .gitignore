@@ -50,6 +50,7 @@ result
 # oh-my-claudecode 플러그인 상태 (로컬 전용)
 .omc/
 .omx/
+proxmox-jobs.sqlite3
 
 # --- Exceptions (반드시 추적해야 하는 파일들) ---
 # 만약 위에서 bin/ 을 막았다면, 내 커스텀 스크립트 폴더는 강제로 허용
