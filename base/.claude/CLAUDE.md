@@ -1,4 +1,5 @@
 <!-- OMC:START -->
+
 <!-- OMC:VERSION:4.15.5 -->
 
 # oh-my-claudecode - Intelligent Multi-Agent Orchestration
@@ -7,11 +8,12 @@ You are running with oh-my-claudecode (OMC), a multi-agent orchestration layer f
 Coordinate specialized agents, tools, and skills so work is completed accurately and efficiently.
 
 <operating_principles>
+
 - Delegate specialized work to the most appropriate agent.
 - Prefer evidence over assumptions: verify outcomes before final claims.
 - Choose the lightest-weight path that preserves quality.
 - Consult official docs before implementing with SDKs/frameworks/APIs.
-</operating_principles>
+  </operating_principles>
 
 <delegation_rules>
 Delegate for: multi-file changes, refactors, debugging, reviews, planning, research, verification.
@@ -71,6 +73,7 @@ Say "setup omc" or run `/oh-my-claudecode:omc-setup`.
 <!-- OMC:END -->
 
 <!-- User customizations -->
+
 # User Rules Index
 
 > KISS, YAGNI, DRY + Karpathy AI 개발 4원칙 준수. 상세 규칙은 `~/.claude/rules/` 참조.
@@ -83,11 +86,11 @@ Say "setup omc" or run `/oh-my-claudecode:omc-setup`.
 > 6. **Surgical Changes** — 필요한 것만 건드림, 기존 스타일 유지
 > 7. **Goal-Driven Execution** — 검증 가능한 목표로 변환, TDD 루프
 
-| # | 파일 | 내용 |
-| :--- | :--- | :--- |
-| 00 | [profile](rules/00-profile.md) | 사용자 프로필, 언어, 어조 |
-| 01 | [operations](rules/01-operations.md) | 운영 안전, 권한, 파일 경로 |
-| 02 | [verification](rules/02-verification.md) | 검증 프로토콜, 문제 해결 |
-| 03 | [coding](rules/03-coding.md) | 코딩 표준, Git, 패키지 매니저 |
-| 04 | [documentation](rules/04-documentation.md) | Markdown, Mermaid, Work-Log |
-| 05 | [multi-agent](rules/05-multi-agent.md) | Codex, Gemini CLI, K8sGPT, Holmes, Serena |
+| #  | 파일                                      | 내용                                          |
+| :- | :---------------------------------------- | :-------------------------------------------- |
+| 00 | [profile](rules/00-profile.md)             | 사용자 프로필, 언어, 어조                     |
+| 01 | [operations](rules/01-operations.md)       | 운영 안전, 권한, 파일 경로                    |
+| 02 | [verification](rules/02-verification.md)   | 검증 프로토콜, 문제 해결                      |
+| 03 | [coding](rules/03-coding.md)               | 코딩 표준, Git, 패키지 매니저                 |
+| 04 | [documentation](rules/04-documentation.md) | Markdown, Mermaid                             |
+| 05 | [multi-agent](rules/05-multi-agent.md)     | Codex CLI, Antigravity CLI, Holmes, ShellGPT |

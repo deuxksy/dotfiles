@@ -8,14 +8,15 @@
   - 되돌릴 수 없는 git 작업: `git reset --hard`, `git clean -fd`, `git push --force`, `git rebase`, `git checkout --` (변경사항 폐기)
   - 시스템/디스크: `format`, `mkfs`, `dd`, `diskpart`
   - 프로세스/서비스: `kill -9`, `taskkill /F`, `shutdown`, `reboot`
+  - 권한 변경: `chmod 777`, `chown`, `icacls`
   - 데이터베이스: `DROP`, `TRUNCATE`, `DELETE` (WHERE 없음)
 - PostgreSQL(DBHub):
-  - **읽기 (자유)**: SELECT, EXPLAIN, SHOW, health check 쿼리 (DBHub Custom Tools 15개)
+  - **도구** (DBHub 1.2+ tool 2개로 통합): `mcp__dbhub__execute_sql` (SQL 실행), `mcp__dbhub__search_objects` (객체 검색) — 읽기/쓰기 구분은 tool이 아닌 SQL statement 기준
+  - **읽기 (자유)**: SELECT, EXPLAIN, SHOW, health check 쿼리
   - **변경 (승인 필수)**: INSERT, UPDATE, CREATE INDEX, ALTER, VACUUM — 실행 전 SQL과 영향 범위 보고 후 승인
   - **삭제 (금지)**: DROP, TRUNCATE, DELETE (WHERE 없음) — 절대 실행하지 않음
   - **구조 변경 (금지)**: DROP TABLE, DROP INDEX, DROP DATABASE — 절대 실행하지 않음
   - 연결 정보: 평문 금지, Secret Management 섹션 참조
-  - 권한 변경: `chmod 777`, `chown`, `icacls`
 - Proxmox API: Read(GET)은 자유롭게 실행. Create(POST), Update(PUT), Delete(DELETE)는 사용자 승인 후 실행.
 - K8S(kubectl):
   - **읽기 (자유)**: get, describe, logs, top, explain, api-resources, api-versions
@@ -38,8 +39,9 @@
 - 복호화: `eval "$(sops -d ~/.key)"`
 - API key, DB 연결 정보, 토큰 등 민감 정보는 항상 sops로 관리 (평문 금지)
 - `.gitleaks.toml`로 커밋 시 시크릿 스캔
-- 워크플로우:
-  1. `.env.sops`를 git에 추적 (암호화된 상태)
-  2. `.env`는 `.gitignore`에 등록
-  3. 복호화: `sops -d .env.sops > .env`
-  4. 암호화: `sops -e .env > .env.sops`
+- 워크플로우 (공통):
+  1. `.env.sops`는 git에 추적 (암호화된 상태), `.env`는 `.gitignore`에 등록, 키 목록 공유는 `.env.example` (값 제외)
+  2. 복호화: `sops -d .env.sops > .env` — 두 패턴 모두 동일
+- 패턴 1 — 전체 파일 암호화 (기본, KEY/VALUE 모두 숨김): `sops -e --input-type binary --output-type json .env > .env.sops` → `{"data": "ENC[...]"}` 단일 blob
+- 패턴 2 — 값만 암호화 (KEY 평문 유지): `sops -e .env > .env.sops` → `KEY=ENC[...]` dotenv 형식 유지
+- 주의: `--input-type binary`만 지정하면 output이 filename detection(`.env`)으로 dotenv가 됨 — JSON blob 필요 시 `--output-type json` 필수
