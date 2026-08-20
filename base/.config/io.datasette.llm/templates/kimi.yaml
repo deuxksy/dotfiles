@@ -1,0 +1,4 @@
+model: k3
+defaults:
+  temperature: 1.0
+  top_p: 0.95

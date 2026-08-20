@@ -1,0 +1,22 @@
+- model_id: qwen3.8-max
+  model_name: qwen3.8-max
+  api_base: "http://ai.bun-bull.ts.net/v1"
+  api_key_name: default
+  aliases: ["alibaba", "qwen", "max"]
+
+- model_id: qwen3.6-flash
+  model_name: qwen3.6-flash
+  api_base: "http://ai.bun-bull.ts.net/v1"
+  api_key_name: default
+  aliases: ["flash", "fast"]
+
+- model_id: k3
+  model_name: k3
+  api_base: "http://ai.bun-bull.ts.net/v1"
+  api_key_name: default
+  aliases: ["kimi", "k3"]
+
+- model_id: kimi-for-coding
+  model_name: kimi-for-coding
+  api_base: "http://ai.bun-bull.ts.net/v1"
+  api_key_name: default
