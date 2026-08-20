@@ -1,0 +1,7 @@
+session_name: Default
+start_directory: "~"
+windows:
+  - window_name: Teminal
+    layout: main-vertical
+    panes:
+      - shell_command: fastfetch
