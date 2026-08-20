@@ -1,0 +1,7 @@
+session_name: Gemini
+start_directory: ~/git
+windows:
+  - window_name: agy
+    layout: even-vertical
+    panes:
+      - shell_command: agy --version

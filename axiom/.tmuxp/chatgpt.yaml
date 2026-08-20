@@ -1,0 +1,7 @@
+session_name: ChatGPT
+start_directory: ~/git
+windows:
+  - window_name: codex
+    layout: even-vertical
+    panes:
+      - shell_command: codex --version
