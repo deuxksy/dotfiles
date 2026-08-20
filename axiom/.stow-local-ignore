@@ -1,5 +1,10 @@
 # Stow 제외 항목
 README\.md$
 \.bak$
+# ~/.claude/settings.local.json은 base 패키지가 소유 — 충돌 방지
+settings\.local\.json$
+# runtime state는 gitignored residue — 배포 대상 아님
+^\.omc$
+^\.remember$
 \.orig$
 \.\d{6}$
