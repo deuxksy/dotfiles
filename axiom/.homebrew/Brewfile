@@ -54,23 +54,17 @@ brew "mpv"
 brew "yt-dlp"
 brew "chafa"
 brew "iperf3"
-# AI
 brew "himalaya"
 brew "wakatime-cli"
-brew "kubectl-ai"
 brew "helm"
-brew "k8sgpt"
-brew "k9s"
-
-# Shell
+brew "herdr"
 brew "zsh"
 brew "zsh-completions"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-
-# Development
 brew "watchman"
 brew "ruby"
+
 # Neovim - Linters & Formatters
 brew "eslint_d"
 brew "flake8"
@@ -87,12 +81,10 @@ brew "krew"
 tap "henrygd/beszel"
 brew "henrygd/beszel/beszel-agent"
 
-tap "k8sgpt-ai/k8sgpt"
-brew "k8sgpt-ai/k8sgpt/k8sgpt"
-
 # Mobile E2E Testing
 tap "mobile-dev-inc/tap"
 brew "mobile-dev-inc/tap/maestro"
+
 # Fonts
 cask "font-hack-nerd-font"
 cask "font-fira-code-nerd-font"
@@ -115,6 +107,4 @@ cask "freelens"
 cask "antigravity-cli"
 cask "codex"
 cask "claude-code"
-
-# LM Studio (for axiom LLM work)
 cask "lm-studio"
