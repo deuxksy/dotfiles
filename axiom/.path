@@ -6,6 +6,7 @@ export HISTSIZE=50000
 export HISTFILESIZE=50000
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
+export LLM_USER_PATH="$HOME/.config/io.datasette.llm"
 export DISABLE_AUTO_TITLE='true'
 export KUBECONFIG=~/.kube/config:~/.kube/ecoai.config
 
