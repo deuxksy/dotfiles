@@ -46,8 +46,6 @@
       "Bash(wbadmin *)"
     ],
     "ask": [
-      "Bash(rm *)",
-      "Bash(rm -rf *)",
       "Bash(rmdir *)",
       "Bash(del *)",
       "Bash(rd *)",
@@ -75,12 +73,35 @@
     "commit-commands@claude-plugins-official": true,
     "serena@claude-plugins-official": true,
     "remember@claude-plugins-official": true,
+    "dev@zzizily": true,
+    "docs@zzizily": true,
+    "git@zzizily": true,
+    "infra@zzizily": true,
+    "l10n@zzizily": true,
+    "review@zzizily": true,
+    "rules@zzizily": true,
+    "security@zzizily": true,
+    "sessions@zzizily": true,
+    "trackers@zzizily": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "claude-code-setup@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "glm-plan-usage@zai-coding-plugins": true,
+    "glm-plan-bug@zai-coding-plugins": true,
+    "expo@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "zzizily": {
       "source": {
         "source": "github",
         "repo": "deuxksy/ai-agent-skill"
+      }
+    },
+    "zai-coding-plugins": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/crong/.npm/_npx/2f024689b4d0d3b0/node_modules/@z_ai/coding-helper/zai-coding-plugins"
       }
     }
   }

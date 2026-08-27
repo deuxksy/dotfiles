@@ -56,10 +56,14 @@
       "mcp__zai-websearch__*",
       "mcp__filesystem__directory_tree",
       "mcp__codex__*",
+      "mcp__plugin_chrome-devtools-mcp_chrome-devtools__*",
+      "mcp__chrome-devtools__*",
+      "mcp__chrome-devtools-mcp__*",
       "Read(//opt/homebrew/bin/**)",
       "Bash(brew install *)",
       "Bash(brew info *)",
-      "Read(//opt/homebrew/Caskroom/claude-code/2.1.197/**)"
+      "Read(//opt/homebrew/Caskroom/claude-code/2.1.197/**)",
+      "mcp__zai-mcp-server__*"
     ],
     "deny": [
       "Bash(rm -rf *)",

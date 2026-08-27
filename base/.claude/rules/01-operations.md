@@ -11,7 +11,7 @@
   - 권한 변경: `chmod 777`, `chown`, `icacls`
   - 데이터베이스: `DROP`, `TRUNCATE`, `DELETE` (WHERE 없음)
 - PostgreSQL(DBHub):
-  - **도구** (DBHub 1.2+ tool 2개로 통합): `mcp__dbhub__execute_sql` (SQL 실행), `mcp__dbhub__search_objects` (객체 검색) — 읽기/쓰기 구분은 tool이 아닌 SQL statement 기준
+  - **도구**: `mcp__dbhub__execute_sql` (SQL 실행), `mcp__dbhub__search_objects` (객체 검색) — 읽기/쓰기 구분은 tool이 아닌 SQL statement 기준
   - **읽기 (자유)**: SELECT, EXPLAIN, SHOW, health check 쿼리
   - **변경 (승인 필수)**: INSERT, UPDATE, CREATE INDEX, ALTER, VACUUM — 실행 전 SQL과 영향 범위 보고 후 승인
   - **삭제 (금지)**: DROP, TRUNCATE, DELETE (WHERE 없음) — 절대 실행하지 않음

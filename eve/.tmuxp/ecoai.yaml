@@ -1,8 +1,0 @@
-session_name: ecoai
-start_directory: ~/git/kyolim/ecoai-app-collectors
-windows:
-  - window_name: ecoai-app-collectors
-    layout: even-vertical
-    panes:
-      - shell_command: npm start
-      - shell_command: npm run android

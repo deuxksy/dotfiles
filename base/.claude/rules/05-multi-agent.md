@@ -14,7 +14,7 @@ zzizily plugin의 `verify` 컴포넌트(skill + subagent)로 이관됨.
 ### 검증 및 서브 에이전트 라우팅 우선순위 (Claude Code 기준)
 
 - **Plan A: Codex (MCP)** (`mcp__codex__codex` / `mcp__codex__codex-reply`): `gpt-5.6-sol`을 통한 대화형 코드 검증 및 심층 분석
-- **Plan B: Antigravity CLI (`agy`)**: `agy -p "..."`를 통한 Gemini 대용량 컨텍스트 2-Way 교차 검증
+- **Plan B: Antigravity CLI (`agy`)**: `agy -p "..."`를 통한 multi-model harness 2-Way 교차 검증
 - **Plan C (Option): LLM CLI (`llm`)**: Tailscale Aperture 게이트웨이를 통한 독립 3자 모델 교차 검증
   - `llm -t review` (Alibaba): 빠른 코드 diff 리뷰 & 버그 탐지
   - `llm -t audit` (Kimi): 시스템 아키텍처/기획/엣지케이스 심층 추론 감사
@@ -30,15 +30,9 @@ zzizily plugin의 `verify` 컴포넌트(skill + subagent)로 이관됨.
 
 | Provider | 모델 | 용도 |
 | :--- | :--- | :--- |
-| Z.ai | glm-5.2, glm-5, glm-5-turbo | Claude Code (회사) |
-| BytePlus ModelArk (coding plan) | dola-seed-2.0-pro/lite/code, bytedance-seed-code, kimi-k2.5, glm-5.1, glm-4.7, deepseek-v4-pro/flash | Claude Code (집) |
-| Xiaomi MiMo | mimo-v2.5-pro, mimo-v2.5 (v2-pro·v2-omni → v2.5 자동 라우팅) | Hermes (mimo-v2.5) |
-| Xiaomi MiMo | mimo-v2.5-tts, mimo-v2.5-tts-voiceclone, mimo-v2.5-tts-voicedesign | TTS (한정 무료) |
-| Xiaomi MiMo | mimo-v2.5-asr | 음성 인식 (ASR) |
-
-> **Byteplus ModelArk (coding plan lite)**: AI 코딩 도구 전용 (API 호출 불가, 위반 시 계정 정지). Base URL `https://ark.ap-southeast.bytepluses.com/api/coding/v3`(OpenAI) / `/api/coding`(Anthropic). 지원 도구: Claude Code/Codex CLI/Hermes Agent/OpenCode/Cline/Cursor. Lite quota: 5h≈1,900/주≈12,000/월≈24,000 requests. `sgpt`는 미지원 도구라 kimi-k2.5 호출 불가 → 비활성 유지.
-
-> **Xiaomi MiMo (token plan lite) 접속 정보**: Base URL `https://token-plan-sgp.xiaomimimo.com/v1`(OpenAI 호환) / `/anthropic`(Anthropic 호환) — ClaudeCode/Codex 직접 연결 지원, 4.1B Credits, 비피크(PDT 9-17) 20% 할인
+| Z.ai | glm-5.3, glm-5.3-flash | Claude Code (회사) |
+| Alibaba (Aperture) | qwen3.8-max, qwen3.8-flash | 빠른 코드 리뷰 및 검증 |
+| Kimi (Aperture) | k3, kimi-for-coding | 심층 추론 및 코딩 |
 
 ## Codex (MCP + Bash Hybrid)
 
@@ -54,7 +48,7 @@ Codex PRO 구독(gpt-5.6-sol)을 Claude Code의 서브 에이전트로 활용.
 
 - 모델: `gpt-5.6-sol` (상기 모델 중 상황에 맞게 선택)
 - 샌드박스: `workspace-write`
-- 승인 정책: `on-failure`
+- 승인 정책: `on-request`
 
 ### Available Models
 
@@ -75,16 +69,16 @@ GPT-5.6 세대는 번호(5.6)가 세대, 이름(Sol/Terra/Luna)이 영구 capabi
 
 ## Antigravity CLI
 
-Google Antigravity CLI(`agy`)로 코드 생성, 분석, 검증. Gemini CLI 후속(Go 재작성, 2026-05-19 발표, 소비자 Gemini CLI 2026-06-18 서비스 중단). Antigravity 2.0 desktop app과 shared agent harness. MCP server 노출 불가 → Bash 호출만.
+Google Antigravity CLI(`agy`) multi-model agent harness로 코드 생성, 분석, 검증. Antigravity desktop app과 settings를 공유하며 MCP server 노출 불가 → Bash 호출만.
 
 ### Routing
 
-- **Bash** (`agy -p "..."`): headless 단일 프롬프트 (`--print` / `--prompt` alias). `-o json`/`-o text` 미지원 → 구조화 필요시 프롬프트에서 JSON 형식 명시 + `jq` 파싱
-- **Antigravity 2.0** (desktop app): GUI — settings/permissions 양방향 동기화, CLI 대화를 `@conversation` dropdown으로 import. CLI와 settings 공유하므로 허가 정책 이중 관리 불필요
+- **Bash** (`agy -p "..."`): headless 단일 프롬프트 (`--print` / `--prompt` alias). 구조화 출력은 `--output-format json|stream-json`, schema 강제는 `--json-schema` 사용
+- **Antigravity desktop app**: GUI — settings/permissions 양방향 동기화, CLI 대화를 `@conversation` dropdown으로 import. CLI와 settings 공유하므로 허가 정책 이중 관리 불필요
 
 ### Default Parameters
 
-- 모델: `Gemini 3.1 Pro (High)` (상기 모델 중 상황에 맞게 선택, `agy models`로 확인)
+- 모델: `Gemini 3.7 Flash (Medium)` (상기 모델 중 상황에 맞게 선택, `agy models`로 확인)
 - headless: `-p` (`--print` / `--prompt`) — non-interactive 단일 프롬프트
 - 모델 지정: `--model <model>` (Gemini CLI `-m`과 상이, 단축키 없음)
 - 샌드박스: `--sandbox` (Gemini CLI `-s`와 상이)
@@ -105,7 +99,7 @@ agy -p "Verify this approach is correct: <description>"
 cat src/api.ts | agy -p "Find potential issues in this code"
 
 # 모델 지정
-agy --model "Gemini 3.5 Flash (Medium)" -p "Quick check: is this regex correct?"
+agy --model "Gemini 3.7 Flash (Medium)" -p "Quick check: is this regex correct?"
 
 # 모델 목록 확인
 agy models
@@ -127,9 +121,10 @@ agy plugin import gemini
 
 | 모델 | 용도 |
 | :--- | :--- |
-| `Gemini 3.1 Pro (High)` | 기본, 복잡한 분석/설계 |
-| `Gemini 3.5 Flash (Medium)` | 빠른 검증, 가벼운 작업 |
-| `Gemini 3.5 Flash (High)` | 고품질 빠른 작업 |
+| `Gemini 3.7 Flash (Medium)` | 기본, 빠른 검증 및 표준 작업 |
+| `Gemini 3.7 Flash (Low)` | 속도 우선 가벼운 작업 |
+| `Gemini 3.7 Flash (High)` | 고품질 일반 작업 |
+| `Gemini 3.1 Pro (High)` | 복잡한 분석·설계 fallback |
 | `Claude Opus 4.6 (Thinking)` | 심층 분석 (Anthropic 모델) |
 | `Claude Sonnet 4.6 (Thinking)` | 표준 작업 (Anthropic 모델) |
 | `GPT-OSS 120B (Medium)` | 오픈모델 작업 |

@@ -11,6 +11,8 @@
   - [Z.ai](http://z.ai/) Coding Plan: 2027/01/14 까지
   - ChatGPT: 월단위 갱신 — 회사 구독, 업무용
   - Google GEMINI PRO: 월 단위 갱신 — Google 생태계(Gmail/Drive) AI 활용
+  - Alibaba: Tailscale Aperture를 통한 교차 검증
+  - Kimi: Tailscale Aperture를 통한 심층 추론
 
 ## Language and Communication
 
