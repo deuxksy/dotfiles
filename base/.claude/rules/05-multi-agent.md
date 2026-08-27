@@ -30,8 +30,8 @@ zzizily plugin의 `verify` 컴포넌트(skill + subagent)로 이관됨.
 
 | Provider | 모델 | 용도 |
 | :--- | :--- | :--- |
-| Z.ai | glm-5.2, glm-5, glm-5-turbo | Claude Code (회사) |
-| Alibaba (Aperture) | qwen3.8-max, qwen3.6-flash | 빠른 코드 리뷰 및 검증 |
+| Z.ai | glm-5.3, glm-5.3-flash | Claude Code (회사) |
+| Alibaba (Aperture) | qwen3.8-max, qwen3.8-flash | 빠른 코드 리뷰 및 검증 |
 | Kimi (Aperture) | k3, kimi-for-coding | 심층 추론 및 코딩 |
 
 ## Codex (MCP + Bash Hybrid)

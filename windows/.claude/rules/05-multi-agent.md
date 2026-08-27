@@ -30,7 +30,7 @@ zzizily plugin의 `verify` 컴포넌트(skill + subagent)로 이관됨.
 
 | Provider | 모델 | 용도 |
 | :--- | :--- | :--- |
-| Z.ai | glm-5.2, glm-5, glm-5-turbo | Claude Code (회사) |
+| Z.ai | glm-5.3, glm-5.3-flash | Claude Code (회사) |
 | BytePlus ModelArk (coding plan) | dola-seed-2.0-pro/lite/code, bytedance-seed-code, kimi-k2.5, glm-5.1, glm-4.7, deepseek-v4-pro/flash | Claude Code (집) |
 | Xiaomi MiMo | mimo-v2.5-pro, mimo-v2.5 (v2-pro·v2-omni → v2.5 자동 라우팅) | Hermes (mimo-v2.5) |
 | Xiaomi MiMo | mimo-v2.5-tts, mimo-v2.5-tts-voiceclone, mimo-v2.5-tts-voicedesign | TTS (한정 무료) |
