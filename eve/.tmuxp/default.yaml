@@ -1,4 +1,4 @@
-session_name: multi-work
+session_name: default
 start_directory: "~"
 windows:
   - window_name: default
