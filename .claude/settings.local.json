@@ -28,7 +28,8 @@
       "TaskUpdate(*)",
       "WebFetch(*)",
       "WebSearch(*)",
-      "Write(*)"
+      "Write(*)",
+      "Read(//tmp/sopsedit/**)"
     ],
     "deny": [
       "Bash(rm -rf /)",

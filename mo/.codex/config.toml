@@ -24,13 +24,13 @@ trust_level = "trusted"
 trust_level = "trusted"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-08-07T01:18:45Z"
+last_updated = "2026-08-27T00:30:15Z"
 source_type = "local"
 source = "/home/crong/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.zzizily]
-last_updated = "2026-08-08T07:50:59Z"
-last_revision = "718c53ab10b9f360d485789e904fe1dcee4282b4"
+last_updated = "2026-08-25T01:34:12Z"
+last_revision = "205e9b9803cf56c24336d6834df99c7101b47cba"
 source_type = "git"
 source = "https://github.com/deuxksy/ai-agent-skill.git"
 

@@ -108,6 +108,27 @@
     openssl
     curl
     expat
+    # Playwright/Chrome 런타임 — ms-playwright 캐시의 FHS 크로뮴이 필요로 하는 공유 라이브러리
+    nspr
+    glib
+    atk
+    at-spi2-core
+    cairo
+    pango
+    dbus.lib
+    cups
+    alsa-lib
+    mesa
+    libgbm
+    libdrm
+    libxkbcommon
+    libx11
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxrandr
+    libxcb
   ];
 
   # CUPS (프린팅)

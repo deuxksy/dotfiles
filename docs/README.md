@@ -4,8 +4,8 @@
 
 ## 📂 디렉터리 구조
 
-- `plans/`: 다중 호스트 Stow 패키지 구조 및 sops 암호화 설계/구현 계획 문서
-- `desktop.md`: 데스크톱 가상화 및 GUI 환경 설정 문서
+- `okf/explanation/`: Stow 구조·sops 암호화·데스크톱 터미널 스택 설계 문서
+- `okf/how-to/`: sops 암호화 적용·Fcitx5 한글 입력기 구현 가이드
 - `superpowers/`: AI 에이전트 내부 명세 및 작업 계획 (일반 문서 인덱스 제외)
 
 ---
@@ -18,8 +18,8 @@
 
 ### 🟡 How-To Guides (사용 및 조치)
 - [Stow Adopt Guide](../README.md#stow-adopt) - 기존 dotfiles 패키지화 및 심볼릭 링크 전환
-- [sops Key Encryption Plan](plans/2026-04-03-sops-key-encryption-implementation.md) - sops/age 암호화 키 적용 및 복호화 절차
-- [NixOS Fcitx5 Setup](../nix/nixos/docs/fcitx5-wayland-kde.md) - NixOS KDE Wayland 환경 Fcitx5 한글 입력기 설정
+- [sops Key Encryption Plan](okf/how-to/2026-04-03-sops-key-encryption-implementation.md) - sops/age 암호화 키 적용 및 복호화 절차
+- [NixOS Fcitx5 Setup](okf/how-to/fcitx5-wayland-kde.md) - NixOS KDE Wayland 환경 Fcitx5 한글 입력기 설정
 
 ### 🔵 Reference (참조 자료)
 - [Main README](../README.md) - 메인 프로젝트 개요, 호스트/하드웨어 매트릭스 및 네트워크 구조
@@ -27,8 +27,8 @@
 - [Neovim External Dependencies](../base/.config/nvim/DEPENDENCIES.md) - nvim 외부 도구 의존성
 
 ### 🟣 Explanation (설계 및 개념)
-- [GNU Stow Structure Design](plans/2026-03-03-stow-structure-design.md) - multi-host Stow 패키지 레이아웃 설계 문서
-- [sops Key Encryption Design](plans/2026-04-03-sops-key-encryption-design.md) - sops/age 기반 시크릿 관리 구조 설계 문서
-- [Desktop Environment Spec](desktop.md) - 데스크톱 구성 요소 및 가상화 세부 설정
+- [GNU Stow Structure Design](okf/explanation/2026-03-03-stow-structure-design.md) - multi-host Stow 패키지 레이아웃 설계 문서
+- [sops Key Encryption Design](okf/explanation/2026-04-03-sops-key-encryption-design.md) - sops/age 기반 시크릿 관리 구조 설계 문서
+- [Desktop Terminal Stack](okf/explanation/desktop.md) - WezTerm+tmux+Neovim 통합 환경 아키텍처
 - [Neovim Design Specs](../base/.config/nvim/docs/plans/2026-03-03-cross-platform-neovim-design.md) - 크로스플랫폼 Neovim 모듈화 설계 명세
 - [Neovim Implementation Plan](../base/.config/nvim/docs/plans/2026-03-03-cross-platform-neovim-implementation.md) - 크로스플랫폼 Neovim 구현 계획
