@@ -51,6 +51,8 @@ result
 .omc/
 .omx/
 proxmox-jobs.sqlite3
+# llm CLI 대화 로그 DB (런타임 생성, 대화 전문 기록)
+base/.config/io.datasette.llm/logs.db
 
 # --- Exceptions (반드시 추적해야 하는 파일들) ---
 # 만약 위에서 bin/ 을 막았다면, 내 커스텀 스크립트 폴더는 강제로 허용
