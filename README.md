@@ -142,7 +142,7 @@ graph TD
 
 1. **Layer 1 (System PM)**: brew (macOS), Nix (NixOS), apt (Debian), pacman (SteamOS)
 2. **Layer 2 (SDK)**: mise (macOS, SteamOS), Nix packages (NixOS)
-3. **Layer 3 (Package Manager)**: pnpm (Node), uv (Python), npx, uvx — on-demand 실행
+3. **Layer 3 (Package Manager)**: pnpm (Node), uv (Python), apm (AI Agent), npx, uvx — on-demand 실행
 4. **Layer 4 (Binary)**: `~/.local/bin`
 
 ## Install
@@ -226,8 +226,8 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 | `.config/atuin/config.toml` | Atuin 셸 히스토리 |
 | `.config/mise/config.toml` | mise 런타임 (Node, Bun 등) |
 | `.config/shell_gpt/` | shell-gpt(sgpt) 설정 — provider별 `.sgptrc.*` 변형 (langfuse, zai, tailscale-zai) |
-| `Brewfile` / `Brewfile-sudo` | Homebrew 패키지 (macOS/SteamOS) |
-| `.tmuxp/*.yaml` | tmux 세션 프리셋 (work, ecoai) |
+| `Brewfile` / `Brewfile-sudo` | Homebrew 패키지 (macOS는 `.homebrew/` 하위, SteamOS) |
+| `.tmuxp/*.yaml` | tmux 세션 프리셋 (work 및 호스트별: axiom zai/gemini/chatgpt, eve local/remote) |
 | `scripts/install_nvtools.sh` | nvtools(NVIDIA) 설치 스크립트 |
 
 ### base/ — 공통 설정
@@ -272,7 +272,7 @@ lazy.nvim 기반 모듈형 구조. 상세는 [base/.config/nvim/README.md](base/
 
 ### 호스트 특화 파일
 
-- **axiom/, eve/** (macOS) — `.holmes/` (config, model_list), `.config/shell_gpt/roles/*.json` (sgpt 커스텀 역할), `.tmuxp/ecoai.yaml` (EcoAI 세션)
+- **axiom/, eve/** (macOS) — `.holmes/` (config, model_list), `.config/shell_gpt/roles/*.json` (sgpt 커스텀 역할), `.tmuxp/` (axiom: zai/gemini/chatgpt/default, eve: local/remote)
 - **mo/** (NixOS) — `.hermes/config.yaml` (Hermes agent 게이트웨이), `.hermes/.env.sops` (sops 암호화), `.holmes/`, `.codex/memories/`
 - **girl/** (SteamOS) — `.wakatime.cfg` (WakaTime 코딩 추적)
 - **walle/** (Proxmox) — Atuin 설정이 타 호스트와 상이 (272L vs 371L)
