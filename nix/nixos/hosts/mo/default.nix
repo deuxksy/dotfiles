@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ./hermes.nix
     ./beszel.nix
+    ./ayaneo.nix
     ../../modules/desktop/kde.nix
     ../../modules/virtualization.nix
   ];

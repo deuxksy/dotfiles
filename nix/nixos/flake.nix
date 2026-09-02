@@ -16,9 +16,13 @@
       url = "github:NousResearch/hermes-agent";
       inputs.nixpkgs.follows = "nixos";
     };
+    ayaneo = {
+      url = "path:/home/crong/git/ayaneo";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos, home-manager, sops-nix, hermes-agent }: {
+  outputs = { self, nixpkgs, nixos, home-manager, sops-nix, hermes-agent, ayaneo }: {
     nixosConfigurations."mo" = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -38,6 +42,7 @@
         ./hosts/mo/default.nix
         sops-nix.nixosModules.sops
         hermes-agent.nixosModules.default
+        ayaneo.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
