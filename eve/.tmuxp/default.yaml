@@ -1,10 +1,6 @@
-session_name: default
+session_name: EVE
 start_directory: "~"
 windows:
-  - window_name: default
-    layout: main-vertical
-    panes:
-      - shell_command: fastfetch
   - window_name: agent
     layout: main-vertical
     panes:

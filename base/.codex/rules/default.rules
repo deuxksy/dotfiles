@@ -61,3 +61,7 @@ prefix_rule(pattern=["icacls", "C:\\Users\\deuxk\\git\\statusline\\.git\\FETCH_H
 prefix_rule(pattern=["icacls", "C:\\Users\\deuxk\\git\\statusline\\.git", "/remove:d", "S-1-5-21-640122905-491196078-4131029418-1777826553", "/T", "/C"], decision="allow")
 prefix_rule(pattern=["New-Item", "-ItemType", "Directory", "-Force", "-Path", "C:\\Users\\deuxk\\git\\ai-agent-skill\\plugins\\infra-provisioning\\skills\\acl-owner-reset"], decision="allow")
 prefix_rule(pattern=["C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-Command", "New-Item -ItemType SymbolicLink -Path .\\latest -Target .\\5.6.3 | Select-Object Name, FullName, Attributes, LinkType, Target"], decision="allow")
+prefix_rule(pattern=["gh", "repo", "edit"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "head_sha=$(git rev-parse main) && gh api --method POST repos/deuxksy/statusline/git/refs -f ref='refs/tags/v0.1.0' -f sha=\"$head_sha\""], decision="allow")
+prefix_rule(pattern=["gh", "repo", "view", "--json", "name,description,url"], decision="allow")
+prefix_rule(pattern=["git", "rev-parse", "HEAD"], decision="allow")

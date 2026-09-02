@@ -1,0 +1,17 @@
+name: dotfiles
+version: 1.0.0
+description: Cross-platform dotfiles and global AI agent environment
+author: Crong
+
+targets:
+  - claude
+  - copilot
+  - codex
+  - gemini
+
+dependencies:
+  apm: []
+  mcp: []
+
+includes: auto
+scripts: {}

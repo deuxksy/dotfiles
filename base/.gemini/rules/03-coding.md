@@ -76,4 +76,5 @@ def save_preferences(db, user_id: int, preferences: dict):
 - `SDK` 관리는 `mise` 를 사용 한다. 단, NixOS(mo)에서는 mise를 사용하지 않음 — 모든 도구는 Nix 패키지로 관리
 - `Node Package Manager`는 `pnpm`, `pnpx` 를 사용 한다. 단, NixOS(mo)에서는 `npm install -g` 불가 — pnpm 글로벌 사용
 - `Python Package Manager`는 `uv`, `uvx` 를 사용 한다.
+- `AI Agent Package Manager`는 `apm` (`apm.yml`, `apm.lock.yaml`)을 사용 한다 — 프로젝트 단위 rules, skills, MCP 의존성 관리 및 배포
 - 그 외: `~/.local/bin`에 수동 설치 (mise/패키지 매니저 미지원 도구)
