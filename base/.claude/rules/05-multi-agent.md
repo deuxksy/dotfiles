@@ -2,7 +2,7 @@
 
 ## 검증 (zzizily verify로 이관)
 
-검증 실행 로직(3단계 티어, Codex+Antigravity 2-Way, 라우팅, B/R/A/T 포맷, 충돌 해결)은
+검증 실행 로직(3단계 티어, Codex+Antigravity 기본 2-Way + Aperture(qwen3.8-max) 3-Way 옵션, 라우팅, B/R/A/T 포맷, 충돌 해결)은
 zzizily plugin의 `verify` 컴포넌트(skill + subagent)로 이관됨.
 
 **자동 트리거**: 사용자 명시적 입력에서 '검증'/'verify'/'리뷰해줘' + 검증 대상(spec/plan/diff)
@@ -13,11 +13,9 @@ zzizily plugin의 `verify` 컴포넌트(skill + subagent)로 이관됨.
 
 ### 검증 및 서브 에이전트 라우팅 우선순위 (Claude Code 기준)
 
-- **Plan A: Codex (MCP)** (`mcp__codex__codex` / `mcp__codex__codex-reply`): `gpt-5.6-sol`을 통한 대화형 코드 검증 및 심층 분석
+- **Plan A: Codex (MCP)** (`mcp__codex__codex` / `mcp__codex__codex-reply`): `gpt-6-astra`를 통한 대화형 코드 검증 및 심층 분석
 - **Plan B: Antigravity CLI (`agy`)**: `agy -p "..."`를 통한 multi-model harness 2-Way 교차 검증
-- **Plan C (Option): LLM CLI (`llm`)**: Tailscale Aperture 게이트웨이를 통한 독립 3자 모델 교차 검증
-  - `llm -t review` (Alibaba): 빠른 코드 diff 리뷰 & 버그 탐지
-  - `llm -t audit` (Kimi): 시스템 아키텍처/기획/엣지케이스 심층 추론 감사
+- **Plan C (Option): Aperture (curl)**: Tailscale Aperture 게이트웨이 `/v1/chat/completions` 직접 호출로 `qwen3.8-max` 단일 모델 3-Way 교차 검증. zzizily verify의 `aperture` reviewer가 사용 (`/review:verify --reviewers codex,agy,aperture`). LLM CLI(`llm`)는 수동 보조 — `llm -t review` 빠른 diff 리뷰, `llm -t audit` 심층 감사 (verify 스킬 미사용)
 
 - Codex: MCP 설정·파라미터 → 아래 `## Codex` 섹션
 - Antigravity: CLI 사용법·모델 → 아래 `## Antigravity CLI` 섹션
@@ -36,7 +34,7 @@ zzizily plugin의 `verify` 컴포넌트(skill + subagent)로 이관됨.
 
 ## Codex (MCP + Bash Hybrid)
 
-Codex PRO 구독(gpt-5.6-sol)을 Claude Code의 서브 에이전트로 활용.
+Codex PRO 구독(gpt-6-astra)을 Claude Code의 서브 에이전트로 활용.
 
 ### Routing
 
@@ -46,17 +44,18 @@ Codex PRO 구독(gpt-5.6-sol)을 Claude Code의 서브 에이전트로 활용.
 
 ### Default Parameters
 
-- 모델: `gpt-5.6-sol` (상기 모델 중 상황에 맞게 선택)
+- 모델: `gpt-6-astra` (상기 모델 중 상황에 맞게 선택)
 - 샌드박스: `workspace-write`
 - 승인 정책: `on-request`
 
 ### Available Models
 
-GPT-5.6 세대는 번호(5.6)가 세대, 이름(Sol/Terra/Luna)이 영구 capability tier를 의미한다. Terra/Luna는 standard ChatGPT 대화에서 선택 불가, Codex/API에서만 사용 가능.
+GPT-6 세대(Astra)가 플래그싱. 2026-09-07 실측 기준 ChatGPT 계정 Codex에서는 `gpt-6-astra`만 지원된다(gpt-6-terra/luna는 미지원). GPT-5.6 세대(Sol/Terra/Luna)는 레거시로 여전히 호출 가능.
 
 | 모델 | 용도 |
 | :--- | :--- |
-| `gpt-5.6-sol` | 기본, 복잡한 분석/설계 (플래그십, agentic) |
+| `gpt-6-astra` | 기본, 복잡한 분석/설계 (플래그십, agentic) |
+| `gpt-5.6-sol` | 레거시 플래그십 fallback |
 | `gpt-5.6-terra` | 표준 작업, 비용 효율 (GPT-5.5 성능, 절반 비용) |
 | `gpt-5.6-luna` | 빠른 검증, 대용량 작업 (최저비용·최고속) |
 | `gpt-5.5` | 레거시 |
@@ -78,7 +77,7 @@ Google Antigravity CLI(`agy`) multi-model agent harness로 코드 생성, 분석
 
 ### Default Parameters
 
-- 모델: `Gemini 3.7 Flash (Medium)` (상기 모델 중 상황에 맞게 선택, `agy models`로 확인)
+- 모델: `Gemini 3.8 Flash (Medium)` (상기 모델 중 상황에 맞게 선택, `agy models`로 확인)
 - headless: `-p` (`--print` / `--prompt`) — non-interactive 단일 프롬프트
 - 모델 지정: `--model <model>` (Gemini CLI `-m`과 상이, 단축키 없음)
 - 샌드박스: `--sandbox` (Gemini CLI `-s`와 상이)
@@ -99,7 +98,7 @@ agy -p "Verify this approach is correct: <description>"
 cat src/api.ts | agy -p "Find potential issues in this code"
 
 # 모델 지정
-agy --model "Gemini 3.7 Flash (Medium)" -p "Quick check: is this regex correct?"
+agy --model "Gemini 3.8 Flash (Medium)" -p "Quick check: is this regex correct?"
 
 # 모델 목록 확인
 agy models
@@ -121,9 +120,9 @@ agy plugin import gemini
 
 | 모델 | 용도 |
 | :--- | :--- |
-| `Gemini 3.7 Flash (Medium)` | 기본, 빠른 검증 및 표준 작업 |
-| `Gemini 3.7 Flash (Low)` | 속도 우선 가벼운 작업 |
-| `Gemini 3.7 Flash (High)` | 고품질 일반 작업 |
+| `Gemini 3.8 Flash (Medium)` | 기본, 빠른 검증 및 표준 작업 |
+| `Gemini 3.8 Flash (Low)` | 속도 우선 가벼운 작업 |
+| `Gemini 3.8 Flash (High)` | 고품질 일반 작업 |
 | `Gemini 3.1 Pro (High)` | 복잡한 분석·설계 fallback |
 | `Claude Opus 4.6 (Thinking)` | 심층 분석 (Anthropic 모델) |
 | `Claude Sonnet 4.6 (Thinking)` | 표준 작업 (Anthropic 모델) |
