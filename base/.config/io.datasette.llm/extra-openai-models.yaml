@@ -4,19 +4,14 @@
   api_key_name: default
   aliases: ["alibaba", "qwen", "max"]
 
-- model_id: qwen3.6-flash
-  model_name: qwen3.6-flash
+- model_id: qwen3.8-flash
+  model_name: qwen3.8-flash
   api_base: "http://ai.bun-bull.ts.net/v1"
   api_key_name: default
   aliases: ["flash", "fast"]
 
-- model_id: k3
-  model_name: k3
+- model_id: qwen3.8-27b
+  model_name: qwen3.8-27b
   api_base: "http://ai.bun-bull.ts.net/v1"
-  api_key_name: default
-  aliases: ["kimi", "k3"]
-
-- model_id: kimi-for-coding
-  model_name: kimi-for-coding
-  api_base: "http://ai.bun-bull.ts.net/v1"
-  api_key_name: default
+  api_key_name: train02
+  aliases: ["train02", "local-qwen"]

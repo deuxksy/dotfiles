@@ -21,9 +21,9 @@ macOS, NixOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Sto
 상세 문서 및 세부 설계 안내는 [docs/README.md](docs/README.md) 서브 허브와 아래 디아탁시스 카테고리를 참조하세요.
 
 - **🟢 Tutorials**: [Install Guide](#install) | [Windows Setup Guide](windows/README.md)
-- **🟡 How-To**: [Stow Adopt Guide](#stow-adopt) | [sops Implementation Plan](docs/plans/2026-04-03-sops-key-encryption-implementation.md) | [NixOS Fcitx5 Guide](nix/nixos/docs/fcitx5-wayland-kde.md)
+- **🟡 How-To**: [Stow Adopt Guide](#stow-adopt) | [sops Implementation Plan](docs/okf/how-to/2026-04-03-sops-key-encryption-implementation.md) | [NixOS Fcitx5 Guide](docs/okf/how-to/fcitx5-wayland-kde.md)
 - **🔵 Reference**: [Docs Sub-Hub](docs/README.md) | [Neovim Config Guide](base/.config/nvim/README.md)
-- **🟣 Explanation**: [Stow Structure Design](docs/plans/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/plans/2026-04-03-sops-key-encryption-design.md)
+- **🟣 Explanation**: [Stow Structure Design](docs/okf/explanation/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/okf/explanation/2026-04-03-sops-key-encryption-design.md)
 
 ## Hosts
 
@@ -142,7 +142,7 @@ graph TD
 
 1. **Layer 1 (System PM)**: brew (macOS), Nix (NixOS), apt (Debian), pacman (SteamOS)
 2. **Layer 2 (SDK)**: mise (macOS, SteamOS), Nix packages (NixOS)
-3. **Layer 3 (Package Manager)**: pnpm (Node), uv (Python), npx, uvx — on-demand 실행
+3. **Layer 3 (Package Manager)**: pnpm (Node), uv (Python), apm (AI Agent), npx, uvx — on-demand 실행
 4. **Layer 4 (Binary)**: `~/.local/bin`
 
 ## Install
@@ -188,7 +188,7 @@ stow --adopt -t ~ base  # 예: base 패키지로 가져오기
 
 ## Structure
 
-GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조합으로 배포. 상세 설계는 [docs/plans/2026-03-03-stow-structure-design.md](docs/plans/2026-03-03-stow-structure-design.md).
+GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조합으로 배포. 상세 설계는 [docs/okf/explanation/2026-03-03-stow-structure-design.md](docs/okf/explanation/2026-03-03-stow-structure-design.md).
 
 ### 디렉토리
 
@@ -226,8 +226,8 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 | `.config/atuin/config.toml` | Atuin 셸 히스토리 |
 | `.config/mise/config.toml` | mise 런타임 (Node, Bun 등) |
 | `.config/shell_gpt/` | shell-gpt(sgpt) 설정 — provider별 `.sgptrc.*` 변형 (langfuse, zai, tailscale-zai) |
-| `Brewfile` / `Brewfile-sudo` | Homebrew 패키지 (macOS/SteamOS) |
-| `.tmuxp/*.yaml` | tmux 세션 프리셋 (work, ecoai) |
+| `Brewfile` / `Brewfile-sudo` | Homebrew 패키지 (macOS는 `.homebrew/` 하위, SteamOS) |
+| `.tmuxp/*.yaml` | tmux 세션 프리셋 (work 및 호스트별: axiom zai/gemini/chatgpt, eve local/remote) |
 | `scripts/install_nvtools.sh` | nvtools(NVIDIA) 설치 스크립트 |
 
 ### base/ — 공통 설정
@@ -272,7 +272,7 @@ lazy.nvim 기반 모듈형 구조. 상세는 [base/.config/nvim/README.md](base/
 
 ### 호스트 특화 파일
 
-- **axiom/, eve/** (macOS) — `.holmes/` (config, model_list), `.config/shell_gpt/roles/*.json` (sgpt 커스텀 역할), `.tmuxp/ecoai.yaml` (EcoAI 세션)
+- **axiom/, eve/** (macOS) — `.holmes/` (config, model_list), `.config/shell_gpt/roles/*.json` (sgpt 커스텀 역할), `.tmuxp/` (axiom: zai/gemini/chatgpt/default, eve: local/remote)
 - **mo/** (NixOS) — `.hermes/config.yaml` (Hermes agent 게이트웨이), `.hermes/.env.sops` (sops 암호화), `.holmes/`, `.codex/memories/`
 - **girl/** (SteamOS) — `.wakatime.cfg` (WakaTime 코딩 추적)
 - **walle/** (Proxmox) — Atuin 설정이 타 호스트와 상이 (272L vs 371L)
@@ -291,14 +291,13 @@ lazy.nvim 기반 모듈형 구조. 상세는 [base/.config/nvim/README.md](base/
 | `nixos/modules/desktop/kde.nix` | KDE 데스크톱 |
 | `nixos/modules/virtualization.nix` | 가상화 |
 | `nixos/secrets/hermes.yaml` | Hermes 시크릿 (sops) |
-| `nixos/docs/fcitx5-wayland-kde.md` | fcitx5 입력기 가이드 |
 
 ### docs/ — 설계/구현 문서
 
 | 경로 | 설명 |
 | :--- | :--- |
-| `desktop.md` | 데스크톱 환경 설정 |
-| `plans/` | 구현 계획 (stow 구조, sops 암호화) |
+| `okf/explanation/` | 설계 문서 (desktop 스택, stow 구조, sops 암호화) |
+| `okf/how-to/` | 구현 가이드 (sops 암호화 적용, fcitx5 입력기) |
 | `superpowers/specs/` | 설계 명세 (nvim MCP, beszel, hermes, codex MCP, macOS setup) |
 | `superpowers/plans/` | 구현 계획 (NixOS mo, axiom/eve macOS setup, nvim 의존성) |
 

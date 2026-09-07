@@ -64,7 +64,7 @@ git config core.hooksPath .githooks
 
 ## Key Files (axiom/macOS)
 
-- `axiom/Brewfile` — macOS 패키지 정의 (stow 배포 후 `brew bundle`로 설치)
+- `axiom/.homebrew/Brewfile` — macOS 패키지 정의 (stow 배포 후 홈에서 `brew bundle`로 설치)
 
 ## Key Files (base — 전 호스트 공통, stow 배포)
 
@@ -86,7 +86,7 @@ git config core.hooksPath .githooks
 
 ## Gotchas
 
-- `AGENTS.md`, `GEMINI.md`는 `.ai/RULES.md`로 symlink, `CLAUDE.md`는 `@.ai/RULES.md` import 파일 (Windows symlink 미지원 대응) → AI 설정은 이 파일에서만 수정
+- `CLAUDE.md`, `GEMINI.md`는 `@.ai/RULES.md` import 파일, `.github/copilot-instructions.md`는 symlink → AI 설정은 이 파일에서만 수정. Repo root `AGENTS.md`는 없음 — Codex는 배포된 `~/.codex/AGENTS.md`(base/) 사용
 - `.sops.yaml`로 age 키 관리, `.key` 파일은 sops 암호화됨
 - `.githooks/`에 커스텀 Git hooks, `.gitleaks.toml`로 시크릿 스캔
 - `stow --no-folding` 필수: Git은 symlink 디렉토리 내 파일 변경을 추적하지 않음
@@ -94,7 +94,7 @@ git config core.hooksPath .githooks
 - 구형 도구(`~/.gitconfig`, `~/.bashrc`)는 XDG 미지원 → `stow --adopt` 시 충돌 포인트. 신규 CLI는 `~/.config/<app>/` 우선 (basedir 0.8)
 - walle `walle-sudo`: sudoers(`/etc/sudoers.d/`)는 stow symlink 불가 (visudo owner root 검사 ↔ repo 파일 crong 소유) → 수동 관리 + `.stow-local-ignore`. sshd drop-in은 stow OK
 - walle: Proxmox 최소 설치에 stow 미포함 → `apt install stow` 선행
-- Brewfile은 각 호스트 패키지 폴더에 위치 (`axiom/Brewfile`, `eve/.homebrew/Brewfile`)
+- Brewfile은 각 호스트 `.homebrew/` 하위에 위치 (`axiom/.homebrew/Brewfile`, `eve/.homebrew/Brewfile`)
 - `base/.claude/.omc/hud-config.json` — OMC HUD 설정 (stow로 연결)
 - hermes-agent: built-in `anthropic` provider는 `ANTHROPIC_BASE_URL` 무시 — `custom_providers` + `api_mode: anthropic_messages` 필수 (Tailscale Aperture 등 프록시 사용 시)
 - hermes-agent: model명 점→하이픈 변환, API key는 sops only, CLI/gateway config 독립 (상세는 mo/.hermes/ 참조)

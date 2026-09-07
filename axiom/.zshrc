@@ -129,3 +129,7 @@ unset CLOUDFLARE_API_KEY
 
 # Added by Antigravity IDE
 export PATH="/Users/crong/.antigravity-ide/antigravity-ide/bin:$PATH"
+
+# Disable Claude Code compatibility in OpenCode (rules/ .claude)
+export OPENCODE_DISABLE_CLAUDE_CODE=1
+export PATH="/opt/homebrew/sbin:$PATH"
