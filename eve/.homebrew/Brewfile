@@ -58,6 +58,7 @@ brew "iperf3"
 brew "himalaya"
 brew "wakatime-cli"
 brew "kubectl-ai"
+brew "opencode"
 brew "helm"
 
 # Shell
