@@ -9,6 +9,7 @@ model = "gpt-5.6-sol"
 # oh-my-codex seeded behavioral defaults (uninstall removes unchanged defaults)
 model_context_window = 250000
 model_auto_compact_token_limit = 200000
+service_tier = "default"
 # End oh-my-codex seeded behavioral defaults
 
 [projects."/home/crong"]
@@ -23,16 +24,25 @@ trust_level = "trusted"
 [projects."/home/crong/git/ai-agent-skill"]
 trust_level = "trusted"
 
+[projects."/home/crong/git/ayaneo"]
+trust_level = "trusted"
+
 [marketplaces.openai-bundled]
-last_updated = "2026-08-28T07:35:24Z"
+last_updated = "2026-09-01T06:02:22Z"
 source_type = "local"
 source = "/home/crong/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.zzizily]
-last_updated = "2026-08-25T01:34:12Z"
-last_revision = "205e9b9803cf56c24336d6834df99c7101b47cba"
+last_updated = "2026-09-03T09:01:09Z"
+last_revision = "e9d1d71f93eb0d9fb721531bdc39fb6f5b620e59"
 source_type = "git"
 source = "https://github.com/deuxksy/ai-agent-skill.git"
+
+[marketplaces.wakatime]
+last_updated = "2026-09-03T09:01:03Z"
+last_revision = "e7f755d168ff735fdf31922de81f599e37a4ec94"
+source_type = "git"
+source = "https://github.com/wakatime/claude-code-wakatime.git"
 
 [plugins."superpowers@openai-curated"]
 enabled = true
@@ -96,6 +106,9 @@ enabled = true
 
 [plugins."git@zzizily"]
 enabled = true
+
+[plugins."app-698f531bfb808191933a0dedad26a8c7@openai-curated-remote"]
+enabled = false
 [features]
 multi_agent = true
 child_agents_md = true
@@ -148,6 +161,7 @@ status_line = ["model-with-reasoning", "git-branch", "context-remaining", "total
 [tui.model_availability_nux]
 "gpt-5.5" = 4
 "gpt-5.6-sol" = 4
+gpt-6-astra = 3
 
 [mcp_servers.openaiDeveloperDocs]
 url = "https://developers.openai.com/mcp"
