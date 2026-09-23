@@ -150,5 +150,11 @@
   home.packages = with pkgs; [
     antigravity-cli
     shell-gpt
+
+    # LSP Servers
+    lua-language-server
+    marksman
+    terraform-ls
+    nil
   ];
 }
