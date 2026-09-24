@@ -18,12 +18,12 @@ macOS, NixOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Sto
 
 ## Documentation (Diátaxis Index)
 
-상세 문서 및 세부 설계 안내는 [docs/README.md](docs/README.md) 서브 허브와 아래 디아탁시스 카테고리를 참조하세요.
+상세 문서 및 세부 설계 안내는 [docs/README.md](docs/README.md) 서브 허브 및 [OKF Hub](docs/okf/README.md)와 아래 디아탁시스 카테고리를 참조하세요.
 
 - **🟢 Tutorials**: [Install Guide](#install) | [Windows Setup Guide](windows/README.md)
-- **🟡 How-To**: [Stow Adopt Guide](#stow-adopt) | [sops Implementation Plan](docs/okf/how-to/2026-04-03-sops-key-encryption-implementation.md) | [NixOS Fcitx5 Guide](docs/okf/how-to/fcitx5-wayland-kde.md)
-- **🔵 Reference**: [Docs Sub-Hub](docs/README.md) | [Neovim Config Guide](base/.config/nvim/README.md)
-- **🟣 Explanation**: [Stow Structure Design](docs/okf/explanation/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/okf/explanation/2026-04-03-sops-key-encryption-design.md)
+- **🟡 How-To**: [Stow Adopt Guide](#stow-adopt) | [sops Implementation Plan](docs/okf/how-to/2026-04-03-sops-key-encryption-implementation.md) | [Bazzite Fcitx5 Guide](docs/okf/how-to/bazzite-fcitx5-hangul-setup.md) | [NixOS Fcitx5 Guide](docs/okf/how-to/fcitx5-wayland-kde.md)
+- **🔵 Reference**: [Docs Sub-Hub](docs/README.md) | [OKF Hub](docs/okf/README.md) | [Neovim Config Guide](base/.config/nvim/README.md)
+- **🟣 Explanation**: [Stow Structure Design](docs/okf/explanation/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/okf/explanation/2026-04-03-sops-key-encryption-design.md) | [Desktop Terminal Stack](docs/okf/explanation/desktop.md)
 
 ## Hosts
 
@@ -31,7 +31,7 @@ macOS, NixOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Sto
 | :--- | :--- | :--- | :--- |
 | axiom | Mac Studio | macOS | stow: `base` + `axiom` |
 | eve | Mac mini | macOS | stow: `base` + `eve` |
-| mo | AyaNEO AM02 | NixOS | stow: `base` + `mo` / flake |
+| mo | AyaNEO AM02 | Bazzite | stow: `base` + `bazzite` |
 | walle | AOOSTAR WTR R1 | Proxmox (Debian) | stow: `base` + `walle` |
 | girl | Steam Deck | SteamOS | stow: `base` + `girl` |
 | auxo | Raspberry Pi 3 Model B | Debian 13 (trixie) | stow: `base` + `auxo` |
@@ -45,7 +45,7 @@ macOS, NixOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Sto
 
 - **axiom**: Local LLM 서버 (LM Studio, MLX) + 개발
 - **eve**: iOS/AOS 개발 전용
-- **mo**: Linux 개발 워크스테이션 (NixOS)
+- **mo**: Linux 개발 워크스테이션 (Bazzite)
 - **walle**: Homelab 서버 (K8s, VM)
 - **girl**: 휴대용 서버
 - **auxo**: 휴대용 헤드리스 서버 (Raspberry Pi)
@@ -120,7 +120,7 @@ graph TD
 
 | Host | Tailscale IP | OS | Status | Exit Node | 비고 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| mo | 100.68.96.6 | linux | online | O | NixOS 개발 워크스테이션 |
+| mo | 100.68.96.6 | linux | online | O | Bazzite 개발 워크스테이션 |
 | ai | 100.118.111.59 | linux | online | - | Tailscale AI |
 | brla | 100.75.220.80 | linux | online | - | Oracle Cloud ARM (Hermes) |
 | axiom | 100.79.223.84 | macOS | online | - | Local LLM + 개발 |
@@ -154,17 +154,13 @@ cd ~/git/dotfiles
 # Stow 배포 (호스트에 맞게 선택)
 stow -t ~ base axiom    # macOS
 stow -t ~ base eve      # macOS
-stow -t ~ base mo       # NixOS
+stow -t ~ base bazzite  # Bazzite (mo)
 stow -t ~ base walle    # Proxmox (Debian)
 stow -t ~ base girl     # SteamOS
 stow -t ~ base auxo     # Raspberry Pi (Debian)
 
-# macOS (Brewfile)
+# macOS / Bazzite (Brewfile)
 cd ~ && brew bundle
-
-# NixOS (mo) — stow 배포 후 flake rebuild
-sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
-# 또는 alias: rebuild
 
 # walle (Proxmox) — root 영역(sshd drop-in) 배포
 # Proxmox 최소 설치엔 stow 없음 → 사전 설치
@@ -197,14 +193,14 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 | `base/` | non-Windows 전체 | POSIX 공통 설정 (macOS, NixOS, SteamOS, Debian 등 - git, nvim, tmux, zsh, AI rules) |
 | `axiom/` | macOS | Mac Studio — Local LLM (LM Studio, MLX) + 개발 |
 | `eve/` | macOS | Mac mini — iOS/AOS 개발 |
-| `mo/` | NixOS | AyaNEO AM02 — Linux 개발 워크스테이션 |
+| `bazzite/` | Bazzite | AyaNEO AM02 — Linux 개발 워크스테이션 |
 | `walle/` | Proxmox (Debian) | AOOSTAR WTR R1 — Homelab 서버 (K8s, VM) |
 | `girl/` | SteamOS | Steam Deck — 게임/개발 |
 | `auxo/` | Debian 13 | Raspberry Pi — 헤드리스 서버 |
 | `windows/` | Windows 전체 | Windows OS 공통 레이어 (규칙, nvim, wezterm, gitconfig, install.ps1) |
 | `kyolim/` | Windows 11 | kyolim 호스트 전용 (Claude 프리셋, Codex config, Gemini settings) |
 | `ava/` | Windows 10 | Surface Pro 6 (pwsh) |
-| `nix/` | NixOS | flake 설정 (mo 전용) |
+| `nix/` | NixOS | 이전 NixOS mo 설정 아카이브 (flake 등) |
 | `docs/` | - | 설계/구현 문서 (superpowers specs & plans) |
 | `.ai/` `.githooks/` `.github/` | - | AI 공유 규칙, Git hooks, Dependabot |
 

@@ -1,0 +1,42 @@
+# ==============================================================================
+# Starship Configuration (Cross-Platform)
+# ==============================================================================
+
+# 우측 프롬프트 설정 (p10k 스타일: user@host HH:MM:SS)
+right_format = """$username$hostname $time"""
+
+# 사용자 이름 (user)
+[username]
+show_always = true
+style_user = "yellow bold"
+style_root = "red bold"
+format = "[$user]($style)"
+disabled = false
+
+# 호스트 이름 (@host)
+[hostname]
+ssh_only = false
+format = "[@$hostname]($style)"
+style = "green bold"
+disabled = false
+
+# 시간 (HH:MM:SS)
+[time]
+disabled = false
+format = "[ $time]($style)"
+time_format = "%T"
+style = "bright-black"
+
+# 디렉토리 경로 (선택적 최적화)
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "cyan bold"
+
+# Git 상태 표시
+[git_branch]
+style = "purple bold"
+format = "[$symbol$branch(:$remote_branch)]($style) "
+
+[git_status]
+style = "red bold"

@@ -1,0 +1,3 @@
+# Bazzite GUI / Desktop Applications (Flatpak)
+# Install all: xargs -a flatpaks.txt flatpak install -y flathub
+org.wezfurlong.wezterm

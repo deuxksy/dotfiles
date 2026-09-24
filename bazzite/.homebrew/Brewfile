@@ -1,0 +1,96 @@
+# Core CLI
+brew "git"
+brew "gh"
+brew "lazygit"
+brew "neovim"
+brew "tmux"
+brew "tmuxp"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+brew "jq"
+brew "yq"
+brew "bat"
+brew "git-delta"
+brew "eza"
+brew "zoxide"
+brew "atuin"
+brew "direnv"
+brew "gnupg"
+brew "sops"
+brew "age"
+brew "curlie"
+brew "glow"
+brew "tealdeer"
+brew "fastfetch"
+brew "stow"
+brew "htop"
+brew "bottom"
+brew "btop"
+brew "yazi"
+brew "ncdu"
+brew "grpcurl"
+brew "wget"
+brew "curl"
+brew "rclone"
+brew "mosh"
+brew "television"
+brew "lynis"
+brew "mise"
+brew "uv"
+brew "kubectl"
+brew "opentofu"
+brew "awscli@2"
+brew "pipx"
+brew "aria2"
+brew "mkdocs"
+brew "qemu"
+brew "gitleaks"
+brew "ffmpeg"
+brew "mpv"
+brew "yt-dlp"
+brew "chafa"
+brew "iperf3"
+brew "wakatime-cli"
+brew "opencode"
+
+# Shell
+brew "zsh"
+brew "starship"
+brew "zsh-completions"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+
+# Neovim - Linters & Formatters
+brew "eslint_d"
+brew "flake8"
+brew "hadolint"
+brew "yamllint"
+brew "shellcheck"
+brew "stylua"
+brew "prettierd"
+brew "black"
+brew "shfmt"
+brew "krew"
+
+# Taps
+tap "henrygd/beszel"
+tap "ublue-os/tap"
+
+# Beszel Agent
+brew "henrygd/beszel/beszel-agent"
+
+# ------------------------------------------------------------------------------
+# [예외 항목: Linux 지원 Cask]
+# Homebrew의 cask는 기본적으로 macOS 전용이지만, 아래 항목들은 Linux에서도
+# 폰트 파일 및 단일 바이너리 배포를 지원하여 예외적으로 cask로 관리합니다.
+# ------------------------------------------------------------------------------
+
+# Fonts (Linux ~/.local/share/fonts/ 경로에 자동 설치 지원)
+cask "font-hack-nerd-font"
+cask "font-fira-code-nerd-font"
+
+# AI & CLI Tools (Linux x86_64 단일 실행 바이너리 제공)
+cask "antigravity-cli"
+cask "codex"
+cask "claude-code"
