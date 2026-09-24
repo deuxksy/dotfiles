@@ -1,0 +1,8 @@
+[tools]
+go = "1.25"
+lua = "5.4"
+node = "24"
+python = "3.12"
+rust = "stable"
+neovim = "latest"
+bun = "latest"

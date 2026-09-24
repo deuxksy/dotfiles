@@ -4,8 +4,7 @@
 
 ## 📂 디렉터리 구조
 
-- `okf/explanation/`: Stow 구조·sops 암호화·데스크톱 터미널 스택 설계 문서
-- `okf/how-to/`: sops 암호화 적용·Fcitx5 한글 입력기 구현 가이드
+- `okf/`: Open Knowledge Format 기술 문서 허브 ([okf/README.md](okf/README.md))
 - `superpowers/`: AI 에이전트 내부 명세 및 작업 계획 (일반 문서 인덱스 제외)
 
 ---
@@ -20,9 +19,11 @@
 - [Stow Adopt Guide](../README.md#stow-adopt) - 기존 dotfiles 패키지화 및 심볼릭 링크 전환
 - [sops Key Encryption Plan](okf/how-to/2026-04-03-sops-key-encryption-implementation.md) - sops/age 암호화 키 적용 및 복호화 절차
 - [NixOS Fcitx5 Setup](okf/how-to/fcitx5-wayland-kde.md) - NixOS KDE Wayland 환경 Fcitx5 한글 입력기 설정
+- [Bazzite Fcitx5 Setup](okf/how-to/bazzite-fcitx5-hangul-setup.md) - Bazzite KDE Wayland 환경 Fcitx5 한글 입력기 설정
 
 ### 🔵 Reference (참조 자료)
 - [Main README](../README.md) - 메인 프로젝트 개요, 호스트/하드웨어 매트릭스 및 네트워크 구조
+- [OKF Documentation Hub](okf/README.md) - OKF 세부 구현 및 아키텍처 문서 서브 허브
 - [Neovim Configuration Guide](../base/.config/nvim/README.md) - lazy.nvim 기반 Neovim 모듈 구조 및 의존성
 - [Neovim External Dependencies](../base/.config/nvim/DEPENDENCIES.md) - nvim 외부 도구 의존성
 
