@@ -69,7 +69,7 @@ brew "zsh-syntax-highlighting"
 
 # Development
 brew "watchman"
-brew "ruby"
+# ruby는 cocoapods 의존성으로 자동 설치됨 (Brewfile 미기재 — 런타임 버전은 mise 담당)
 # Neovim - Linters & Formatters
 brew "eslint_d"
 brew "flake8"
@@ -103,7 +103,6 @@ cask "visual-studio-code"
 cask "bazecor"
 cask "typora"
 cask "android-studio"
-cask "freelens"
 cask "antigravity"
 #cask "antigravity-cli"
 cask "antigravity-ide"
@@ -114,3 +113,4 @@ cask "google-chrome"
 
 # LM Studio (for axiom LLM work)
 cask "lm-studio"
+cask "google-gemini"

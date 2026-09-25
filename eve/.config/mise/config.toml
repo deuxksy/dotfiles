@@ -1,9 +1,8 @@
 [tools]
-age = "latest"
+# age/sops는 brew(Brewfile)로 관리 — 매일 06시 자동 업그레이드 대상
 go = "1.25"
 java = "21"
 lua = "5.4"
 node = "24"
 python = "3.12"
 rust = "stable"
-sops = "latest"
