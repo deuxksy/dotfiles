@@ -1,0 +1,34 @@
+# eza as ls replacement
+if command -v eza &> /dev/null; then
+    alias ls='eza --icons=always'
+    alias ll='eza -alhF --header --icons=always --group-directories-first --octal-permissions --git'
+    alias la='eza -alhF --header --icons=always --group-directories-first --octal-permissions --total-size'
+    alias lt='eza -T --icons=always --level=2'
+else
+    alias ls='ls -G'
+    alias ll='ls -alfh'
+fi
+
+# Kubernetes
+if command -v kubectl &> /dev/null; then
+    alias k='kubectl'
+    alias kg='kubectl get'
+    alias kd='kubectl describe'
+    alias kl='kubectl logs'
+    alias ke='kubectl get events --sort-by=.metadata.creationTimestamp'
+    alias kns='kubectl config set-context --current --namespace'
+    source <(kubectl completion zsh) 2>/dev/null
+fi
+
+# Telepresence
+if command -v telepresence &> /dev/null; then
+    alias tp='telepresence'
+    alias tpc='telepresence connect'
+    alias tpl='telepresence list -n ecoai-prod'
+    alias tpq='telepresence quit'
+fi
+
+alias grep='grep --color=auto'
+alias vi='nvim'
+alias vim='nvim'
+alias gw='glow'

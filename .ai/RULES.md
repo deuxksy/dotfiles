@@ -6,7 +6,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 
 | Host | OS | Role | 패키지 관리 |
 | :--- | :--- | :--- | :--- |
-| mo | NixOS | 개발 워크스테이션 | nix, flake |
+| mo | Bazzite | 개발 워크스테이션 | stow: `base` + `bazzite`, Brewfile |
 | axiom | macOS | 개발/일상 | Brewfile |
 | eve | macOS | 개발/일상 | Brewfile |
 | girl | SteamOS | 게임/개발 | mise |
@@ -23,9 +23,9 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 ```bash
 # 패키지 배포 (호스트에 맞게 선택)
 stow -t ~ base eve
-stow -t ~ base girl  # SteamOS
-stow -t ~ base auxo  # Raspberry Pi (Debian)
-stow -t ~ base mo    # NixOS
+stow -t ~ base girl     # SteamOS
+stow -t ~ base auxo     # Raspberry Pi (Debian)
+stow -t ~ base bazzite  # Bazzite (mo)
 
 # Brewfile 설치 (stow 배포 후 홈에서 실행)
 cd ~ && brew bundle
@@ -37,30 +37,19 @@ stow --no-folding -t ~ base  # Git symlink 깨짐 방지
 # secrets 복호화
 eval "$(sops -d ~/.key)"
 
-# NixOS (mo)
-sudo nixos-rebuild switch --flake ~/git/dotfiles/nix/nixos#mo
-
 # walle (Proxmox) — 홈 + root 영역 배포
 stow -t ~ base walle              # 홈
 sudo apt install -y stow          # Proxmox 최소 설치엔 stow 없음
 sudo stow -t / walle-sudo         # /etc/ssh/sshd_config.d/* (root)
 
-# hermes-agent (mo)
-sudo systemctl restart hermes-agent
-sudo journalctl -u hermes-agent --since "1 min ago" --no-pager
-hermes config show   # CLI 모드 설정 확인
-
 # Git hooks 설치
 git config core.hooksPath .githooks
 ```
 
-## Key Files (mo/NixOS)
+## Key Files (bazzite — mo)
 
-- `nix/nixos/flake.nix` — flake inputs + module imports
-- `nix/nixos/hosts/mo/default.nix` — mo 호스트 설정
-- `nix/nixos/hosts/mo/hermes.nix` — hermes-agent NixOS 서비스 + sops secret
-- `nix/nixos/secrets/hermes.yaml` — sops 암호화 (ANTHROPIC_API_KEY, TELEGRAM_BOT_TOKEN)
-- `mo/.hermes/config.yaml` — hermes CLI config (stow 배포)
+- `bazzite/.homebrew/Brewfile` — Bazzite 패키지 정의 (stow 배포 후 `~/.homebrew/Brewfile`, `brew bundle -g`로 설치)
+- `nix/mo/` — 이전 NixOS mo 설정 아카이브 (flake, hosts/mo, secrets/hermes 등)
 
 ## Key Files (axiom/macOS)
 
@@ -86,7 +75,7 @@ git config core.hooksPath .githooks
 
 ## Gotchas
 
-- `CLAUDE.md`, `GEMINI.md`는 `@.ai/RULES.md` import 파일, `.github/copilot-instructions.md`는 symlink → AI 설정은 이 파일에서만 수정. Repo root `AGENTS.md`는 없음 — Codex는 배포된 `~/.codex/AGENTS.md`(base/) 사용
+- `CLAUDE.md`, `GEMINI.md`는 `@.ai/RULES.md` import 파일, `AGENTS.md`는 instruction 참조, `.github/copilot-instructions.md`는 symlink → 공통 AI 설정은 이 파일(`.ai/RULES.md`)에서만 수정
 - `.sops.yaml`로 age 키 관리, `.key` 파일은 sops 암호화됨
 - `.githooks/`에 커스텀 Git hooks, `.gitleaks.toml`로 시크릿 스캔
 - `stow --no-folding` 필수: Git은 symlink 디렉토리 내 파일 변경을 추적하지 않음
@@ -97,7 +86,7 @@ git config core.hooksPath .githooks
 - Brewfile은 각 호스트 `.homebrew/` 하위에 위치 (`axiom/.homebrew/Brewfile`, `eve/.homebrew/Brewfile`)
 - `base/.claude/.omc/hud-config.json` — OMC HUD 설정 (stow로 연결)
 - hermes-agent: built-in `anthropic` provider는 `ANTHROPIC_BASE_URL` 무시 — `custom_providers` + `api_mode: anthropic_messages` 필수 (Tailscale Aperture 등 프록시 사용 시)
-- hermes-agent: model명 점→하이픈 변환, API key는 sops only, CLI/gateway config 독립 (상세는 mo/.hermes/ 참조)
+- hermes-agent: model명 점→하이픈 변환, API key는 sops only, CLI/gateway config 독립 (상세는 nix/mo/.hermes/ 참조)
 - Windows 호스트(ava, kyolim)는 pwsh 기반 배포 — stow 미사용, `windows/` 디렉토리의 스크립트로 관리
 - Windows에서 .ps1 실행은 `pwsh` 사용 — powershell.exe(PS 5.1)은 UTF-8 no-BOM 한글 파일을 ANSI로 오독해 파싱 실패
 - OpenWrt 라우터(arv, steward)는 `docs/`의 설정 스크립트로 관리 — stow 미사용
