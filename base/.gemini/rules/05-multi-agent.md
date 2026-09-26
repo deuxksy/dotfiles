@@ -6,7 +6,7 @@
 zzizily plugin의 `verify` 컴포넌트(skill + subagent)로 이관됨.
 
 **자동 트리거**: 사용자 명시적 입력에서 '검증'/'verify'/'리뷰해줘' + 검증 대상(spec/plan/diff)
-감지 시 `/zzizily:verify` 자동 호출.
+감지 시 `/review:verify` 자동 호출.
 **제외**(무한 루프 방지): 이미 verify 실행 중 / 리포트 출력 중 / opt-out 플래그 세션에서는 트리거 안 함.
 
 **인프라 설정**(아래 각 섹션 유지, Source of Truth): 검증 시 zzizily verify가 소비.
@@ -68,40 +68,3 @@ GPT-5.6 세대는 번호(5.6)가 세대, 이름(Sol/Terra/Luna)이 영구 capabi
 
 - MCP 서버(`serena start-mcp-server`)로 코드 심볼 분석
 - 선언/참조/구현 탐색, 심볼 리네임/삭제 등 코드 내비게이션
-
-## LLM CLI (교차 검증 및 파이프라인)
-
-Simon Willison의 `llm` CLI(`uv tool install llm`)로 Tailscale Aperture 게이트웨이를 통해 AI Agent 산출물을 독립적으로 교차 검증.
-
-### Routing & Models (Aperture `http://ai.bun-bull.ts.net/v1`)
-
-- **기본 모델**: `qwen3.8-max` (별칭: `alibaba`, `qwen`, `max`) — 빠른 코드 리뷰 & 버그 탐지
-- **심층 추론**: `k3` (별칭: `kimi`, `k3`, 템플릿: `-t kimi` / `-t audit`) — 아키텍처/엣지케이스 심층 분석
-- **초고속 모델**: `qwen3.6-flash` (별칭: `flash`, `fast`) — 빠른 질의
-- **코딩 특화**: `kimi-for-coding`
-
-### Verification Templates
-
-- `review`: Alibaba 기반 코드 변경사항 및 diff 빠른 버그/보안 리뷰 (`git diff | llm -t review`)
-- `audit`: Kimi 기반 시스템 아키텍처 및 논리 결함 심층 감사 (`cat plan.md | llm -t audit`)
-- `alibaba`: Alibaba Qwen 3.8 Max 전용 호출 (`llm -t alibaba`)
-- `kimi`: Kimi k3 가중치(1.0 / 0.95) 사전 고정 호출 (`llm -t kimi`)
-
-### Usage Examples
-
-```bash
-# 코드 diff 빠른 리뷰 (Alibaba 기반)
-git diff | llm -t review
-
-# 아키텍처/기획 문서 심층 감사 (Kimi 기반)
-cat docs/plan.md | llm -t audit
-
-# 단발성 질의 (기본 Alibaba Qwen 3.8 Max)
-llm "질문 내용"
-
-# Kimi 심층 질의
-llm -t kimi "질문 내용"
-
-# 특정 질문과 함께 검증
-cat src/engine.ts | llm "동시성 이슈나 메모리 누수 위험이 있는지 검토해줘"
-```
