@@ -162,7 +162,7 @@ dependencies:
   materialization_repo_url: Digital-Process-Tools/claude-remember
   name: remember
   host: github.com
-  resolved_commit: a0ea35b6290c8292e22c3a4bf6f71cb646857570
+  resolved_commit: a19ec856200f1a894ef741318efa48134693ecf7
   version: 0.35.0
   package_type: skill_bundle
   deployed_files:
@@ -193,7 +193,6 @@ dependencies:
   - .claude/hooks/claude-remember/scripts/run-tests.sh
   - .claude/hooks/claude-remember/scripts/save-session.sh
   - .claude/hooks/claude-remember/scripts/session-end-hook.sh
-  - .claude/hooks/claude-remember/scripts/session-start-hook.sh
   - .claude/hooks/claude-remember/scripts/user-prompt-hook.sh
   - .claude/hooks/claude-remember/scripts/windows_skip_triage_497.py
   - .claude/hooks/claude-remember/scripts/write-handoff.sh
@@ -224,7 +223,6 @@ dependencies:
   - .codex/hooks/claude-remember/scripts/run-tests.sh
   - .codex/hooks/claude-remember/scripts/save-session.sh
   - .codex/hooks/claude-remember/scripts/session-end-hook.sh
-  - .codex/hooks/claude-remember/scripts/session-start-hook.sh
   - .codex/hooks/claude-remember/scripts/user-prompt-hook.sh
   - .codex/hooks/claude-remember/scripts/windows_skip_triage_497.py
   - .codex/hooks/claude-remember/scripts/write-handoff.sh
@@ -253,7 +251,6 @@ dependencies:
   - .gemini/hooks/claude-remember/scripts/run-tests.sh
   - .gemini/hooks/claude-remember/scripts/save-session.sh
   - .gemini/hooks/claude-remember/scripts/session-end-hook.sh
-  - .gemini/hooks/claude-remember/scripts/session-start-hook.sh
   - .gemini/hooks/claude-remember/scripts/user-prompt-hook.sh
   - .gemini/hooks/claude-remember/scripts/windows_skip_triage_497.py
   - .gemini/hooks/claude-remember/scripts/write-handoff.sh
@@ -284,7 +281,6 @@ dependencies:
     .claude/hooks/claude-remember/scripts/run-tests.sh: sha256:144cfd2f172fb8edb43be1029aa1188d08f520edc2d7e3f51a4af8ff7c04074b
     .claude/hooks/claude-remember/scripts/save-session.sh: sha256:56ff2060d29d0b7894ebfedaf5052f7dbb8b11d814e82126f105bf9c71dc55fe
     .claude/hooks/claude-remember/scripts/session-end-hook.sh: sha256:c3dfff5d38c7d39f5544f9332e34c15d0443d3c8eaf716a24e2b6d1181a6e623
-    .claude/hooks/claude-remember/scripts/session-start-hook.sh: sha256:061ac7a3a28fd8258653019740de680ffc6f202373abb7f9cf80559f5dc74d02
     .claude/hooks/claude-remember/scripts/user-prompt-hook.sh: sha256:4a8bd1e3133c058229cba201394c4ff7b8a96df0eadb2abcfa5ef71b25246502
     .claude/hooks/claude-remember/scripts/windows_skip_triage_497.py: sha256:5014a4b1eecd297e2aa6e225b23ea7e5ba039e5fde3815eec68fa3d04e661adc
     .claude/hooks/claude-remember/scripts/write-handoff.sh: sha256:95a2c5a889be5dbc71cd9ceb3f9145097a640ca75404e54368967e23e05a61c9
@@ -314,7 +310,6 @@ dependencies:
     .codex/hooks/claude-remember/scripts/run-tests.sh: sha256:144cfd2f172fb8edb43be1029aa1188d08f520edc2d7e3f51a4af8ff7c04074b
     .codex/hooks/claude-remember/scripts/save-session.sh: sha256:56ff2060d29d0b7894ebfedaf5052f7dbb8b11d814e82126f105bf9c71dc55fe
     .codex/hooks/claude-remember/scripts/session-end-hook.sh: sha256:c3dfff5d38c7d39f5544f9332e34c15d0443d3c8eaf716a24e2b6d1181a6e623
-    .codex/hooks/claude-remember/scripts/session-start-hook.sh: sha256:061ac7a3a28fd8258653019740de680ffc6f202373abb7f9cf80559f5dc74d02
     .codex/hooks/claude-remember/scripts/user-prompt-hook.sh: sha256:4a8bd1e3133c058229cba201394c4ff7b8a96df0eadb2abcfa5ef71b25246502
     .codex/hooks/claude-remember/scripts/windows_skip_triage_497.py: sha256:5014a4b1eecd297e2aa6e225b23ea7e5ba039e5fde3815eec68fa3d04e661adc
     .codex/hooks/claude-remember/scripts/write-handoff.sh: sha256:95a2c5a889be5dbc71cd9ceb3f9145097a640ca75404e54368967e23e05a61c9
@@ -343,11 +338,10 @@ dependencies:
     .gemini/hooks/claude-remember/scripts/run-tests.sh: sha256:144cfd2f172fb8edb43be1029aa1188d08f520edc2d7e3f51a4af8ff7c04074b
     .gemini/hooks/claude-remember/scripts/save-session.sh: sha256:56ff2060d29d0b7894ebfedaf5052f7dbb8b11d814e82126f105bf9c71dc55fe
     .gemini/hooks/claude-remember/scripts/session-end-hook.sh: sha256:c3dfff5d38c7d39f5544f9332e34c15d0443d3c8eaf716a24e2b6d1181a6e623
-    .gemini/hooks/claude-remember/scripts/session-start-hook.sh: sha256:061ac7a3a28fd8258653019740de680ffc6f202373abb7f9cf80559f5dc74d02
     .gemini/hooks/claude-remember/scripts/user-prompt-hook.sh: sha256:4a8bd1e3133c058229cba201394c4ff7b8a96df0eadb2abcfa5ef71b25246502
     .gemini/hooks/claude-remember/scripts/windows_skip_triage_497.py: sha256:5014a4b1eecd297e2aa6e225b23ea7e5ba039e5fde3815eec68fa3d04e661adc
     .gemini/hooks/claude-remember/scripts/write-handoff.sh: sha256:95a2c5a889be5dbc71cd9ceb3f9145097a640ca75404e54368967e23e05a61c9
-  content_hash: sha256:9c53c387a5133ba422249a694485046f3830a6a27c4a5e55389ae7920640a3ef
+  content_hash: sha256:9fb5c08f6405d5916a6f244666bd2fdba4343dafe0ac0cba6ab10d565606de73
   declared_license: Community License
 - repo_url: firecrawl/anydoc
   name: anydoc
@@ -916,15 +910,6 @@ deployments:
   - digital-process-tools/claude-remember
   active_owner: digital-process-tools/claude-remember
   content_hash: sha256:c3dfff5d38c7d39f5544f9332e34c15d0443d3c8eaf716a24e2b6d1181a6e623
-- kind: project-relative
-  target: claude
-  value: .claude/hooks/claude-remember/scripts/session-start-hook.sh
-  runtime: null
-  scope: project
-  owners:
-  - digital-process-tools/claude-remember
-  active_owner: digital-process-tools/claude-remember
-  content_hash: sha256:061ac7a3a28fd8258653019740de680ffc6f202373abb7f9cf80559f5dc74d02
 - kind: project-relative
   target: claude
   value: .claude/hooks/claude-remember/scripts/user-prompt-hook.sh
@@ -3303,15 +3288,6 @@ deployments:
   content_hash: sha256:c3dfff5d38c7d39f5544f9332e34c15d0443d3c8eaf716a24e2b6d1181a6e623
 - kind: project-relative
   target: codex
-  value: .codex/hooks/claude-remember/scripts/session-start-hook.sh
-  runtime: null
-  scope: project
-  owners:
-  - digital-process-tools/claude-remember
-  active_owner: digital-process-tools/claude-remember
-  content_hash: sha256:061ac7a3a28fd8258653019740de680ffc6f202373abb7f9cf80559f5dc74d02
-- kind: project-relative
-  target: codex
   value: .codex/hooks/claude-remember/scripts/user-prompt-hook.sh
   runtime: null
   scope: project
@@ -3582,15 +3558,6 @@ deployments:
   content_hash: sha256:c3dfff5d38c7d39f5544f9332e34c15d0443d3c8eaf716a24e2b6d1181a6e623
 - kind: project-relative
   target: gemini
-  value: .gemini/hooks/claude-remember/scripts/session-start-hook.sh
-  runtime: null
-  scope: project
-  owners:
-  - digital-process-tools/claude-remember
-  active_owner: digital-process-tools/claude-remember
-  content_hash: sha256:061ac7a3a28fd8258653019740de680ffc6f202373abb7f9cf80559f5dc74d02
-- kind: project-relative
-  target: gemini
   value: .gemini/hooks/claude-remember/scripts/user-prompt-hook.sh
   runtime: null
   scope: project
@@ -3636,7 +3603,7 @@ deployments:
   content_hash: sha256:5e92229e49d7cff5e0355ab84b0bceb0d27d53c565b33210132ce6e413ee9665
 - kind: uri
   target: mcp
-  value: doris-mcp-server
+  value: terraform-mcp-server
   runtime: claude
   scope: project
   owners:
@@ -3645,16 +3612,7 @@ deployments:
   content_hash: null
 - kind: uri
   target: mcp
-  value: proxmox-mcp-plus
-  runtime: claude
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
-- kind: uri
-  target: mcp
-  value: doris-mcp-server
+  value: terraform-mcp-server
   runtime: codex
   scope: project
   owners:
@@ -3663,25 +3621,7 @@ deployments:
   content_hash: null
 - kind: uri
   target: mcp
-  value: proxmox-mcp-plus
-  runtime: codex
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
-- kind: uri
-  target: mcp
-  value: doris-mcp-server
-  runtime: gemini
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
-- kind: uri
-  target: mcp
-  value: proxmox-mcp-plus
+  value: terraform-mcp-server
   runtime: gemini
   scope: project
   owners:
@@ -3698,6 +3638,7 @@ mcp_servers:
 - playwright-mcp
 - proxmox-mcp-plus
 - serena
+- terraform-mcp-server
 - web-reader
 - web-search-prime
 - zai-mcp-server
@@ -3786,6 +3727,11 @@ mcp_configs:
     - --project-from-cwd
     registry: false
     command: serena
+  terraform-mcp-server:
+    name: terraform-mcp-server
+    transport: stdio
+    registry: false
+    command: terraform-mcp-server
   web-reader:
     name: web-reader
     transport: http
@@ -3814,11 +3760,8 @@ mcp_configs:
     url: https://api.z.ai/api/mcp/zread/mcp
 mcp_target_servers:
   claude:
-  - doris-mcp-server
-  - proxmox-mcp-plus
+  - terraform-mcp-server
   codex:
-  - doris-mcp-server
-  - proxmox-mcp-plus
+  - terraform-mcp-server
   gemini:
-  - doris-mcp-server
-  - proxmox-mcp-plus
+  - terraform-mcp-server

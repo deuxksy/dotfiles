@@ -57,6 +57,10 @@ dependencies:
         PROXMOX_TOKEN_VALUE: ${PROXMOX_TOKEN_VALUE}
         PROXMOX_PORT: '8006'
         PROXMOX_VERIFY_SSL: 'true'
+    - name: terraform-mcp-server
+      registry: false
+      transport: stdio
+      command: terraform-mcp-server
     - name: aperture
       registry: false
       transport: http

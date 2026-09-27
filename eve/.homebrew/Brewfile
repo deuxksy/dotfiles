@@ -115,3 +115,7 @@ cask "google-chrome"
 # LM Studio (for axiom LLM work)
 cask "lm-studio"
 cask "google-gemini"
+brew "lua-language-server"
+brew "terraform-ls"
+brew "kotlin-lsp"
+brew "terraform-mcp-server"
