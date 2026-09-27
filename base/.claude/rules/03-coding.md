@@ -1,7 +1,12 @@
 # Coding
 
+> **7대 원칙** = KISS · YAGNI · DRY + Karpathy 4원칙(Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution)
+> 각 정의는 본 파일 Coding Standards·Karpathy 섹션과 02-verification.md 참조
+
 ## Coding Standards
 
+- KISS(Keep It Simple, Stupid): 항상 더 단순한 해법 우선. 복잡도는 실제 필요가 증명될 때만 도입
+- DRY(Don't Repeat Yourself): 동일 로직 3회 반복 시 추출(rule of three). 단, premature 추출 금지
 - 일관성(Consistency): 기존 프로젝트의 코딩 스타일(들여쓰기, 네이밍 컨벤션, 패턴)을 최우선 준수
 - 주석: 코드가 `무엇(What)`을 하는지보다 `왜(Why)` 그렇게 작성되었는지에 집중. 뻔한 주석은 작성하지 않음
 - 안전성: 에러 핸들링(Error Handling)과 엣지 케이스(Edge Cases)를 항상 고려
@@ -16,7 +21,7 @@
 
 ### Simplicity First (Karpathy)
 
-- 요청받은 것만 구현. Speculative 기능/추상화/설정 금지
+- 요청받은 것만 구현. Speculative 기능/추상화/설정 금지 (YAGNI)
 - 단일 용도 코드에 추상화(Strategy, Factory 등) 금지. 복잡도가 실제로 필요해지면 그때 리팩토링
 - 불가능한 시나리오의 에러 핸들링 금지
 - 200줄이 50줄이 될 수 있으면 다시 쓴다
