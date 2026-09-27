@@ -33,3 +33,4 @@
 - [Desktop Terminal Stack](okf/explanation/desktop.md) - WezTerm+tmux+Neovim 통합 환경 아키텍처
 - [Neovim Design Specs](../base/.config/nvim/docs/plans/2026-03-03-cross-platform-neovim-design.md) - 크로스플랫폼 Neovim 모듈화 설계 명세
 - [Neovim Implementation Plan](../base/.config/nvim/docs/plans/2026-03-03-cross-platform-neovim-implementation.md) - 크로스플랫폼 Neovim 구현 계획
+- [apm Agent Layer Design](okf/explanation/2026-09-27-apm-agent-layer-design.md) - apm 기반 AI agent toolchain 공통화·자동화 설계 문서

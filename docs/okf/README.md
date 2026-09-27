@@ -13,6 +13,7 @@
 - [GNU Stow Structure Design](explanation/2026-03-03-stow-structure-design.md) - multi-host Stow 패키지 레이아웃 설계 문서
 - [sops Key Encryption Design](explanation/2026-04-03-sops-key-encryption-design.md) - sops/age 기반 시크릿 관리 구조 설계 문서
 - [Desktop Terminal Stack](explanation/desktop.md) - WezTerm+tmux+Neovim 통합 환경 아키텍처
+- [apm Agent Layer Design](explanation/2026-09-27-apm-agent-layer-design.md) - apm 기반 AI agent toolchain 공통화·자동화 설계 문서
 
 ---
 *참고: `tutorials/` 및 `reference/` 문서는 신규 작성 시 본 허브에 인덱싱됩니다.*
