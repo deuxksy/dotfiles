@@ -21,6 +21,9 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 ## Commands
 
 ```bash
+# 1커맨드 bootstrap (stow + brew + apm install -g)
+./install.sh eve   # eve | axiom | bazzite | girl | auxo
+
 # 패키지 배포 (호스트에 맞게 선택)
 stow -t ~ base eve
 stow -t ~ base girl     # SteamOS
@@ -57,6 +60,9 @@ git config core.hooksPath .githooks
 
 ## Key Files (base — 전 호스트 공통, stow 배포)
 
+- `base/.apm/` — apm user-global manifest·lock (AI agent layer: 외부 skill·MCP 10종을 claude/codex/gemini에 배포, 설계: docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
+- `base/.claude/settings.json` — plugin 매트릭스 고정 (enabledPlugins 28개·extraKnownMarketplaces)
+- `base/.config/claude/profiles/` — provider env 프로파일(sops) + mcp.env.sops, `claude-profile` 로더(eve/.alias)가 소비
 - `base/.claude/rules/`에 6개 규칙 파일 (00~05) — profile, operations, verification, coding, documentation, multi-agent
 - `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
 - `base/.gemini/rules/`에 6개 규칙 파일 (00~05) — Gemini 공통 규칙
@@ -90,3 +96,7 @@ git config core.hooksPath .githooks
 - Windows 호스트(ava, kyolim)는 pwsh 기반 배포 — stow 미사용, `windows/` 디렉토리의 스크립트로 관리
 - Windows에서 .ps1 실행은 `pwsh` 사용 — powershell.exe(PS 5.1)은 UTF-8 no-BOM 한글 파일을 ANSI로 오독해 파싱 실패
 - OpenWrt 라우터(arv, steward)는 `docs/`의 설정 스크립트로 관리 — stow 미사용
+- apm CLI가 manifest 쓰기 시 `~/.apm/apm.yml` symlink를 rename으로 교체할 수 있음 → `rm -f ~/.apm/apm.yml && stow --no-folding -R -t ~ base` 복구 후 lock도 repo 이관(commit 필요)
+- apm MCP config 변경은 기존 엔트리 제거 후 재설치 필요 (동일 이름 갱신 안 됨)
+- ai-agent-skill repo는 plugin.json이 SoT — apm.yml 두지 않음 (gstack/bun-bull transitive 사고 방지)
+- superpowers·remember는 apm 스킬로 대체(plugin disable), zzizily 4종은 plugin(명령 UX)+apm(cross-agent) 병행

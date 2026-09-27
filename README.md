@@ -1,6 +1,6 @@
 # Dotfiles
 
-macOS, NixOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 sops 암호화로 일관되게 관리하는 크로스플랫폼 dotfiles 프로젝트입니다. 단일 커맨드로 배포를 자동화하고, 개인 정보 및 시크릿을 안전하게 동기화하며, 전 호스트 공통 도구 및 AI 지침을 관리합니다.
+macOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 sops 암호화로 일관되게 관리하는 크로스플랫폼 dotfiles 프로젝트입니다. 단일 커맨드로 배포를 자동화하고, 개인 정보 및 시크릿을 안전하게 동기화하며, 전 호스트 공통 도구 및 AI 지침을 관리합니다.
 
 ## 목차
 
