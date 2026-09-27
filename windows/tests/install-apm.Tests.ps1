@@ -15,4 +15,6 @@ Assert-Contains '-Target "$dotfiles\base\.config\claude"' "provider profiles 디
 Assert-Contains 'apm install -g' "apm install -g 단계가 있어야 합니다"
 Assert-Contains 'Microsoft.APM' "apm CLI는 winget Microsoft.APM으로 설치해야 합니다"
 
+Assert-Contains 'settings.json.bak-' "kyolim 기존 settings.json은 백업 후 링크해야 합니다"
+
 Write-Host "install-apm tests passed"

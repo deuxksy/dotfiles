@@ -136,7 +136,7 @@ dependencies:
 
 | 서버 | transport | 선언 | 비고 |
 | :--- | :--- | :--- | :--- |
-| aperture | http | `url: ${APERTURE_MCP_URL}` | Tailscale 내부 URL — sops 관리 |
+| aperture | http | `url:` 리터럴(Tailscale 노드명) | apm 0.32가 manifest URL의 ${VAR} placeholder를 파싱 단계에서 거부(검증) — private repo 조건으로 리터럴 채택. 노출 범위: hostname만(credential 아님). URL 변경 시 manifest 편집 + commit |
 | web-reader | http | url 리터럴 | 공개 서비스 엔드포인트 |
 | web-search-prime | http | url 리터럴 | 동일 |
 | zread | http | url 리터럴 | 동일 |
@@ -205,7 +205,8 @@ Phase 1 drift 치유 항목:
 
 - **의존성 변경은 선언적으로**: `apm.yml` 편집 → `apm install -g` → lock 갱신 → dotfiles commit. imperative install로 manifest 임의 변경 금지
 - 외부 패키지 버전 갱신: `apm update` → lock commit
-- 정기 점검: `apm audit`·`apm outdated` (drift 조기 발견)
+- 정기 점검: `apm audit`·`apm outdated` (drift 조기 발겨)
+- **aperture URL 리터럴 유지 조건**: repo는 private 유지. tailnet 노드명 변경/로테이션 시 `base/.apm/apm.yml`·lock의 URL을 수정해 재배포. apm 상류가 ${VAR} URL을 지원하면 sops 변수로 회귀
 - 자체 스킬 신규 제작은 `ai-agent-skill` repo에서 — dotfiles apm.yml은 완성된 패키지를 참조만
 
 ## 리스크 및 미검증 항목

@@ -672,6 +672,7 @@ git commit -m "feat(install): kyolim apm 배포 단계 및 Brewfile apm 등록"
 3. verify: `ls -la ~/.apm/apm.yml`(symlink), `claude mcp list`(6개), 첫 세션 후 `claude plugin list --json`(14 true)
 4. girl/auxo: codex/gemini 설치 안 된 경우 `apm install -g --target claude` 필요 여부 확인 (Phase 0 #8)
 5. kyolim: sops age key + `~/.key` 복원, `claude-profile` 부재 확인(로더는 eve/.alias에 있음 — kyolim은 필요시 수동 env)
+6. **token rotation**: 구 eve 프로파일의 ANTHROPIC_AUTH_TOKEN(zai)이 git history에 잔존 — zai 키 로테이션 후 `sops` 재암호화(`base/.config/claude/profiles/zai.env.sops` 갱신). beszel TOKEN 2건(설계문서·nix 아카이브)도 로테이션 후보
 
 ## Self-Review 기록
 

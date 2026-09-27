@@ -17,7 +17,7 @@ New-Item -ItemType SymbolicLink -Path "$claudeDir\CLAUDE.md" -Target "$windows\.
 New-Item -ItemType Junction -Path "$claudeDir\rules" -Target "$windows\.claude\rules" -Force
 New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.local.json" -Target "$windows\.claude\settings.local.json" -Force
 
-# Claude settings.* 프리셋 링크 (settings.json은 로컬 임시/런타임 파일로 유지)
+# Claude settings.* 프리셋 링크 (settings.json은 base 고정 파일로 stow/ps1 소유 — 아래 apm 섹션)
 Get-ChildItem "$kyolim\.claude\settings.*" | Where-Object { $_.Name -ne "settings.local.json" -and $_.Name -ne "settings.json" } | ForEach-Object {
     New-Item -ItemType SymbolicLink -Path "$claudeDir\$($_.Name)" -Target $_.FullName -Force
 }
@@ -66,6 +66,10 @@ New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.wezterm.lua" -Target "$
 # 선언적 콘텐츠(OS 무관)는 base 패키지 직접 참조 — windows/ 중복 배제 예외
 
 # settings.json 고정 파일 (plugin 매트릭스 선언, env는 sops 프로파일로 분리)
+# 기존 로컬 settings.json이 실재 파일이면 백업 후 링크 (POSIX install.sh와 대칭)
+if ((Test-Path "$claudeDir\settings.json") -and -not (Get-Item "$claudeDir\settings.json" -Force).LinkType) {
+    Copy-Item "$claudeDir\settings.json" "$claudeDir\settings.json.bak-$(Get-Date -Format 'yyyyMMddHHmmss')"
+}
 New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.json" -Target "$dotfiles\base\.claude\settings.json" -Force
 
 # ~/.apm manifest
