@@ -1,0 +1,98 @@
+{
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "code-review@claude-plugins-official": false,
+    "context7@claude-plugins-official": true,
+    "claude-code-wakatime@wakatime": true,
+    "notion@claude-plugins-official": false,
+    "oh-my-claudecode@omc": true,
+    "playwright@claude-plugins-official": true,
+    "remember@claude-plugins-official": true,
+    "dev@zzizily": false,
+    "docs@zzizily": true,
+    "git@zzizily": true,
+    "infra@zzizily": false,
+    "l10n@zzizily": false,
+    "review@zzizily": true,
+    "rules@zzizily": true,
+    "security@zzizily": false,
+    "sessions@zzizily": true,
+    "trackers@zzizily": false,
+    "typescript-lsp@claude-plugins-official": false,
+    "claude-code-setup@claude-plugins-official": false,
+    "pyright-lsp@claude-plugins-official": true,
+    "chrome-devtools-mcp@claude-plugins-official": false,
+    "expo@claude-plugins-official": false,
+    "jmeter@zzizily": false,
+    "glm-plan-usage@zai-coding-plugins": true,
+    "glm-plan-bug@zai-coding-plugins": false,
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": false
+  },
+  "extraKnownMarketplaces": {
+    "zzizily": {
+      "source": {
+        "source": "github",
+        "repo": "deuxksy/ai-agent-skill"
+      },
+      "autoUpdate": true
+    },
+    "wakatime": {
+      "source": {
+        "source": "github",
+        "repo": "wakatime/claude-code-wakatime"
+      },
+      "autoUpdate": true
+    },
+    "zai-coding-plugins": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/crong/.claude/plugins/vendor/zai-coding-plugins"
+      },
+      "autoUpdate": true
+    }
+  },
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "Agent(*)",
+      "Skill(*)",
+      "Bash(rm .git/index.lock)"
+    ],
+    "deny": [
+      "Bash(format *)",
+      "Bash(diskpart *)",
+      "Bash(mkfs *)",
+      "Bash(dd *)",
+      "Bash(bcdedit *)",
+      "Bash(shutdown *)",
+      "Bash(wbadmin *)"
+    ],
+    "ask": [
+      "Bash(rmdir *)",
+      "Bash(del *)",
+      "Bash(rd *)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean *)",
+      "Bash(taskkill *)",
+      "Bash(reboot *)"
+    ],
+    "defaultMode": "auto"
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "statusline --cli=claude"
+  },
+  "language": "한국어",
+  "autoCompactEnabled": true,
+  "editorMode": "normal",
+  "tui": "fullscreen"
+}
