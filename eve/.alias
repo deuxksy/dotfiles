@@ -19,3 +19,20 @@ clauded() {
   mkdir -p ~/.claude/logs
   claude --debug --debug-file ~/.claude/logs/log-$(date +%y%m%d%H%M%S).log "$@"
 }
+
+# claude provider profile loader (apm agent layer 설계)
+# usage: claude-profile zai|kimi|aperture [claude args...]
+claude-profile() {
+  local p="$1"; shift
+  local d="$HOME/.config/claude/profiles"
+  if [[ ! -r "$d/$p.env.sops" ]]; then
+    echo "claude-profile: unknown profile '$p' (expected: zai|kimi|aperture)" >&2; return 1
+  fi
+  [[ -r "$d/mcp.env.sops" ]] && eval "$(sops -d --input-type dotenv --output-type dotenv "$d/mcp.env.sops")"
+  eval "$(sops -d --input-type dotenv --output-type dotenv "$d/$p.env.sops")"
+  if [[ -r "$d/$p.overlay.json" ]]; then
+    claude --settings "$d/$p.overlay.json" "$@"
+  else
+    claude "$@"
+  fi
+}
