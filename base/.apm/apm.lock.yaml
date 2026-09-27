@@ -104,3 +104,85 @@ deployments:
   - vercel-labs/skills
   active_owner: vercel-labs/skills
   content_hash: sha256:c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f
+- kind: uri
+  target: mcp
+  value: aperture
+  runtime: claude
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: aperture
+  runtime: codex
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: aperture
+  runtime: gemini
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+mcp_servers:
+- aperture
+- serena
+- web-reader
+- web-search-prime
+- zai-mcp-server
+- zread
+mcp_configs:
+  aperture:
+    name: aperture
+    transport: http
+    registry: false
+    url: https://ai.bun-bull.ts.net/v1/mcp
+  serena:
+    name: serena
+    transport: stdio
+    args:
+    - start-mcp-server
+    - --context=claude-code
+    - --project-from-cwd
+    registry: false
+    command: serena
+  web-reader:
+    name: web-reader
+    transport: http
+    registry: false
+    url: https://api.z.ai/api/mcp/web_reader/mcp
+  web-search-prime:
+    name: web-search-prime
+    transport: http
+    registry: false
+    url: https://api.z.ai/api/mcp/web_search_prime/mcp
+  zai-mcp-server:
+    name: zai-mcp-server
+    transport: stdio
+    env:
+      Z_AI_MODE: ZAI
+      Z_AI_API_KEY: ${Z_AI_API_KEY}
+    args:
+    - -y
+    - '@z_ai/mcp-server'
+    registry: false
+    command: npx
+  zread:
+    name: zread
+    transport: http
+    registry: false
+    url: https://api.z.ai/api/mcp/zread/mcp
+mcp_target_servers:
+  claude:
+  - aperture
+  codex:
+  - aperture
+  gemini:
+  - aperture

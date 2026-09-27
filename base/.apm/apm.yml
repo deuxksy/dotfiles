@@ -2,17 +2,48 @@ name: global-agents
 version: 1.0.0
 description: User-global AI agent dependencies - external skills and MCP servers
 author: Crong
-
 targets:
-  - claude
-  - codex
-  - gemini
-
+- claude
+- codex
+- gemini
 dependencies:
   apm:
-    - git: firecrawl/anydoc
-    - git: vercel-labs/skills
-  mcp: []
-
+  - git: firecrawl/anydoc
+  - git: vercel-labs/skills
+  mcp:
+  - name: aperture
+    registry: false
+    transport: http
+    url: https://ai.bun-bull.ts.net/v1/mcp
+  - name: zread
+    registry: false
+    transport: http
+    url: https://api.z.ai/api/mcp/zread/mcp
+  - name: web-reader
+    registry: false
+    transport: http
+    url: https://api.z.ai/api/mcp/web_reader/mcp
+  - name: web-search-prime
+    registry: false
+    transport: http
+    url: https://api.z.ai/api/mcp/web_search_prime/mcp
+  - name: serena
+    registry: false
+    transport: stdio
+    command: serena
+    args:
+    - start-mcp-server
+    - --context=claude-code
+    - --project-from-cwd
+  - name: zai-mcp-server
+    registry: false
+    transport: stdio
+    command: npx
+    args:
+    - -y
+    - '@z_ai/mcp-server'
+    env:
+      Z_AI_MODE: ZAI
+      Z_AI_API_KEY: ${Z_AI_API_KEY}
 includes: auto
 scripts: {}
