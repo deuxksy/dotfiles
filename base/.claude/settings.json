@@ -91,7 +91,7 @@
     "type": "command",
     "command": "statusline --cli=claude"
   },
-  "language": "\ud55c\uad6d\uc5b4",
+  "language": "한국어",
   "autoCompactEnabled": true,
   "editorMode": "normal",
   "tui": "fullscreen",
@@ -102,7 +102,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/session-start-hook.sh\""
+            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/session-start-hook.sh\""
           }
         ]
       },
@@ -113,7 +113,7 @@
             "type": "command",
             "shell": "bash",
             "async": false,
-            "command": "\"/Users/crong/.claude/hooks/superpowers/hooks/run-hook.cmd\" session-start"
+            "command": "\"$HOME/.claude/hooks/superpowers/hooks/run-hook.cmd\" session-start"
           }
         ]
       }
@@ -124,7 +124,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/user-prompt-hook.sh\""
+            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/user-prompt-hook.sh\""
           }
         ]
       }
@@ -135,7 +135,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/post-tool-hook.sh\""
+            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/post-tool-hook.sh\""
           }
         ]
       }
@@ -146,7 +146,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/session-end-hook.sh\""
+            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/session-end-hook.sh\""
           }
         ]
       },
@@ -155,7 +155,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/session-end-hook.sh\"",
+            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/session-end-hook.sh\"",
             "timeout": 10
           }
         ]

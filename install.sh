@@ -57,6 +57,7 @@ run apm install -g --frozen || { echo "    frozen 실패 — lock 갱신 필요.
 # apm이 symlink를 rename으로 교체할 수 있음(R8) — 무결성 복구
 if [[ "$DRY_RUN" != "--dry-run" ]]; then
   if [[ ! -L "$HOME/.apm/apm.yml" ]]; then
+    cp "$HOME/.apm/apm.yml" "$HOME/.apm/apm.yml.bak-$(date +%Y%m%d%H%M%S)"
     rm -f "$HOME/.apm/apm.yml"; stow --no-folding -R -d "$REPO" -t ~ "${PKGS[@]}"
     echo "    ~/.apm/apm.yml symlink 복구"
   fi

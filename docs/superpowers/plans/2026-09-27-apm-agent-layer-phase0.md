@@ -88,3 +88,12 @@ targets 미지정 시 kiro까지 자동 configure됨 → manifest `targets: [cla
 - CLI-arg 형식(`apm install -g microsoft/azure-skills/skills/microsoft-foundry`)만 작동하나 manifest 재현 불가 + stale lock reconciliation이 계속 재적분하므로 **manifest에서 제외**하고 배포본도 제거
 - 재설치(필요 시): `apm install -g microsoft/azure-skills/skills/microsoft-foundry` 후 lock·symlink 상태 점검. apm 상류 수정 후 manifest 재추가 권장 (microsoft/apm 이슈 후보)
 - 결과: manifest는 외부 skill 2종(firecrawl/anydoc, vercel-labs/skills)로 확정
+
+## R10. 소급 기록 (사용자 요청 — deferred minors 처리)
+
+- **소급 ruling**: 스킬 2종(obra/superpowers, claude-remember)·MCP 4종(chrome-devtools-mcp, dbhub, kubernetes-mcp-server, playwright-mcp)·ai-agent-skill plugin 4종(git/docs/rules/sessions)은 모두 사용자 mid-flight 명시 요청에 의한 spec 범위 확장으로 확정 (스킬 3종→4종+plugin 4종, MCP 6개→10개)
+- `apm audit --file ~/.apm/apm.lock.yaml` → **no issues found** (검증체크포인트 #4)
+- `claude mcp list` → **10 servers** (MCP 4종 추가 후 동등성 재확인)
+- **MCP config 변경은 기존 엔트리 제거+재설치 필요** — apm이 동일 이름 엔트리를 manifest 변경만으로 갱신하지 않음(playwright `-y` 사례로 실증)
+- hooks 절대경로 `/Users/crong` → `$HOME` 6건 치환(전 호스트·크로스 OS 대응)
+- beszel은 사용자 판단으로 제외(무시)

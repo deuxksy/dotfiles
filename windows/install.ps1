@@ -91,4 +91,11 @@ if (-not (Get-Command apm -ErrorAction SilentlyContinue)) {
 apm install -g --frozen
 if ($LASTEXITCODE -ne 0) { apm install -g }
 
+# R8: apm이 symlink를 rename으로 교체할 수 있음 — 무결성 복구
+if ((Test-Path "$apmDir\apm.yml") -and -not (Get-Item "$apmDir\apm.yml" -Force).LinkType) {
+    Remove-Item "$apmDir\apm.yml" -Force
+    New-Item -ItemType SymbolicLink -Path "$apmDir\apm.yml" -Target "$dotfiles\base\.apm\apm.yml" -Force
+    Write-Host "    ~/.apm/apm.yml symlink 복구"
+}
+
 Write-Host "Windows dotfiles installed successfully!" -ForegroundColor Green
