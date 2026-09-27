@@ -3636,7 +3636,7 @@ deployments:
   content_hash: sha256:5e92229e49d7cff5e0355ab84b0bceb0d27d53c565b33210132ce6e413ee9665
 - kind: uri
   target: mcp
-  value: context7
+  value: doris-mcp-server
   runtime: claude
   scope: project
   owners:
@@ -3645,7 +3645,16 @@ deployments:
   content_hash: null
 - kind: uri
   target: mcp
-  value: context7
+  value: proxmox-mcp-plus
+  runtime: claude
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: doris-mcp-server
   runtime: codex
   scope: project
   owners:
@@ -3654,7 +3663,25 @@ deployments:
   content_hash: null
 - kind: uri
   target: mcp
-  value: context7
+  value: proxmox-mcp-plus
+  runtime: codex
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: doris-mcp-server
+  runtime: gemini
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: proxmox-mcp-plus
   runtime: gemini
   scope: project
   owners:
@@ -3666,8 +3693,10 @@ mcp_servers:
 - chrome-devtools-mcp
 - context7
 - dbhub
+- doris-mcp-server
 - kubernetes-mcp-server
 - playwright-mcp
+- proxmox-mcp-plus
 - serena
 - web-reader
 - web-search-prime
@@ -3703,6 +3732,21 @@ mcp_configs:
     - '@bytebase/dbhub'
     registry: false
     command: npx
+  doris-mcp-server:
+    name: doris-mcp-server
+    transport: stdio
+    env:
+      DORIS_HOST: ${DORIS_HOST}
+      DORIS_PORT: '9030'
+      DORIS_USER: ${DORIS_USER}
+      DORIS_PASSWORD: ${DORIS_PASSWORD}
+      DORIS_DATABASE: information_schema
+    args:
+    - doris-mcp-server
+    - --transport
+    - stdio
+    registry: false
+    command: uvx
   kubernetes-mcp-server:
     name: kubernetes-mcp-server
     transport: stdio
@@ -3719,6 +3763,20 @@ mcp_configs:
     - '@playwright/mcp@latest'
     registry: false
     command: npx
+  proxmox-mcp-plus:
+    name: proxmox-mcp-plus
+    transport: stdio
+    env:
+      PROXMOX_HOST: ${PROXMOX_HOST}
+      PROXMOX_USER: ${PROXMOX_USER}
+      PROXMOX_TOKEN_NAME: ${PROXMOX_TOKEN_NAME}
+      PROXMOX_TOKEN_VALUE: ${PROXMOX_TOKEN_VALUE}
+      PROXMOX_PORT: '8006'
+      PROXMOX_VERIFY_SSL: 'true'
+    args:
+    - proxmox-mcp-plus
+    registry: false
+    command: uvx
   serena:
     name: serena
     transport: stdio
@@ -3756,8 +3814,11 @@ mcp_configs:
     url: https://api.z.ai/api/mcp/zread/mcp
 mcp_target_servers:
   claude:
-  - context7
+  - doris-mcp-server
+  - proxmox-mcp-plus
   codex:
-  - context7
+  - doris-mcp-server
+  - proxmox-mcp-plus
   gemini:
-  - context7
+  - doris-mcp-server
+  - proxmox-mcp-plus
