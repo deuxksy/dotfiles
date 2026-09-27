@@ -1,13 +1,13 @@
 {
   "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": false,
     "code-review@claude-plugins-official": false,
     "context7@claude-plugins-official": true,
     "claude-code-wakatime@wakatime": true,
     "notion@claude-plugins-official": false,
     "oh-my-claudecode@omc": true,
     "playwright@claude-plugins-official": true,
-    "remember@claude-plugins-official": true,
+    "remember@claude-plugins-official": false,
     "dev@zzizily": false,
     "docs@zzizily": true,
     "git@zzizily": true,
