@@ -3581,6 +3581,33 @@ deployments:
   - obra/superpowers
   active_owner: obra/superpowers
   content_hash: sha256:5e92229e49d7cff5e0355ab84b0bceb0d27d53c565b33210132ce6e413ee9665
+- kind: uri
+  target: mcp
+  value: playwright-mcp
+  runtime: claude
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: playwright-mcp
+  runtime: codex
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: playwright-mcp
+  runtime: gemini
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
 mcp_servers:
 - aperture
 - chrome-devtools-mcp
@@ -3665,4 +3692,10 @@ mcp_configs:
     transport: http
     registry: false
     url: https://api.z.ai/api/mcp/zread/mcp
-mcp_target_servers: {}
+mcp_target_servers:
+  claude:
+  - playwright-mcp
+  codex:
+  - playwright-mcp
+  gemini:
+  - playwright-mcp
