@@ -62,4 +62,29 @@ if (Test-Path "$windows\.wakatime.cfg") {
 # .wezterm.lua
 New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.wezterm.lua" -Target "$windows\.wezterm.lua" -Force
 
+# --- AI agent layer (apm) ---
+# 선언적 콘텐츠(OS 무관)는 base 패키지 직접 참조 — windows/ 중복 배제 예외
+
+# settings.json 고정 파일 (plugin 매트릭스 선언, env는 sops 프로파일로 분리)
+New-Item -ItemType SymbolicLink -Path "$claudeDir\settings.json" -Target "$dotfiles\base\.claude\settings.json" -Force
+
+# ~/.apm manifest
+$apmDir = "$env:USERPROFILE\.apm"
+if (-not (Test-Path $apmDir)) { New-Item -ItemType Directory -Path $apmDir -Force }
+New-Item -ItemType SymbolicLink -Path "$apmDir\apm.yml" -Target "$dotfiles\base\.apm\apm.yml" -Force
+New-Item -ItemType SymbolicLink -Path "$apmDir\apm.lock.yaml" -Target "$dotfiles\base\.apm\apm.lock.yaml" -Force
+
+# provider profiles (~/.config/claude)
+if (-not (Test-Path "$env:USERPROFILE\.config")) { New-Item -ItemType Directory -Path "$env:USERPROFILE\.config" -Force }
+if (-not (Test-Path "$env:USERPROFILE\.config\claude")) {
+    New-Item -ItemType Junction -Path "$env:USERPROFILE\.config\claude" -Target "$dotfiles\base\.config\claude" -Force
+}
+
+if (-not (Get-Command apm -ErrorAction SilentlyContinue)) {
+    winget install --id Microsoft.APM --exact --source winget
+}
+# codex/gemini 미설치 시 frozen 실패 가능 — fallback plain install
+apm install -g --frozen
+if ($LASTEXITCODE -ne 0) { apm install -g }
+
 Write-Host "Windows dotfiles installed successfully!" -ForegroundColor Green

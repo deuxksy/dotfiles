@@ -70,6 +70,20 @@ powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\git\dotfiles\windows\
 | `%USERPROFILE%\.gitconfig` | `windows\.gitconfig` | SymbolicLink | 관리자 또는 Developer Mode |
 | `%USERPROFILE%\.wakatime.cfg` | `windows\.wakatime.cfg` | SymbolicLink | 관리자 또는 Developer Mode |
 | `%USERPROFILE%\.wezterm.lua` | `windows\.wezterm.lua` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.claude\settings.json` | `base\.claude\settings.json` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.apm\apm.yml` | `base\.apm\apm.yml` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.apm\apm.lock.yaml` | `base\.apm\apm.lock.yaml` | SymbolicLink | 관리자 또는 Developer Mode |
+| `%USERPROFILE%\.config\claude` | `base\.config\claude` | Junction | 일반 |
+
+## AI Agent Layer (apm)
+
+`install.ps1`이 `base\.apm\` manifest를 `%USERPROFILE%\.apm\`에 symlink하고 `apm install -g`로
+외부 skill·MCP를 claude/codex/gemini에 배포한다(첫 claude 세션에서 plugin 자동 설치).
+선언적 콘텐츠(OS 무관)는 base 패키지를 직접 참조하는 예외 — windows/ 중복 배제.
+설계: [apm Agent Layer Design](../docs/okf/explanation/2026-09-27-apm-agent-layer-design.md).
+
+kyolim 적용 순서: 관리자 pwsh → `install.ps1` → sops age key·`~/.key` 복원 → 첫 claude 세션.
+provider 전환은 eve의 `claude-profile`(zsh) 대응 pwsh 로더가 아직 없음 — 필요시 `sops -d --input-type dotenv --output-type dotenv`로 env export 후 `claude` 실행 (Future work).
 
 ## Neovim 초기 실행
 
