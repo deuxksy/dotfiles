@@ -13,3 +13,9 @@ alias grep='grep --color=auto'
 alias vi='nvim'
 alias vim='nvim'
 alias gw="glow"
+
+# claude debug — 로그는 ~/.claude/logs/log-YYMMDDhhmmss.log 에 파일로 남김
+clauded() {
+  mkdir -p ~/.claude/logs
+  claude --debug --debug-file ~/.claude/logs/log-$(date +%y%m%d%H%M%S).log "$@"
+}
