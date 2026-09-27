@@ -1,19 +1,11 @@
 lockfile_version: '1'
 apm_version: 0.32.0
 dependencies:
-- repo_url: deuxksy/ai-agent-skill
-  name: ai-agent-skill
-  host: github.com
-  resolved_commit: bacadfe834943579517dc9db8ff947667a78b217
-  version: 1.17.0
-  package_type: apm_package
-  content_hash: sha256:5b5b1978d3dd33289aa948c6851931722d3be59611df2eb88576576df169c0fe
-  declared_license: MIT
 - repo_url: digital-process-tools/claude-remember
   materialization_repo_url: Digital-Process-Tools/claude-remember
   name: remember
   host: github.com
-  resolved_commit: b729cf623386bad3b980636150101723b6c16ba1
+  resolved_commit: a0ea35b6290c8292e22c3a4bf6f71cb646857570
   version: 0.35.0
   package_type: skill_bundle
   deployed_files:
@@ -32,7 +24,6 @@ dependencies:
   - .claude/hooks/claude-remember/scripts/lib-env-cache.sh
   - .claude/hooks/claude-remember/scripts/lib-lock.sh
   - .claude/hooks/claude-remember/scripts/lib-memory-context.sh
-  - .claude/hooks/claude-remember/scripts/lib-memory-dir.sh
   - .claude/hooks/claude-remember/scripts/lib-slug.sh
   - .claude/hooks/claude-remember/scripts/lib-staging-lock.sh
   - .claude/hooks/claude-remember/scripts/lock-timing-report.sh
@@ -64,7 +55,6 @@ dependencies:
   - .codex/hooks/claude-remember/scripts/lib-env-cache.sh
   - .codex/hooks/claude-remember/scripts/lib-lock.sh
   - .codex/hooks/claude-remember/scripts/lib-memory-context.sh
-  - .codex/hooks/claude-remember/scripts/lib-memory-dir.sh
   - .codex/hooks/claude-remember/scripts/lib-slug.sh
   - .codex/hooks/claude-remember/scripts/lib-staging-lock.sh
   - .codex/hooks/claude-remember/scripts/lock-timing-report.sh
@@ -94,7 +84,6 @@ dependencies:
   - .gemini/hooks/claude-remember/scripts/lib-env-cache.sh
   - .gemini/hooks/claude-remember/scripts/lib-lock.sh
   - .gemini/hooks/claude-remember/scripts/lib-memory-context.sh
-  - .gemini/hooks/claude-remember/scripts/lib-memory-dir.sh
   - .gemini/hooks/claude-remember/scripts/lib-slug.sh
   - .gemini/hooks/claude-remember/scripts/lib-staging-lock.sh
   - .gemini/hooks/claude-remember/scripts/lock-timing-report.sh
@@ -126,7 +115,6 @@ dependencies:
     .claude/hooks/claude-remember/scripts/lib-env-cache.sh: sha256:8745c88971b3c0048d8ebeba156c6aa55d46f6b14320ee6ffd71def84514f251
     .claude/hooks/claude-remember/scripts/lib-lock.sh: sha256:38a10b4975292e092ae0b440cd053795972488094bbd936a5b98ff3eff3b5636
     .claude/hooks/claude-remember/scripts/lib-memory-context.sh: sha256:a7e80411f3cd4e0e5d7db33c60430d519f696fe5713ccb4c78a37f1ca0d2b9d8
-    .claude/hooks/claude-remember/scripts/lib-memory-dir.sh: sha256:7f63b0d8b004dc6c9256e78f98f1af5bf89bb30dd6d6a81cf521daf9718f8880
     .claude/hooks/claude-remember/scripts/lib-slug.sh: sha256:d5b1ec50ff7fac9c61f79a81ce2510406565c94060f78f3527bdb52d3718bcf1
     .claude/hooks/claude-remember/scripts/lib-staging-lock.sh: sha256:8a54bfbced1f1a38340c7ca76e10a6782906e20cb826b38d0ffe2067cca5d792
     .claude/hooks/claude-remember/scripts/lock-timing-report.sh: sha256:5034c536ec00522e3f74e5f568cbe53453effa24271ce98eb5d3f67689c7f861
@@ -157,7 +145,6 @@ dependencies:
     .codex/hooks/claude-remember/scripts/lib-env-cache.sh: sha256:8745c88971b3c0048d8ebeba156c6aa55d46f6b14320ee6ffd71def84514f251
     .codex/hooks/claude-remember/scripts/lib-lock.sh: sha256:38a10b4975292e092ae0b440cd053795972488094bbd936a5b98ff3eff3b5636
     .codex/hooks/claude-remember/scripts/lib-memory-context.sh: sha256:a7e80411f3cd4e0e5d7db33c60430d519f696fe5713ccb4c78a37f1ca0d2b9d8
-    .codex/hooks/claude-remember/scripts/lib-memory-dir.sh: sha256:7f63b0d8b004dc6c9256e78f98f1af5bf89bb30dd6d6a81cf521daf9718f8880
     .codex/hooks/claude-remember/scripts/lib-slug.sh: sha256:d5b1ec50ff7fac9c61f79a81ce2510406565c94060f78f3527bdb52d3718bcf1
     .codex/hooks/claude-remember/scripts/lib-staging-lock.sh: sha256:8a54bfbced1f1a38340c7ca76e10a6782906e20cb826b38d0ffe2067cca5d792
     .codex/hooks/claude-remember/scripts/lock-timing-report.sh: sha256:5034c536ec00522e3f74e5f568cbe53453effa24271ce98eb5d3f67689c7f861
@@ -187,7 +174,6 @@ dependencies:
     .gemini/hooks/claude-remember/scripts/lib-env-cache.sh: sha256:8745c88971b3c0048d8ebeba156c6aa55d46f6b14320ee6ffd71def84514f251
     .gemini/hooks/claude-remember/scripts/lib-lock.sh: sha256:38a10b4975292e092ae0b440cd053795972488094bbd936a5b98ff3eff3b5636
     .gemini/hooks/claude-remember/scripts/lib-memory-context.sh: sha256:a7e80411f3cd4e0e5d7db33c60430d519f696fe5713ccb4c78a37f1ca0d2b9d8
-    .gemini/hooks/claude-remember/scripts/lib-memory-dir.sh: sha256:7f63b0d8b004dc6c9256e78f98f1af5bf89bb30dd6d6a81cf521daf9718f8880
     .gemini/hooks/claude-remember/scripts/lib-slug.sh: sha256:d5b1ec50ff7fac9c61f79a81ce2510406565c94060f78f3527bdb52d3718bcf1
     .gemini/hooks/claude-remember/scripts/lib-staging-lock.sh: sha256:8a54bfbced1f1a38340c7ca76e10a6782906e20cb826b38d0ffe2067cca5d792
     .gemini/hooks/claude-remember/scripts/lock-timing-report.sh: sha256:5034c536ec00522e3f74e5f568cbe53453effa24271ce98eb5d3f67689c7f861
@@ -204,7 +190,7 @@ dependencies:
     .gemini/hooks/claude-remember/scripts/user-prompt-hook.sh: sha256:4a8bd1e3133c058229cba201394c4ff7b8a96df0eadb2abcfa5ef71b25246502
     .gemini/hooks/claude-remember/scripts/windows_skip_triage_497.py: sha256:5014a4b1eecd297e2aa6e225b23ea7e5ba039e5fde3815eec68fa3d04e661adc
     .gemini/hooks/claude-remember/scripts/write-handoff.sh: sha256:95a2c5a889be5dbc71cd9ceb3f9145097a640ca75404e54368967e23e05a61c9
-  content_hash: sha256:ffd6befcf8514dba3b438146c975da933add99c6695f3a166d9ee2741eb9af5b
+  content_hash: sha256:9c53c387a5133ba422249a694485046f3830a6a27c4a5e55389ae7920640a3ef
   declared_license: Community License
 - repo_url: firecrawl/anydoc
   name: anydoc
@@ -665,15 +651,6 @@ deployments:
   - digital-process-tools/claude-remember
   active_owner: digital-process-tools/claude-remember
   content_hash: sha256:a7e80411f3cd4e0e5d7db33c60430d519f696fe5713ccb4c78a37f1ca0d2b9d8
-- kind: project-relative
-  target: claude
-  value: .claude/hooks/claude-remember/scripts/lib-memory-dir.sh
-  runtime: null
-  scope: project
-  owners:
-  - digital-process-tools/claude-remember
-  active_owner: digital-process-tools/claude-remember
-  content_hash: sha256:7f63b0d8b004dc6c9256e78f98f1af5bf89bb30dd6d6a81cf521daf9718f8880
 - kind: project-relative
   target: claude
   value: .claude/hooks/claude-remember/scripts/lib-slug.sh
@@ -2485,15 +2462,6 @@ deployments:
   content_hash: sha256:a7e80411f3cd4e0e5d7db33c60430d519f696fe5713ccb4c78a37f1ca0d2b9d8
 - kind: project-relative
   target: codex
-  value: .codex/hooks/claude-remember/scripts/lib-memory-dir.sh
-  runtime: null
-  scope: project
-  owners:
-  - digital-process-tools/claude-remember
-  active_owner: digital-process-tools/claude-remember
-  content_hash: sha256:7f63b0d8b004dc6c9256e78f98f1af5bf89bb30dd6d6a81cf521daf9718f8880
-- kind: project-relative
-  target: codex
   value: .codex/hooks/claude-remember/scripts/lib-slug.sh
   runtime: null
   scope: project
@@ -2771,15 +2739,6 @@ deployments:
   - digital-process-tools/claude-remember
   active_owner: digital-process-tools/claude-remember
   content_hash: sha256:a7e80411f3cd4e0e5d7db33c60430d519f696fe5713ccb4c78a37f1ca0d2b9d8
-- kind: project-relative
-  target: gemini
-  value: .gemini/hooks/claude-remember/scripts/lib-memory-dir.sh
-  runtime: null
-  scope: project
-  owners:
-  - digital-process-tools/claude-remember
-  active_owner: digital-process-tools/claude-remember
-  content_hash: sha256:7f63b0d8b004dc6c9256e78f98f1af5bf89bb30dd6d6a81cf521daf9718f8880
 - kind: project-relative
   target: gemini
   value: .gemini/hooks/claude-remember/scripts/lib-slug.sh
