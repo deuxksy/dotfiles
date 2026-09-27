@@ -1,5 +1,10 @@
 {
+  "agentMode": "accept-edits",
   "allowNonWorkspaceAccess": true,
+  "artifactReviewPolicy": "agent-decides",
+  "editor": "vim",
+  "model": "Gemini 3.8 Flash (Medium)",
+  "notifications": true,
   "permissions": {
     "allow": [
       "command(*)",
@@ -16,7 +21,9 @@
       "command(find)",
       "command(ls)",
       "command(mv)",
-      "command(cd)"
+      "command(cd)",
+      "read_url(*)",
+      "mcp(serena/get_current_config)"
     ],
     "deny": [
       "command(rm -rf /)",
@@ -37,8 +44,6 @@
       "command(git reset --hard*)"
     ],
     "ask": [
-      "command(rm)",
-      "command(rm *)",
       "command(unlink*)",
       "command(chmod -R*)",
       "command(chown -R*)",
@@ -50,11 +55,13 @@
       "command(pip uninstall*)"
     ]
   },
+  "showFeedbackSurvey": false,
   "statusLine": {
     "type": "command",
-    "command": "/Users/crong/.local/bin/statusline --cli=auto",
+    "command": "statusline --cli=auto",
     "enabled": true
   },
+  "toolPermission": "proceed-in-sandbox",
   "trustedWorkspaces": [
     "/Users/crong",
     "/Users/crong/git/homelab",
@@ -62,6 +69,15 @@
     "/Users/crong/git/dotfiles",
     "/Users/crong/git/statusline",
     "/Users/crong/git/247365",
-    "/Users/crong/.config/shell_gpt"
+    "/Users/crong/.config/shell_gpt",
+    "/Users/crong/git/Meridian-X",
+    "/Users/crong/git/sylph",
+    "/Users/crong/git/heritage",
+    "/Users/crong/Downloads",
+    "/Users/crong/git/Vesper-X",
+    "/Users/crong/.claude",
+    "/Users/crong/git",
+    "/Users/crong/git/dotfiles/mo",
+    "/Users/crong/git/SM8600PUA"
   ]
 }

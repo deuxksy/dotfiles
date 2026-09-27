@@ -91,8 +91,75 @@
     "type": "command",
     "command": "statusline --cli=claude"
   },
-  "language": "한국어",
+  "language": "\ud55c\uad6d\uc5b4",
   "autoCompactEnabled": true,
   "editorMode": "normal",
-  "tui": "fullscreen"
+  "tui": "fullscreen",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/session-start-hook.sh\""
+          }
+        ]
+      },
+      {
+        "matcher": "startup|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "bash",
+            "async": false,
+            "command": "\"/Users/crong/.claude/hooks/superpowers/hooks/run-hook.cmd\" session-start"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/user-prompt-hook.sh\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/post-tool-hook.sh\""
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/session-end-hook.sh\""
+          }
+        ]
+      },
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/session-end-hook.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
 }

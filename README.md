@@ -151,25 +151,19 @@ graph TD
 git clone git@github.com:deuxksy/dotfiles.git ~/git/dotfiles
 cd ~/git/dotfiles
 
-# Stow 배포 (호스트에 맞게 선택)
-stow -t ~ base axiom    # macOS
-stow -t ~ base eve      # macOS
-stow -t ~ base bazzite  # Bazzite (mo)
-stow -t ~ base walle    # Proxmox (Debian)
-stow -t ~ base girl     # SteamOS
-stow -t ~ base auxo     # Raspberry Pi (Debian)
+# macOS / Linux 호스트 — 1커맨드 bootstrap (stow + brew + apm)
+./install.sh eve     # 또는 axiom | bazzite | girl | auxo
 
-# macOS / Bazzite (Brewfile)
-cd ~ && brew bundle
-
-# walle (Proxmox) — root 영역(sshd drop-in) 배포
-# Proxmox 최소 설치엔 stow 없음 → 사전 설치
+# walle (Proxmox) — 기존 수동 절차
 sudo apt install -y stow
-sudo stow -t / walle-sudo       # /etc/ssh/sshd_config.d/* 배포
-# 주의: sudoers(/etc/sudoers.d/)는 stow symlink 불가(visudo owner root 검사)
-#       → 수동 관리. walle-sudo/.stow-local-ignore 참조
-
+stow -t ~ base walle
+sudo stow -t / walle-sudo
 ```
+
+AI agent layer: `apm install -g`가 외부 skill·MCP를 claude/codex/gemini에 배포하고(`base/.apm/` manifest), 첫 claude 세션에서 plugin이 자동 설치된다. provider 전환은 `claude-profile zai|kimi|aperture` (sops env 프로파일). 상세 설계는 [apm Agent Layer Design](docs/okf/explanation/2026-09-27-apm-agent-layer-design.md).
+
+walle 주의: sudoers(`/etc/sudoers.d/`)는 stow symlink 불가(visudo owner root 검사) → 수동 관리. `walle-sudo/.stow-local-ignore` 참조.
+
 
 ## Stow Adopt
 
