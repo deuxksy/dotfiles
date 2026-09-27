@@ -12,7 +12,7 @@ dependencies:
     - git: vercel-labs/skills
     - git: obra/superpowers
     - git: Digital-Process-Tools/claude-remember
-    - Digital-Process-Tools/claude-remember
+    - git: deuxksy/ai-agent-skill
   mcp:
     - name: aperture
       registry: false

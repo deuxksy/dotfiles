@@ -1,6 +1,14 @@
 lockfile_version: '1'
 apm_version: 0.32.0
 dependencies:
+- repo_url: deuxksy/ai-agent-skill
+  name: ai-agent-skill
+  host: github.com
+  resolved_commit: bacadfe834943579517dc9db8ff947667a78b217
+  version: 1.17.0
+  package_type: apm_package
+  content_hash: sha256:5b5b1978d3dd33289aa948c6851931722d3be59611df2eb88576576df169c0fe
+  declared_license: MIT
 - repo_url: digital-process-tools/claude-remember
   materialization_repo_url: Digital-Process-Tools/claude-remember
   name: remember
