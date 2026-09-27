@@ -70,9 +70,9 @@
         "hooks": [
           {
             "type": "command",
+            "command": "\"/Users/crong/.claude/hooks/superpowers/hooks/run-hook.cmd\" session-start",
             "shell": "bash",
-            "async": false,
-            "command": "\"/Users/crong/.claude/hooks/superpowers/hooks/run-hook.cmd\" session-start"
+            "async": false
           }
         ]
       }
@@ -177,7 +177,8 @@
     "glm-plan-usage@zai-coding-plugins": true,
     "glm-plan-bug@zai-coding-plugins": false,
     "gopls-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "wakatime": {
