@@ -99,4 +99,4 @@ git config core.hooksPath .githooks
 - apm CLI가 manifest 쓰기 시 `~/.apm/apm.yml` symlink를 rename으로 교체할 수 있음 → `rm -f ~/.apm/apm.yml && stow --no-folding -R -t ~ base` 복구 후 lock도 repo 이관(commit 필요)
 - apm MCP config 변경은 기존 엔트리 제거 후 재설치 필요 (동일 이름 갱신 안 됨)
 - ai-agent-skill repo는 plugin.json이 SoT — apm.yml 두지 않음 (gstack/bun-bull transitive 사고 방지)
-- superpowers·remember는 apm 스킬로 대체(plugin disable), zzizily 4종은 plugin(명령 UX)+apm(cross-agent) 병행
+- 공통 skill은 apm 단일 경로로 관리 — zzizily(ai-agent-skill) plugin 11종·marketplace 제거, 활성 5종(git/docs/rules/sessions/review)을 apm path 참조로 이관

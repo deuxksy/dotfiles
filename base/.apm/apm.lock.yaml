@@ -92,6 +92,23 @@ dependencies:
     .claude/skills/tag-release/SKILL.md: sha256:8b3d6e2619de7866dfa1083092252f155c6848bfe82e8b171d27f766c486a09b
   content_hash: sha256:3519e83a93d25b874caf833d8d1d358fc0208a573e6efad23641c1404e0066b1
 - repo_url: deuxksy/ai-agent-skill
+  name: review
+  host: github.com
+  resolved_commit: 8355557ff1586214e6084668f139e40a26501737
+  version: 2.1.0
+  virtual_path: plugins/review
+  is_virtual: true
+  package_type: skill_bundle
+  deployed_files:
+  - .agents/skills/verify
+  - .agents/skills/verify/SKILL.md
+  - .claude/skills/verify
+  - .claude/skills/verify/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/verify/SKILL.md: sha256:ab51bc6bdf8f85bddf5c22401648b6f71c85012c6919231ff9eb5a52a3b6e7df
+    .claude/skills/verify/SKILL.md: sha256:ab51bc6bdf8f85bddf5c22401648b6f71c85012c6919231ff9eb5a52a3b6e7df
+  content_hash: sha256:d71978109e59a7300d0651ca3ab313a87c2c529353d73f5b7d8a3320f584cd9f
+- repo_url: deuxksy/ai-agent-skill
   name: rules
   host: github.com
   resolved_commit: 8355557ff1586214e6084668f139e40a26501737
@@ -1882,6 +1899,24 @@ deployments:
   content_hash: sha256:2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3
 - kind: project-relative
   target: claude
+  value: .claude/skills/verify
+  runtime: null
+  scope: project
+  owners:
+  - deuxksy/ai-agent-skill/plugins/review
+  active_owner: deuxksy/ai-agent-skill/plugins/review
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/verify/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - deuxksy/ai-agent-skill/plugins/review
+  active_owner: deuxksy/ai-agent-skill/plugins/review
+  content_hash: sha256:ab51bc6bdf8f85bddf5c22401648b6f71c85012c6919231ff9eb5a52a3b6e7df
+- kind: project-relative
+  target: claude
   value: .claude/skills/writing-plans
   runtime: null
   scope: project
@@ -2935,6 +2970,24 @@ deployments:
   content_hash: sha256:2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3
 - kind: project-relative
   target: codex
+  value: .agents/skills/verify
+  runtime: null
+  scope: project
+  owners:
+  - deuxksy/ai-agent-skill/plugins/review
+  active_owner: deuxksy/ai-agent-skill/plugins/review
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/verify/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - deuxksy/ai-agent-skill/plugins/review
+  active_owner: deuxksy/ai-agent-skill/plugins/review
+  content_hash: sha256:ab51bc6bdf8f85bddf5c22401648b6f71c85012c6919231ff9eb5a52a3b6e7df
+- kind: project-relative
+  target: codex
   value: .agents/skills/writing-plans
   runtime: null
   scope: project
@@ -3581,33 +3634,6 @@ deployments:
   - obra/superpowers
   active_owner: obra/superpowers
   content_hash: sha256:5e92229e49d7cff5e0355ab84b0bceb0d27d53c565b33210132ce6e413ee9665
-- kind: uri
-  target: mcp
-  value: playwright-mcp
-  runtime: claude
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
-- kind: uri
-  target: mcp
-  value: playwright-mcp
-  runtime: codex
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
-- kind: uri
-  target: mcp
-  value: playwright-mcp
-  runtime: gemini
-  scope: project
-  owners:
-  - .
-  active_owner: .
-  content_hash: null
 mcp_servers:
 - aperture
 - chrome-devtools-mcp
@@ -3692,10 +3718,4 @@ mcp_configs:
     transport: http
     registry: false
     url: https://api.z.ai/api/mcp/zread/mcp
-mcp_target_servers:
-  claude:
-  - playwright-mcp
-  codex:
-  - playwright-mcp
-  gemini:
-  - playwright-mcp
+mcp_target_servers: {}

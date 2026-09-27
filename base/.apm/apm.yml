@@ -20,6 +20,8 @@ dependencies:
       path: plugins/rules
     - git: deuxksy/ai-agent-skill
       path: plugins/sessions
+    - git: deuxksy/ai-agent-skill
+      path: plugins/review
   mcp:
     - name: aperture
       registry: false
