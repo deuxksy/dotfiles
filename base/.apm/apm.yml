@@ -23,6 +23,13 @@ dependencies:
     - git: deuxksy/ai-agent-skill
       path: plugins/review
   mcp:
+    - name: context7
+      registry: false
+      transport: stdio
+      command: npx
+      args:
+      - -y
+      - '@upstash/context7-mcp'
     - name: aperture
       registry: false
       transport: http

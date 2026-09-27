@@ -3634,9 +3634,37 @@ deployments:
   - obra/superpowers
   active_owner: obra/superpowers
   content_hash: sha256:5e92229e49d7cff5e0355ab84b0bceb0d27d53c565b33210132ce6e413ee9665
+- kind: uri
+  target: mcp
+  value: context7
+  runtime: claude
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: context7
+  runtime: codex
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
+- kind: uri
+  target: mcp
+  value: context7
+  runtime: gemini
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: null
 mcp_servers:
 - aperture
 - chrome-devtools-mcp
+- context7
 - dbhub
 - kubernetes-mcp-server
 - playwright-mcp
@@ -3657,6 +3685,14 @@ mcp_configs:
     args:
     - -y
     - chrome-devtools-mcp@latest
+    registry: false
+    command: npx
+  context7:
+    name: context7
+    transport: stdio
+    args:
+    - -y
+    - '@upstash/context7-mcp'
     registry: false
     command: npx
   dbhub:
@@ -3718,4 +3754,10 @@ mcp_configs:
     transport: http
     registry: false
     url: https://api.z.ai/api/mcp/zread/mcp
-mcp_target_servers: {}
+mcp_target_servers:
+  claude:
+  - context7
+  codex:
+  - context7
+  gemini:
+  - context7
