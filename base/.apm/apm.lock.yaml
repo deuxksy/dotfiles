@@ -1,0 +1,106 @@
+lockfile_version: '1'
+apm_version: 0.32.0
+dependencies:
+- repo_url: firecrawl/anydoc
+  name: anydoc
+  host: github.com
+  resolved_commit: 261fc257d17c3eab0f673be31c408fd9fdc2171a
+  version: unknown
+  package_type: skill_bundle
+  deployed_files:
+  - .agents/skills/convert-documents-to-markdown
+  - .agents/skills/convert-documents-to-markdown/SKILL.md
+  - .claude/skills/convert-documents-to-markdown
+  - .claude/skills/convert-documents-to-markdown/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/convert-documents-to-markdown/SKILL.md: sha256:04cc0f3587ec792c83e4af942f88594205f360cddd540a3d869e28c58292bc6a
+    .claude/skills/convert-documents-to-markdown/SKILL.md: sha256:04cc0f3587ec792c83e4af942f88594205f360cddd540a3d869e28c58292bc6a
+  content_hash: sha256:ab03230bb177dd734532354b9cc78f7b32ed95f7759dd1b6b036533f71edac3b
+- repo_url: vercel-labs/skills
+  name: skills
+  host: github.com
+  resolved_commit: 7407f3893ad4dceab546ac002c3ef806e4000c73
+  version: unknown
+  package_type: skill_bundle
+  deployed_files:
+  - .agents/skills/find-skills
+  - .agents/skills/find-skills/SKILL.md
+  - .claude/skills/find-skills
+  - .claude/skills/find-skills/SKILL.md
+  deployed_file_hashes:
+    .agents/skills/find-skills/SKILL.md: sha256:c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f
+    .claude/skills/find-skills/SKILL.md: sha256:c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f
+  content_hash: sha256:af3fc1b9bcfc7e753d6a67ac609fc311170b68ff6982a7ee10fff94a56926c99
+deployments:
+- kind: project-relative
+  target: claude
+  value: .claude/skills/convert-documents-to-markdown
+  runtime: null
+  scope: project
+  owners:
+  - firecrawl/anydoc
+  active_owner: firecrawl/anydoc
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/convert-documents-to-markdown/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - firecrawl/anydoc
+  active_owner: firecrawl/anydoc
+  content_hash: sha256:04cc0f3587ec792c83e4af942f88594205f360cddd540a3d869e28c58292bc6a
+- kind: project-relative
+  target: claude
+  value: .claude/skills/find-skills
+  runtime: null
+  scope: project
+  owners:
+  - vercel-labs/skills
+  active_owner: vercel-labs/skills
+  content_hash: null
+- kind: project-relative
+  target: claude
+  value: .claude/skills/find-skills/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - vercel-labs/skills
+  active_owner: vercel-labs/skills
+  content_hash: sha256:c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f
+- kind: project-relative
+  target: codex
+  value: .agents/skills/convert-documents-to-markdown
+  runtime: null
+  scope: project
+  owners:
+  - firecrawl/anydoc
+  active_owner: firecrawl/anydoc
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/convert-documents-to-markdown/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - firecrawl/anydoc
+  active_owner: firecrawl/anydoc
+  content_hash: sha256:04cc0f3587ec792c83e4af942f88594205f360cddd540a3d869e28c58292bc6a
+- kind: project-relative
+  target: codex
+  value: .agents/skills/find-skills
+  runtime: null
+  scope: project
+  owners:
+  - vercel-labs/skills
+  active_owner: vercel-labs/skills
+  content_hash: null
+- kind: project-relative
+  target: codex
+  value: .agents/skills/find-skills/SKILL.md
+  runtime: null
+  scope: project
+  owners:
+  - vercel-labs/skills
+  active_owner: vercel-labs/skills
+  content_hash: sha256:c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f

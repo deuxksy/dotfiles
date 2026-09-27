@@ -7,3 +7,4 @@ DEPENDENCIES\.md$
 \.orig$
 \.\d{6}$                           # 날짜 접미사 백업 (treesitter.lua.260320)
 antigravity-cli/settings\.json$
+.gemini/settings.json

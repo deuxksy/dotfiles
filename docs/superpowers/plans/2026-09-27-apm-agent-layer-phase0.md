@@ -75,3 +75,16 @@ targets 미지정 시 kiro까지 자동 configure됨 → manifest `targets: [cla
 
 - apm이 org policy repo(`deuxksy/.github-private`) 조회 시도 → WARNING 출력(무해). 반복 시 `apm config` 비활성화 검토
 - 리스크 #7(enabled:false plugin 첫 세션 설치 여부), #8(kyolim codex/gemini 미설치 거동)는 Task 5 / Phase 3 실행 시점 검증 (각각 verify step 존재)
+
+## R8. symlink 교체 실증 (리스크 #2 확정 — Task 2 실행 중)
+
+- **CLI package-arg install**(`apm install -g <pkg>`)은 manifest를 갱신하며, 그 쓰기가 **rename이라 symlink를 실체 파일로 교체**한다. 이후 repo 편집이 apm과 분리되어 엔트리가 누적하는 사고 관찰
+- **plain install**(`apm install -g`)은 manifest를 재작성하지 않아 symlink 유지 확인
+- 운영 규칙: manifest를 건드리는 CLI 실행 후 `ls -la ~/.apm/apm.yml`로 symlink 확인 → 교체 시 `stow --no-folding -R -t ~ base` 복구. `install.sh`에 동일 점검 포함 (Task 7)
+
+## R9. microsoft/azure-skills 제외 (Task 2 ruling)
+
+- apm 0.32.0이 azure-skills 루트 패키지 적분 시 `Object of type mappingproxy is not JSON serializable` crash — manifest 형식 3종(`git:` 루트, `skills:` 필터, `git:`+`path:`, path 축약) 전부 동일 실패
+- CLI-arg 형식(`apm install -g microsoft/azure-skills/skills/microsoft-foundry`)만 작동하나 manifest 재현 불가 + stale lock reconciliation이 계속 재적분하므로 **manifest에서 제외**하고 배포본도 제거
+- 재설치(필요 시): `apm install -g microsoft/azure-skills/skills/microsoft-foundry` 후 lock·symlink 상태 점검. apm 상류 수정 후 manifest 재추가 권장 (microsoft/apm 이슈 후보)
+- 결과: manifest는 외부 skill 2종(firecrawl/anydoc, vercel-labs/skills)로 확정
