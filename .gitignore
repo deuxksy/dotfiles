@@ -50,6 +50,8 @@ result
 # oh-my-claudecode 플러그인 상태 (로컬 전용)
 .omc/
 .omx/
+# mimosa hook state (런타임 세션 상태)
+.mimosa/
 proxmox-jobs.sqlite3
 # llm CLI 대화 로그 DB (런타임 생성, 대화 전문 기록)
 base/.config/io.datasette.llm/logs.db
@@ -66,9 +68,9 @@ mo/.hermes/.env
 
 # OpenClaw MCP config (API keys in headers)
 **/mcporter.json
-# Claude settings.json (env 블록에 토큰 주입 리스크 → 비추적, settings.local.json은 추적 유지)
+# Claude settings.json (env 블록에 토큰 주입 리스크 → 비추적, windows/ 공통분은 추적)
 **/.claude/settings.json
-!settings.local.json
+/.claude/settings.local.json
 # .claude.json
 eve/.claude.json
 
