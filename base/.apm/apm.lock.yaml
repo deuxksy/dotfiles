@@ -3626,6 +3626,7 @@ mcp_configs:
     name: playwright-mcp
     transport: stdio
     args:
+    - -y
     - '@playwright/mcp@latest'
     registry: false
     command: npx
