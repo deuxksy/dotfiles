@@ -22,6 +22,14 @@ dependencies:
       path: plugins/sessions
     - git: deuxksy/ai-agent-skill
       path: plugins/review
+    - git: alibaba/open-code-review
+      path: skills/open-code-review
+    - git: cloudflare/security-audit-skill
+      path: skills/security-audit
+    - git: Tencent/WeKnora
+      path: cli/skills/weknora-shared
+    - git: Tencent/WeKnora
+      path: cli/skills/weknora-rag-search
   mcp:
     - name: context7
       registry: false
