@@ -94,3 +94,5 @@ base/.claude/.omc/*
 
 # playwright MCP 런타임 산출물 (스크린샷 캐시)
 .playwright-mcp/
+
+logs/
