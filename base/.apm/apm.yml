@@ -5,7 +5,6 @@ author: Crong
 targets:
   - claude
   - codex
-  - gemini
 dependencies:
   apm:
     - git: firecrawl/anydoc
@@ -13,15 +12,29 @@ dependencies:
     - git: obra/superpowers
     - git: Digital-Process-Tools/claude-remember
     - git: deuxksy/ai-agent-skill
-      path: plugins/git
+      path: plugins/dev
     - git: deuxksy/ai-agent-skill
       path: plugins/docs
     - git: deuxksy/ai-agent-skill
+      path: plugins/git
+    - git: deuxksy/ai-agent-skill
+      path: plugins/infra
+    - git: deuxksy/ai-agent-skill
+      path: plugins/jmeter
+    - git: deuxksy/ai-agent-skill
+      path: plugins/kisa
+    - git: deuxksy/ai-agent-skill
+      path: plugins/l10n
+    - git: deuxksy/ai-agent-skill
+      path: plugins/review
+    - git: deuxksy/ai-agent-skill
       path: plugins/rules
+    - git: deuxksy/ai-agent-skill
+      path: plugins/security
     - git: deuxksy/ai-agent-skill
       path: plugins/sessions
     - git: deuxksy/ai-agent-skill
-      path: plugins/review
+      path: plugins/trackers
     - git: alibaba/open-code-review
       path: skills/open-code-review
     - git: cloudflare/security-audit-skill
