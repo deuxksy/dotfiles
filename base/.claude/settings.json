@@ -41,26 +41,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/session-start-hook.sh\""
-          }
-        ]
-      },
-      {
-        "matcher": "startup|clear|compact",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "\"$HOME/.claude/hooks/superpowers/hooks/run-hook.cmd\" session-start",
-            "shell": "bash",
-            "async": false
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
             "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/session-start-hook.sh\""
           }
         ]
@@ -83,15 +63,6 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/user-prompt-hook.sh\""
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
             "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/user-prompt-hook.sh\""
           }
         ]
@@ -103,40 +74,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/post-tool-hook.sh\""
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
             "command": "bash \"/Users/crong/.claude/hooks/claude-remember/scripts/post-tool-hook.sh\""
           }
         ]
       }
     ],
     "SessionEnd": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/session-end-hook.sh\""
-          }
-        ]
-      },
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$HOME/.claude/hooks/claude-remember/scripts/session-end-hook.sh\"",
-            "timeout": 10
-          }
-        ]
-      },
       {
         "matcher": "*",
         "hooks": [
@@ -163,25 +106,20 @@
     "command": "statusline --cli=claude"
   },
   "enabledPlugins": {
-    "superpowers@claude-plugins-official": false,
     "code-review@claude-plugins-official": false,
     "claude-code-wakatime@wakatime": true,
     "notion@claude-plugins-official": false,
     "oh-my-claudecode@omc": true,
-    "remember@claude-plugins-official": false,
-    "typescript-lsp@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": false,
     "claude-code-setup@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
-    "chrome-devtools-mcp@claude-plugins-official": false,
-    "expo@claude-plugins-official": false,
     "glm-plan-usage@zai-coding-plugins": true,
     "glm-plan-bug@zai-coding-plugins": false,
     "gopls-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true,
-    "rust-analyzer-lsp@claude-plugins-official": true,
-    "jdtls-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true,
-    "kotlin-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": false,
+    "frontend-design@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "wakatime": {
@@ -197,23 +135,11 @@
         "path": "/Users/crong/.claude/plugins/vendor/zai-coding-plugins"
       },
       "autoUpdate": true
-    },
-    "claude-plugins-official": {
-      "source": {
-        "source": "github",
-        "repo": "anthropics/claude-plugins-official"
-      }
-    },
-    "omc": {
-      "source": {
-        "source": "github",
-        "repo": "Yeachan-Heo/oh-my-claudecode"
-      },
-      "autoUpdate": true
     }
   },
-  "language": "\ud55c\uad6d\uc5b4",
+  "language": "한국어",
   "tui": "fullscreen",
   "editorMode": "normal",
-  "autoCompactEnabled": true
+  "autoCompactEnabled": true,
+  "model": "haiku"
 }

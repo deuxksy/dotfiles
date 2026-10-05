@@ -19,6 +19,7 @@ export LANG=en_US.UTF-8
 . ~/.path
 . ~/.alias
 eval "$(sops -d ~/.key)"
+[[ -f ~/.env ]] && . ~/.env
 
 # initialise completions with ZSH's compinit (with -C flag for speed)
 autoload -Uz compinit && compinit -C
