@@ -1,7 +1,7 @@
 session_name: EVE
-start_directory: "~"
+start_directory: "~/git"
 windows:
-  - window_name: agent
+  - window_name: default
     layout: main-vertical
     panes:
-      - shell_command: cd ~/git
+      - shell_command: fastfetch
