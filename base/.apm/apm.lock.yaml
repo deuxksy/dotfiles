@@ -4826,25 +4826,18 @@ mcp_configs:
     name: dbhub
     transport: stdio
     args:
-    - -y
-    - '@bytebase/dbhub'
+    - -c
+    - exec npx -y @bytebase/dbhub --config "$HOME/.config/dbhub/dbhub.toml"
     registry: false
-    command: npx
+    command: sh
   doris-mcp-server:
     name: doris-mcp-server
     transport: stdio
-    env:
-      DORIS_HOST: ${DORIS_HOST}
-      DORIS_PORT: '9030'
-      DORIS_USER: ${DORIS_USER}
-      DORIS_PASSWORD: ${DORIS_PASSWORD}
-      DORIS_DATABASE: information_schema
     args:
-    - doris-mcp-server
-    - --transport
-    - stdio
+    - -c
+    - cd "$HOME/.config/doris-mcp" && exec uvx doris-mcp-server --transport stdio
     registry: false
-    command: uvx
+    command: sh
   kubernetes-mcp-server:
     name: kubernetes-mcp-server
     transport: stdio

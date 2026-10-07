@@ -37,12 +37,6 @@ dependencies:
       path: plugins/trackers
     - git: alibaba/open-code-review
       path: skills/open-code-review
-    - git: cloudflare/security-audit-skill
-      path: skills/security-audit
-    - git: Tencent/WeKnora
-      path: cli/skills/weknora-shared
-    - git: Tencent/WeKnora
-      path: cli/skills/weknora-rag-search
   mcp:
     - name: context7
       registry: false
@@ -54,17 +48,10 @@ dependencies:
     - name: doris-mcp-server
       registry: false
       transport: stdio
-      command: uvx
+      command: sh
       args:
-      - doris-mcp-server
-      - --transport
-      - stdio
-      env:
-        DORIS_HOST: ${DORIS_HOST}
-        DORIS_PORT: '9030'
-        DORIS_USER: ${DORIS_USER}
-        DORIS_PASSWORD: ${DORIS_PASSWORD}
-        DORIS_DATABASE: information_schema
+      - -c
+      - cd "$HOME/.config/doris-mcp" && exec uvx doris-mcp-server --transport stdio
     - name: proxmox-mcp-plus
       registry: false
       transport: stdio
@@ -82,10 +69,6 @@ dependencies:
       registry: false
       transport: stdio
       command: terraform-mcp-server
-    - name: aperture
-      registry: false
-      transport: http
-      url: https://ai.bun-bull.ts.net/v1/mcp
     - name: zread
       registry: false
       transport: http
@@ -130,6 +113,8 @@ dependencies:
       args:
         - -y
         - '@bytebase/dbhub'
+        - --config
+        - /Users/crong/.config/dbhub/dbhub.toml
     - name: kubernetes-mcp-server
       registry: false
       transport: stdio
