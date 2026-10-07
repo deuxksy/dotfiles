@@ -9,6 +9,11 @@ else
     alias ll='ls -alfh'
 fi
 
+clauded () {
+        mkdir -p ~/.claude/logs
+        claude --debug --debug-file ~/.claude/logs/$(date +%y%m%d%H%M%S).log "$@"
+}
+
 alias grep='grep --color=auto'
 alias vi='nvim'
 alias vim='nvim'
