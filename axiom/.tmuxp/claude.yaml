@@ -1,4 +1,4 @@
-session_name: ZAI
+session_name: claude
 start_directory: "~"
 windows:
   - window_name: claude
