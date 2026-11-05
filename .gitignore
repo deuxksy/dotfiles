@@ -65,6 +65,8 @@ base/.config/io.datasette.llm/logs.db
 
 # --- Secrets (plain text .env, tracked as .env.sops) ---
 mo/.hermes/.env
+# Holmes model_list (API key 평문 포함)
+axiom/.holmes/model_list.yaml
 
 # OpenClaw MCP config (API keys in headers)
 **/mcporter.json
