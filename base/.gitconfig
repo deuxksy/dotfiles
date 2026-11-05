@@ -65,7 +65,11 @@ colorMoved = default
 	rebase = false
 [credential]
 	helper = store
-[credential "https://dev.azure.com"]
-	useHttpPath = true
 [push]
 	autoSetupRemote = true
+[credential "https://dev.azure.com"]
+	helper =
+	helper = /usr/local/share/gcm-core/git-credential-manager
+	useHttpPath = true
+[credential "https://git.hanbang-ai.kr"]
+	provider = generic
