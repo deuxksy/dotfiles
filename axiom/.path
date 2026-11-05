@@ -9,6 +9,7 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 export LLM_USER_PATH="$HOME/.config/io.datasette.llm"
 export DISABLE_AUTO_TITLE='true'
 export KUBECONFIG=~/.kube/config:~/.kube/ecoai.config
+export HOMEBREW_BUNDLE_FILE=~/.homebrew/Brewfile
 
 # HolmesGPT
 export MODEL_LIST_FILE_LOCATION="$HOME/.holmes/model_list.yaml"
