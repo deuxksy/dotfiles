@@ -12,7 +12,7 @@
 		<string>fontFamily=Hack Nerd Font</string>
 		<string>-I</string>
 		<string>/Users/crong/.config/ttyd/index.html</string>
-		<string>zsh</string>
+		<string>/Users/crong/.config/ttyd/attach.sh</string>
 	</array>
 	<key>EnvironmentVariables</key>
 	<dict>

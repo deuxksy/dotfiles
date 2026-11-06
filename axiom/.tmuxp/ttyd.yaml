@@ -1,0 +1,7 @@
+session_name: TTYD
+start_directory: ~/git
+windows:
+  - window_name: main
+    layout: main-vertical
+    panes:
+      - shell_command: fastfetch
