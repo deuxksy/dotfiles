@@ -9,6 +9,7 @@
 - [Bazzite Fcitx5 Setup](how-to/bazzite-fcitx5-hangul-setup.md) - Bazzite KDE Wayland 환경 Fcitx5 한글 입력기 설정
 - [NixOS Fcitx5 Setup](how-to/fcitx5-wayland-kde.md) - NixOS KDE Wayland 환경 Fcitx5 한글 입력기 설정
 - [ttyd LaunchAgent Setup](how-to/ttyd-brew-launchagent-setup.md) - macOS ttyd brew 설치 및 LaunchAgent 상시 실행, Tailscale 접속
+- [WebSSH2 OrbStack Setup](how-to/2026-11-06-webssh2-orbstack-setup.md) - axiom OrbStack WebSSH2 SSH 게이트웨이 구축 및 웹폰트 적용
 
 ### 🟣 Explanation (설계 및 개념)
 - [GNU Stow Structure Design](explanation/2026-03-03-stow-structure-design.md) - multi-host Stow 패키지 레이아웃 설계 문서

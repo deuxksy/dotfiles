@@ -21,6 +21,7 @@
 - [NixOS Fcitx5 Setup](okf/how-to/fcitx5-wayland-kde.md) - NixOS KDE Wayland 환경 Fcitx5 한글 입력기 설정
 - [Bazzite Fcitx5 Setup](okf/how-to/bazzite-fcitx5-hangul-setup.md) - Bazzite KDE Wayland 환경 Fcitx5 한글 입력기 설정
 - [ttyd LaunchAgent Setup](okf/how-to/ttyd-brew-launchagent-setup.md) - macOS ttyd brew 설치 및 LaunchAgent 상시 실행, Tailscale 접속
+- [WebSSH2 OrbStack Setup](okf/how-to/2026-11-06-webssh2-orbstack-setup.md) - axiom OrbStack WebSSH2 SSH 게이트웨이 구축 및 웹폰트 적용
 
 ### 🔵 Reference (참조 자료)
 - [Main README](../README.md) - 메인 프로젝트 개요, 호스트/하드웨어 매트릭스 및 네트워크 구조
