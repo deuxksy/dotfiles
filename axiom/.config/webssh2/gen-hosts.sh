@@ -16,6 +16,14 @@ keypath=${4:-$HOME/.ssh/id_ed25519}
 
 [ -f "$keypath" ] || { echo "key not found: $keypath" >&2; exit 1; }
 
+# passphrase 있는 키는 WebSSH2가 못 씀 — 브라우저 접속 시점 실패 전에 발각
+ssh-keygen -y -P "" -f "$keypath" >/dev/null 2>&1 || {
+  echo "passphrase가 있는 키는 사용 불가: $keypath" >&2
+  exit 1
+}
+
+umask 077  # 산출물에 privateKey 포함 — 소유자만 읽기 가능
+
 outdir=$HOME/.local/share/webssh2/hosts
 mkdir -p "$outdir"
 
@@ -24,5 +32,6 @@ secret=$(openssl rand -hex 32)
 
 jq -n --arg h "$host" --arg u "$user" --arg k "$(cat "$keypath")" --arg s "$secret" \
   '{ssh:{host:$h}, user:{name:$u, privateKey:$k}, session:{secret:$s}}' > "$outdir/$alias_name.json"
+chmod 600 "$outdir/$alias_name.json"  # 기존 파일 재작성 시 umask 미적용 방어
 
 echo "written: $outdir/$alias_name.json"

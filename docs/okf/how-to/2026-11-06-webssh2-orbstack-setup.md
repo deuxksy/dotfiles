@@ -74,6 +74,7 @@ docker compose -f ~/.config/webssh2/docker-compose.yml ps
 ## 문제 해결
 
 - **403 Forbidden**: 서버 자격증명이 설정된 컨테이너는 `ssh.host`로 고정된 호스트만 접속 허용 — URL의 호스트가 config의 host와 일치하는지 확인
+- **passphrase 있는 키**: `gen-hosts.sh`가 생성을 거부한다 — WebSSH2는 passphrase를 못 넘기므로 키에서 제거하거나 전용 무보호 키를 사용
 - **기본 설정으로 뜸 (자동로그인 안 됨)**: config.json 마운트 경로 확인 — 이미지 WorkingDir는 `/srv/webssh2`
 - **`${HOME}` 미전개**: `docker compose config`로 볼륨 경로가 절대경로인지 확인
 - **authorized_keys 미등록**: `ssh -o BatchMode=yes -i ~/.ssh/id_ed25519 crong@axiom.bun-bull.ts.net hostname`으로 사전 검증, 실패 시 공개키 등록
