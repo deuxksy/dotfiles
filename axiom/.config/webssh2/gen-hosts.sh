@@ -19,7 +19,10 @@ keypath=${4:-$HOME/.ssh/id_ed25519}
 outdir=$HOME/.local/share/webssh2/hosts
 mkdir -p "$outdir"
 
-jq -n --arg h "$host" --arg u "$user" --arg k "$(cat "$keypath")" \
-  '{ssh:{host:$h}, user:{name:$u, privateKey:$k}}' > "$outdir/$alias_name.json"
+# session.secret: 재시작 간 세션 유지 — 산출물(로컬)에만 존재, repo 시크릿 아님
+secret=$(openssl rand -hex 32)
+
+jq -n --arg h "$host" --arg u "$user" --arg k "$(cat "$keypath")" --arg s "$secret" \
+  '{ssh:{host:$h}, user:{name:$u, privateKey:$k}, session:{secret:$s}}' > "$outdir/$alias_name.json"
 
 echo "written: $outdir/$alias_name.json"
