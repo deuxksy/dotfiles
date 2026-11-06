@@ -68,7 +68,7 @@ docker compose -f ~/.config/webssh2/docker-compose.yml ps
 | :--- | :--- |
 | 키 로테이션 | `gen-hosts.sh` 재실행 → `docker compose restart` |
 | 이미지 업데이트 | `docker compose pull` → `gen-client.sh` 재실행(클라이언트 원본 갱신) → `up -d` |
-| 완전 재구축 | `gen-hosts.sh` + `gen-client.sh` → `up -d --force-recreate` (host key 스토어는 named volume `webssh2-data`에 유지) |
+| 완전 재구축 | `gen-hosts.sh` + `gen-client.sh` → `up -d --force-recreate` (named volume `webssh2-data`는 유지되나, host key는 hostKeyVerification 활성화 전까지 기록되지 않음) |
 | 호스트 추가 (eve/brla 직접 진입) | `gen-hosts.sh <alias> <fqdn> <user>` 실행 + compose에 서비스 블록 추가(포트 2223~, 403 정책상 호스트당 컨테이너 필요) |
 
 ## 문제 해결

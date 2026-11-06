@@ -31,7 +31,6 @@ macOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 s
 | :--- | :--- | :--- | :--- |
 | axiom | Mac Studio | macOS | stow: `base` + `axiom` |
 | eve | Mac mini | macOS | stow: `base` + `eve` |
-| mo | AyaNEO AM02 | Bazzite | stow: `base` + `bazzite` |
 | walle | AOOSTAR WTR R1 | Proxmox (Debian) | stow: `base` + `walle` |
 | girl | Steam Deck | SteamOS | stow: `base` + `girl` |
 | auxo | Raspberry Pi 3 Model B | Debian 13 (trixie) | stow: `base` + `auxo` |

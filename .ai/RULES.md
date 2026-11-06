@@ -6,7 +6,6 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 
 | Host | OS | Role | 패키지 관리 |
 | :--- | :--- | :--- | :--- |
-| mo | Bazzite | 개발 워크스테이션 | stow: `base` + `bazzite`, Brewfile |
 | axiom | macOS | 개발/일상 | Brewfile |
 | eve | macOS | 개발/일상 | Brewfile |
 | girl | SteamOS | 게임/개발 | mise |
