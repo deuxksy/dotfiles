@@ -20,6 +20,7 @@
 - [sops Key Encryption Plan](okf/how-to/2026-04-03-sops-key-encryption-implementation.md) - sops/age 암호화 키 적용 및 복호화 절차
 - [NixOS Fcitx5 Setup](okf/how-to/fcitx5-wayland-kde.md) - NixOS KDE Wayland 환경 Fcitx5 한글 입력기 설정
 - [Bazzite Fcitx5 Setup](okf/how-to/bazzite-fcitx5-hangul-setup.md) - Bazzite KDE Wayland 환경 Fcitx5 한글 입력기 설정
+- [ttyd LaunchAgent Setup](okf/how-to/ttyd-brew-launchagent-setup.md) - macOS ttyd brew 설치 및 LaunchAgent 상시 실행, Tailscale 접속
 
 ### 🔵 Reference (참조 자료)
 - [Main README](../README.md) - 메인 프로젝트 개요, 호스트/하드웨어 매트릭스 및 네트워크 구조

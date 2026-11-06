@@ -3,6 +3,10 @@ README\.md$
 \.bak$
 # ~/.claude/settings.local.json은 base 패키지가 소유 — 충돌 방지
 settings\.local\.json$
+# ~/.claude/settings.zai는 홈에 실제 파일 유지(백업용, 비추적) — stow 대상 제외
+settings\.zai$
+# macOS Finder residue
+\.DS_Store$
 # runtime state는 gitignored residue — 배포 대상 아님
 ^\.omc$
 ^\.remember$
