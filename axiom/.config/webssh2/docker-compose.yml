@@ -6,6 +6,8 @@ services:
       - "2222:2222"
     volumes:
       - ${HOME}/.local/share/webssh2/hosts/axiom.json:/srv/webssh2/config.json:ro
+      # Hack Nerd Font 웹폰트 주입 client.htm — gen-client.sh 산출물, 이미지 업데이트 후 재실행
+      - ${HOME}/.local/share/webssh2/client.htm:/srv/webssh2/node_modules/webssh2_client/client/public/client.htm:ro
       - webssh2-data:/data
     environment:
       # tailnet 대역 외 목적지 차단 — 방문자 자격증명 open proxy 방지
