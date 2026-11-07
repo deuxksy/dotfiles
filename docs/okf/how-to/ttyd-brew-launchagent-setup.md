@@ -28,12 +28,14 @@ macOS(axiom)에 ttyd를 brew로 설치하고 LaunchAgent로 상시 실행한다.
 
 **왜 `brew services`가 아닌가**: ttyd formula에 service stanza가 정의되어 있지 않아 `brew services start ttyd`가 동작하지 않는다 (`brew services info ttyd` → `Schedulable: false`). brew는 설치만 담당하고 실행은 launchd가 담당한다.
 
-**실행 옵션**: `ttyd -W -t fontFamily='Hack Nerd Font' -I ~/.config/ttyd/index.html zsh`
+**실행 옵션**: `ttyd -W -t fontFamily="'Hack Nerd Font', 'D2Coding', monospace" -t unicodeVersion=11 -I ~/.config/ttyd/index.html ~/.config/ttyd/attach.sh`
 
 - `-W`: 웹 클라이언트에서 키보드 입력 허용 (writable)
-- `-t fontFamily=Hack Nerd Font`: xterm.js 클라이언트 렌더링 폰트 지정 — Powerlevel10k가 출력하는 Nerd Font 글리프를 브라우저에서 정상 표시
-- `-I ~/.config/ttyd/index.html`: 커스텀 HTML 지정 — `font-family`가 로컬 설치 폰트만 참조하면 폰트 없는 기기(Android 등)에서 깨지므로, jsdelivr CDN의 Hack Nerd Font 웹폰트(gzip 약 1.4MB, 브라우저 캐시)를 `@font-face`로 로드한다. 어느 기기에서나 동일 렌더링. 첫 방문은 폰트 다운로드 동안 폴백 폰트로 표시되다 전환되며, 이후 캐시로 즉시 적용된다
-- `zsh`: PTY 할당으로 interactive 셸 실행 (`~/.zshrc` 로드)
+- `-t fontFamily='Hack Nerd Font', 'D2Coding', monospace`: xterm.js 클라이언트 렌더링 폰트 지정 — 영문/아이콘은 Hack Nerd Font, 한글(CJK)은 D2Coding 고정폭 폰트로 폴백 렌더링
+- `-t unicodeVersion=11`: xterm.js CJK 와이드 문자/이모지 폭 기준을 Unicode 11에 맞춤
+- `-I ~/.config/ttyd/index.html`: 커스텀 HTML 지정 — 폰트 미설치 기기(Android Chrome 포함)를 위해 jsdelivr CDN의 Hack Nerd Font 및 D2Coding(WOOF2) 웹폰트를 `@font-face`로 로드. 어느 기기에서나 동일 렌더링
+- `attach.sh`: PTY 할당으로 interactive `tmux -u attach -t TTYD` 실행 (UTF-8 모드 강제)
+- `EnvironmentVariables`: `LANG=ko_KR.UTF-8`, `LC_ALL=ko_KR.UTF-8` 지정으로 launchd 데몬 환경의 CJK 인코딩 보장
 - 포트: 기본값 7681, 인터페이스: 기본값 모든 인터페이스
 - 인증 없음 — tailnet 자체가 신뢰 경계
 

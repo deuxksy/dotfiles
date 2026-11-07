@@ -9,7 +9,9 @@
 		<string>/opt/homebrew/bin/ttyd</string>
 		<string>-W</string>
 		<string>-t</string>
-		<string>fontFamily=Hack Nerd Font</string>
+		<string>fontFamily='Hack Nerd Font', 'D2Coding', monospace</string>
+		<string>-t</string>
+		<string>unicodeVersion=11</string>
 		<string>-I</string>
 		<string>/Users/crong/.config/ttyd/index.html</string>
 		<string>/Users/crong/.config/ttyd/attach.sh</string>
@@ -20,6 +22,10 @@
 		<string>/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
 		<key>HOME</key>
 		<string>/Users/crong</string>
+		<key>LANG</key>
+		<string>ko_KR.UTF-8</string>
+		<key>LC_ALL</key>
+		<string>ko_KR.UTF-8</string>
 	</dict>
 	<key>WorkingDirectory</key>
 	<string>/Users/crong</string>
