@@ -1,0 +1,25 @@
+         -o          o-             u0_a255@localhost
+          +hydNNNNdyh+              -----------------
+        +mMMMMMMMMMMMMm+            OS: Android REL 16 aarch64
+      `dMMm:NMMMMMMN:mMMd`          Host: LENOVO TB376FC
+      hMMMMMMMMMMMMMMMMMMh          Kernel: Linux 6.6.127-android15-8-ga8edae281283-ab15790107-4k
+  ..  yyyyyyyyyyyyyyyyyyyy  ..      Uptime: 1 day, 18 hours, 28 mins
+.mMMm`MMMMMMMMMMMMMMMMMMMM`mMMm.    Packages: 263 (dpkg)
+:MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:    Shell: bash 5.3.9
+:MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:    DE: TB376FC_CN_OPEN_USER_Q00012.1_A16_ZUXOS_2.0.10.485_ST_261028
+:MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:    WM: WindowManager (SurfaceFlinger)
+:MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM:    Terminal: Termux googleplay.2026.10.09
+-MMMM-MMMMMMMMMMMMMMMMMMMM-MMMM-    Terminal Font: Hack Nerd Font
+ +yy+ MMMMMMMMMMMMMMMMMMMM +yy+     CPU: Qualcomm Snapdragon 8s Gen 4 [SM8735P] (1+3+2+2) @ 3.21 GHz
+      mMMMMMMMMMMMMMMMMMMm          GPU: Qualcomm Adreno (TM) 825
+      `/++MMMMh++hMMMM++/`          Memory: 5.87 GiB / 7.40 GiB (79%)
+          MMMMo  oMMMM              Swap: 2.08 GiB / 5.92 GiB (35%)
+          MMMMo  oMMMM              Disk (/): 11.21 GiB / 11.24 GiB (100%) - ext4 [Read-only]
+          oNMm-  -mMNs              Disk (/mnt/media_rw/6EAB-F982): 1.68 GiB / 238.49 GiB (1%) - exfat [External]
+                                    Disk (/storage/emulated): 38.55 GiB / 82.52 GiB (47%) - fuse
+                                    Local IP (tun1): 100.67.197.80/32
+                                    Local IP (wlan0): 192.168.100.69/24
+                                    Locale: en_US.UTF-8
+                                    
+                                    [40m   [41m   [42m   [43m   [44m   [45m   [46m   [47m   [m
+                                    [100m   [101m   [102m   [103m   [104m   [105m   [106m   [107m   [m
