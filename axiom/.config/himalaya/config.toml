@@ -1,0 +1,21 @@
+# himalaya — hiworks 계정 (사양: docs/superpowers/specs/2026-11-07-hiworks-mail-design.md)
+# 수신: getmail이 Maildir에 적립 (himalaya는 maildir backend로 조회만)
+# 발송: SMTP 465 SSL, 비밀번호는 passwd-cmd로 로컬 .env에서만 조회
+[accounts.hiworks]
+default = true
+email = "crong@kyolimsoft.com"
+display-name = "김석영"
+
+backend.type = "maildir"
+backend.root-dir = "~/.local/share/hiworks-mail"
+
+message.send.backend.type = "smtp"
+message.send.backend.host = "smtps.hiworks.com"
+message.send.backend.port = 465
+message.send.backend.encryption.type = "tls"
+message.send.backend.login = "crong@kyolimsoft.com"
+message.send.backend.auth.type = "password"
+message.send.backend.auth.cmd = "sh -c 'grep ^HIWORKS_MAIL_PASS= ~/.config/hiworks/.env | cut -d= -f2-'"
+
+# Maildir에 Sent 폴더 없음 — 발송 사본 저장 시도로 인한 에러 방지
+message.send.save-copy = false
