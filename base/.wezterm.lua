@@ -73,4 +73,27 @@ config.check_for_updates = false
 config.audible_bell = 'Disabled'
 config.notification_handling = 'AlwaysShow'
 
+-- ============================================================================
+-- Notification
+-- ============================================================================
+-- Bell 이벤트 수신 시 데스크톱 알림 표시
+wezterm.on('bell', function(window, pane)
+  local title = pane:get_title() or 'Terminal'
+  window:toast_notification('WezTerm', 'Bell: ' .. title, nil, 4000)
+end)
+
+-- CLI/원격(OSC 1337 SetUserVar=NOTIFY=<base64>) 알림 수신
+-- 포맷: "메시지" 또는 "제목|메시지" 또는 "제목|메시지|<중복방지용 값>"
+wezterm.on('user-var-changed', function(window, pane, name, value)
+  if name ~= 'NOTIFY' or not value or value == '' then
+    return
+  end
+  local title, message = value:match('^([^|]+)|([^|]+)')
+  if not title then
+    title = 'WezTerm'
+    message = value
+  end
+  window:toast_notification(title, message, nil, 4000)
+end)
+
 return config
