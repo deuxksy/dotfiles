@@ -71,5 +71,6 @@ config.enable_kitty_graphics = true
 config.scrollback_lines = 10000
 config.check_for_updates = false
 config.audible_bell = 'Disabled'
+config.notification_handling = 'AlwaysShow'
 
 return config
