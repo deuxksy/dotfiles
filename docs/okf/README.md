@@ -10,12 +10,16 @@
 - [NixOS Fcitx5 Setup](how-to/fcitx5-wayland-kde.md) - NixOS KDE Wayland 환경 Fcitx5 한글 입력기 설정
 - [ttyd LaunchAgent Setup](how-to/ttyd-brew-launchagent-setup.md) - macOS ttyd brew 설치 및 LaunchAgent 상시 실행, Tailscale 접속
 - [WebSSH2 OrbStack Setup](how-to/2026-11-06-webssh2-orbstack-setup.md) - axiom OrbStack WebSSH2 SSH 게이트웨이 구축 및 웹폰트 적용
+- [Project Optional MCP·plugin](how-to/2026-11-14-project-optional-mcp-plugin.md) - 프로젝트별 선택적 MCP·plugin snippet 카탈로그
 
 ### 🟣 Explanation (설계 및 개념)
 - [GNU Stow Structure Design](explanation/2026-03-03-stow-structure-design.md) - multi-host Stow 패키지 레이아웃 설계 문서
 - [sops Key Encryption Design](explanation/2026-04-03-sops-key-encryption-design.md) - sops/age 기반 시크릿 관리 구조 설계 문서
 - [Desktop Terminal Stack](explanation/desktop.md) - WezTerm+tmux+Neovim 통합 환경 아키텍처
 - [apm Agent Layer Design](explanation/2026-09-27-apm-agent-layer-design.md) - apm 기반 AI agent toolchain 공통화·자동화 설계 문서
+
+### 🔵 Reference (참조 정보)
+- [AI Agent 의존성 인벤토리](reference/ai-agent-dependencies.md) - 전역/프로젝트 tier MCP·plugin 버전 및 상태
 
 ---
 *참고: `tutorials/` 및 `reference/` 문서는 신규 작성 시 본 허브에 인덱싱됩니다.*

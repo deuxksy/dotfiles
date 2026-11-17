@@ -1,0 +1,6 @@
+
+# APM dependencies
+apm_modules/
+
+# apm이 env를 resolve해 생성 — 평문 시크릿 포함, 재생성 가능
+.mcp.json
