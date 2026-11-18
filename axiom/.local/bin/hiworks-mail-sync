@@ -6,7 +6,8 @@ set -euo pipefail
 
 ENV_FILE="$HOME/.config/hiworks/.env"
 CACHE_DIR="$HOME/.cache/hiworks"
-MAILDIR="$HOME/.local/share/hiworks-mail"
+# himalaya v2 maildir: root 아래 mailbox별 Maildir — inbox는 <root>/inbox
+MAILDIR="$HOME/.local/share/hiworks-mail/inbox"
 RCFILE="$CACHE_DIR/getmailrc"
 
 # .env 검사: 존재 + 퍼미션 600 아니면 진행 금지 (평문 유출 방지)
@@ -50,7 +51,7 @@ password = ${HIWORKS_MAIL_PASS}
 
 [destination]
 type = Maildir
-path = ${MAILDIR}
+path = ${MAILDIR}/
 
 [options]
 delete = false
