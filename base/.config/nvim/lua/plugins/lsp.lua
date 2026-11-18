@@ -39,7 +39,7 @@ return {
                 "rust_analyzer",
                 -- Go
                 "gopls",
-                -- Nix (Linux/macOS만)
+                -- Nix (NixOS에서만)
                 "nil_ls",
                 -- Java
                 "jdtls",
@@ -55,8 +55,8 @@ return {
                 "terraformls",
             }
 
-            -- Windows에서 nil_ls 제외 (Nix 미지원)
-            if health.is_windows then
+            -- Windows/macOS에서 nil_ls 제외 (Nix는 NixOS에서만 사용)
+            if health.is_windows or health.is_mac then
                 servers = vim.tbl_filter(function(s)
                     return s ~= "nil_ls"
                 end, servers)
