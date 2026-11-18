@@ -5,6 +5,7 @@
 - 파일 경로: 절대 경로보다는 프로젝트 루트 기준의 상대 경로를 사용한다.
 - 파괴적 명령어: 사용자에게 확인 받은 후에만 실행. 대상 예시:
   - 파일/디렉토리 삭제: `rm`, `del`, `rmdir`, `rd`, `rm -rf`
+    - 예외: `rm .git/index.lock` — 0바이트·소유 git 프로세스 없음으로 검증된 stale lock이면 확인 없이 제거
   - 되돌릴 수 없는 git 작업: `git reset --hard`, `git clean -fd`, `git push --force`, `git rebase`, `git checkout --` (변경사항 폐기)
   - 시스템/디스크: `format`, `mkfs`, `dd`, `diskpart`
   - 프로세스/서비스: `kill -9`, `taskkill /F`, `shutdown`, `reboot`
