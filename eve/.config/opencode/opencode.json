@@ -23,34 +23,10 @@
           "tool_call": true
         }
       }
-    },
-    "aperture-openai-compatible": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "Aperture (Completions API)",
-      "options": {
-        "baseURL": "https://ai.bun-bull.ts.net/v1",
-        "apiKey": "not-required"
-      },
-      "models": {
-        "qwen3.8-27b": {
-          "name": "qwen3.8-27b",
-          "tool_call": true
-        },
-        "qwen3.8-flash": {
-          "name": "qwen3.8-flash",
-          "tool_call": true
-        },
-        "qwen3.8-max": {
-          "name": "qwen3.8-max",
-          "tool_call": true
-        }
-      }
     }
+    
   },
   "mcp": {
-    "aperture": {
-      "type": "remote",
-      "url": "https://ai.bun-bull.ts.net/v1/mcp"
-    }
+    
   }
 }

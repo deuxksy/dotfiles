@@ -70,6 +70,8 @@ axiom/.holmes/model_list.yaml
 
 # OpenClaw MCP config (API keys in headers)
 **/mcporter.json
+# 은퇴한 apm MCP config 스냅샷 (API key·token 평문 포함)
+base/.apm/.mcp.json.retired-*
 # Claude settings.json (env 블록에 토큰 주입 리스크 → 비추적, windows/ 공통분은 추적)
 **/.claude/settings.json
 /.claude/settings.local.json
