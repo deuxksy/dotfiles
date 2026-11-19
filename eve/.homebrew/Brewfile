@@ -57,7 +57,6 @@ brew "chafa"
 brew "iperf3"
 # AI
 brew "himalaya"
-brew "getmail6"
 brew "wakatime-cli"
 brew "kubectl-ai"
 brew "opencode"
