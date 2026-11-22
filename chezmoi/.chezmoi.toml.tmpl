@@ -1,0 +1,4 @@
+{{- $host := .chezmoi.hostname -}}
+[data]
+    host = {{ $host | quote }}
+    os = {{ .chezmoi.os | quote }}

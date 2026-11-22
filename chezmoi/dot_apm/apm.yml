@@ -1,0 +1,70 @@
+name: global-agents
+version: 1.2.0
+description: User-global AI agent dependencies - hook-less skills and MCP servers (hook-bearing plugins are managed by each agent's native channel)
+author: Crong
+targets:
+  - claude
+  - codex
+dependencies:
+  apm:
+    - git: vercel-labs/skills
+    - git: deuxksy/ai-agent-skill
+      path: plugins/dev
+    - git: deuxksy/ai-agent-skill
+      path: plugins/docs
+    - git: deuxksy/ai-agent-skill
+      path: plugins/git
+    - git: deuxksy/ai-agent-skill
+      path: plugins/infra
+    - git: deuxksy/ai-agent-skill
+      path: plugins/jmeter
+    - git: deuxksy/ai-agent-skill
+      path: plugins/kisa
+    - git: deuxksy/ai-agent-skill
+      path: plugins/l10n
+    - git: deuxksy/ai-agent-skill
+      path: plugins/review
+    - git: deuxksy/ai-agent-skill
+      path: plugins/rules
+    - git: deuxksy/ai-agent-skill
+      path: plugins/security
+    - git: deuxksy/ai-agent-skill
+      path: plugins/sessions
+    - git: deuxksy/ai-agent-skill
+      path: plugins/trackers
+  mcp:
+    - name: context7
+      registry: false
+      transport: stdio
+      command: npx
+      args:
+        - -y
+        - '@upstash/context7-mcp'
+    - name: serena
+      registry: false
+      transport: stdio
+      command: serena
+      args:
+        - start-mcp-server
+        - --context=claude-code
+        - --project-from-cwd
+    - name: playwright-mcp
+      registry: false
+      transport: stdio
+      command: npx
+      args:
+        - -y
+        - '@playwright/mcp@latest'
+    - name: notion
+      registry: false
+      transport: http
+      url: https://mcp.notion.com/mcp
+    - name: appium-mcp
+      registry: false
+      transport: stdio
+      command: npx
+      args:
+        - -y
+        - appium-mcp@latest
+includes: auto
+scripts: {}

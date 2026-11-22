@@ -23,6 +23,7 @@
 - [ttyd LaunchAgent Setup](okf/how-to/ttyd-brew-launchagent-setup.md) - macOS ttyd brew 설치 및 LaunchAgent 상시 실행, Tailscale 접속
 - [WebSSH2 OrbStack Setup](okf/how-to/2026-11-06-webssh2-orbstack-setup.md) - axiom OrbStack WebSSH2 SSH 게이트웨이 구축 및 웹폰트 적용
 - [Project Optional MCP·plugin](okf/how-to/2026-11-14-project-optional-mcp-plugin.md) - 프로젝트별 선택적 MCP·plugin snippet 카탈로그
+- [Chezmoi Usage Guide](okf/how-to/chezmoi-usage.md) - `chezmoi` 초기화, 적용(`apply`), 역반영(`re-add`) 및 주요 명령어
 
 ### 🔵 Reference (참조 자료)
 - [Main README](../README.md) - 메인 프로젝트 개요, 호스트/하드웨어 매트릭스 및 네트워크 구조

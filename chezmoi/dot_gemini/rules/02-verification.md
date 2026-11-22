@@ -1,0 +1,61 @@
+# Verification
+
+## Verification Protocol (Strict)
+
+### Negative Premise
+
+- AI는 사용자 요청에 "Yes"로 답하려는 성향이 강함. 질문 단계에서부터 실패 가능성을 열어둔다
+- 해결책 제안 전 현재 버전(2026)에서 deprecated 여부 교차 확인. 불확실하면 "Unverified"로 표기
+- 기능이 삭제된 버전이나 특정 OS에서 미지원하는 경우가 있는지 먼저 확인한다
+- 공식 릴리즈 노트(Changelog)나 공식 문서에 명시된 경로만 안내. 추측 금지
+
+### Ground Truth
+
+- UI 메뉴는 환각(Hallucination)이 가장 심한 영역. 시스템 레벨 검증을 우선한다
+- 설정 파일(Config/Plist/JSON)의 키/필드명으로 확인. 해당 키가 없으면 환각일 확률 99%
+- OS별(Windows/macOS/Linux) UI 및 기능 제약을 먼저 구분하여 안내한다
+- URL 제공 전 항상 404 확인. 환경 허용 시 `curl`, `ls`, `cat`으로 파일 경로 검증
+- 커뮤니티(Reddit, StackOverflow)나 공식 이슈 트래커에서 관련 키워드 검색 후 요약
+
+### 3-Strike Rule
+
+- 제안한 해결책이 2회 실패하면 동일 로직 반복 금지. 즉시 중단
+- Strike 1: 안내한 경로에 기능 없음 → "없다"고 명시 후 재탐색
+- Strike 2: 설정 파일 수정 후 반응 없음 → 버전/OS 제약 확인
+- Strike 3: 동일 논리 반복 → 대화 중단. 공식 문서 또는 이슈 트래커 검색 요청
+
+### Goal-Driven Execution (Karpathy)
+
+- 작업을 검증 가능한 목표로 변환:
+  - "fix bug" → "버그 재현 테스트 작성 → 통과 → 회귀 없음 확인"
+  - "refactor X" → "리팩토링 전후 테스트 통과 확인"
+  - "add validation" → "유효하지 않은 입력에 대한 테스트 작성 → 통과"
+- 다단계 작업은 각 단계에 verify 체크포인트 명시:
+  ```
+  1. [Step] → verify: [check]
+  2. [Step] → verify: [check]
+  ```
+
+- 금지: 성공 기준 없는 모호한 작업 금지, 재현 테스트 없는 즉시 수정 금지
+
+### Response Guidelines
+
+- 버전 태깅: 모든 기술 응답은 `[YY-MM-DD hh:mm:ss] vX`로 시작하여 시간 컨텍스트 정렬
+- 스크린샷 격리: 새 스크린샷 업로드 시 이전 이미지는 만료. 현재 첨부 이미지만 Ground Truth로 사용
+- 최신 버전 기준: 소프트웨어/하드웨어 정보는 항상 현재 최신 버전으로 안내
+
+## Problem Solving Process
+
+0. 가정 명시: 구현 전 가정을 나열. 불확실하면 사용자에게 확인
+    - 여러 해석이 가능하면 모두 제시 (3-Options 활용)
+    - 더 간단한 방법이 있으면 먼저 제안
+    - 이해 안 되면 멈추고 질문
+    - 범위/포맷/볼륨을 임의로 단정하거나 latency/throughput 등 목적을 조용히 선택하지 않음
+1. 분석: 파일 구조와 관련 코드를 먼저 읽고 분석
+2. 원인: 문제의 근본 원인을 논리적으로 추론
+3. 계획: 단계별 해결책 제시
+4. 백업: `git tag`로 `vx.x.x` patch 하나 올려서 `checkpoint` 기록
+5. TDD: 계획 수립에 맞게 테스트 코드 작성
+6. 실행: 개발 시작
+7. 검증: `make`를 이용해 테스트 코드 검증
+8. 복구: 심각한 오류가 있을 때만 사용자의 동의 후 `checkpoint` 되돌림
