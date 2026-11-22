@@ -22,12 +22,14 @@
 - [Bazzite Fcitx5 Setup](okf/how-to/bazzite-fcitx5-hangul-setup.md) - Bazzite KDE Wayland 환경 Fcitx5 한글 입력기 설정
 - [ttyd LaunchAgent Setup](okf/how-to/ttyd-brew-launchagent-setup.md) - macOS ttyd brew 설치 및 LaunchAgent 상시 실행, Tailscale 접속
 - [WebSSH2 OrbStack Setup](okf/how-to/2026-11-06-webssh2-orbstack-setup.md) - axiom OrbStack WebSSH2 SSH 게이트웨이 구축 및 웹폰트 적용
+- [Project Optional MCP·plugin](okf/how-to/2026-11-14-project-optional-mcp-plugin.md) - 프로젝트별 선택적 MCP·plugin snippet 카탈로그
 
 ### 🔵 Reference (참조 자료)
 - [Main README](../README.md) - 메인 프로젝트 개요, 호스트/하드웨어 매트릭스 및 네트워크 구조
 - [OKF Documentation Hub](okf/README.md) - OKF 세부 구현 및 아키텍처 문서 서브 허브
 - [Neovim Configuration Guide](../base/.config/nvim/README.md) - lazy.nvim 기반 Neovim 모듈 구조 및 의존성
 - [Neovim External Dependencies](../base/.config/nvim/DEPENDENCIES.md) - nvim 외부 도구 의존성
+- [AI Agent 의존성 인벤토리](okf/reference/ai-agent-dependencies.md) - 전역/프로젝트 tier MCP·plugin 버전 및 상태
 
 ### 🟣 Explanation (설계 및 개념)
 - [GNU Stow Structure Design](okf/explanation/2026-03-03-stow-structure-design.md) - multi-host Stow 패키지 레이아웃 설계 문서

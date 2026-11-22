@@ -8,6 +8,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 | :--- | :--- | :--- | :--- |
 | axiom | macOS | 개발/일상 | Brewfile |
 | eve | macOS | 개발/일상 | Brewfile |
+| mo | Bazzite (Linux) | 개발 워크스테이션 | stow: `base` + `bazzite`, Brewfile |
 | girl | SteamOS | 게임/개발 | mise |
 | auxo | Debian 13 (Raspberry Pi 3 Model B) | 휴대용 헤드리스 서버 | stow: `base` + `auxo` |
 | walle | Proxmox (Debian) | Homelab 서버 (K8s, VM) | stow: `base` + `walle` + `walle-sudo` (root) |
@@ -24,13 +25,13 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 ./install.sh eve   # eve | axiom | bazzite | girl | auxo
 
 # 패키지 배포 (호스트에 맞게 선택)
-stow -t ~ base eve
-stow -t ~ base girl     # SteamOS
-stow -t ~ base auxo     # Raspberry Pi (Debian)
-stow -t ~ base bazzite  # Bazzite (mo)
+stow --no-folding -t ~ base eve
+stow --no-folding -t ~ base girl     # SteamOS
+stow --no-folding -t ~ base auxo     # Raspberry Pi (Debian)
+stow --no-folding -t ~ base bazzite  # Bazzite (mo)
 
-# Brewfile 설치 (stow 배포 후 홈에서 실행)
-cd ~ && brew bundle
+# Brewfile 설치 (stow 배포 후 실행)
+brew bundle -g
 
 # 기존 파일을 stow 패키지로 가져오기
 stow --adopt -t ~ base
@@ -40,7 +41,7 @@ stow --no-folding -t ~ base  # Git symlink 깨짐 방지
 eval "$(sops -d ~/.key)"
 
 # walle (Proxmox) — 홈 + root 영역 배포
-stow -t ~ base walle              # 홈
+stow --no-folding -t ~ base walle # 홈
 sudo apt install -y stow          # Proxmox 최소 설치엔 stow 없음
 sudo stow -t / walle-sudo         # /etc/ssh/sshd_config.d/* (root)
 
@@ -50,6 +51,7 @@ git config core.hooksPath .githooks
 # mise tasks (검증 / 진단 / 복구)
 mise run verify           # lint:shell + lint:secrets + stow:check + test:windows
 mise run doctor           # hooksPath, symlink, sops, 필수 바이너리 점검
+mise run sops:check       # ~/.key 및 Claude sops 프로파일 복호화 점검
 mise run hooks:install    # git config core.hooksPath .githooks
 mise run apm:repair       # R8 ~/.apm/apm.yml symlink 복구 + lock 이관
 mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
@@ -62,15 +64,14 @@ mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 
 ## Key Files (axiom/macOS)
 
-- `axiom/.homebrew/Brewfile` — macOS 패키지 정의 (stow 배포 후 홈에서 `brew bundle`로 설치)
+- `axiom/.homebrew/Brewfile` — macOS 패키지 정의 (stow 배포 후 `brew bundle -g`로 설치)
 
 ## Key Files (base — 전 호스트 공통, stow 배포)
 
-- `base/.apm/` — apm user-global manifest·lock (AI agent layer: 외부 skill·MCP 10종을 claude/codex/gemini에 배포, 설계: docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
-- `base/.claude/settings.json` — plugin 매트릭스 고정 (enabledPlugins 28개·extraKnownMarketplaces)
+- `base/.apm/` — apm user-global manifest·lock (AI agent layer: `targets: [claude, codex]`, apm 14 + MCP 5, 설계: docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
 - `base/.config/claude/profiles/` — provider env 프로파일(sops) + mcp.env.sops, `claude-profile` 로더(eve/.alias)가 소비
 - `base/.claude/rules/`에 6개 규칙 파일 (00~05) — profile, operations, verification, coding, documentation, multi-agent
-- `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
+- `base/CLAUDE.md`, `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
 - `base/.gemini/rules/`에 6개 규칙 파일 (00~05) — Gemini 공통 규칙
 - `base/.gemini/antigravity-cli/settings.json` — Antigravity CLI 설정
 

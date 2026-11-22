@@ -155,8 +155,12 @@ cd ~/git/dotfiles
 
 # walle (Proxmox) — 기존 수동 절차
 sudo apt install -y stow
-stow -t ~ base walle
+stow --no-folding -t ~ base walle
 sudo stow -t / walle-sudo
+
+# 검증 및 상태 진단 (mise tasks)
+mise run verify   # shellcheck, gitleaks, stow dry-run, Windows tests
+mise run doctor   # hooksPath, symlink, sops, 필수 바이너리 점검
 ```
 
 AI agent layer: `apm install -g`가 외부 skill·MCP를 claude/codex/gemini에 배포하고(`base/.apm/` manifest), 첫 claude 세션에서 plugin이 자동 설치된다. provider 전환은 `claude-profile zai|kimi|aperture` (sops env 프로파일). 상세 설계는 [apm Agent Layer Design](docs/okf/explanation/2026-09-27-apm-agent-layer-design.md).
