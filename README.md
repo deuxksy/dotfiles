@@ -21,9 +21,9 @@ macOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 s
 상세 문서 및 세부 설계 안내는 [docs/README.md](docs/README.md) 서브 허브 및 [OKF Hub](docs/okf/README.md)와 아래 디아탁시스 카테고리를 참조하세요.
 
 - **🟢 Tutorials**: [Install Guide](#install) | [Windows Setup Guide](windows/README.md)
-- **🟡 How-To**: [Stow Adopt Guide](#stow-adopt) | [sops Implementation Plan](docs/okf/how-to/2026-04-03-sops-key-encryption-implementation.md) | [Bazzite Fcitx5 Guide](docs/okf/how-to/bazzite-fcitx5-hangul-setup.md) | [NixOS Fcitx5 Guide](docs/okf/how-to/fcitx5-wayland-kde.md)
-- **🔵 Reference**: [Docs Sub-Hub](docs/README.md) | [OKF Hub](docs/okf/README.md) | [Neovim Config Guide](base/.config/nvim/README.md)
-- **🟣 Explanation**: [Stow Structure Design](docs/okf/explanation/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/okf/explanation/2026-04-03-sops-key-encryption-design.md) | [Desktop Terminal Stack](docs/okf/explanation/desktop.md)
+- **🟡 How-To**: [Stow Adopt Guide](#stow-adopt) | [sops Implementation Plan](docs/okf/how-to/2026-04-03-sops-key-encryption-implementation.md) | [Bazzite Fcitx5 Guide](docs/okf/how-to/bazzite-fcitx5-hangul-setup.md) | [NixOS Fcitx5 Guide](docs/okf/how-to/fcitx5-wayland-kde.md) | [ttyd LaunchAgent Setup](docs/okf/how-to/ttyd-brew-launchagent-setup.md) | [WebSSH2 OrbStack Setup](docs/okf/how-to/2026-11-06-webssh2-orbstack-setup.md) | [Project Optional MCP·plugin](docs/okf/how-to/2026-11-14-project-optional-mcp-plugin.md)
+- **🔵 Reference**: [Docs Sub-Hub](docs/README.md) | [OKF Hub](docs/okf/README.md) | [Neovim Config Guide](base/.config/nvim/README.md) | [AI Agent 의존성 인벤토리](docs/okf/reference/ai-agent-dependencies.md)
+- **🟣 Explanation**: [Stow Structure Design](docs/okf/explanation/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/okf/explanation/2026-04-03-sops-key-encryption-design.md) | [Desktop Terminal Stack](docs/okf/explanation/desktop.md) | [apm Agent Layer Design](docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
 
 ## Hosts
 
@@ -159,11 +159,15 @@ stow --no-folding -t ~ base walle
 sudo stow -t / walle-sudo
 
 # 검증 및 상태 진단 (mise tasks)
-mise run verify   # shellcheck, gitleaks, stow dry-run, Windows tests
-mise run doctor   # hooksPath, symlink, sops, 필수 바이너리 점검
+mise run verify           # shellcheck, gitleaks, stow dry-run, Windows tests
+mise run doctor           # hooksPath, symlink, sops, 필수 바이너리 점검
+mise run sops:check       # ~/.key 및 Claude sops 프로파일 복호화 점검
+mise run hooks:install    # git config core.hooksPath .githooks
+mise run apm:repair       # ~/.apm/apm.yml symlink 복구 및 lock 이관
+mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 ```
 
-AI agent layer: `apm install -g`가 외부 skill·MCP를 claude/codex/gemini에 배포하고(`base/.apm/` manifest), 첫 claude 세션에서 plugin이 자동 설치된다. provider 전환은 `claude-profile zai|kimi|aperture` (sops env 프로파일). 상세 설계는 [apm Agent Layer Design](docs/okf/explanation/2026-09-27-apm-agent-layer-design.md).
+AI agent layer: `apm install -g`가 외부 skill·MCP를 claude/codex에 배포하고(`base/.apm/` manifest), 첫 claude 세션에서 plugin이 자동 설치된다. provider 전환은 `claude-profile zai|kimi|aperture` (sops env 프로파일). 상세 설계는 [apm Agent Layer Design](docs/okf/explanation/2026-09-27-apm-agent-layer-design.md).
 
 walle 주의: sudoers(`/etc/sudoers.d/`)는 stow symlink 불가(visudo owner root 검사) → 수동 관리. `walle-sudo/.stow-local-ignore` 참조.
 
@@ -198,7 +202,8 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 | `kyolim/` | Windows 11 | kyolim 호스트 전용 (Claude 프리셋, Codex config, Gemini settings) |
 | `ava/` | Windows 10 | Surface Pro 6 (pwsh) |
 | `nix/` | NixOS | 이전 NixOS mo 설정 아카이브 (flake 등) |
-| `docs/` | - | 설계/구현 문서 (superpowers specs & plans) |
+| `docs/` | - | 설계/구현 문서 (OKF, superpowers specs & plans) |
+| `install.sh` `mise.toml` | - | 호스트 bootstrap 스크립트, 검증·진단·복구 mise tasks |
 | `.ai/` `.githooks/` `.github/` | - | AI 공유 규칙, Git hooks, Dependabot |
 
 ### 공통 파일 (stow 호스트)
@@ -230,6 +235,7 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 | `.gitconfig` | 공통 Git 설정 |
 | `.tmux.conf` | Tmux 설정 |
 | `.wezterm.lua` | WezTerm 터미널 설정 |
+| `.apm/` | apm user-global manifest·lock (`targets: [claude, codex]`) |
 | `.claude/rules/00-05` | AI 규칙 (profile, operations, verification, coding, documentation, multi-agent) |
 | `.claude/CLAUDE.md` | Claude Code 공통 지시문 (stow 배포용) |
 | `.claude/.omc/hud-config.json` | OMC HUD 설정 |
@@ -237,6 +243,10 @@ GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조
 | `.gemini/GEMINI.md` | Gemini CLI 설정 |
 | `.gemini/rules/00-05` | Gemini 공통 규칙 (profile, operations, verification, coding, documentation, multi-agent) |
 | `.gemini/antigravity-cli/settings.json` | Antigravity CLI 설정 |
+| `.config/claude/profiles/` | provider env 프로파일(sops) + `mcp.env.sops` |
+| `.config/ghostty/` | Ghostty 터미널 공통 설정 |
+| `.config/himalaya/` | Himalaya 메일 클라이언트 설정 |
+| `.config/starship.toml` | Starship 프롬프트 설정 |
 | `.config/nvim/` | Neovim 설정 (lazy.nvim) — 하단 참조 |
 
 #### Neovim (`base/.config/nvim/`)
@@ -265,8 +275,8 @@ lazy.nvim 기반 모듈형 구조. 상세는 [base/.config/nvim/README.md](base/
 
 ### 호스트 특화 파일
 
-- **axiom/, eve/** (macOS) — `.holmes/` (config, model_list), `.config/shell_gpt/roles/*.json` (sgpt 커스텀 역할), `.tmuxp/` (axiom: zai/gemini/chatgpt/default, eve: local/remote)
-- **mo/** (NixOS) — `.hermes/config.yaml` (Hermes agent 게이트웨이), `.hermes/.env.sops` (sops 암호화), `.holmes/`, `.codex/memories/`
+- **axiom/, eve/** (macOS) — `.holmes/` (config, model_list), `.config/shell_gpt/roles/*.json` (sgpt 커스텀 역할), `.tmuxp/` (axiom: claude/codex/gemini/default, eve: local/remote), axiom 전용 `ttyd` LaunchAgent 및 `webssh2` 게이트웨이
+- **nix/mo/** (이전 NixOS 아카이브) — `.hermes/config.yaml` (Hermes agent 게이트웨이), `.hermes/.env.sops` (sops 암호화), `.holmes/`, `.codex/memories/`
 - **girl/** (SteamOS) — `.wakatime.cfg` (WakaTime 코딩 추적)
 - **walle/** (Proxmox) — Atuin 설정이 타 호스트와 상이 (272L vs 371L)
 - **ava/** (Windows) — `.config/mise/config.toml`, `.zshrc` (WSL/Git Bash 환경)
