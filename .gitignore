@@ -100,3 +100,4 @@ base/.claude/.omc/*
 .playwright-mcp/
 
 logs/
+.worktrees/
