@@ -46,6 +46,13 @@ sudo stow -t / walle-sudo         # /etc/ssh/sshd_config.d/* (root)
 
 # Git hooks 설치
 git config core.hooksPath .githooks
+
+# mise tasks (검증 / 진단 / 복구)
+mise run verify           # lint:shell + lint:secrets + stow:check + test:windows
+mise run doctor           # hooksPath, symlink, sops, 필수 바이너리 점검
+mise run hooks:install    # git config core.hooksPath .githooks
+mise run apm:repair       # R8 ~/.apm/apm.yml symlink 복구 + lock 이관
+mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 ```
 
 ## Key Files (bazzite — mo)
