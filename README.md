@@ -1,124 +1,30 @@
 # Dotfiles
 
-macOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 sops 암호화로 일관되게 관리하는 크로스플랫폼 dotfiles 프로젝트입니다. 단일 커맨드로 배포를 자동화하고, 개인 정보 및 시크릿을 안전하게 동기화하며, 전 호스트 공통 도구 및 AI 지침을 관리합니다.
+macOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 sops 암호화로 일관되게 관리하는 크로스플랫폼 dotfiles 프로젝트입니다.
 
-## 목차
+## Documentation
 
-- [Documentation (Diátaxis Index)](#documentation-diátaxis-index)
-- [Hosts](#hosts)
-- [Hardware](#hardware)
-- [Network](#network)
-- [Application Manager (Library 4-Layer)](#application-manager-library-4-layer)
-- [Install](#install)
-- [Stow Adopt](#stow-adopt)
-- [Structure](#structure)
-- [Secrets](#secrets)
-- [Git Credential](#git-credential)
-- [NixOS (mo) Gotchas](#nixos-mo-gotchas)
-
-## Documentation (Diátaxis Index)
-
-상세 문서 및 세부 설계 안내는 [docs/README.md](docs/README.md) 서브 허브 및 [OKF Hub](docs/okf/README.md)와 아래 디아탁시스 카테고리를 참조하세요.
+상세 설계, 가이드 및 레퍼런스는 [docs/README.md](docs/README.md) 및 [OKF Hub](docs/okf/README.md)를 참조하세요.
 
 - **🟢 Tutorials**: [Install Guide](#install) | [Windows Setup Guide](windows/README.md)
-- **🟡 How-To**: [Stow Adopt Guide](#stow-adopt) | [sops Implementation Plan](docs/okf/how-to/2026-04-03-sops-key-encryption-implementation.md) | [Bazzite Fcitx5 Guide](docs/okf/how-to/bazzite-fcitx5-hangul-setup.md) | [NixOS Fcitx5 Guide](docs/okf/how-to/fcitx5-wayland-kde.md) | [ttyd LaunchAgent Setup](docs/okf/how-to/ttyd-brew-launchagent-setup.md) | [WebSSH2 OrbStack Setup](docs/okf/how-to/2026-11-06-webssh2-orbstack-setup.md) | [Project Optional MCP·plugin](docs/okf/how-to/2026-11-14-project-optional-mcp-plugin.md)
-- **🔵 Reference**: [Docs Sub-Hub](docs/README.md) | [OKF Hub](docs/okf/README.md) | [Neovim Config Guide](base/.config/nvim/README.md) | [AI Agent 의존성 인벤토리](docs/okf/reference/ai-agent-dependencies.md)
-- **🟣 Explanation**: [Stow Structure Design](docs/okf/explanation/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/okf/explanation/2026-04-03-sops-key-encryption-design.md) | [Desktop Terminal Stack](docs/okf/explanation/desktop.md) | [apm Agent Layer Design](docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
+- **🟡 How-To**: [sops Implementation Plan](docs/okf/how-to/2026-04-03-sops-key-encryption-implementation.md) | [ttyd LaunchAgent Setup](docs/okf/how-to/ttyd-brew-launchagent-setup.md) | [WebSSH2 OrbStack Setup](docs/okf/how-to/2026-11-06-webssh2-orbstack-setup.md) | [Project Optional MCP·plugin](docs/okf/how-to/2026-11-14-project-optional-mcp-plugin.md)
+- **🔵 Reference**: [Docs Sub-Hub](docs/README.md) | [OKF Hub](docs/okf/README.md) | [Infrastructure Reference](docs/okf/reference/infrastructure.md) | [Neovim Config Guide](base/.config/nvim/README.md) | [AI Agent 의존성 인벤토리](docs/okf/reference/ai-agent-dependencies.md)
+- **🟣 Explanation**: [Stow Structure Design](docs/okf/explanation/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/okf/explanation/2026-04-03-sops-key-encryption-design.md) | [apm Agent Layer Design](docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
 
 ## Hosts
 
-| Host | Model | OS | Config |
-| :--- | :--- | :--- | :--- |
-| axiom | Mac Studio | macOS | stow: `base` + `axiom` |
-| eve | Mac mini | macOS | stow: `base` + `eve` |
-| walle | AOOSTAR WTR R1 | Proxmox (Debian) | stow: `base` + `walle` |
-| girl | Steam Deck | SteamOS | stow: `base` + `girl` |
-| auxo | Raspberry Pi 3 Model B | Debian 13 (trixie) | stow: `base` + `auxo` |
-| ava | Surface Pro 6 | Windows 10 | pwsh |
-| kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh |
-| pad | iPad Pro 12.9 | iPadOS | 미디어 소비, 원격접속 |
-| arv | GL.iNet GL-MT3000 (Beryl AX) | OpenWrt | 라우터 |
-| steward | GL.iNet GL-MT2500 (Brume 2) | OpenWrt | 라우터 |
-
-### Host Roles
-
-- **axiom**: Local LLM 서버 (LM Studio, MLX) + 개발
-- **eve**: iOS/AOS 개발 전용
-- **walle**: Homelab 서버 (K8s, VM)
-- **girl**: 휴대용 서버
-- **auxo**: 휴대용 헤드리스 서버 (Raspberry Pi)
-- **steward**: 상주 네트워크 서버 / VPN 라우터
-- **arv**: 휴대용 Wi-Fi 6 라우터
-
-## Hardware
-
-| Model | CPU | GPU | NPU | Memory | Disk |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Mac Studio | Apple M1 Max (10-core) | M1 Max (32-core) | 16-core | 64GB | 512GB |
-| Mac mini | Apple M4 (10-core) | M4 (10-core) | 16-core | 16GB | 256GB |
-| AOOSTAR WTR R1 | Intel N100 (4C/4T) | Intel UHD (24EU) | NONE | 8GB | 2TB |
-| Steam Deck | AMD Custom APU 0405 | AMD Custom GPU | NONE | 16GB | 256GB NVMe + 512GB eMMC |
-| Surface Pro 6 | Intel Core i5-8250U (4C/8T) | Intel UHD 620 | NONE | 8GB | 128GB |
-| Asus Zenbook 14 UX3405C | Intel Core Ultra 7 255H (16-core) | Intel Arc 140T | Intel AI Boost (13 NPU TOPS) | 32GB | 512GB |
-| iPad Pro 12.9 | Apple M1 (8-core) | M1 (8-core) | 16-core | 16GB | 1TB |
-| GL.iNet GL-MT3000 (Beryl AX) | MediaTek MT7981B (Cortex-A53) | Wi-Fi 6 | NONE | 512MB | 128MB NAND |
-| GL.iNet GL-MT2500 (Brume 2) | MediaTek MT7981B (Cortex-A53) | NONE | NONE | 1GB | 8GB eMMC |
-
-## Network
-
-```mermaid
-graph TD
-    INET[Internet]
-
-    subgraph LOCATION_A[steward 네트워크 - 192.168.222.0/24]
-        STEWARD[steward - GL.iNet Brume 2]
-        AXIOM[axiom - Mac Studio]
-        MO[mo - AyaNEO AM02]
-        KYOLIM[kyolim - Asus Zenbook 14]
-    end
-
-    subgraph LOCATION_B[arv 네트워크 - 192.168.221.0/24]
-        ARV[arv - GL.iNet Beryl AX]
-        EVE[eve - Mac mini]
-        WALLE[walle - AOOSTAR WTR R1]
-        GIRL[girl - Steam Deck]
-        AVA[ava - Surface Pro 6]
-        PAD[iPad Pro]
-        TV[LG webOS TV]
-    end
-
-    subgraph TS[Tailscale Mesh - 100.64.0.0/10]
-        BRLA[brla - Oracle Cloud ARM]
-        AI[ai - Tailscale AI]
-        HERITAGE[heritage]
-        LLLM[lllm]
-        LT[lt]
-    end
-
-    INET --- STEWARD
-    INET --- ARV
-    INET --- BRLA
-
-    STEWARD --- AXIOM
-    STEWARD --- MO
-    STEWARD --- KYOLIM
-
-    ARV --- EVE
-    ARV --- WALLE
-    ARV --- GIRL
-    ARV --- AVA
-    ARV --- PAD
-    ARV --- TV
-
-    STEWARD -.->|Tailscale| ARV
-```
-
-## Application Manager (Library 4-Layer)
-
-1. **Layer 1 (System PM)**: brew (macOS), Nix (NixOS), apt (Debian), pacman (SteamOS)
-2. **Layer 2 (SDK)**: mise (macOS, SteamOS), Nix packages (NixOS)
-3. **Layer 3 (Package Manager)**: pnpm (Node), uv (Python), apm (AI Agent), npx, uvx — on-demand 실행
-4. **Layer 4 (Binary)**: `~/.local/bin`
+| Host | Model | OS | Config | Role |
+| :--- | :--- | :--- | :--- | :--- |
+| axiom | Mac Studio | macOS | stow: `base` + `axiom` | Local LLM 서버 (LM Studio, MLX) + 개발 |
+| eve | Mac mini | macOS | stow: `base` + `eve` | iOS/AOS 개발 전용 |
+| walle | AOOSTAR WTR R1 | Proxmox (Debian) | stow: `base` + `walle` | Homelab 서버 (K8s, VM) |
+| girl | Steam Deck | SteamOS | stow: `base` + `girl` | 휴대용 서버 / 게임·개발 |
+| auxo | Raspberry Pi 3 Model B | Debian 13 (trixie) | stow: `base` + `auxo` | 휴대용 헤드리스 서버 |
+| ava | Surface Pro 6 | Windows 10 | pwsh | SSH 클라이언트 |
+| kyolim | Asus Zenbook 14 UX3405C | Windows 11 | pwsh | 개발/일상 |
+| pad | iPad Pro 12.9 | iPadOS | - | 미디어 소비, 원격접속 |
+| arv | GL.iNet GL-MT3000 | OpenWrt | - | 휴대용 Wi-Fi 6 라우터 |
+| steward | GL.iNet GL-MT2500 | OpenWrt | - | 상주 네트워크 서버 / VPN 라우터 |
 
 ## Install
 
@@ -129,12 +35,18 @@ cd ~/git/dotfiles
 # macOS / Linux 호스트 — 1커맨드 bootstrap (stow + brew + apm)
 ./install.sh eve     # 또는 axiom | bazzite | girl | auxo
 
-# walle (Proxmox) — 기존 수동 절차
+# walle (Proxmox)
 sudo apt install -y stow
 stow --no-folding -t ~ base walle
 sudo stow -t / walle-sudo
 
-# 검증 및 상태 진단 (mise tasks)
+# 기존 파일 가져오기
+stow --adopt -t ~ base
+```
+
+### 검증 및 관리 (`mise` tasks)
+
+```bash
 mise run verify           # shellcheck, gitleaks, stow dry-run, Windows tests
 mise run doctor           # hooksPath, symlink, sops, 필수 바이너리 점검
 mise run sops:check       # ~/.key 및 Claude sops 프로파일 복호화 점검
@@ -143,167 +55,17 @@ mise run apm:repair       # ~/.apm/apm.yml symlink 복구 및 lock 이관
 mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 ```
 
-AI agent layer: `apm install -g`가 외부 skill·MCP를 claude/codex에 배포하고(`base/.apm/` manifest), 첫 claude 세션에서 plugin이 자동 설치된다. provider 전환은 `claude-profile zai|kimi|aperture` (sops env 프로파일). 상세 설계는 [apm Agent Layer Design](docs/okf/explanation/2026-09-27-apm-agent-layer-design.md).
-
-walle 주의: sudoers(`/etc/sudoers.d/`)는 stow symlink 불가(visudo owner root 검사) → 수동 관리. `walle-sudo/.stow-local-ignore` 참조.
-
-
-## Stow Adopt
-
-기존 dotfiles를 stow 패키지로 가져올 때 사용.
-
-```bash
-cd ~/git/dotfiles
-stow --adopt -t ~ base  # 예: base 패키지로 가져오기
-```
-
-> `--adopt`은 `$HOME`에 있는 파일을 stow 디렉토리로 이동시키고 심볼릭 링크로 대체한다.
+- **AI Agent Layer**: `apm install -g`가 외부 skill·MCP를 `claude`/`codex`에 배포하고(`base/.apm/`), provider 전환은 `claude-profile zai|kimi|aperture` (sops env)를 사용합니다.
+- **Secrets**: [sops](https://github.com/getsops/sops) + [age](https://github.com/FiloSottile/age)로 암호화되며 `eval "$(sops -d ~/.key)"`로 복호화합니다.
 
 ## Structure
 
-GNU Stow 패키지 기반 — `base/` 공통 설정 + 호스트별 패키지 조합으로 배포. 상세 설계는 [docs/okf/explanation/2026-03-03-stow-structure-design.md](docs/okf/explanation/2026-03-03-stow-structure-design.md).
-
-### 디렉토리
-
-| 디렉토리 | 호스트 | 설명 |
+| 디렉토리 | 대상 | 설명 |
 | :--- | :--- | :--- |
-| `base/` | non-Windows 전체 | POSIX 공통 설정 (macOS, NixOS, SteamOS, Debian 등 - git, nvim, tmux, zsh, AI rules) |
-| `axiom/` | macOS | Mac Studio — Local LLM (LM Studio, MLX) + 개발 |
-| `eve/` | macOS | Mac mini — iOS/AOS 개발 |
-| `bazzite/` | Bazzite | AyaNEO AM02 — Linux 개발 워크스테이션 |
-| `walle/` | Proxmox (Debian) | AOOSTAR WTR R1 — Homelab 서버 (K8s, VM) |
-| `girl/` | SteamOS | Steam Deck — 게임/개발 |
-| `auxo/` | Debian 13 | Raspberry Pi — 헤드리스 서버 |
-| `windows/` | Windows 전체 | Windows OS 공통 레이어 (규칙, nvim, wezterm, gitconfig, install.ps1) |
-| `kyolim/` | Windows 11 | kyolim 호스트 전용 (Claude 프리셋, Codex config, Gemini settings) |
-| `ava/` | Windows 10 | Surface Pro 6 (pwsh) |
-| `nix/` | NixOS | 이전 NixOS mo 설정 아카이브 (flake 등) |
+| `base/` | non-Windows 전체 | POSIX 공통 설정 (`.zshrc`, `.gitconfig`, `.tmux.conf`, `.apm/`, `.claude/`, `.codex/`, `.gemini/`, `.config/nvim/`, `ghostty`, `himalaya`) |
+| `axiom/`, `eve/` | macOS | 호스트별 Brewfile, `.tmuxp/`, `.holmes/`, `ttyd`/`webssh2` (`axiom`) |
+| `walle/`, `girl/`, `auxo/` | Linux / SteamOS | 호스트별 환경 설정 (`walle-sudo/`는 `/etc/ssh/sshd_config.d/`용) |
+| `windows/`, `kyolim/`, `ava/` | Windows | PowerShell 배포(`windows/install.ps1`) 및 호스트별 설정 |
+| `nix/` | NixOS | 이전 NixOS `mo` 설정 아카이브 |
 | `docs/` | - | 설계/구현 문서 (OKF, superpowers specs & plans) |
-| `install.sh` `mise.toml` | - | 호스트 bootstrap 스크립트, 검증·진단·복구 mise tasks |
-| `.ai/` `.githooks/` `.github/` | - | AI 공유 규칙, Git hooks, Dependabot |
-
-### 공통 파일 (stow 호스트)
-
-각 호스트 패키지에 공통 포함. `base/`는 공통 도구 설정, 호스트 패키지는 환경별 오버라이드.
-
-| 파일 | 설명 |
-| :--- | :--- |
-| `.zshrc` | Zsh 진입점 |
-| `.alias` | 셸 alias |
-| `.function` | 셸 함수 |
-| `.path` | PATH 환경변수 |
-| `.key` | sops 복호화용 age 키 (암호화됨) |
-| `.gitconfig.local` | 호스트별 Git 설정 (credential helper) |
-| `.ssh/config` | SSH 클라이언트 설정 |
-| `.stow-local-ignore` | Stow 배포 제외 패턴 |
-| `.claude/settings.json` | Claude Code 권한/MCP 설정 |
-| `.config/atuin/config.toml` | Atuin 셸 히스토리 |
-| `.config/mise/config.toml` | mise 런타임 (Node, Bun 등) |
-| `.config/shell_gpt/` | shell-gpt(sgpt) 설정 — provider별 `.sgptrc.*` 변형 (langfuse, zai, tailscale-zai) |
-| `Brewfile` / `Brewfile-sudo` | Homebrew 패키지 (macOS는 `.homebrew/` 하위, SteamOS) |
-| `.tmuxp/*.yaml` | tmux 세션 프리셋 (work 및 호스트별: axiom zai/gemini/chatgpt, eve local/remote) |
-| `scripts/install_nvtools.sh` | nvtools(NVIDIA) 설치 스크립트 |
-
-### base/ — 공통 설정
-
-| 경로 | 설명 |
-| :--- | :--- |
-| `.gitconfig` | 공통 Git 설정 |
-| `.tmux.conf` | Tmux 설정 |
-| `.wezterm.lua` | WezTerm 터미널 설정 |
-| `.apm/` | apm user-global manifest·lock (`targets: [claude, codex]`) |
-| `.claude/rules/00-05` | AI 규칙 (profile, operations, verification, coding, documentation, multi-agent) |
-| `.claude/CLAUDE.md` | Claude Code 공통 지시문 (stow 배포용) |
-| `.claude/.omc/hud-config.json` | OMC HUD 설정 |
-| `.codex/AGENTS.md` `rules/` | Codex 에이전트 설정 |
-| `.gemini/GEMINI.md` | Gemini CLI 설정 |
-| `.gemini/rules/00-05` | Gemini 공통 규칙 (profile, operations, verification, coding, documentation, multi-agent) |
-| `.gemini/antigravity-cli/settings.json` | Antigravity CLI 설정 |
-| `.config/claude/profiles/` | provider env 프로파일(sops) + `mcp.env.sops` |
-| `.config/ghostty/` | Ghostty 터미널 공통 설정 |
-| `.config/himalaya/` | Himalaya 메일 클라이언트 설정 |
-| `.config/starship.toml` | Starship 프롬프트 설정 |
-| `.config/nvim/` | Neovim 설정 (lazy.nvim) — 하단 참조 |
-
-#### Neovim (`base/.config/nvim/`)
-
-lazy.nvim 기반 모듈형 구조. 상세는 [base/.config/nvim/README.md](base/.config/nvim/README.md).
-
-| 경로 | 설명 |
-| :--- | :--- |
-| `init.lua` | 진입점 |
-| `lua/core/` | options, keymaps, autocmds, health |
-| `lua/config/lsp_handlers.lua` | LSP 핸들러 |
-| `lua/plugins/lsp.lua` | LSP 서버 |
-| `lua/plugins/completion.lua` | 자동완성 |
-| `lua/plugins/explorer.lua` | 파일 탐색기 |
-| `lua/plugins/formatting.lua` | 포매터 (conform) |
-| `lua/plugins/linting.lua` | 린터 (nvim-lint) |
-| `lua/plugins/treesitter.lua` | Treesitter 파서 |
-| `lua/plugins/git.lua` | Git 연동 (gitsigns 등) |
-| `lua/plugins/mcp.lua` | MCP 통합 |
-| `lua/plugins/terminal.lua` | 터미널 |
-| `lua/plugins/theme.lua` | 테마 |
-| `lua/plugins/tmux.lua` | Tmux 연동 |
-| `lua/plugins/ui*.lua` | UI (ui, ui-extras, ui-tools) |
-| `lua/plugins/suda.lua` | sudo 쓰기 |
-| `nvim-tools.nix` | NixOS용 외부 의존성 |
-
-### 호스트 특화 파일
-
-- **axiom/, eve/** (macOS) — `.holmes/` (config, model_list), `.config/shell_gpt/roles/*.json` (sgpt 커스텀 역할), `.tmuxp/` (axiom: claude/codex/gemini/default, eve: local/remote), axiom 전용 `ttyd` LaunchAgent 및 `webssh2` 게이트웨이
-- **nix/mo/** (이전 NixOS 아카이브) — `.hermes/config.yaml` (Hermes agent 게이트웨이), `.hermes/.env.sops` (sops 암호화), `.holmes/`, `.codex/memories/`
-- **girl/** (SteamOS) — `.wakatime.cfg` (WakaTime 코딩 추적)
-- **walle/** (Proxmox) — Atuin 설정이 타 호스트와 상이 (272L vs 371L)
-- **ava/** (Windows) — `.config/mise/config.toml`, `.zshrc` (WSL/Git Bash 환경)
-
-### nix/ — NixOS flake
-
-| 경로 | 설명 |
-| :--- | :--- |
-| `nixos/flake.nix` | Flake 입력 + 모듈 import |
-| `nixos/hosts/mo/default.nix` | mo 호스트 설정 |
-| `nixos/hosts/mo/hardware-configuration.nix` | 하드웨어 |
-| `nixos/hosts/mo/hermes.nix` | Hermes agent NixOS 서비스 + sops |
-| `nixos/hosts/mo/beszel.nix` | Beszel 모니터링 에이전트 |
-| `nixos/home/crong.nix` | Home Manager |
-| `nixos/modules/desktop/kde.nix` | KDE 데스크톱 |
-| `nixos/modules/virtualization.nix` | 가상화 |
-| `nixos/secrets/hermes.yaml` | Hermes 시크릿 (sops) |
-
-### docs/ — 설계/구현 문서
-
-| 경로 | 설명 |
-| :--- | :--- |
-| `okf/explanation/` | 설계 문서 (desktop 스택, stow 구조, sops 암호화) |
-| `okf/how-to/` | 구현 가이드 (sops 암호화 적용, fcitx5 입력기) |
-| `superpowers/specs/` | 설계 명세 (nvim MCP, beszel, hermes, codex MCP, macOS setup) |
-| `superpowers/plans/` | 구현 계획 (NixOS mo, axiom/eve macOS setup, nvim 의존성) |
-
-## Secrets
-
-[sops](https://github.com/getsops/sops) + [age](https://github.com/FiloSottile/age) 로 암호화.
-
-```bash
-# secrets 복호화 (zshrc에서 자동 실행)
-eval "$(sops -d ~/.key)"
-```
-
-## Git Credential
-
-`.gitconfig`는 `base/`에 공통 설정, credential helper는 각 호스트 `.gitconfig.local`에서 관리.
-
-| 호스트 | Helper | 비고 |
-| :--- | :--- | :--- |
-| macOS (axiom, eve) | `store` | `~/.git-credentials` |
-| Linux (mo, walle, girl) | `store` | `~/.git-credentials` |
-
-> 전 호스트 `core.ignoreCase = false` 통일. 최초 1회 인증 후 자동 저장.
-
-## NixOS (mo) Gotchas
-
-- mise 제거됨 — 모든 도구는 `environment.systemPackages`로 관리
-- `npm install -g`, `corepack enable` 불가 (read-only nix store). pnpm 글로벌 사용
-- `nodePackages.*` 최신 nixpkgs에서 제거됨 — 최상위 패키지(`pnpm` 등) 사용
-- Claude Code는 pnpm으로 설치 (`~/.local/share/pnpm`)
-- fcitx5 KDE Wayland 설정은 GUI 필요 (KDE 시스템 설정 → 가상 키보드 → Fcitx 5)
+| `.ai/`, `.githooks/`, `.github/` | - | AI 공유 규칙, Git hooks, Dependabot |

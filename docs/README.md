@@ -26,6 +26,7 @@
 
 ### 🔵 Reference (참조 자료)
 - [Main README](../README.md) - 메인 프로젝트 개요, 호스트/하드웨어 매트릭스 및 네트워크 구조
+- [Infrastructure Reference](okf/reference/infrastructure.md) - 하드웨어 스펙, 네트워크 토폴로지, Application Manager 4-Layer, Git Credential
 - [OKF Documentation Hub](okf/README.md) - OKF 세부 구현 및 아키텍처 문서 서브 허브
 - [Neovim Configuration Guide](../base/.config/nvim/README.md) - lazy.nvim 기반 Neovim 모듈 구조 및 의존성
 - [Neovim External Dependencies](../base/.config/nvim/DEPENDENCIES.md) - nvim 외부 도구 의존성
