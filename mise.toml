@@ -11,10 +11,11 @@ sources = ["install.sh", ".githooks/pre-push", "*/scripts/install_nvtools.sh"]
 run = "shellcheck -e SC2034 install.sh .githooks/pre-push */scripts/install_nvtools.sh"
 
 [tasks."lint:secrets"]
-description = "Scan staged changes and unpushed commits for leaked secrets with gitleaks"
+description = "Scan unstaged diff, staged changes, and unpushed commits for leaked secrets with gitleaks"
 shell = "bash -c"
 run = '''
 set -euo pipefail
+git diff | gitleaks stdin --no-banner
 gitleaks git --staged --no-banner
 if git rev-parse --verify origin/main >/dev/null 2>&1; then
   if [[ -n "$(git log origin/main..HEAD --oneline)" ]]; then
@@ -139,25 +140,28 @@ run = '''
 set -euo pipefail
 STOW_DIR="${MISE_PROJECT_ROOT:-$PWD}"
 REPAIRED=0
+MIGRATED_LOCK=0
+BAK=""
 
 if [[ -e "$HOME/.apm/apm.yml" && ! -L "$HOME/.apm/apm.yml" ]]; then
   BAK="$HOME/.apm/apm.yml.bak-$(date +%Y%m%d%H%M%S)"
   cp "$HOME/.apm/apm.yml" "$BAK"
   rm -f "$HOME/.apm/apm.yml"
-  stow --no-folding -R -d "$STOW_DIR" -t "$HOME" base
-  echo "Repaired ~/.apm/apm.yml symlink (backup: $BAK)"
   REPAIRED=1
 fi
 
 if [[ -f "$HOME/.apm/apm.lock.yaml" && ! -L "$HOME/.apm/apm.lock.yaml" ]]; then
   cp "$HOME/.apm/apm.lock.yaml" "$STOW_DIR/base/.apm/apm.lock.yaml"
   rm -f "$HOME/.apm/apm.lock.yaml"
-  stow --no-folding -R -d "$STOW_DIR" -t "$HOME" base
-  echo "Migrated ~/.apm/apm.lock.yaml to base/.apm/apm.lock.yaml (commit required)"
+  MIGRATED_LOCK=1
   REPAIRED=1
 fi
 
-if [[ "$REPAIRED" -eq 0 ]]; then
+if [[ "$REPAIRED" -eq 1 ]]; then
+  stow --no-folding -R -d "$STOW_DIR" -t "$HOME" base
+  [[ -n "$BAK" ]] && echo "Repaired ~/.apm/apm.yml symlink (backup: $BAK)"
+  [[ "$MIGRATED_LOCK" -eq 1 ]] && echo "Migrated ~/.apm/apm.lock.yaml to base/.apm/apm.lock.yaml (commit required)"
+else
   echo "apm symlinks OK (no-op)"
 fi
 '''
@@ -165,6 +169,7 @@ fi
 [tasks."sops:edit"]
 description = "Edit an encrypted Claude dotenv profile with sops (usage: mise run sops:edit <zai|kimi|aperture|mcp>)"
 usage = 'arg "[profile]" help="Profile name (zai, kimi, aperture, mcp)"'
+raw = true
 shell = "bash -c"
 run = '''
 set -euo pipefail
