@@ -1,2 +1,67 @@
 [hooks]
 enter = "git pull --ff-only"
+
+[tools]
+"aqua:gitleaks/gitleaks" = "latest"
+"aqua:koalaman/shellcheck" = "latest"
+
+[tasks."lint:shell"]
+description = "Lint repository shell scripts with shellcheck"
+sources = ["install.sh", ".githooks/pre-push", "*/scripts/install_nvtools.sh"]
+run = "shellcheck -e SC2034 install.sh .githooks/pre-push */scripts/install_nvtools.sh"
+
+[tasks."lint:secrets"]
+description = "Scan staged changes and unpushed commits for leaked secrets with gitleaks"
+shell = "bash -c"
+run = '''
+set -euo pipefail
+gitleaks git --staged --no-banner
+if git rev-parse --verify origin/main >/dev/null 2>&1; then
+  if [[ -n "$(git log origin/main..HEAD --oneline)" ]]; then
+    gitleaks git --log-opts="origin/main..HEAD" --no-banner
+  fi
+fi
+'''
+
+[tasks."stow:check"]
+description = "Dry-run GNU Stow symlink check (--no-folding)"
+usage = 'arg "[host]" help="Optional host package override"'
+shell = "bash -c"
+run = '''
+set -euo pipefail
+STOW_DIR="${MISE_PROJECT_ROOT:-$PWD}"
+TMP_TARGET="$(mktemp -d)"
+trap 'rm -rf "$TMP_TARGET"' EXIT
+if [[ -n "${usage_host:-}" ]]; then
+  HOST="$usage_host"
+  if [[ ! -d "$STOW_DIR/$HOST" ]]; then
+    echo "stow:check: host package directory '$HOST' not found" >&2
+    exit 1
+  fi
+  stow --no-folding -n -v -d "$STOW_DIR" -t "$TMP_TARGET" base "$HOST"
+else
+  HOST="$(hostname -s | tr '[:upper:]' '[:lower:]')"
+  if [[ -d "$STOW_DIR/$HOST" ]]; then
+    stow --no-folding -n -v -d "$STOW_DIR" -t "$TMP_TARGET" base "$HOST"
+  else
+    echo "stow:check: host '$HOST' has no package dir; checking base only"
+    stow --no-folding -n -v -d "$STOW_DIR" -t "$TMP_TARGET" base
+  fi
+fi
+'''
+
+[tasks."test:windows"]
+description = "Run Windows install.ps1 Pester regression tests"
+shell = "bash -c"
+run = '''
+set -euo pipefail
+if command -v pwsh >/dev/null 2>&1; then
+  pwsh -NoProfile -Command 'Invoke-Pester -CI windows/tests/*.Tests.ps1'
+else
+  echo "[skip] pwsh not installed — skipping Windows Pester tests"
+fi
+'''
+
+[tasks.verify]
+description = "Run all repository verification checks in parallel"
+depends = ["lint:shell", "lint:secrets", "stow:check", "test:windows"]
