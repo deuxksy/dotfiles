@@ -65,3 +65,118 @@ fi
 [tasks.verify]
 description = "Run all repository verification checks in parallel"
 depends = ["lint:shell", "lint:secrets", "stow:check", "test:windows"]
+
+[tasks.doctor]
+description = "Check host dotfiles invariants (hooksPath, symlinks, sops, binaries)"
+shell = "bash -c"
+run = '''
+set -uo pipefail
+FAIL=0
+
+check() {
+  local label="$1"
+  shift
+  if "$@" >/dev/null 2>&1; then
+    echo "[OK]   $label"
+  else
+    echo "[FAIL] $label"
+    FAIL=1
+  fi
+}
+
+check "git core.hooksPath == .githooks" test "$(git config --get core.hooksPath 2>/dev/null || true)" = ".githooks"
+check "~/.apm/apm.yml is symlink" test -L "$HOME/.apm/apm.yml"
+check "~/.claude/settings.json is symlink" test -L "$HOME/.claude/settings.json"
+check "~/.key decryptable via sops" bash -c 'test -f "$HOME/.key" && sops -d "$HOME/.key" >/dev/null 2>&1'
+
+for bin in stow sops age gitleaks shellcheck; do
+  check "binary available: $bin" command -v "$bin"
+done
+
+exit "$FAIL"
+'''
+
+[tasks."sops:check"]
+description = "Verify decryption of ~/.key and Claude sops profiles"
+shell = "bash -c"
+run = '''
+set -euo pipefail
+FAIL=0
+
+if [[ -f "$HOME/.key" ]]; then
+  if sops -d "$HOME/.key" >/dev/null 2>&1; then
+    echo "[OK]   ~/.key"
+  else
+    echo "[FAIL] ~/.key (decryption failed)"
+    FAIL=1
+  fi
+else
+  echo "[FAIL] ~/.key (file not found)"
+  FAIL=1
+fi
+
+for f in base/.config/claude/profiles/*.env.sops; do
+  [[ -f "$f" ]] || continue
+  if sops -d --input-type dotenv --output-type dotenv "$f" >/dev/null 2>&1; then
+    echo "[OK]   $f"
+  else
+    echo "[FAIL] $f (decryption failed)"
+    FAIL=1
+  fi
+done
+
+exit "$FAIL"
+'''
+
+[tasks."hooks:install"]
+description = "Configure repository Git hooksPath to .githooks"
+run = "git config core.hooksPath .githooks && echo 'core.hooksPath set to .githooks'"
+
+[tasks."apm:repair"]
+description = "Repair R8 broken ~/.apm/apm.yml symlink and migrate apm.lock.yaml"
+shell = "bash -c"
+run = '''
+set -euo pipefail
+STOW_DIR="${MISE_PROJECT_ROOT:-$PWD}"
+REPAIRED=0
+
+if [[ -e "$HOME/.apm/apm.yml" && ! -L "$HOME/.apm/apm.yml" ]]; then
+  BAK="$HOME/.apm/apm.yml.bak-$(date +%Y%m%d%H%M%S)"
+  cp "$HOME/.apm/apm.yml" "$BAK"
+  rm -f "$HOME/.apm/apm.yml"
+  stow --no-folding -R -d "$STOW_DIR" -t "$HOME" base
+  echo "Repaired ~/.apm/apm.yml symlink (backup: $BAK)"
+  REPAIRED=1
+fi
+
+if [[ -f "$HOME/.apm/apm.lock.yaml" && ! -L "$HOME/.apm/apm.lock.yaml" ]]; then
+  cp "$HOME/.apm/apm.lock.yaml" "$STOW_DIR/base/.apm/apm.lock.yaml"
+  rm -f "$HOME/.apm/apm.lock.yaml"
+  stow --no-folding -R -d "$STOW_DIR" -t "$HOME" base
+  echo "Migrated ~/.apm/apm.lock.yaml to base/.apm/apm.lock.yaml (commit required)"
+  REPAIRED=1
+fi
+
+if [[ "$REPAIRED" -eq 0 ]]; then
+  echo "apm symlinks OK (no-op)"
+fi
+'''
+
+[tasks."sops:edit"]
+description = "Edit an encrypted Claude dotenv profile with sops (usage: mise run sops:edit <zai|kimi|aperture|mcp>)"
+usage = 'arg "[profile]" help="Profile name (zai, kimi, aperture, mcp)"'
+shell = "bash -c"
+run = '''
+set -euo pipefail
+PROFILE="${usage_profile:-}"
+TARGET="base/.config/claude/profiles/${PROFILE}.env.sops"
+if [[ -z "$PROFILE" || ! -f "$TARGET" ]]; then
+  echo "Usage: mise run sops:edit <profile>" >&2
+  echo "Available profiles:" >&2
+  for f in base/.config/claude/profiles/*.env.sops; do
+    basename "$f" .env.sops | sed 's/^/  - /' >&2
+  done
+  exit 1
+fi
+exec sops --input-type dotenv --output-type dotenv "$TARGET"
+'''
