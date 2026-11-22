@@ -13,22 +13,22 @@
 
 ## Phase 0: 준비 및 기준선 확보
 
-- [ ] `chezmoi` 설치 (macOS `Brewfile`, Linux, Windows `winget`/`scoop`)
-- [ ] `.chezmoi.toml.tmpl` 설계 — 호스트 식별(`axiom`, `eve`, `walle`, `girl`, `auxo`, `kyolim`, `ava`) 및 OS별 변수 정의
-- [ ] `sops` / `age` 연동 방식 확정 (`~/.key` 기반 `chezmoi` 암호화/복호화 테스트)
-- [ ] 전환 기간 중 Stow와의 충돌 방지를 위해 `chezmoi --source ./chezmoi` 또는 전용 브랜치 전략 확정
+- [x] `chezmoi` 설치 (macOS `Brewfile`, Linux, Windows `winget`/`scoop`)
+- [x] `.chezmoi.toml.tmpl` 설계 — 호스트 식별(`axiom`, `eve`, `walle`, `girl`, `auxo`, `kyolim`, `ava`) 및 OS별 변수 정의
+- [x] `sops` / `age` 연동 방식 확정 (`~/.key` 기반 `chezmoi` 암호화/복호화 테스트)
+- [x] 전환 기간 중 Stow와의 충돌 방지를 위해 `chezmoi --source ./chezmoi` 또는 전용 브랜치 전략 확정
 
 ## Phase 1: AI Agent Layer PoC (`claude`, `codex`, `agy`, `apm`)
 
 가장 불편함이 큰 AI agent 영역부터 우선 전환합니다.
 
-- [ ] `dot_apm/` 이관 (`apm.yml`, `apm.lock.yaml`) — symlink 제거로 `apm:repair` 불필요화
-- [ ] `run_onchange_after_apm-install.sh.tmpl` 작성 (`apm.yml` 해시 변경 시 `apm install -g` 자동 실행)
-- [ ] `dot_claude/` 통합 (`base/.claude/`, `windows/.claude/`, `kyolim/.claude/` → `settings.json.tmpl` + 공통 `rules/`)
-- [ ] `dot_codex/` 이관 (`AGENTS.md`, `rules/`)
-- [ ] `dot_gemini/` 이관 (`GEMINI.md`, `rules/`, `antigravity-cli/settings.json.tmpl`)
-- [ ] `dot_config/claude/profiles/` (`*.env.sops`) 복호화·배치 검증
-- [ ] `eve`(macOS)에서 `chezmoi diff` 및 `chezmoi apply` 실검증
+- [x] `dot_apm/` 이관 (`apm.yml`, `apm.lock.yaml`) — symlink 제거로 `apm:repair` 불필요화
+- [x] `run_onchange_after_apm-install.sh.tmpl` 작성 (`apm.yml` 해시 변경 시 `apm install -g` 자동 실행)
+- [x] `dot_claude/` 통합 (`base/.claude/`, `windows/.claude/`, `kyolim/.claude/` → `settings.json.tmpl` + 공통 `rules/`)
+- [x] `dot_codex/` 이관 (`AGENTS.md`, `rules/`)
+- [x] `dot_gemini/` 이관 (`GEMINI.md`, `rules/`, `antigravity-cli/settings.json.tmpl`)
+- [x] `dot_config/claude/profiles/` (`*.env.sops`) 복호화·배치 검증
+- [x] `eve`(macOS)에서 `chezmoi diff` 및 `chezmoi apply` 실검증
 
 ## Phase 2: `base/` 공통 POSIX 설정 이관
 
