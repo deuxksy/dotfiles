@@ -44,7 +44,6 @@ macOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 s
 
 - **axiom**: Local LLM 서버 (LM Studio, MLX) + 개발
 - **eve**: iOS/AOS 개발 전용
-- **mo**: Linux 개발 워크스테이션 (Bazzite)
 - **walle**: Homelab 서버 (K8s, VM)
 - **girl**: 휴대용 서버
 - **auxo**: 휴대용 헤드리스 서버 (Raspberry Pi)
@@ -57,7 +56,6 @@ macOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 s
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Mac Studio | Apple M1 Max (10-core) | M1 Max (32-core) | 16-core | 64GB | 512GB |
 | Mac mini | Apple M4 (10-core) | M4 (10-core) | 16-core | 16GB | 256GB |
-| AyaNEO AM02 | AMD Ryzen 7840HS (8C/16T) | Radeon 780M | NONE | 32GB | 1TB |
 | AOOSTAR WTR R1 | Intel N100 (4C/4T) | Intel UHD (24EU) | NONE | 8GB | 2TB |
 | Steam Deck | AMD Custom APU 0405 | AMD Custom GPU | NONE | 16GB | 256GB NVMe + 512GB eMMC |
 | Surface Pro 6 | Intel Core i5-8250U (4C/8T) | Intel UHD 620 | NONE | 8GB | 128GB |
@@ -114,28 +112,6 @@ graph TD
 
     STEWARD -.->|Tailscale| ARV
 ```
-
-### Tailscale Peers
-
-| Host | Tailscale IP | OS | Status | Exit Node | 비고 |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| mo | 100.68.96.6 | linux | online | O | Bazzite 개발 워크스테이션 |
-| ai | 100.118.111.59 | linux | online | - | Tailscale AI |
-| brla | 100.75.220.80 | linux | online | - | Oracle Cloud ARM (Hermes) |
-| axiom | 100.79.223.84 | macOS | online | - | Local LLM + 개발 |
-| kyolim | 100.125.101.42 | windows | online | - | 회사 Zenbook |
-| arv | 100.114.118.28 | linux | online | - | 휴대용 라우터 |
-| girl | 100.88.106.46 | linux | online | - | Steam Deck |
-| ipad | 100.110.172.36 | iOS | online | - | iPad Pro 12.9 |
-| steward | 100.65.14.67 | linux | online | - | 상주 VPN 라우터 |
-| walle | 100.90.68.38 | linux | idle | O | Homelab 서버 (K8s, VM) |
-| lt | 100.68.195.75 | linux | idle | O | - |
-| heritage | 100.96.115.19 | linux | online | - | - |
-| lllm | 100.107.171.105 | linux | online | - | - |
-| tailscale-operator | 100.120.115.102 | linux | online | - | - |
-| ava | 100.111.235.71 | windows | offline | - | Surface Pro 6 |
-| iPhone | 100.81.167.92 | iOS | offline | - | - |
-| ZZiZiLY-Z | 100.79.219.51 | android | offline | - | Flip |
 
 ## Application Manager (Library 4-Layer)
 
