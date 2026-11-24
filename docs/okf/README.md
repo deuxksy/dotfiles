@@ -5,6 +5,7 @@
 ## 🧭 Diátaxis 문서 인덱스
 
 ### 🟡 How-To Guides (사용 및 조치)
+- [chezmoi 사용 가이드](./how-to/chezmoi-usage.md) - 설정 변경 미리보기, 적용 및 역반영
 - [sops Key Encryption Plan](how-to/2026-04-03-sops-key-encryption-implementation.md) - sops/age 암호화 키 적용 및 복호화 절차
 - [Bazzite Fcitx5 Setup](how-to/bazzite-fcitx5-hangul-setup.md) - Bazzite KDE Wayland 환경 Fcitx5 한글 입력기 설정
 - [NixOS Fcitx5 Setup](how-to/fcitx5-wayland-kde.md) - NixOS KDE Wayland 환경 Fcitx5 한글 입력기 설정
@@ -19,7 +20,8 @@
 - [apm Agent Layer Design](explanation/2026-09-27-apm-agent-layer-design.md) - apm 기반 AI agent toolchain 공통화·자동화 설계 문서
 
 ### 🔵 Reference (참조 정보)
+- [인프라 구성](./reference/infrastructure.md) - 하드웨어 사양과 네트워크 토폴로지
 - [AI Agent 의존성 인벤토리](reference/ai-agent-dependencies.md) - 전역/프로젝트 tier MCP·plugin 버전 및 상태
 
 ---
-*참고: `tutorials/` 및 `reference/` 문서는 신규 작성 시 본 허브에 인덱싱됩니다.*
+*설치를 처음 진행한다면 [루트 설치 가이드](../../README.md#install)를 참고하세요.*

@@ -1,6 +1,6 @@
 # AI Project Rules
 
-Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware/Install → [README.md](README.md)
+Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware/Install → [README.md](../README.md)
 
 ## Hosts
 
@@ -8,7 +8,6 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 | :--- | :--- | :--- | :--- |
 | axiom | macOS | 개발/일상 | Brewfile |
 | eve | macOS | 개발/일상 | Brewfile |
-| mo | Bazzite (Linux) | 개발 워크스테이션 | stow: `base` + `bazzite`, Brewfile |
 | girl | SteamOS | 게임/개발 | mise |
 | auxo | Debian 13 (Raspberry Pi 3 Model B) | 휴대용 헤드리스 서버 | stow: `base` + `auxo` |
 | walle | Proxmox (Debian) | Homelab 서버 (K8s, VM) | stow: `base` + `walle` + `walle-sudo` (root) |
@@ -28,7 +27,7 @@ Cross-platform dotfiles managed by GNU Stow with sops encryption. Hosts/Hardware
 stow --no-folding -t ~ base eve
 stow --no-folding -t ~ base girl     # SteamOS
 stow --no-folding -t ~ base auxo     # Raspberry Pi (Debian)
-stow --no-folding -t ~ base bazzite  # Bazzite (mo)
+stow --no-folding -t ~ base bazzite  # Bazzite (이전 mo 구성)
 
 # Brewfile 설치 (stow 배포 후 실행)
 brew bundle -g
@@ -57,10 +56,11 @@ mise run apm:repair       # R8 ~/.apm/apm.yml symlink 복구 + lock 이관
 mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 ```
 
-## Key Files (bazzite — mo)
+## Key Files (bazzite — 이전 mo 구성)
 
 - `bazzite/.homebrew/Brewfile` — Bazzite 패키지 정의 (stow 배포 후 `~/.homebrew/Brewfile`, `brew bundle -g`로 설치)
-- `nix/mo/` — 이전 NixOS mo 설정 아카이브 (flake, hosts/mo, secrets/hermes 등)
+- `nix/nixos/flake.nix`, `nix/nixos/hosts/mo/` — 이전 mo의 NixOS 구성
+- `nix/mo/` — 이전 mo의 dotfiles 및 `.hermes/` 설정
 
 ## Key Files (axiom/macOS)
 
@@ -68,10 +68,10 @@ mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 
 ## Key Files (base — 전 호스트 공통, stow 배포)
 
-- `base/.apm/` — apm user-global manifest·lock (AI agent layer: `targets: [claude, codex]`, apm 14 + MCP 5, 설계: docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
+- `base/.apm/` — apm user-global manifest·lock (AI agent layer: `targets: [claude, codex]`, MCP 포함, 설계: docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
 - `base/.config/claude/profiles/` — provider env 프로파일(sops) + mcp.env.sops, `claude-profile` 로더(eve/.alias)가 소비
 - `base/.claude/rules/`에 6개 규칙 파일 (00~05) — profile, operations, verification, coding, documentation, multi-agent
-- `base/CLAUDE.md`, `base/.claude/CLAUDE.md`는 stow 배포용 공통 파일 (이 repo의 프로젝트 설정이 아님)
+- `base/CLAUDE.md`, `base/.claude/CLAUDE.md`는 각각 `~/CLAUDE.md`, `~/.claude/CLAUDE.md`로 Stow 배포
 - `base/.gemini/rules/`에 6개 규칙 파일 (00~05) — Gemini 공통 규칙
 - `base/.gemini/antigravity-cli/settings.json` — Antigravity CLI 설정
 
@@ -79,6 +79,10 @@ mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 
 - `base/.codex/AGENTS.md` — Codex 에이전트 오케스트레이션 설정
 - `base/.codex/rules/` — Codex 규칙 파일
+
+## Key Files (chezmoi Phase 1)
+
+- `chezmoi/` — Claude, Codex, Antigravity, apm 배포 소스. [사용 가이드](../docs/okf/how-to/chezmoi-usage.md)
 
 ## Key Files (Windows — kyolim, ava)
 
@@ -102,7 +106,7 @@ mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 - hermes-agent: model명 점→하이픈 변환, API key는 sops only, CLI/gateway config 독립 (상세는 nix/mo/.hermes/ 참조)
 - Windows 호스트(ava, kyolim)는 pwsh 기반 배포 — stow 미사용, `windows/` 디렉토리의 스크립트로 관리
 - Windows에서 .ps1 실행은 `pwsh` 사용 — powershell.exe(PS 5.1)은 UTF-8 no-BOM 한글 파일을 ANSI로 오독해 파싱 실패
-- OpenWrt 라우터(arv, steward)는 `docs/`의 설정 스크립트로 관리 — stow 미사용
+- OpenWrt 라우터(arv, steward)의 네트워크 구성은 [인프라 문서](../docs/okf/reference/infrastructure.md) 참조. 라우터에는 Stow 미사용
 - apm CLI가 manifest 쓰기 시 `~/.apm/apm.yml` symlink를 rename으로 교체할 수 있음 → `rm -f ~/.apm/apm.yml && stow --no-folding -R -t ~ base` 복구 후 lock도 repo 이관(commit 필요)
 - apm MCP config 변경은 기존 엔트리 제거 후 재설치 필요 (동일 이름 갱신 안 됨)
 - ai-agent-skill repo는 plugin.json이 SoT — apm.yml 두지 않음 (gstack/bun-bull transitive 사고 방지)

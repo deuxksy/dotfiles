@@ -26,7 +26,7 @@
 - [Chezmoi Usage Guide](okf/how-to/chezmoi-usage.md) - `chezmoi` 초기화, 적용(`apply`), 역반영(`re-add`) 및 주요 명령어
 
 ### 🔵 Reference (참조 자료)
-- [Main README](../README.md) - 메인 프로젝트 개요, 호스트/하드웨어 매트릭스 및 네트워크 구조
+- [Main README](../README.md) - 프로젝트 개요, 호스트별 구성 및 설치 방법
 - [Infrastructure Reference](okf/reference/infrastructure.md) - 하드웨어 스펙, 네트워크 토폴로지, Application Manager 4-Layer, Git Credential
 - [OKF Documentation Hub](okf/README.md) - OKF 세부 구현 및 아키텍처 문서 서브 허브
 - [Neovim Configuration Guide](../base/.config/nvim/README.md) - lazy.nvim 기반 Neovim 모듈 구조 및 의존성

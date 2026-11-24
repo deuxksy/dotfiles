@@ -10,6 +10,7 @@ macOS, SteamOS, Debian, Windows 등 이종 운영체제 환경을 GNU Stow 및 s
 - **🟡 How-To**: [sops Implementation Plan](docs/okf/how-to/2026-04-03-sops-key-encryption-implementation.md) | [ttyd LaunchAgent Setup](docs/okf/how-to/ttyd-brew-launchagent-setup.md) | [WebSSH2 OrbStack Setup](docs/okf/how-to/2026-11-06-webssh2-orbstack-setup.md) | [Project Optional MCP·plugin](docs/okf/how-to/2026-11-14-project-optional-mcp-plugin.md)
 - **🔵 Reference**: [Docs Sub-Hub](docs/README.md) | [OKF Hub](docs/okf/README.md) | [Infrastructure Reference](docs/okf/reference/infrastructure.md) | [Neovim Config Guide](base/.config/nvim/README.md) | [AI Agent 의존성 인벤토리](docs/okf/reference/ai-agent-dependencies.md)
 - **🟣 Explanation**: [Stow Structure Design](docs/okf/explanation/2026-03-03-stow-structure-design.md) | [sops Encryption Design](docs/okf/explanation/2026-04-03-sops-key-encryption-design.md) | [apm Agent Layer Design](docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
+  - [chezmoi 전환 로드맵](./ROADMAP.md) - 호스트별 전환 목표와 단계별 진행 상황
 
 ## Hosts
 
@@ -39,9 +40,14 @@ cd ~/git/dotfiles
 sudo apt install -y stow
 stow --no-folding -t ~ base walle
 sudo stow -t / walle-sudo
+```
 
-# 기존 파일 가져오기
-stow --adopt -t ~ base
+### Stow adopt
+
+홈 디렉터리의 기존 파일을 `base/`로 가져올 때 실행합니다. 가져온 내용은 `git diff`로 확인하세요.
+
+```bash
+stow --no-folding --adopt -t ~ base
 ```
 
 ### 검증 및 관리 (`mise` tasks)

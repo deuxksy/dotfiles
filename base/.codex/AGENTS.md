@@ -14,7 +14,7 @@ Registered Codex plugin marketplace surfaces supply OMX workflows and plugin-sco
 User-installed skills may still live under `~/.codex/skills`.
 
 <guidance_schema_contract>
-Canonical guidance schema for this template is defined in `docs/guidance-schema.md`.
+Follow the oh-my-codex guidance schema for this template.
 Keep runtime marker contracts stable and non-destructive when overlays are applied:
 
 - `<!-- OMX:RUNTIME:START --> ... <!-- OMX:RUNTIME:END -->`
