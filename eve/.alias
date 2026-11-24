@@ -20,6 +20,11 @@ clauded() {
   claude --debug --debug-file ~/.claude/logs/log-$(date +%y%m%d%H%M%S).log "$@"
 }
 
+codexd() {
+  mkdir -p ~/.codex/logs
+  codex -c "log_dir='$HOME/.codex/logs'" "$@"
+}
+
 # claude provider profile loader (apm agent layer 설계)
 # usage: claude-profile zai|kimi|aperture [claude args...]
 claude-profile() {
