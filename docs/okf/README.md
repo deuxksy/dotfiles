@@ -21,7 +21,7 @@
 
 ### 🔵 Reference (참조 정보)
 - [인프라 구성](./reference/infrastructure.md) - 하드웨어 사양과 네트워크 토폴로지
-- [AI Agent 의존성 인벤토리](reference/ai-agent-dependencies.md) - 전역/프로젝트 tier MCP·plugin 버전 및 상태
+- [AI Agent 4-Layer 표준 및 의존성 인벤토리](reference/ai-agent-dependencies.md) - Skill·Hook·MCP·LSP 필수/옵션 기준 및 채널 분리
 
 ---
 *설치를 처음 진행한다면 [루트 설치 가이드](../../README.md#install)를 참고하세요.*
