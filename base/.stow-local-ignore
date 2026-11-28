@@ -8,3 +8,5 @@ DEPENDENCIES\.md$
 \.\d{6}$                           # 날짜 접미사 백업 (treesitter.lua.260320)
 antigravity-cli/settings\.json$
 .gemini/settings.json
+# managed settings는 시스템 경로 symlink가 repo 파일을 직접 가리킴 — 홈 링크 불필요
+\.config/claude/managed-settings\.json$

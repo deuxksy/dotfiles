@@ -96,4 +96,12 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
   window:toast_notification(title, message, nil, 4000)
 end)
 
+config.mouse_bindings = {
+  {
+    event = { Down = { streak = 1, button = 'Right' } },
+    mods = 'NONE',
+    action = wezterm.action.PasteFrom 'Clipboard',
+  },
+}
+
 return config
