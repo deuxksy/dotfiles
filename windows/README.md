@@ -83,7 +83,7 @@ powershell -ExecutionPolicy Bypass -File "$env:USERPROFILE\git\dotfiles\windows\
 설계: [apm Agent Layer Design](../docs/okf/explanation/2026-09-27-apm-agent-layer-design.md).
 
 kyolim 적용 순서: 관리자 pwsh → `install.ps1` → sops age key·`~/.key` 복원 → 첫 claude 세션.
-provider 전환은 eve의 `claude-profile`(zsh) 대응 pwsh 로더가 아직 없음 — 필요시 `sops -d --input-type dotenv --output-type dotenv`로 env export 후 `claude` 실행 (Future work).
+provider 설정(token·base URL·모델 매핑)은 `%USERPROFILE%\.claude\settings.json`의 `env` 블록에 둔다.
 
 ## Neovim 초기 실행
 

@@ -55,13 +55,12 @@ stow --no-folding --adopt -t ~ base
 ```bash
 mise run verify           # shellcheck, gitleaks, stow dry-run, Windows tests
 mise run doctor           # hooksPath, symlink, sops, 필수 바이너리 점검
-mise run sops:check       # ~/.key 및 Claude sops 프로파일 복호화 점검
+mise run sops:check       # ~/.key 복호화 점검
 mise run hooks:install    # git config core.hooksPath .githooks
 mise run apm:repair       # ~/.apm/apm.yml symlink 복구 및 lock 이관
-mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 ```
 
-- **AI Agent Layer**: `apm install -g`가 외부 skill·MCP를 `claude`/`codex`에 배포하고(`base/.apm/`), provider 전환은 `claude-profile zai|kimi|aperture` (sops env)를 사용합니다.
+- **AI Agent Layer**: `apm install -g`가 외부 skill·MCP를 `claude`/`codex`에 배포합니다(`base/.apm/`).
 - **Secrets**: [sops](https://github.com/getsops/sops) + [age](https://github.com/FiloSottile/age)로 암호화되며 `eval "$(sops -d ~/.key)"`로 복호화합니다.
 
 ## Structure

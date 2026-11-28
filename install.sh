@@ -69,4 +69,4 @@ if [[ "$DRY_RUN" != "--dry-run" ]]; then
   fi
 fi
 
-echo "완료. 첫 claude 세션에서 plugin이 자동 설치됩니다. provider 전환: claude-profile zai|kimi|aperture"
+echo "완료. 첫 claude 세션에서 plugin이 자동 설치됩니다."

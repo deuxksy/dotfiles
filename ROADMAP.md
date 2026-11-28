@@ -27,7 +27,7 @@
 - [x] `dot_claude/` 통합 (`base/.claude/`, `windows/.claude/`, `kyolim/.claude/` → `settings.json.tmpl` + 공통 `rules/`)
 - [x] `dot_codex/` 이관 (`AGENTS.md`, `rules/`)
 - [x] `dot_gemini/` 이관 (`GEMINI.md`, `rules/`, `antigravity-cli/settings.json.tmpl`)
-- [x] `dot_config/claude/profiles/` (`*.env.sops`) 복호화·배치 검증
+- [x] ~~`dot_config/claude/profiles/` (`*.env.sops`) 복호화·배치 검증~~ — 2026-11-28 제거 (Claude Code 지원 기능 아님, provider 설정은 `settings.json` `env` 블록으로)
 - [x] `eve`(macOS)에서 `chezmoi diff` 및 `chezmoi apply` 실검증
 
 ## Phase 2: `base/` 공통 POSIX 설정 이관

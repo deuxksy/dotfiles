@@ -2,6 +2,8 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
+> **Status (2026-11-28)**: Task 5(provider 프로파일 → sops env + `claude-profile` 로더)는 폐기 — Claude Code 지원 기능이 아님. 프로파일 파일과 로더는 제거됐으니 이 task는 재개하지 않는다.
+
 **Goal:** dotfiles에 apm user-global manifest를 도입해 외부 skill 3종 + MCP 6개를 claude/codex/gemini 3에이전트에 선언적으로 배포하고, settings 소유권 분리로 plugin 자동 설치와 평문 token 제거를 완성한다.
 
 **Architecture:** repo `base/.apm/`(manifest+lock)을 stow가 `~/.apm/`에 symlink하고 `apm install -g`가 3에이전트 설정에 배포한다. `base/.claude/settings.json`(stow 고정)이 plugin 매트릭스를 선언해 Claude Code 첫 세션에 자동 설치하고, provider 차이는 sops 암호화 env 프로파일 + `claude-profile()` 로더로 전환한다. 신규 장비는 `install.sh` / `windows/install.ps1` 한 번으로 재현한다.

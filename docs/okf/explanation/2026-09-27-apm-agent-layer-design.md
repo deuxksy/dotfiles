@@ -2,6 +2,7 @@
 
 > **Date**: 2026-09-27 · **Status**: 승인 완료 — 구현 대기 · **Owner**: crong
 > 대상: dotfiles 전 호스트(macOS/Linux) + kyolim(Windows)의 AI agent toolchain 배포
+> **변경 (2026-11-28)**: provider 프로파일(`base/.config/claude/profiles/*.env.sops`)과 `claude-profile` 로더는 Claude Code 지원 기능이 아니어서 제거함. provider 설정은 `~/.claude/settings.json`의 `env` 블록, 권한 rule은 `base/.config/claude/managed-settings.json`(managed settings)로 관리한다. "2. settings 소유권 분리"의 프로파일·로더 부분과 마이그레이션 Task 5는 폐기된 설계다.
 
 ## 목차
 

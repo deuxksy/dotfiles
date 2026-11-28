@@ -50,10 +50,9 @@ git config core.hooksPath .githooks
 # mise tasks (검증 / 진단 / 복구)
 mise run verify           # lint:shell + lint:secrets + stow:check + test:windows
 mise run doctor           # hooksPath, symlink, sops, 필수 바이너리 점검
-mise run sops:check       # ~/.key 및 Claude sops 프로파일 복호화 점검
+mise run sops:check       # ~/.key 복호화 점검
 mise run hooks:install    # git config core.hooksPath .githooks
 mise run apm:repair       # R8 ~/.apm/apm.yml symlink 복구 + lock 이관
-mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 ```
 
 ## Key Files (bazzite — 이전 mo 구성)
@@ -69,7 +68,7 @@ mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 ## Key Files (base — 전 호스트 공통, stow 배포)
 
 - `base/.apm/` — apm user-global manifest·lock (AI agent layer: `targets: [claude, codex]`, MCP 포함, 설계: docs/okf/explanation/2026-09-27-apm-agent-layer-design.md)
-- `base/.config/claude/profiles/` — provider env 프로파일(sops) + mcp.env.sops, `claude-profile` 로더(eve/.alias)가 소비
+- `base/.config/claude/managed-settings.json` — Claude Code managed settings(권한 rule + provider 무관 토글). 시스템 경로 `/Library/Application Support/ClaudeCode/managed-settings.json`이 symlink로 가리킴. provider 설정(token·base URL·모델 매핑)은 `~/.claude/settings.json`의 `env` 블록에 둔다
 - `base/.claude/rules/`에 6개 규칙 파일 (00~05) — profile, operations, verification, coding, documentation, multi-agent
 - `base/CLAUDE.md`, `base/.claude/CLAUDE.md`는 각각 `~/CLAUDE.md`, `~/.claude/CLAUDE.md`로 Stow 배포
 - `base/.gemini/rules/`에 6개 규칙 파일 (00~05) — Gemini 공통 규칙
@@ -111,3 +110,4 @@ mise run sops:edit <name> # base/.config/claude/profiles/<name>.env.sops 편집
 - apm MCP config 변경은 기존 엔트리 제거 후 재설치 필요 (동일 이름 갱신 안 됨)
 - ai-agent-skill repo는 plugin.json이 SoT — apm.yml 두지 않음 (gstack/bun-bull transitive 사고 방지)
 - apm은 지원 primitive(skills·MCP·hooks·agents·plugin collection) 전부 사용 — 공통은 apm 단일 경로, LSP는 apm 경로 부재(registry·문법 무관측)로 plugin 유지(pyright/gopls-lsp)
+- Claude Code 설정은 둘만 관리: managed settings(`base/.config/claude/managed-settings.json` — 권한 rule·provider 무관 토글)과 user settings(`~/.claude/settings.json` — provider `env`·hooks). Claude Code 지원 기능만 쓴다 — 자체 provider 로더·프로파일(`claude-profile`, `profiles/*.env.sops`)이나 project `.claude/settings.json`을 다시 만들지 않는다 (2026-11-28 제거)
